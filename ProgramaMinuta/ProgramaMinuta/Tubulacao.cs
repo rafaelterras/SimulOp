@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ProgramaMinuta
 {
-    class Tubulacao : EquipamentoOPI, Itubulacao
+    class Tubulacao : EquipamentoOPI, ITubulacao
     {
     }
 }

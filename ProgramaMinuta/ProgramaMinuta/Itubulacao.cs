@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ProgramaMinuta
 {
-    public interface Itubulacao
+    public interface ITubulacao
     {
         /// <summary>
         /// Comprimento da tubulação
