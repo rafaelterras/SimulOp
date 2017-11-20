@@ -39,10 +39,15 @@ namespace ProgramaMinuta
         public double CalcFAtrito(Fluido fluido, double vazao)
         {
             double Re = CalcReynolds(fluido, vazao);
-            double A = Math.Pow(-2.475 * Math.Log(Math.Pow(7 / Re, 0.9) + 0.27 * (this.rugosidadeRelativa)), 16);
-            double B = Math.Pow((37560 / Re), 16);
+            double A1 = Math.Pow(7 / Re, 0.9);
+            double A2 = 0.27 * this.rugosidadeRelativa;
+            double A = Math.Pow(-2.475 * Math.Log(A1 + A2), 16);
+            double B = Math.Pow((37530 / Re), 16.0);
 
-            double fA = 2 * Math.Pow(Math.Pow(8 / Re, 12) + (1 / Math.Pow(A + B, 3.0 / 2.0)), 1.0 / 12.0);
+            double fA1 = Math.Pow(8 / Re, 12);
+            double fA2 = 1 / Math.Pow(A + B, 3.0 / 2.0);
+
+            double fA = 2 * Math.Pow(fA1 + fA2, 1.0 / 12.0);
 
             return fA;
         }
@@ -57,11 +62,12 @@ namespace ProgramaMinuta
         {
             double fAtrito = CalcFAtrito(fluido, vazao);
             double comprimetoTotal = this.comprimento + this.comprimentoEquivalente;
-            double hf = (32 / Math.Pow(Math.PI, 2)) * fAtrito * comprimetoTotal * Math.Pow(vazao, 2) / (Math.Pow(this.diametro, 5) * g);
+            double hf1 = (32 / Math.Pow(Math.PI, 2));
+            double hf2 = fAtrito * comprimetoTotal * Math.Pow(vazao, 2) / (Math.Pow(this.diametro, 5.0) * g);
 
-            this.perdaCarga = hf;
+            this.perdaCarga = hf1 * hf2;
 
-            return hf;
+            return hf1 * hf2;
         }
 
         /// <summary>

@@ -22,9 +22,11 @@ namespace ProgramaMinuta
             Tubulacao tubo1 = new Tubulacao
             {
                 diametro = 0.05,
-                rugosidadeRelativa = 1E-4,
-                comprimento = 100
+                rugosidade = 4.572E-5,
+                comprimento = 1000
             };
+
+            tubo1.rugosidadeRelativa = tubo1.rugosidade / tubo1.diametro;
 
             Singularidade s1 = new Singularidade
             {
@@ -46,7 +48,7 @@ namespace ProgramaMinuta
 
             Bomba bomba1 = new Bomba
             {
-                equacaoCurva = new double[] { 0, 0, -54216, 39.43 }
+                equacaoCurva = new double[] { 0, -2096928, 2649.96, 26 }
             };
 
             Console.WriteLine("==========Dados da Simulação========");
@@ -62,12 +64,46 @@ namespace ProgramaMinuta
             Console.WriteLine("Eq. da bomba: {0}*Q^3 + {1}*Q^2 + {2}*Q^1 + {3}",bomba1.equacaoCurva[0], bomba1.equacaoCurva[1], bomba1.equacaoCurva[2], bomba1.equacaoCurva[3]);
 
             bomba1.CalculaVazao(agua, tubo1);
-
+            
             Console.WriteLine("==========Resultados da Simulação========");
             Console.WriteLine("Vazão : {0} m^3/h", bomba1.vazao * 3600);
-
+            Console.WriteLine("Perda de carga  : {0} m", tubo1.perdaCarga);
+            Console.WriteLine("Altura da bomba : {0} m", bomba1.alturaManometrica);
 
             Console.ReadLine();
         }
      }
 }
+
+//Hellow World!!
+//==========Dados da Simulaçao========
+//===>Fluido
+//Densidade : 1000 Kg/m^3
+//Viscosidade : 0,00089 Pa*s
+//===>Tubulaçao
+//Diametro : 0,5 m
+//Comprimento : 1000 m
+//Comprimento Eq das singularidades: 2 m
+//Comprimento total: 1002 m
+//===>Bomba
+//Eq. da bomba: 0*Q^3 + -2096928*Q^2 + 2649,96*Q^1 + 26
+//vazao Iter = 0,0181953762292938
+//fX Iter = -620,034661985214
+//vazao Iter = 0,00977792413833284
+//fX Iter = -148,577573646659
+//vazao Iter = 0,00590451341515314
+//fX Iter = -31,461535514665
+//vazao Iter = 0,00448178052856238
+//fX Iter = -4,24463476470678
+//vazao Iter = 0,00421889910764198
+//fX Iter = -0,144915147419651
+//vazao Iter = 0,00420926639373939
+//fX Iter = -0,000194576954735472
+//vazao Iter = 0,00420925342510938
+//fX Iter = -3,52681692877832E-10
+//====Altura Final: 0,00137209896022839
+//====Perda de carga Final: 0,00137209931291008
+//==========Resultados da Simulaçao========
+//Vazao : 15,1533123303938 m^3/h
+//Perda de carga  : 0,00137209931291008 m
+//Altura da bomba : 0,00137209896022839 m

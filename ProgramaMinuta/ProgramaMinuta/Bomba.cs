@@ -44,7 +44,7 @@ namespace ProgramaMinuta
         /// <returns> A altura da bomba [m]. </returns>
         public void CalculaVazao(Fluido fluido, Tubulacao tubulacao)
         {
-            double vazao = 0.001;
+            double vazao = 0.752 * Math.Pow(tubulacao.diametro  , 1.887) / Math.Pow(fluido.densidade, 0.302);
             double eps = 10E-6;
             double err;
             double deri;
@@ -64,14 +64,18 @@ namespace ProgramaMinuta
                 fX = this.CalcAlturaBomba(vazao) - tubulacao.CalculaPerdaCarga(fluido, vazao);
                 deri = ((this.CalcAlturaBomba(vazao + eps) - tubulacao.CalculaPerdaCarga(fluido, vazao + eps))
                 - (this.CalcAlturaBomba(vazao - eps) - tubulacao.CalculaPerdaCarga(fluido, vazao - eps))) / (2 * eps);
-                Console.WriteLine("deri Iter = {0}", deri);
+                Console.WriteLine("fX Iter = {0}", fX);
 
                 err = Math.Abs(fX);
                 nIte = nIte + 1;
             }
+            
+            this.vazao = vazao;
+            this.alturaManometrica = CalcAlturaBomba(vazao);
 
+            Console.WriteLine("====Altura Final: {0}", this.alturaManometrica);
+            Console.WriteLine("====Perda de carga Final: {0}", tubulacao.CalculaPerdaCarga(fluido, vazao));
 
-            this.vazao = vazao;                    
 
         }
 
