@@ -47,6 +47,42 @@ namespace ProgramaMinuta
             return fA;
         }
 
+        /// <summary>
+        /// Cálcula a perda de carga da tubulação
+        /// </summary>
+        /// <param name="fluido">O Fluido que está na tubulação. </param>
+        /// <param name="vazao">A vazão do fluido [m^3/s]. </param>
+        /// <returns> A perda de carga [m]. </returns>
+        public double calculaPerdaCarga(Fluido fluido, double vazao)
+        {
+            double fAtrito = CalcFAtrito(fluido, vazao);
+            double comprimetoTotal = this.Comprimento + this.ComprimentoEquivalente;
+            double hf = (32 / Math.Pow(Math.PI, 2)) * fAtrito * comprimetoTotal * Math.Pow(vazao, 2) / (Math.Pow(this.Diametro, 5) * g);
+
+            this.perdaCarga = hf;
+
+            return hf;
+        }
+
+        /// <summary>
+        /// Cálcula o comprimento equivalente das singularidades
+        /// </summary>
+        /// <param name="lista">A lista de singularidades da tubulação. </param>
+        /// <returns> O comprimento equivalente das singularidades [m]. </returns>
+        public double ComprEqSing(List<Singularidade> lista)
+        {
+            double comprEq = 0;
+
+            foreach(Singularidade sin in lista)
+            {
+                comprEq = comprEq + sin.comprimentoEqv;
+            }
+
+            this.ComprimentoEquivalente = comprEq;
+
+            return comprEq;
+        }
+
 
         public double CalculaVazao()
         {

@@ -8,14 +8,19 @@ namespace ProgramaMinuta
     internal abstract class Equipamentos
     {
         /// <summary>
+        /// Constante: Aceleração da gravidade [m/s^2]
+        /// </summary>
+        public double g = 9.80665; // aceleração da gravidade [m/s^2]
+
+        /// <summary>
         /// Perda de carga no equipamento (m)
         /// </summary>
-        public double perdaCarga { get; set; }
+        public double perdaCarga; 
             
         /// <summary>
         /// Calcula a perda de carga no equpamento
         /// </summary>
-        public double calculaPerdaCarga()
+        public virtual double calculaPerdaCarga()
         {
             throw new System.NotImplementedException();
         }

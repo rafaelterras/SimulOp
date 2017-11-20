@@ -20,17 +20,32 @@ namespace ProgramaMinuta
             Tubulacao tubo1 = new Tubulacao();
             tubo1.Diametro = 0.05;
             tubo1.RugosidadeRelativa = 1E-4;
+            tubo1.Comprimento = 2;
 
-            Console.WriteLine(tubo1.CalcReynolds(agua, 0.001));
+            Singularidade s1 = new Singularidade();
+            Singularidade s2 = new Singularidade();
 
-            Console.WriteLine(tubo1.CalcFAtrito(agua, 0.001));
-        
-            Filtro filtro = new Filtro();
+            s1.comprimentoEqv = 2;
+            s2.comprimentoEqv = 5;
 
-            Console.WriteLine(filtro.CalcReynolds(1000,8.9E-4,1,0.05));
+            List<Singularidade> lista = new List<Singularidade>();
 
-         
-            Console.ReadKey();
+            lista.Add(s1);
+            lista.Add(s2);
+
+            tubo1.ComprimentoEquivalente = tubo1.ComprEqSing(lista);
+
+       
+            Console.WriteLine("Reynolds: {0}",tubo1.CalcReynolds(agua, 0.001));
+
+            Console.WriteLine("Fator de atrito: {0}",tubo1.CalcFAtrito(agua, 0.001));
+
+            Console.WriteLine("Comprimento equivalente: {0}", tubo1.ComprimentoEquivalente);
+            Console.WriteLine("Comprimento Total: {0}", tubo1.ComprimentoEquivalente + tubo1.Comprimento);
+
+            Console.WriteLine("Perda de carga: {0}",tubo1.calculaPerdaCarga(agua, 0.01));
+                     
+            Console.ReadLine();
         }
      }
 }
