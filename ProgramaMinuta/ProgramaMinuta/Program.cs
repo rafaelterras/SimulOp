@@ -20,12 +20,11 @@ namespace ProgramaMinuta
             Tubulacao tubo1 = new Tubulacao();
             tubo1.Diametro = 0.05;
 
-            Console.WriteLine(tubo1.CalcReynolds(agua, 50));
-            Console.WriteLine(tubo1.CalcReynolds(agua, 2));
-
+            Console.WriteLine(tubo1.CalcReynolds(agua, 1));
+        
             Filtro filtro = new Filtro();
 
-            Console.WriteLine(filtro.CalcReynolds(1000,8.9E-4,1,0.1));
+            Console.WriteLine(filtro.CalcReynolds(1000,8.9E-4,1,0.05));
 
             Console.ReadKey();
         }
