@@ -5,23 +5,27 @@ using System.Text;
 
 namespace ProgramaMinuta
 {
-    public interface IBomba
+    interface IBomba
     {
         /// <summary>
         /// Vazão de fluido (m^3/h)
         /// </summary>
         double vazao { get; set; }
+
         /// <summary>
         /// Potencia da bomba (W)
         /// </summary>
         double potencia { get; set; }
+
         /// <summary>
-        /// !!!!Verificar depois como vamos representar!!!
+        /// Coeficientes do polinomio de 3º grau que aproxima a bomba
         /// </summary>
-        int equacaoCurva { get; set; }
+        double[] equacaoCurva { get; set; }
+
         /// <summary>
         /// Altura monometrica da bomba
         /// </summary>
         double alturaManometrica { get; set; }
-    }
+
+     }
 }
