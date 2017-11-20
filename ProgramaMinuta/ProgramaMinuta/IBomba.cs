@@ -10,18 +10,18 @@ namespace ProgramaMinuta
         /// <summary>
         /// Vazão de fluido (m^3/h)
         /// </summary>
-        double Vazao { get; set; }
+        double vazao { get; set; }
         /// <summary>
         /// Potencia da bomba (W)
         /// </summary>
-        double Potencia { get; set; }
+        double potencia { get; set; }
         /// <summary>
         /// !!!!Verificar depois como vamos representar!!!
         /// </summary>
-        int EquacaoCurva { get; set; }
+        int equacaoCurva { get; set; }
         /// <summary>
         /// Altura monometrica da bomba
         /// </summary>
-        double AlturaManometrica { get; set; }
+        double alturaManometrica { get; set; }
     }
 }

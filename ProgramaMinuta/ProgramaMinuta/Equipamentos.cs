@@ -20,7 +20,7 @@ namespace ProgramaMinuta
         /// <summary>
         /// Calcula a perda de carga no equpamento
         /// </summary>
-        public virtual double calculaPerdaCarga()
+        public virtual double CalculaPerdaCarga()
         {
             throw new System.NotImplementedException();
         }

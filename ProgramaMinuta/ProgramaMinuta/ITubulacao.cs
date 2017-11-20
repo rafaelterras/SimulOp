@@ -10,36 +10,44 @@ namespace ProgramaMinuta
         /// <summary>
         /// Comprimento da tubulação
         /// </summary>
-        double Comprimento { get; set; }
+        double comprimento { get; set; }
+
         /// <summary>
         /// Comprimento equivalente das sigularidades
         /// </summary>
-        double ComprimentoEquivalente { get; set; }
+        double comprimentoEquivalente { get; set; }
+
         /// <summary>
         /// Diametro da tubulação (m)
         /// </summary>
-        double Diametro { get; set; }
+        double diametro { get; set; }
+
         /// <summary>
         /// Tipo de material
         /// </summary>
-        string Material { get; set; }
+        string material { get; set; }
+
         /// <summary>
         /// Rugosidede do material
         /// </summary>
-        double Rugosidade { get; set; }
+        double rugosidade { get; set; }
+
         /// <summary>
         /// Rugosidade relativa do mateira
         /// </summary>
-        double RugosidadeRelativa { get; set; }
+        double rugosidadeRelativa { get; set; }
+
         /// <summary>
         /// Fator de atrido na condição de escoamento
         /// </summary>
-        double FatorAtrito { get; set; }
+        double fatorAtrito { get; set; }
+
         /// <summary>
         /// Lista de singulariedades na tubulação
         /// </summary>
         /// 
-        // List<Singularidade> ListaSingulariedades { get; set; }
+        //List<Singularidade> listaSingulariedades { get; set; }
+
         /// <summary>
         /// Calcula a vazão com base na equação da bomba e da tubulação
         /// </summary>

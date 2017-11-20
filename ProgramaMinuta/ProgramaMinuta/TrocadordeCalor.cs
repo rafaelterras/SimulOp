@@ -16,7 +16,7 @@ namespace ProgramaMinuta
         public Fluido fluidoQuenteSaida { get; set; }
         public double calorTransferido { get; set; }
 
-        public void calculaSaidas()
+        public void CalculaSaidas()
         {
             throw new NotImplementedException();
         }

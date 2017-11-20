@@ -15,7 +15,7 @@ namespace ProgramaMinuta
         public Fluido fluidoFeed { get; set; }
         public int estagioFeed { get; set; }
 
-        public void calculaPratosMin()
+        public void CalculaPratosMin()
         {
             throw new NotImplementedException();
         }

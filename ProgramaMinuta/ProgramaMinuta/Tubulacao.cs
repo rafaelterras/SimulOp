@@ -7,14 +7,14 @@ namespace ProgramaMinuta
 {
     class Tubulacao : EquipamentoOPI, ITubulacao
     {
-        public double Comprimento { get; set; }
-        public double ComprimentoEquivalente { get ; set ; }
-        public double Diametro { get; set; }
-        public string Material { get ; set ; }
-        public double Rugosidade { get; set; }
-        public double RugosidadeRelativa { get; set; }
-        public double FatorAtrito { get; set; }
-        public List<Singularidade> ListaSingulariedades { get; set ; }
+        public double comprimento { get; set; }
+        public double comprimentoEquivalente { get ; set ; }
+        public double diametro { get; set; }
+        public string material { get ; set ; }
+        public double rugosidade { get; set; }
+        public double rugosidadeRelativa { get; set; }
+        public double fatorAtrito { get; set; }
+        public List<Singularidade> listaSingulariedades { get; set ; }
 
         /// <summary>
         /// Calcula o número de Reyolds
@@ -26,7 +26,7 @@ namespace ProgramaMinuta
         {
             double re;
 
-            re = (4 * fluido.densidade * vazao) / (Math.PI * fluido.viscosidade * this.Diametro);
+            re = (4 * fluido.densidade * vazao) / (Math.PI * fluido.viscosidade * this.diametro);
 
             return re;
         }
@@ -39,7 +39,7 @@ namespace ProgramaMinuta
         public double CalcFAtrito(Fluido fluido, double vazao)
         {
             double Re = CalcReynolds(fluido, vazao);
-            double A = Math.Pow(-2.475 * Math.Log(Math.Pow(7 / Re, 0.9) + 0.27 * (this.RugosidadeRelativa)), 16);
+            double A = Math.Pow(-2.475 * Math.Log(Math.Pow(7 / Re, 0.9) + 0.27 * (this.rugosidadeRelativa)), 16);
             double B = Math.Pow((37560 / Re), 16);
 
             double fA = 2 * Math.Pow(Math.Pow(8 / Re, 12) + (1 / Math.Pow(A + B, 3.0 / 2.0)), 1.0 / 12.0);
@@ -53,11 +53,11 @@ namespace ProgramaMinuta
         /// <param name="fluido">O Fluido que está na tubulação. </param>
         /// <param name="vazao">A vazão do fluido [m^3/s]. </param>
         /// <returns> A perda de carga [m]. </returns>
-        public double calculaPerdaCarga(Fluido fluido, double vazao)
+        public double CalculaPerdaCarga(Fluido fluido, double vazao)
         {
             double fAtrito = CalcFAtrito(fluido, vazao);
-            double comprimetoTotal = this.Comprimento + this.ComprimentoEquivalente;
-            double hf = (32 / Math.Pow(Math.PI, 2)) * fAtrito * comprimetoTotal * Math.Pow(vazao, 2) / (Math.Pow(this.Diametro, 5) * g);
+            double comprimetoTotal = this.comprimento + this.comprimentoEquivalente;
+            double hf = (32 / Math.Pow(Math.PI, 2)) * fAtrito * comprimetoTotal * Math.Pow(vazao, 2) / (Math.Pow(this.diametro, 5) * g);
 
             this.perdaCarga = hf;
 
@@ -78,7 +78,7 @@ namespace ProgramaMinuta
                 comprEq = comprEq + sin.comprimentoEqv;
             }
 
-            this.ComprimentoEquivalente = comprEq;
+            this.comprimentoEquivalente = comprEq;
 
             return comprEq;
         }
