@@ -49,7 +49,10 @@ namespace ProgramaMinuta
 
             double fA = 2 * Math.Pow(fA1 + fA2, 1.0 / 12.0);
 
+            //Console.WriteLine("fA = {0}", fA);
+            
             return fA;
+            
         }
 
         /// <summary>

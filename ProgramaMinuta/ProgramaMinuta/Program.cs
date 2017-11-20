@@ -23,7 +23,7 @@ namespace ProgramaMinuta
             {
                 diametro = 0.05,
                 rugosidade = 4.572E-5,
-                comprimento = 1000
+                comprimento = 10
             };
 
             tubo1.rugosidadeRelativa = tubo1.rugosidade / tubo1.diametro;
