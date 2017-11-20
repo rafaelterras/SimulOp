@@ -7,5 +7,7 @@ namespace ProgramaMinuta
 {
     class Singularidade : EquipamentoOPI, ISingulariedade
     {
+        public double comprimentoEqv { get; set; }
+        public string tipo { get; set; }
     }
 }

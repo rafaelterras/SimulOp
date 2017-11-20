@@ -10,14 +10,8 @@ namespace ProgramaMinuta
         /// <summary>
         /// Perda de carga no equipamento (m)
         /// </summary>
-        public double perdaCarga
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
-
+        public double perdaCarga { get; set; }
+            
         /// <summary>
         /// Calcula a perda de carga no equpamento
         /// </summary>

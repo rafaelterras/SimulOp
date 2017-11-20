@@ -7,104 +7,56 @@ namespace ProgramaMinuta
 {
     public class Fluido
     {
-
         /// <summary>
         /// Se é um fluido newtoniano ("newton"), ou é não newtoniano ("naoNewton")
         /// </summary>
-        public string clasificacao
-        {
-            get => default(string);
-            set
-            {
-            }
-        }
+        public string Clasificacao { get; set; }
+   
 
         /// <summary>
         /// Densidade do fluido (kg/m^3)
         /// </summary>
-        public double densidade
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
+        public double densidade { get; set; }
+       
 
         /// <summary>
         /// Temperatura do fluido (ºC)
         /// </summary>
-        public double temperatura
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
+        public double temperatura { get; set; }
+
 
         /// <summary>
         /// Composição de cada componente em mol
         /// </summary>
-        public System.Collections.Generic.Dictionary<string, double> composicao
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
+        public Dictionary<string, double> composicao { get; set; }
 
         /// <summary>
         /// Pressão do fluido (Pa)
         /// </summary>
-        public double pressao
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
+        public double pressao { get; set; }
+
 
         /// <summary>
         /// Indices do polinomio em função da temperatur (a0 + a1 + a2 + ...)
         /// </summary>
-        public List<double> calorEspecifico
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
+        public List<double> calorEspecifico { get; set; }
+
 
         /// <summary>
-        /// Indices do polinomio em função da temperatur (a0 + a1 + a2 + ...)
+        /// Viscosidade em Pa*s
         /// </summary>
-        public List<double> viscosidade
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
+        public double viscosidade { get; set; }
+ 
 
         /// <summary>
         /// Entalpia (J)
         /// </summary>
-        public double entalpia
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
+        public double entalpia { get; set; }
+
 
         /// <summary>
         /// Pressão de vapor do fluido (Pa)
         /// </summary>
-        public double presaoVapor
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
+        public double presaoVapor { get; set; }
     }
 }
