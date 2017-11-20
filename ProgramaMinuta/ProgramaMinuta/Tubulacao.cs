@@ -69,7 +69,7 @@ namespace ProgramaMinuta
         /// </summary>
         /// <param name="lista">A lista de singularidades da tubulação. </param>
         /// <returns> O comprimento equivalente das singularidades [m]. </returns>
-        public double ComprEqSing(List<Singularidade> lista)
+        public void ComprEqSing(List<Singularidade> lista)
         {
             double comprEq = 0;
 
@@ -80,7 +80,6 @@ namespace ProgramaMinuta
 
             this.comprimentoEquivalente = comprEq;
 
-            return comprEq;
         }
 
 

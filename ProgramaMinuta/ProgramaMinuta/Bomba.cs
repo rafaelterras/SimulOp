@@ -49,21 +49,25 @@ namespace ProgramaMinuta
             double err;
             double deri;
             double fX;
+            double nIte = 1;
 
             fX = this.CalcAlturaBomba(vazao) - tubulacao.CalculaPerdaCarga(fluido, vazao);
             err = Math.Abs(fX);
             deri = ((this.CalcAlturaBomba(vazao + eps) - tubulacao.CalculaPerdaCarga(fluido, vazao + eps))
                 - (this.CalcAlturaBomba(vazao - eps) - tubulacao.CalculaPerdaCarga(fluido, vazao - eps))) / (2 * eps);
-            Console.WriteLine("deri = {0}", deri);
+            //Console.WriteLine("deri = {0}", deri);
 
-            while (err > 10E-8)
+            while (err > 10E-6)
             {
                 vazao = vazao - (fX / deri);
                 Console.WriteLine("vazão Iter = {0}", vazao);
                 fX = this.CalcAlturaBomba(vazao) - tubulacao.CalculaPerdaCarga(fluido, vazao);
                 deri = ((this.CalcAlturaBomba(vazao + eps) - tubulacao.CalculaPerdaCarga(fluido, vazao + eps))
                 - (this.CalcAlturaBomba(vazao - eps) - tubulacao.CalculaPerdaCarga(fluido, vazao - eps))) / (2 * eps);
+                Console.WriteLine("deri Iter = {0}", deri);
+
                 err = Math.Abs(fX);
+                nIte = nIte + 1;
             }
 
 
