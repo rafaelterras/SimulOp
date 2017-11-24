@@ -51,6 +51,21 @@ namespace ProgramaMinuta
                 equacaoCurva = new double[] { 0, -2096928, 2649.96, 26 }
             };
 
+            Bomba bomba2 = new Bomba
+            {
+                equacaoCurva = new double[] { 1, 2096928, -2650.96, 4 }
+            };
+
+            Bomba bombaEq = new Bomba
+            {
+
+            };
+
+            //Bomba[] arrayBombas = new Bomba[] { bomba1, bomba2 };
+
+            bombaEq.BombaEquivalente(new Bomba[] { bomba1, bomba2 },"Série");
+
+
             Console.WriteLine("==========Dados da Simulação========");
             Console.WriteLine("===>Fluido");
             Console.WriteLine("Densidade : {0} Kg/m^3", agua.densidade);
@@ -62,6 +77,7 @@ namespace ProgramaMinuta
             Console.WriteLine("Comprimento total: {0} m", tubo1.comprimentoEquivalente + tubo1.comprimento);
             Console.WriteLine("===>Bomba");
             Console.WriteLine("Eq. da bomba: {0}*Q^3 + {1}*Q^2 + {2}*Q^1 + {3}",bomba1.equacaoCurva[0], bomba1.equacaoCurva[1], bomba1.equacaoCurva[2], bomba1.equacaoCurva[3]);
+            Console.WriteLine("Eq. da bombaEQ: {0}*Q^3 + {1}*Q^2 + {2}*Q^1 + {3}", bombaEq.equacaoCurva[0], bombaEq.equacaoCurva[1], bombaEq.equacaoCurva[2], bombaEq.equacaoCurva[3]);
 
             bomba1.CalculaVazao(agua, tubo1);
             

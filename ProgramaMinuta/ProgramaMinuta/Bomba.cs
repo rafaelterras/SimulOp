@@ -37,6 +37,37 @@ namespace ProgramaMinuta
         }
 
         /// <summary>
+        /// Atualiza bomba pra uma bomba equivalente.
+        /// </summary>
+        /// <param name="arrayBomba">Um array com as bombas que se deseja ver a equivalente. </param>
+        /// <param name="tipo">O tipo de associação ("série" ou "paralelo"). </param>
+        public void BombaEquivalente(Array arrayBomba, string tipo)
+        {
+            double[] alturaBomba = new double[4];
+            int i = 0;
+
+            if (tipo.ToLower() == "série")
+            {
+                foreach (Bomba bomba in arrayBomba)
+                {
+                    i = 0;
+                    foreach (double Q in bomba.equacaoCurva)
+                    {
+                        alturaBomba[i] = alturaBomba[i] + Q;
+                        Console.WriteLine("i: {0}", i);
+                        i++;
+                    }
+                }
+                this.equacaoCurva = alturaBomba;
+            }
+            if (tipo == "paralelo")
+            {
+
+            }
+
+        }
+
+        /// <summary>
         /// Atualiza o valor da vazão [m^3/s] da bomba.
         /// </summary>
         /// <param name="fluido">O fluido que está passando na bomba. </param>
