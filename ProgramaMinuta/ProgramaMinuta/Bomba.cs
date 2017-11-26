@@ -62,13 +62,13 @@ namespace ProgramaMinuta
             }
             if (tipo == "paralelo")
             {
-
+                throw new System.NotImplementedException();
             }
 
         }
 
         /// <summary>
-        /// Atualiza o valor da vazão [m^3/s] da bomba.
+        /// Atualiza o valor da vazão [m^3/s] da bomba utilizando a equação de Bernoulli.
         /// </summary>
         /// <param name="fluido">O fluido que está passando na bomba. </param>
         /// <param name="tubulacao">A tubulação que está sendo analisada. </param>
@@ -106,7 +106,6 @@ namespace ProgramaMinuta
 
             Console.WriteLine("====Altura Final: {0}", this.alturaManometrica);
             Console.WriteLine("====Perda de carga Final: {0}", tubulacao.CalculaPerdaCarga(fluido, vazao));
-
 
         }
 
