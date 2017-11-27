@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ProgramaMinuta
 {
-    class Program
+    static class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Ponto de entrada principal para o aplicativo.
+        /// </summary>
+        [STAThread]
+        static void Main()
         {
             // This is a hello world commentary.  
-            Console.WriteLine("Hellow World!!");
+            // Console.WriteLine("Hellow World!!");
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new FormsMaster());
 
             Fluido agua = new Fluido
             {
@@ -61,11 +70,11 @@ namespace ProgramaMinuta
 
             };
 
-            //Bomba[] arrayBombas = new Bomba[] { bomba1, bomba2 };
+            // Bomba[] arrayBombas = new Bomba[] { bomba1, bomba2 };
 
-            bombaEq.BombaEquivalente(new Bomba[] { bomba1, bomba2 },"Série");
+            // bombaEq.BombaEquivalente(new Bomba[] { bomba1, bomba2 },"Série");
 
-
+            /*
             Console.WriteLine("==========Dados da Simulação========");
             Console.WriteLine("===>Fluido");
             Console.WriteLine("Densidade : {0} Kg/m^3", agua.densidade);
@@ -87,6 +96,7 @@ namespace ProgramaMinuta
             Console.WriteLine("Altura da bomba : {0} m", bomba1.alturaManometrica);
 
             Console.ReadLine();
+            */
         }
      }
 }
