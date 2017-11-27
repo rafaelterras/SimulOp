@@ -15,6 +15,27 @@ namespace ProgramaMinuta
         public double rugosidadeRelativa { get; set; }
         public double fatorAtrito { get; set; }
         public List<Singularidade> listaSingulariedades { get; set ; }
+        new private double perdaCarga { get; set; }
+
+
+        /// <summary>
+        /// Insere a perda de carga da tubulação conforme o fluido e vazão
+        /// </summary>
+        /// <param name="fluido">O Fluido que está na tubulação. </param>
+        /// <param name="vazao">A vazão do fluido [m^3/s]. </param>
+        public void SetPerdaCarga(Fluido fluido, double vazao)
+        {
+            this.perdaCarga = CalculaPerdaCarga(fluido, vazao);
+        }
+
+        /// <summary>
+        /// Retorna a perda de carga na tubulação
+        /// </summary>
+        /// <returns> A peda de carga na tubulação [m]. </returns>
+        public double GetPerdaCarga()
+        {
+            return this.perdaCarga;
+        }
 
         /// <summary>
         /// Calcula o número de Reyolds
@@ -31,7 +52,7 @@ namespace ProgramaMinuta
             return re;
         }
         /// <summary>
-        /// Calcula o fator de atrito de acordo com a correlação de [CHECAR A CORRELAÇÃO!!!]
+        /// Calcula o fator de atrito de acordo com a correlação de Fanning.
         /// </summary>
         /// <param name="fluido">O Fluido que está na tubulação. </param>
         /// <param name="vazao">A vazão do fluido [m^3/s]. </param>
@@ -78,11 +99,11 @@ namespace ProgramaMinuta
         /// </summary>
         /// <param name="lista">A lista de singularidades da tubulação. </param>
         /// <returns> O comprimento equivalente das singularidades [m]. </returns>
-        public void ComprEqSing(List<Singularidade> lista)
+        public void ComprEqSing()
         {
             double comprEq = 0;
 
-            foreach(Singularidade sin in lista)
+            foreach(Singularidade sin in this.listaSingulariedades)
             {
                 comprEq = comprEq + sin.comprimentoEqv;
             }
