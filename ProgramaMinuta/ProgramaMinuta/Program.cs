@@ -53,7 +53,12 @@ namespace ProgramaMinuta
                 s2
             };
 
-            tubo1.ComprEqSing(lista);
+            foreach (Singularidade sin in lista)
+            {
+                tubo1.listaSingulariedades.Add(sin);
+            }
+
+            tubo1.ComprEqSing();
 
             Bomba bomba1 = new Bomba
             {
