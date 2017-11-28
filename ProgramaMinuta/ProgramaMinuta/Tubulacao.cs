@@ -90,7 +90,7 @@ namespace ProgramaMinuta
             double hf1 = (32 / Math.Pow(Math.PI, 2));
             double hf2 = fAtrito * comprimetoTotal * Math.Pow(vazao, 2) / (Math.Pow(this.diametro, 5.0) * g);
 
-            this.perdaCarga = hf1 * hf2 + this.elevacao;
+            this.perdaCarga = hf1 * hf2;
 
             return this.perdaCarga;
         }
