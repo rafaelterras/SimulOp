@@ -57,7 +57,7 @@ namespace ProgramaMinuta
             {
                 tubo1.listaSingulariedades.Add(sin);
             }
-
+            
             tubo1.ComprEqSing();
 
             Bomba bomba1 = new Bomba
@@ -75,9 +75,9 @@ namespace ProgramaMinuta
 
             };
 
-            // Bomba[] arrayBombas = new Bomba[] { bomba1, bomba2 };
+            Bomba[] arrayBombas = new Bomba[] { bomba1, bomba2 };
 
-            // bombaEq.BombaEquivalente(new Bomba[] { bomba1, bomba2 },"Série");
+            bombaEq.BombaEquivalente(new Bomba[] { bomba1, bomba2 },"Série");
 
             /*
             Console.WriteLine("==========Dados da Simulação========");

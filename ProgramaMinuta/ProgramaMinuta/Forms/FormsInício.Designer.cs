@@ -49,7 +49,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1362, 741);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1354, 733);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -60,7 +60,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1356, 444);
+            this.label1.Size = new System.Drawing.Size(1348, 439);
             this.label1.TabIndex = 0;
             this.label1.Text = "SimulOp";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -71,9 +71,9 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Lucida Console", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(3, 444);
+            this.label2.Location = new System.Drawing.Point(3, 439);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1356, 148);
+            this.label2.Size = new System.Drawing.Size(1348, 146);
             this.label2.TabIndex = 1;
             this.label2.Text = "v.0.1";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -84,9 +84,9 @@
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(3, 592);
+            this.label3.Location = new System.Drawing.Point(3, 585);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(1356, 149);
+            this.label3.Size = new System.Drawing.Size(1348, 148);
             this.label3.TabIndex = 2;
             this.label3.Text = "Desenvolvido por André Pinto Félix Antonio e Rafael Alves Terras";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -96,7 +96,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1362, 741);
+            this.ClientSize = new System.Drawing.Size(1354, 733);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormsInício";
             this.Text = "Início";
