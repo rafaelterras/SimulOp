@@ -53,6 +53,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -95,7 +96,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -233,6 +233,19 @@
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label25.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(3, 3);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(180, 165);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Calcula perda de carga";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.CalculaTudo);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -240,7 +253,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(936, 502);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
@@ -348,6 +361,7 @@
             // 
             // numericUpDown8
             // 
+            this.numericUpDown8.DecimalPlaces = 1;
             this.numericUpDown8.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown8.Location = new System.Drawing.Point(4, 102);
             this.numericUpDown8.Name = "numericUpDown8";
@@ -371,6 +385,7 @@
             // 
             // numericUpDown2
             // 
+            this.numericUpDown2.DecimalPlaces = 1;
             this.numericUpDown2.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown2.Location = new System.Drawing.Point(5, 159);
             this.numericUpDown2.Name = "numericUpDown2";
@@ -414,6 +429,7 @@
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.DecimalPlaces = 1;
             this.numericUpDown1.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown1.Location = new System.Drawing.Point(6, 39);
             this.numericUpDown1.Name = "numericUpDown1";
@@ -503,6 +519,7 @@
             // 
             // numericUpDown6
             // 
+            this.numericUpDown6.DecimalPlaces = 1;
             this.numericUpDown6.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown6.Location = new System.Drawing.Point(159, 159);
             this.numericUpDown6.Name = "numericUpDown6";
@@ -511,6 +528,7 @@
             // 
             // numericUpDown7
             // 
+            this.numericUpDown7.DecimalPlaces = 1;
             this.numericUpDown7.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown7.Location = new System.Drawing.Point(52, 159);
             this.numericUpDown7.Name = "numericUpDown7";
@@ -549,11 +567,17 @@
             // 
             // numericUpDown5
             // 
+            this.numericUpDown5.DecimalPlaces = 1;
             this.numericUpDown5.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown5.Location = new System.Drawing.Point(197, 102);
             this.numericUpDown5.Name = "numericUpDown5";
             this.numericUpDown5.Size = new System.Drawing.Size(46, 18);
             this.numericUpDown5.TabIndex = 17;
+            this.numericUpDown5.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label19
             // 
@@ -567,6 +591,7 @@
             // 
             // numericUpDown4
             // 
+            this.numericUpDown4.DecimalPlaces = 1;
             this.numericUpDown4.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown4.Location = new System.Drawing.Point(103, 102);
             this.numericUpDown4.Name = "numericUpDown4";
@@ -580,13 +605,14 @@
             // 
             // numericUpDown3
             // 
+            this.numericUpDown3.DecimalPlaces = 1;
             this.numericUpDown3.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown3.Location = new System.Drawing.Point(8, 102);
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(46, 18);
             this.numericUpDown3.TabIndex = 8;
             this.numericUpDown3.Value = new decimal(new int[] {
-            10,
+            5,
             0,
             0,
             0});
@@ -746,19 +772,6 @@
             this.pictureBox2.Size = new System.Drawing.Size(393, 42);
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(180, 165);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Calcula perda de carga";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.CalculaTudo);
             // 
             // FormsModelOp
             // 

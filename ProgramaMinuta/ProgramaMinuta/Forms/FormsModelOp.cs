@@ -29,6 +29,7 @@ namespace ProgramaMinuta.Forms
             {
                 comprimento = Convert.ToDouble(numericUpDown3.Value),
                 diametro = Convert.ToDouble(numericUpDown4.Value) / 100,
+                elevacao = Convert.ToDouble(numericUpDown5.Value),
                 rugosidade = Convert.ToDouble(numericUpDown9.Value) / 1000000,
             };
 

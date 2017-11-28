@@ -14,6 +14,7 @@ namespace ProgramaMinuta
         public double rugosidade { get; set; }
         public double rugosidadeRelativa { get; set; }
         public double fatorAtrito { get; set; }
+        public double elevacao { get; set; }
         public List<Singularidade> listaSingulariedades { get; set ; }
         new private double perdaCarga { get; set; }
 
@@ -89,9 +90,9 @@ namespace ProgramaMinuta
             double hf1 = (32 / Math.Pow(Math.PI, 2));
             double hf2 = fAtrito * comprimetoTotal * Math.Pow(vazao, 2) / (Math.Pow(this.diametro, 5.0) * g);
 
-            this.perdaCarga = hf1 * hf2;
+            this.perdaCarga = hf1 * hf2 + this.elevacao;
 
-            return hf1 * hf2;
+            return this.perdaCarga;
         }
 
         /// <summary>

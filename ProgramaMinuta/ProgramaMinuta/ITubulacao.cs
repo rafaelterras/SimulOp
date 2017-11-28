@@ -46,8 +46,14 @@ namespace ProgramaMinuta
         /// Lista de singulariedades na tubulação
         /// </summary>
         /// 
-        //List<Singularidade> listaSingulariedades { get; set; }
-
+        ///List<Singularidade> listaSingulariedades { get; set; }
+        
+        /// <summary>
+        /// Elevação da tubulação
+        /// </summary>
+        /// 
+        double elevacao { get; set; }
+        
         /// <summary>
         /// Calcula a vazão com base na equação da bomba e da tubulação
         /// </summary>
