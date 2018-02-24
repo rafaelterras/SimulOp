@@ -8,15 +8,25 @@ namespace SimulOP
     class Tubulacao : EquipamentoOPI, ITubulacao
     {
         public double comprimento { get; set; }
-        public double comprimentoEquivalente { get ; set ; }
+
+        public double comprimentoEquivalente { get; set; }
+ 
         public double diametro { get; set; }
+
         public string material { get ; set ; }
+
         public double rugosidade { get; set; }
+
         public double rugosidadeRelativa { get; set; }
+
         public double fatorAtrito { get; set; }
+
         public double elevacao { get; set; }
+
         public List<Singularidade> listaSingulariedades { get; set ; }
-        new private double perdaCarga { get; set; }
+
+        public double perdaCarga { get; set; }
+
 
 
         /// <summary>
@@ -92,13 +102,14 @@ namespace SimulOP
 
             this.perdaCarga = hf1 * hf2;
 
+            Console.WriteLine("===>Preda carga: {0}",this.perdaCarga);
+
             return this.perdaCarga;
         }
 
         /// <summary>
         /// Cálcula o comprimento equivalente das singularidades
         /// </summary>
-        /// <param name="lista">A lista de singularidades da tubulação. </param>
         /// <returns> O comprimento equivalente das singularidades [m]. </returns>
         public void ComprEqSing()
         {

@@ -30,7 +30,7 @@ namespace SimulOP
         /// <summary>
         /// Rugosidede do material
         /// </summary>
-        double rugosidade { get; set; }
+        //double rugosidade { get; set; }
 
         /// <summary>
         /// Rugosidade relativa do mateira

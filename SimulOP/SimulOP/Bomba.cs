@@ -7,8 +7,14 @@ namespace SimulOP
 {
     class Bomba : EquipamentoOPI, IBomba
     {
+        /// <summary>
+        /// Vazão de fluido (m^3/s)
+        /// </summary>
         public double vazao { get; set; }
 
+        /// <summary>
+        /// Potencia da bomba [W]
+        /// </summary>
         public double potencia { get; set; }
 
         /// <summary>
@@ -17,24 +23,20 @@ namespace SimulOP
         /// </summary>
         public double[] equacaoCurva { get; set; }
 
+        /// <summary>
+        /// Altura monometrica da bomba [m]
+        /// </summary>
         public double alturaManometrica { get; set; }
 
         /// <summary>
-        /// Calcula a altura da bomba apartir da vazão.
+        /// O fluido que está sendo escoado pela bomba
         /// </summary>
-        /// <param name="vazao">A vazão do fluido [m^3/s]. </param>
-        /// <returns> A altura da bomba [m]. </returns>
-        public double CalcAlturaBomba(double vazao)
-        {
-            double h = 0;
+        public Fluido fluido { get; set; }
 
-            for(int i = 3; i >= 0; i--)
-            {
-                h = h + this.equacaoCurva[3-i] * Math.Pow(vazao, i);
-            }
-            
-            return h;
-        }
+        /// <summary>
+        /// A tubulação em que a bomba está instalada
+        /// </summary>
+        public Tubulacao tubulacao { get; set; }
 
         /// <summary>
         /// Atualiza bomba pra uma bomba equivalente.
@@ -68,20 +70,46 @@ namespace SimulOP
         }
 
         /// <summary>
-        /// Atualiza o valor da vazão [m^3/s] da bomba utilizando a equação de Bernoulli.
+        /// Calcula a altura da bomba apartir da vazão.
         /// </summary>
-        /// <param name="fluido">O fluido que está passando na bomba. </param>
-        /// <param name="tubulacao">A tubulação que está sendo analisada. </param>
+        /// <param name="vazao">A vazão do fluido [m^3/s]. </param>
         /// <returns> A altura da bomba [m]. </returns>
-        public void CalculaVazao(Fluido fluido, Tubulacao tubulacao)
+        public double CalcAlturaBomba(double vazao)
         {
-            double vazao = 0.001;
+            double h = 0;
+
+            for (int i = 3; i >= 0; i--)
+            {
+                h = h + this.equacaoCurva[3 - i] * Math.Pow(vazao, i);
+            }
+
+            return h;
+        }
+
+        /// <summary>
+        /// Equação de Bernoulli, da forma Delta(H) - Hf + Delta(Z)
+        /// </summary>
+        /// <returns> O valor da Equação de bernoulli [m]. </returns>
+        public double Bernoulli(double vazao)
+        {
+            return this.CalcAlturaBomba(vazao) - tubulacao.CalculaPerdaCarga(fluido, vazao) + tubulacao.elevacao;
+        }
+        
+        /// <summary>
+        /// Atualiza o valor da vazão [m^3/s] e da altura [m] da bomba utilizando a equação de Bernoulli.
+        /// </summary>
+        public void CalculaVazao()
+        {
+            double vazao;
             double eps = 10E-6;
             double err;
             double deri;
             double fX;
             double nIte = 1;
 
+            vazao = AchaRaizBrenet(Bernoulli, 0.001, 10);
+
+            /*
             fX = this.CalcAlturaBomba(vazao) - tubulacao.CalculaPerdaCarga(fluido, vazao);
             err = Math.Abs(fX);
             deri = ((this.CalcAlturaBomba(vazao + eps) - tubulacao.CalculaPerdaCarga(fluido, vazao + eps))
@@ -100,12 +128,14 @@ namespace SimulOP
                 err = Math.Abs(fX);
                 nIte = nIte + 1;
             }
-            
+            */
             this.vazao = vazao;
             this.alturaManometrica = CalcAlturaBomba(vazao);
+            this.tubulacao.CalculaPerdaCarga(fluido, this.vazao);
+            Console.WriteLine("====>Perda de carga na calcula vazzao {0}", tubulacao.perdaCarga);
 
-            Console.WriteLine("====Altura Final: {0}", this.alturaManometrica);
-            Console.WriteLine("====Perda de carga Final: {0}", tubulacao.CalculaPerdaCarga(fluido, vazao));
+            //Console.WriteLine("====Altura Final: {0}", this.alturaManometrica);
+            //Console.WriteLine("====Perda de carga Final: {0}", tubulacao.CalculaPerdaCarga(fluido, vazao));
 
         }
 
