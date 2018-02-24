@@ -6,37 +6,57 @@ using System.Text;
 namespace SimulOP
 {
     class Bomba : EquipamentoOPI, IBomba
-    {
+    {            
+        private double vazao;
+        private double potencia;
+        private double[] equacaoCurva;
+        private double alturaManometrica;
+        private Fluido fluido;
+        private Tubulacao tubulacao;
+        
         /// <summary>
         /// Vazão de fluido (m^3/s)
         /// </summary>
-        public double vazao { get; set; }
+        public double Vazao { get => vazao; }
 
         /// <summary>
         /// Potencia da bomba [W]
         /// </summary>
-        public double potencia { get; set; }
+        public double Potencia { get => potencia; }
 
         /// <summary>
         /// Coeficientes do polinomio de 3º grau que aproxima a bomba
         /// a3*Q^3 + a2*Q^2 + a1*Q^1 + a0
         /// </summary>
-        public double[] equacaoCurva { get; set; }
+        public double[] EquacaoCurva { get => equacaoCurva; set => equacaoCurva = value; }
 
         /// <summary>
         /// Altura monometrica da bomba [m]
         /// </summary>
-        public double alturaManometrica { get; set; }
+        public double AlturaManometrica { get => alturaManometrica; }
 
         /// <summary>
         /// O fluido que está sendo escoado pela bomba
         /// </summary>
-        public Fluido fluido { get; set; }
+        public Fluido Fluido { get => fluido; set => fluido = value; }
 
         /// <summary>
         /// A tubulação em que a bomba está instalada
         /// </summary>
-        public Tubulacao tubulacao { get; set; }
+        public Tubulacao Tubulacao { get => tubulacao; set => tubulacao = value; }
+
+        /// <summary>
+        /// Constructor do objeto Bomba
+        /// </summary>
+        /// <param name="equacaoCurva">Coeficientes do polinomio de 3º grau que aproxima a bomba</param>
+        /// <param name="fluido">O fluido que está sendo escoado pela bomba</param>
+        /// <param name="tubulacao">A tubulação que a bomba está acloplada</param>
+        public Bomba(double[] equacaoCurva, Fluido fluido, Tubulacao tubulacao)
+        {
+            this.equacaoCurva = equacaoCurva;
+            this.fluido = fluido;
+            this.tubulacao = tubulacao;
+        }
 
         /// <summary>
         /// Atualiza bomba pra uma bomba equivalente.
@@ -45,7 +65,7 @@ namespace SimulOP
         /// <param name="tipo">O tipo de associação ("série" ou "paralelo"). </param>
         public void BombaEquivalente(Array arrayBomba, string tipo)
         {
-            double[] alturaBomba = new double[4];
+            double[] novaEquacaoBomba = new double[4];
             int i = 0;
 
             if (tipo.ToLower() == "série")
@@ -53,20 +73,19 @@ namespace SimulOP
                 foreach (Bomba bomba in arrayBomba)
                 {
                     i = 0;
-                    foreach (double Q in bomba.equacaoCurva)
+                    foreach (double Q in bomba.EquacaoCurva)
                     {
-                        alturaBomba[i] = alturaBomba[i] + Q;
-                        Console.WriteLine("i: {0}", i);
+                        novaEquacaoBomba[i] = novaEquacaoBomba[i] + Q;
                         i++;
                     }
                 }
-                this.equacaoCurva = alturaBomba;
             }
-            if (tipo == "paralelo")
+            if (tipo.ToLower() == "paralelo")
             {
-                throw new System.NotImplementedException();
+                throw new System.NotImplementedException("Bombas em paralelo ainda não implementadas");
             }
 
+            this.equacaoCurva = novaEquacaoBomba;
         }
 
         /// <summary>
@@ -87,12 +106,12 @@ namespace SimulOP
         }
 
         /// <summary>
-        /// Equação de Bernoulli, da forma Delta(H) - Hf + Delta(Z)
+        /// Equação de Bernoulli, da forma Delta(H)_{bomba} - H_{f} + Delta(Z)
         /// </summary>
         /// <returns> O valor da Equação de bernoulli [m]. </returns>
         public double Bernoulli(double vazao)
         {
-            return this.CalcAlturaBomba(vazao) - tubulacao.CalculaPerdaCarga(fluido, vazao) + tubulacao.elevacao;
+            return this.CalcAlturaBomba(vazao) - Tubulacao.CalculaPerdaCarga(Fluido, vazao) + Tubulacao.elevacao;
         }
         
         /// <summary>
@@ -101,44 +120,22 @@ namespace SimulOP
         public void CalculaVazao()
         {
             double vazao;
-            double eps = 10E-6;
-            double err;
-            double deri;
-            double fX;
-            double nIte = 1;
 
             vazao = AchaRaizBrenet(Bernoulli, 0.001, 10);
 
-            /*
-            fX = this.CalcAlturaBomba(vazao) - tubulacao.CalculaPerdaCarga(fluido, vazao);
-            err = Math.Abs(fX);
-            deri = ((this.CalcAlturaBomba(vazao + eps) - tubulacao.CalculaPerdaCarga(fluido, vazao + eps))
-                - (this.CalcAlturaBomba(vazao - eps) - tubulacao.CalculaPerdaCarga(fluido, vazao - eps))) / (2 * eps);
-            Console.WriteLine("deri = {0}", deri);
-
-            while (err > 10E-6)
-            {
-                vazao = vazao - (fX / deri);
-                Console.WriteLine("vazão Iter = {0}", vazao);
-                fX = this.CalcAlturaBomba(vazao) - tubulacao.CalculaPerdaCarga(fluido, vazao);
-                deri = ((this.CalcAlturaBomba(vazao + eps) - tubulacao.CalculaPerdaCarga(fluido, vazao + eps))
-                - (this.CalcAlturaBomba(vazao - eps) - tubulacao.CalculaPerdaCarga(fluido, vazao - eps))) / (2 * eps);
-                Console.WriteLine("fX Iter = {0}", fX);
-
-                err = Math.Abs(fX);
-                nIte = nIte + 1;
-            }
-            */
             this.vazao = vazao;
             this.alturaManometrica = CalcAlturaBomba(vazao);
-            this.tubulacao.CalculaPerdaCarga(fluido, this.vazao);
-            Console.WriteLine("====>Perda de carga na calcula vazzao {0}", tubulacao.perdaCarga);
-
-            //Console.WriteLine("====Altura Final: {0}", this.alturaManometrica);
-            //Console.WriteLine("====Perda de carga Final: {0}", tubulacao.CalculaPerdaCarga(fluido, vazao));
-
+            this.Tubulacao.CalculaPerdaCarga(Fluido, this.Vazao);
         }
 
-
+        /// <summary>
+        /// Calcula a potência elátrica da bomba
+        /// </summary>
+        /// <param name="vazao">Vazão de liquido que passa na bomba [m^3/s]</param>
+        /// <returns></returns>
+        public double CalculaPotencia(double vazao)
+        {
+            throw new System.NotImplementedException("Calculo de Potência ainda não definido");
+        }
     }
 }

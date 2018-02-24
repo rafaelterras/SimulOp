@@ -102,7 +102,7 @@ namespace SimulOP
 
             this.perdaCarga = hf1 * hf2;
 
-            Console.WriteLine("===>Preda carga: {0}",this.perdaCarga);
+            //Console.WriteLine("===>Preda carga: {0}",this.perdaCarga);
 
             return this.perdaCarga;
         }

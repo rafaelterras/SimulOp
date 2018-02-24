@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MathNet.Numerics;
-using MathNet.Numerics.RootFinding;
 
 namespace SimulOP
 {
@@ -14,14 +13,6 @@ namespace SimulOP
         /// </summary>
         public const double g = 9.80665; // aceleração da gravidade [m/s^2]
                   
-        /// <summary>
-        /// Calcula a perda de carga no equpamento
-        /// </summary>
-        public virtual double CalculaPerdaCarga()
-        {
-            throw new System.NotImplementedException();
-        }
-
         /// <summary>
         /// Calcula a primeira derivada da função func no ponto x
         /// <param name="func">A função que vai ser derivada. </param>

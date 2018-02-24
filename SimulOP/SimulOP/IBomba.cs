@@ -10,32 +10,32 @@ namespace SimulOP
         /// <summary>
         /// Vazão de fluido [m^3/s]
         /// </summary>
-        double vazao { get; set; }
+        double Vazao { get; }
 
         /// <summary>
         /// Potencia da bomba [W]
         /// </summary>
-        double potencia { get; set; }
+        double Potencia { get; }
 
         /// <summary>
         /// Coeficientes do polinomio de 3º grau que aproxima a bomba
         /// </summary>
-        double[] equacaoCurva { get; set; }
+        double[] EquacaoCurva { get; set; }
 
         /// <summary>
         /// O fluido que está sendo escoado pela bomba
         /// </summary>
-        Fluido fluido { get; set; }
+        Fluido Fluido { get; set; }
 
         /// <summary>
         /// A tubulação em que a bomba está instalada
         /// </summary>
-        Tubulacao tubulacao { get; set; }
+        Tubulacao Tubulacao { get; set; }
 
         /// <summary>
         /// Altura monometrica da bomba [m]
         /// </summary>
-        double alturaManometrica { get; set; }
+        double AlturaManometrica { get; }
 
         /// <summary>
         /// Atualiza bomba pra uma bomba equivalente.
@@ -56,5 +56,12 @@ namespace SimulOP
         /// </summary>
         /// <returns> O valor da Equação de bernoulli [m]. </returns>
         double Bernoulli(double vazao);
+
+        /// <summary>
+        /// Calcula a potência elátrica da bomba
+        /// </summary>
+        /// <param name="vazao">Vazão de liquido que passa na bomba [m^3/s]</param>
+        /// <returns></returns>
+        double CalculaPotencia(double vazao);
     }
 }
