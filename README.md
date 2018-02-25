@@ -1,2 +1,2 @@
-# ProgramaMinuta
-Simulação de uma tubulação para a minuta
+# SimulOP
+Programa para auxilio de opreções unitárias
