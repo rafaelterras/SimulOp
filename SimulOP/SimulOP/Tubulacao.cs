@@ -95,6 +95,15 @@ namespace SimulOP
         #endregion
 
         /// <summary>
+        /// Adiciona a singularidade na lista de lingularidades da tubulação
+        /// </summary>
+        /// <param name="sin">Singularidade a ser adicionada</param>
+        public void AdicionaSingularidade(Singularidade sin)
+        {
+            this.listaSingulariedades.Add(sin);
+        }
+        
+        /// <summary>
         /// Calcula o número de Reyolds
         /// </summary>
         /// <param name="fluido">O Fluido que está na tubulação. </param>
