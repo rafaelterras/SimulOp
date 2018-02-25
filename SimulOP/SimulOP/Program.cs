@@ -15,7 +15,7 @@ namespace SimulOP
         [STAThread]
         static void Main()
         {
-            if (true)
+            if (false)
             {
                 Console.WriteLine("======== Teste com Math.net ==========");
                 Console.WriteLine("");
@@ -30,7 +30,10 @@ namespace SimulOP
                 Singularidade s1 = new Singularidade(1, "Cotovelo");
                 Singularidade s2 = new Singularidade(2, "Cotovelo");
 
-                tubo1.ListaSingulariedades = new List<Singularidade> { s1, s2 };
+                // Cria um tipo especifico de singularidade
+                Valvula valvula = new Valvula(20);
+
+                tubo1.ListaSingulariedades = new List<Singularidade> { s1, s2, valvula};
 
                 tubo1.CalculaComprimentoEquiSing();
 
@@ -53,7 +56,7 @@ namespace SimulOP
                 bomba1.CalculaVazao();
 
                 Console.WriteLine("==========Resultados da Simulação========");
-                Console.WriteLine("Vazão : {0} m^3/h", bomba1.Vazao * 3600);
+                Console.WriteLine("Vazão : {0} m^3/h", bomba1.Vazao * 1);
                 Console.WriteLine("Perda de carga  : {0} m", bomba1.Tubulacao.PerdaCarga);
                 Console.WriteLine("Altura da bomba : {0} m", bomba1.AlturaManometrica);
 
@@ -61,13 +64,17 @@ namespace SimulOP
                 
             }
             else
-            { 
+            {
                 // This is a hello world commentary.  
                 // Console.WriteLine("Hellow World!!");
 
+                Valvula valvula = new Valvula(20);
+
+                Console.WriteLine(valvula.Tipo);
+
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new FormsMaster());
+                Application.Run(new FormBomba());
              }            
         }
      }

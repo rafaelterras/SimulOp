@@ -8,7 +8,7 @@ namespace SimulOP
     class Valvula : Singularidade
     {
         private double comprimentoEqv;
-        private string tipo = "Valvula";
+        private string tipo;
 
         /// <summary>
         /// Constructor para o objeto Valvula
@@ -16,7 +16,6 @@ namespace SimulOP
         /// <param name="comprimentoEqv">Comprimento equivalente da singulariedade [m]</param>
         public Valvula(double comprimentoEqv) : base(comprimentoEqv, "Valvula")
         {
-            this.comprimentoEqv = comprimentoEqv;
         }
     }
 }

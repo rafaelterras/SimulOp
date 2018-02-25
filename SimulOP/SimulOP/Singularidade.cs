@@ -25,7 +25,7 @@ namespace SimulOP
         /// </summary>
         /// <param name="comprimentoEqv">Comprimento equivalente da singulariedade [m]</param>
         /// <param name="tipo">Tipo da singulariedade</param>
-        public Singularidade(double comprimentoEqv, string tipo)
+        public Singularidade(double comprimentoEqv, string tipo = "NA")
         {
             this.comprimentoEqv = comprimentoEqv;
             this.tipo = tipo;
