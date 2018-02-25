@@ -101,7 +101,7 @@
             this.comBombaToolStripMenuItem,
             this.comSingularidadeEBombaToolStripMenuItem});
             this.tubulaçõesToolStripMenuItem.Name = "tubulaçõesToolStripMenuItem";
-            this.tubulaçõesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tubulaçõesToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.tubulaçõesToolStripMenuItem.Text = "Tubulações";
             // 
             // simplesToolStripMenuItem

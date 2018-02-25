@@ -35,11 +35,8 @@ namespace SimulOP
 
                 tubo1.ListaSingulariedades = new List<Singularidade> { s1, s2, valvula};
 
-                tubo1.CalculaComprimentoEquiSing();
-
                 Bomba bomba1 = new Bomba(new double[] { 0, -2096928, 2649.96, 26 }, agua, tubo1);
                 
-
                 Console.WriteLine("==========Dados da Simulação========");
                 Console.WriteLine("===>Fluido");
                 Console.WriteLine("Densidade : {0} Kg/m^3", agua.Densidade);
@@ -67,10 +64,6 @@ namespace SimulOP
             {
                 // This is a hello world commentary.  
                 // Console.WriteLine("Hellow World!!");
-
-                Valvula valvula = new Valvula(20);
-
-                Console.WriteLine(valvula.Tipo);
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);

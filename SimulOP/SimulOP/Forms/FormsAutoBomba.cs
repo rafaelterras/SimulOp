@@ -78,7 +78,7 @@ namespace SimulOP.Forms
             Fluido agua = new Fluido(1000, 8.90E-4);
 
             // Cria a tubulação tubo1 usando o constructor
-            Tubulacao tubo1 = new Tubulacao(0.05, 10, 4.572E-5, 20);
+            Tubulacao tubo1 = new Tubulacao(0.05, TamTubo, 4.572E-5, 20);
 
             // Cira as singularidades usando o constructor
             Singularidade s1 = new Singularidade(1, "Cotovelo");
@@ -161,6 +161,11 @@ namespace SimulOP.Forms
             chart1.Series[2].Points.DataBindXY(pontoOperacaoX, pontoOperacaoY);
             chart1.Series[2].Label = "Ponto de operacao (" + Math.Round(pontoOperacaoX[0], 1) + " [m^3/h] ; "
                 + Math.Round(pontoOperacaoY[0], 1) + " [m])";
+        }
+
+        private void FormsAutoBomba_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

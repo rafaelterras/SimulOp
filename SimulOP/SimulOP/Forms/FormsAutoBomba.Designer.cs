@@ -144,6 +144,7 @@
             this.Controls.Add(this.chart1);
             this.Name = "FormsAutoBomba";
             this.Text = "FormsAutoBomba";
+            this.Load += new System.EventHandler(this.FormsAutoBomba_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackEqBomba)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackTubo)).EndInit();

@@ -16,6 +16,7 @@ namespace SimulOP
         /// <param name="comprimentoEqv">Comprimento equivalente da singulariedade [m]</param>
         public Valvula(double comprimentoEqv) : base(comprimentoEqv, "Valvula")
         {
+
         }
     }
 }

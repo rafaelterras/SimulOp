@@ -27,7 +27,7 @@ namespace SimulOP
         /// <summary>
         /// Comprimento equivalente das Singularidades da tubulação [m]
         /// </summary>
-        public double ComprimentoEquivalente { get => comprimentoEquivalente; set => comprimentoEquivalente = value; }
+        public double ComprimentoEquivalente { get => comprimentoEquivalente; }
 
         /// <summary>
         /// Diametro da tubulação [m]
@@ -166,7 +166,7 @@ namespace SimulOP
                 comprEq = comprEq + sin.ComprimentoEqv;
             }
 
-            this.ComprimentoEquivalente = comprEq;
+            this.comprimentoEquivalente = comprEq;
 
         }
         
