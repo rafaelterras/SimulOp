@@ -72,6 +72,12 @@
     <Compile Include="Filtros.cs" />
     <Compile Include="Flash.cs" />
     <Compile Include="Fluido.cs" />
+    <Compile Include="Forms\FormsAutoBomba.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsAutoBomba.Designer.cs">
+      <DependentUpon>FormsAutoBomba.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormsPlotBomba.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\FormsAutoBomba.resx">
+      <DependentUpon>FormsAutoBomba.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormsPlotBomba.resx">
       <DependentUpon>FormsPlotBomba.cs</DependentUpon>
     </EmbeddedResource>
