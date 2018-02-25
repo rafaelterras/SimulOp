@@ -24,18 +24,18 @@ namespace SimulOP
                 Fluido agua = new Fluido(1000, 8.90E-4);
 
                 // Cria a tubulação tubo1 usando o constructor
-                Tubulacao tubo1 = new Tubulacao(0.05, 10, 4.572E-5, 2);
+                Tubulacao tubo1 = new Tubulacao(0.05, 10, 4.572E-5, 0);
 
-                // Cria as singularidades usando o constructor
-                Singularidade s1 = new Singularidade(2, "Cotovelo");
-                Singularidade s2 = new Singularidade(3, "Cotovelo");
-                
+                // Cira as singularidades usando o constructor
+                Singularidade s1 = new Singularidade(1, "Cotovelo");
+                Singularidade s2 = new Singularidade(2, "Cotovelo");
+
                 tubo1.ListaSingulariedades = new List<Singularidade> { s1, s2 };
 
                 tubo1.CalculaComprimentoEquiSing();
 
                 Bomba bomba1 = new Bomba(new double[] { 0, -2096928, 2649.96, 26 }, agua, tubo1);
-
+                
 
                 Console.WriteLine("==========Dados da Simulação========");
                 Console.WriteLine("===>Fluido");

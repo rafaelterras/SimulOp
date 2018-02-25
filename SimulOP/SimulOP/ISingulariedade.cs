@@ -8,7 +8,7 @@ namespace SimulOP
     public interface ISingulariedade
     {
         /// <summary>
-        /// Comprimento equivalente da singulariedade [m]
+        /// Comprimento equivalente da singulariedade
         /// </summary>
         double ComprimentoEqv { get; }
         /// <summary>

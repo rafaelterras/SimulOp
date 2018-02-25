@@ -19,21 +19,11 @@ namespace SimulOP.Forms
 
         public void CalculaTudo(object sender, EventArgs e)
         {
-            Fluido agua = new Fluido
-            {
-                Densidade = Convert.ToDouble(numericUpDown1.Value) * 1000,
-                Viscosidade = Convert.ToDouble(numericUpDown8.Value) / 1000,
-            };
+            Fluido agua = new Fluido(Convert.ToDouble(numericUpDown1.Value) * 1000, Convert.ToDouble(numericUpDown8.Value) / 1000);
 
-            Tubulacao tubo1 = new Tubulacao
-            {
-                Comprimento = Convert.ToDouble(numericUpDown3.Value),
-                Diametro = Convert.ToDouble(numericUpDown4.Value) / 100,
-                Elevacao = Convert.ToDouble(numericUpDown5.Value),
-                Rugosidade = Convert.ToDouble(numericUpDown9.Value) / 1000000,
-            };
-
-            tubo1.RugosidadeRelativa = tubo1.Rugosidade / tubo1.Diametro;
+            Tubulacao tubo1 = new Tubulacao(Convert.ToDouble(numericUpDown4.Value) / 100, 
+                Convert.ToDouble(numericUpDown3.Value), Convert.ToDouble(numericUpDown9.Value) / 1000000, 
+                Convert.ToDouble(numericUpDown5.Value));
 
             label25.Visible = true;
             label26.Visible = true;

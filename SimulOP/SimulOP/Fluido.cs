@@ -7,6 +7,7 @@ namespace SimulOP
 {
     public class Fluido
     {
+        #region Inicialização das variaveis e do Constructor
         private string clasificacao;
         private double densidade;
         private double temperatura;
@@ -72,5 +73,6 @@ namespace SimulOP
             this.densidade = densidade;
             this.viscosidade = viscosidade;
         }
+        #endregion
     }
 }

@@ -7,6 +7,7 @@ namespace SimulOP
 {
     class Tubulacao : EquipamentoOPI, ITubulacao
     {
+        #region Inicialização das variaveis e do Constructor
         private double comprimento;
         private double comprimentoEquivalente;
         private double diametro;
@@ -42,7 +43,7 @@ namespace SimulOP
         /// Rugosidade da tubulação [m]
         /// </summary>
         public double Rugosidade { get => rugosidade; set => rugosidade = value; }
-
+        
         /// <summary>
         /// Rugosidade relativa da tubulação
         /// </summary>
@@ -83,7 +84,8 @@ namespace SimulOP
             this.elevacao = elevacao;
             this.rugosidadeRelativa = rugosidade / diametro;
         }
-        
+        #endregion
+
         /// <summary>
         /// Calcula o número de Reyolds
         /// </summary>
@@ -159,8 +161,7 @@ namespace SimulOP
             this.ComprimentoEquivalente = comprEq;
 
         }
-
-
+        
         public double CalculaVazao()
         {
             throw new NotImplementedException();

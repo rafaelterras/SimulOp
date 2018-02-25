@@ -6,7 +6,8 @@ using System.Text;
 namespace SimulOP
 {
     class Bomba : EquipamentoOPI, IBomba
-    {            
+    {
+        #region Inicialização das variaveis e do Constructor
         private double vazao;
         private double potencia;
         private double[] equacaoCurva;
@@ -57,6 +58,7 @@ namespace SimulOP
             this.fluido = fluido;
             this.tubulacao = tubulacao;
         }
+        #endregion
 
         /// <summary>
         /// Atualiza bomba pra uma bomba equivalente.
@@ -106,12 +108,12 @@ namespace SimulOP
         }
 
         /// <summary>
-        /// Equação de Bernoulli, da forma Delta(H)_{bomba} - H_{f} + Delta(Z)
+        /// Equação de Bernoulli, da forma Delta(H)_{bomba} - H_{f} - Delta(Z)
         /// </summary>
         /// <returns> O valor da Equação de bernoulli [m]. </returns>
         public double Bernoulli(double vazao)
         {
-            return this.CalcAlturaBomba(vazao) - Tubulacao.CalculaPerdaCarga(Fluido, vazao) + Tubulacao.Elevacao;
+            return this.CalcAlturaBomba(vazao) - Tubulacao.CalculaPerdaCarga(Fluido, vazao) - Tubulacao.Elevacao;
         }
         
         /// <summary>

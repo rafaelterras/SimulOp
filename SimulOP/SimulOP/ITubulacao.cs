@@ -46,7 +46,7 @@ namespace SimulOP
         /// Lista de singulariedades na tubulação
         /// </summary>
         /// 
-        ///List<Singularidade> listaSingulariedades { get; set; }
+        ///List<Singularidade> ListaSingulariedades { get; set; }
         
         /// <summary>
         /// Elevação da tubulação
