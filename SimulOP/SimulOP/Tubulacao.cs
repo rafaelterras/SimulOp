@@ -62,7 +62,15 @@ namespace SimulOP
         /// <summary>
         /// Lista de singularidades que estão na tubulação
         /// </summary>
-        internal List<Singularidade> ListaSingulariedades { get => listaSingulariedades; set => listaSingulariedades = value; }
+        internal List<Singularidade> ListaSingulariedades
+        {
+            get => listaSingulariedades;
+            set
+            {
+                listaSingulariedades = value;
+                this.CalculaComprimentoEquiSing();
+            }
+        }
 
         /// <summary>
         /// Perda de carga da tubulação, depende das condições do escoamento, [m]
