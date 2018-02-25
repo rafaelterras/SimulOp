@@ -20,45 +20,32 @@ namespace SimulOP
                 Console.WriteLine("======== Teste com Math.net ==========");
                 Console.WriteLine("");
 
-                Fluido agua = new Fluido
-                {
-                    densidade = 1000, 
-                    viscosidade = 8.90E-4
-                };
+                // Cria o fluido agua usando o constructor
+                Fluido agua = new Fluido(1000, 8.90E-4);
 
-                Tubulacao tubo1 = new Tubulacao
-                {
-                    diametro = 0.05,
-                    rugosidade = 4.572E-5,
-                    comprimento = 10,
-                };
+                // Cria a tubulação tubo1 usando o constructor
+                Tubulacao tubo1 = new Tubulacao(0.05, 10, 4.572E-5, 2);
 
-                Singularidade s1 = new Singularidade
-                {
-                    comprimentoEqv = 1
-                };
+                // Cria as singularidades usando o constructor
+                Singularidade s1 = new Singularidade(2, "Cotovelo");
+                Singularidade s2 = new Singularidade(3, "Cotovelo");
+                
+                tubo1.ListaSingulariedades = new List<Singularidade> { s1, s2 };
 
-                Singularidade s2 = new Singularidade
-                {
-                    comprimentoEqv = 1
-                };
-
-                tubo1.listaSingulariedades = new List<Singularidade> { s1, s2 };
-
-                tubo1.ComprEqSing();
+                tubo1.CalculaComprimentoEquiSing();
 
                 Bomba bomba1 = new Bomba(new double[] { 0, -2096928, 2649.96, 26 }, agua, tubo1);
 
 
                 Console.WriteLine("==========Dados da Simulação========");
                 Console.WriteLine("===>Fluido");
-                Console.WriteLine("Densidade : {0} Kg/m^3", agua.densidade);
-                Console.WriteLine("Viscosidade : {0} Pa*s", agua.viscosidade);
+                Console.WriteLine("Densidade : {0} Kg/m^3", agua.Densidade);
+                Console.WriteLine("Viscosidade : {0} Pa*s", agua.Viscosidade);
                 Console.WriteLine("===>Tubulação");
-                Console.WriteLine("Diametro : {0} m", tubo1.diametro);
-                Console.WriteLine("Comprimento : {0} m", tubo1.comprimento);
-                Console.WriteLine("Comprimento Eq das singularidades: {0} m", tubo1.comprimentoEquivalente);
-                Console.WriteLine("Comprimento total: {0} m", tubo1.comprimentoEquivalente + tubo1.comprimento);
+                Console.WriteLine("Diametro : {0} m", tubo1.Diametro);
+                Console.WriteLine("Comprimento : {0} m", tubo1.Comprimento);
+                Console.WriteLine("Comprimento Eq das singularidades: {0} m", tubo1.ComprimentoEquivalente);
+                Console.WriteLine("Comprimento total: {0} m", tubo1.ComprimentoEquivalente + tubo1.Comprimento);
                 Console.WriteLine("===>Bomba");
                 Console.WriteLine("Eq. da bomba: {0}*Q^3 + {1}*Q^2 + {2}*Q^1 + {3}", bomba1.EquacaoCurva[0], bomba1.EquacaoCurva[1], bomba1.EquacaoCurva[2], bomba1.EquacaoCurva[3]);
 
@@ -67,7 +54,7 @@ namespace SimulOP
 
                 Console.WriteLine("==========Resultados da Simulação========");
                 Console.WriteLine("Vazão : {0} m^3/h", bomba1.Vazao * 3600);
-                Console.WriteLine("Perda de carga  : {0} m", bomba1.Tubulacao.perdaCarga);
+                Console.WriteLine("Perda de carga  : {0} m", bomba1.Tubulacao.PerdaCarga);
                 Console.WriteLine("Altura da bomba : {0} m", bomba1.AlturaManometrica);
 
                 Console.ReadLine();

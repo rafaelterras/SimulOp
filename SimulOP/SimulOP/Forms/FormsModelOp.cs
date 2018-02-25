@@ -21,23 +21,23 @@ namespace SimulOP.Forms
         {
             Fluido agua = new Fluido
             {
-                densidade = Convert.ToDouble(numericUpDown1.Value) * 1000,
-                viscosidade = Convert.ToDouble(numericUpDown8.Value) / 1000,
+                Densidade = Convert.ToDouble(numericUpDown1.Value) * 1000,
+                Viscosidade = Convert.ToDouble(numericUpDown8.Value) / 1000,
             };
 
             Tubulacao tubo1 = new Tubulacao
             {
-                comprimento = Convert.ToDouble(numericUpDown3.Value),
-                diametro = Convert.ToDouble(numericUpDown4.Value) / 100,
-                elevacao = Convert.ToDouble(numericUpDown5.Value),
-                rugosidade = Convert.ToDouble(numericUpDown9.Value) / 1000000,
+                Comprimento = Convert.ToDouble(numericUpDown3.Value),
+                Diametro = Convert.ToDouble(numericUpDown4.Value) / 100,
+                Elevacao = Convert.ToDouble(numericUpDown5.Value),
+                Rugosidade = Convert.ToDouble(numericUpDown9.Value) / 1000000,
             };
 
-            tubo1.rugosidadeRelativa = tubo1.rugosidade / tubo1.diametro;
+            tubo1.RugosidadeRelativa = tubo1.Rugosidade / tubo1.Diametro;
 
             label25.Visible = true;
             label26.Visible = true;
-            label26.Text = (Math.Round(tubo1.CalculaPerdaCarga(agua, Convert.ToDouble(numericUpDown2.Value) / 3600) + tubo1.elevacao, 6)).ToString() + " m";
+            label26.Text = (Math.Round(tubo1.CalculaPerdaCarga(agua, Convert.ToDouble(numericUpDown2.Value) / 3600) + tubo1.Elevacao, 6)).ToString() + " m";
             if (this.numericUpDown6.Value == -1)
             {
                 if (this.numericUpDown7.Value != -1)
@@ -45,7 +45,7 @@ namespace SimulOP.Forms
                     label27.Visible = true;
                     label27.Text = "Pressão na saída";
                     label28.Visible = true;
-                    label28.Text = (Math.Round((Convert.ToDouble(numericUpDown7.Value)) - ((agua.densidade * 9.80665 * tubo1.CalculaPerdaCarga(agua, Convert.ToDouble(numericUpDown2.Value) / 3600) + tubo1.elevacao) / 101325), 6)).ToString() + " atm";
+                    label28.Text = (Math.Round((Convert.ToDouble(numericUpDown7.Value)) - ((agua.Densidade * 9.80665 * tubo1.CalculaPerdaCarga(agua, Convert.ToDouble(numericUpDown2.Value) / 3600) + tubo1.Elevacao) / 101325), 6)).ToString() + " atm";
                 }
             }
             else
@@ -55,14 +55,14 @@ namespace SimulOP.Forms
                     label27.Visible = true;
                     label27.Text = "Compatibilidade";
                     label28.Visible = true;
-                    label28.Text = (Math.Round((Convert.ToDouble(numericUpDown7.Value) - (Convert.ToDouble(numericUpDown6.Value))) - ((agua.densidade * 9.80665 * tubo1.CalculaPerdaCarga(agua, Convert.ToDouble(numericUpDown2.Value) / 3600) + tubo1.elevacao) / 101325), 6)).ToString() + " atm";
+                    label28.Text = (Math.Round((Convert.ToDouble(numericUpDown7.Value) - (Convert.ToDouble(numericUpDown6.Value))) - ((agua.Densidade * 9.80665 * tubo1.CalculaPerdaCarga(agua, Convert.ToDouble(numericUpDown2.Value) / 3600) + tubo1.Elevacao) / 101325), 6)).ToString() + " atm";
                 }
                 else
                 {
                     label27.Visible = true;
                     label27.Text = "Pressão na entrada";
                     label28.Visible = true;
-                    label28.Text = (Math.Round((Convert.ToDouble(numericUpDown6.Value)) + ((agua.densidade * 9.80665 * tubo1.CalculaPerdaCarga(agua, Convert.ToDouble(numericUpDown2.Value) / 3600) + tubo1.elevacao) / 101325), 6)).ToString() + " atm";
+                    label28.Text = (Math.Round((Convert.ToDouble(numericUpDown6.Value)) + ((agua.Densidade * 9.80665 * tubo1.CalculaPerdaCarga(agua, Convert.ToDouble(numericUpDown2.Value) / 3600) + tubo1.Elevacao) / 101325), 6)).ToString() + " atm";
                 }
             }
         }

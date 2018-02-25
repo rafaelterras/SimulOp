@@ -41,7 +41,7 @@ namespace SimulOP
         /// Atualiza bomba pra uma bomba equivalente.
         /// </summary>
         /// <param name="arrayBomba">Um array com as bombas que se deseja ver a equivalente. </param>
-        /// <param name="tipo">O tipo de associação ("série" ou "paralelo"). </param>
+        /// <param name="tipo">O Tipo de associação ("série" ou "paralelo"). </param>
         void BombaEquivalente(Array arrayBomba, string tipo);
 
         /// <summary>

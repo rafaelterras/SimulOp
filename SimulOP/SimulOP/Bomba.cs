@@ -62,7 +62,7 @@ namespace SimulOP
         /// Atualiza bomba pra uma bomba equivalente.
         /// </summary>
         /// <param name="arrayBomba">Um array com as bombas que se deseja ver a equivalente. </param>
-        /// <param name="tipo">O tipo de associação ("série" ou "paralelo"). </param>
+        /// <param name="tipo">O Tipo de associação ("série" ou "paralelo"). </param>
         public void BombaEquivalente(Array arrayBomba, string tipo)
         {
             double[] novaEquacaoBomba = new double[4];
@@ -111,7 +111,7 @@ namespace SimulOP
         /// <returns> O valor da Equação de bernoulli [m]. </returns>
         public double Bernoulli(double vazao)
         {
-            return this.CalcAlturaBomba(vazao) - Tubulacao.CalculaPerdaCarga(Fluido, vazao) + Tubulacao.elevacao;
+            return this.CalcAlturaBomba(vazao) - Tubulacao.CalculaPerdaCarga(Fluido, vazao) + Tubulacao.Elevacao;
         }
         
         /// <summary>
