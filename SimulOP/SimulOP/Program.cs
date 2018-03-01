@@ -15,7 +15,7 @@ namespace SimulOP
         [STAThread]
         static void Main()
         {
-            if (true)
+            if (false)
             {
                 Console.WriteLine("======== Teste com Math.net ==========");
                 Console.WriteLine("");
