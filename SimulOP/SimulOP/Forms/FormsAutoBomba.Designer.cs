@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormsAutoBomba));
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -70,6 +71,18 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.labelVazao = new System.Windows.Forms.Label();
+            this.labelPerdaCarga = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -92,52 +105,56 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCeq)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarBeq)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarAeq)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // chart2
             // 
-            chartArea7.AxisX.Maximum = 40D;
-            chartArea7.AxisX.Minimum = 0D;
-            chartArea7.AxisX.Title = "Vazão [m^3/h]";
-            chartArea7.AxisX2.Maximum = 40D;
-            chartArea7.AxisX2.Minimum = 0D;
-            chartArea7.AxisY.Maximum = 30D;
-            chartArea7.AxisY.Minimum = 0D;
-            chartArea7.AxisY.Title = "Carga [m]";
-            chartArea7.AxisY2.Maximum = 30D;
-            chartArea7.AxisY2.Minimum = 0D;
-            chartArea7.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea7);
+            chartArea2.AxisX.Maximum = 40D;
+            chartArea2.AxisX.Minimum = 0D;
+            chartArea2.AxisX.Title = "Vazão [m^3/h]";
+            chartArea2.AxisX2.Maximum = 40D;
+            chartArea2.AxisX2.Minimum = 0D;
+            chartArea2.AxisY.Maximum = 30D;
+            chartArea2.AxisY.Minimum = 0D;
+            chartArea2.AxisY.Title = "Carga [m]";
+            chartArea2.AxisY2.Maximum = 30D;
+            chartArea2.AxisY2.Minimum = 0D;
+            chartArea2.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea2);
             this.chart2.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend7.Name = "Legend1";
-            this.chart2.Legends.Add(legend7);
+            legend2.Name = "Legend1";
+            this.chart2.Legends.Add(legend2);
             this.chart2.Location = new System.Drawing.Point(414, 3);
             this.chart2.Name = "chart2";
-            series19.BorderWidth = 3;
-            series19.ChartArea = "ChartArea1";
-            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series19.Legend = "Legend1";
-            series19.Name = "Altura da bomba";
-            series20.BorderWidth = 3;
-            series20.ChartArea = "ChartArea1";
-            series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series20.Legend = "Legend1";
-            series20.Name = "Curva da tubulacao";
-            series21.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            series21.BorderWidth = 2;
-            series21.ChartArea = "ChartArea1";
-            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series21.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series21.Label = "Ponto de operacao";
-            series21.LabelBackColor = System.Drawing.Color.White;
-            series21.LabelBorderColor = System.Drawing.Color.Black;
-            series21.LabelBorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            series21.Legend = "Legend1";
-            series21.Name = "Ponto de operacao";
-            series21.SmartLabelStyle.CalloutBackColor = System.Drawing.Color.White;
-            this.chart2.Series.Add(series19);
-            this.chart2.Series.Add(series20);
-            this.chart2.Series.Add(series21);
+            series4.BorderWidth = 3;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.Legend = "Legend1";
+            series4.Name = "Altura da bomba";
+            series5.BorderWidth = 3;
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series5.Legend = "Legend1";
+            series5.Name = "Curva da tubulacao";
+            series6.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series6.BorderWidth = 2;
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series6.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series6.Label = "Ponto de operacao";
+            series6.LabelBackColor = System.Drawing.Color.White;
+            series6.LabelBorderColor = System.Drawing.Color.Black;
+            series6.LabelBorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            series6.Legend = "Legend1";
+            series6.Name = "Ponto de operacao";
+            series6.SmartLabelStyle.CalloutBackColor = System.Drawing.Color.White;
+            this.chart2.Series.Add(series4);
+            this.chart2.Series.Add(series5);
+            this.chart2.Series.Add(series6);
             this.chart2.Size = new System.Drawing.Size(953, 743);
             this.chart2.TabIndex = 7;
             this.chart2.Text = "chart2";
@@ -165,6 +182,8 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupBox1, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.groupBox2, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 3);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -288,6 +307,7 @@
             0,
             0,
             0});
+            this.numericViscosidade.ValueChanged += new System.EventHandler(this.AtualizaGrafico);
             // 
             // label7
             // 
@@ -312,6 +332,7 @@
             0,
             0,
             0});
+            this.numericDensidade.ValueChanged += new System.EventHandler(this.AtualizaGrafico);
             // 
             // label2
             // 
@@ -376,6 +397,7 @@
             0,
             0,
             0});
+            this.numericRugosidade.ValueChanged += new System.EventHandler(this.AtualizaGrafico);
             // 
             // label24
             // 
@@ -420,6 +442,7 @@
             0,
             0,
             0});
+            this.numericElevacao.ValueChanged += new System.EventHandler(this.AtualizaGrafico);
             // 
             // numericDiametro
             // 
@@ -434,6 +457,7 @@
             0,
             0,
             0});
+            this.numericDiametro.ValueChanged += new System.EventHandler(this.AtualizaGrafico);
             // 
             // numericComprimento
             // 
@@ -448,6 +472,7 @@
             0,
             0,
             0});
+            this.numericComprimento.ValueChanged += new System.EventHandler(this.AtualizaGrafico);
             // 
             // label14
             // 
@@ -613,6 +638,143 @@
             this.label16.TabIndex = 36;
             this.label16.Text = "A";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.pictureBox1);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Font = new System.Drawing.Font("Lucida Console", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(3, 411);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(399, 179);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Equação da bomba";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(3, 24);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(393, 152);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.label19, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.panel1, 0, 1);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 596);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(399, 144);
+            this.tableLayoutPanel3.TabIndex = 3;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.MediumBlue;
+            this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label19.Font = new System.Drawing.Font("Lucida Console", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(3, 0);
+            this.label19.Name = "label19";
+            this.label19.Padding = new System.Windows.Forms.Padding(2, 5, 0, 0);
+            this.label19.Size = new System.Drawing.Size(393, 36);
+            this.label19.TabIndex = 1;
+            this.label19.Text = "Saídas";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label28);
+            this.panel1.Controls.Add(this.label27);
+            this.panel1.Controls.Add(this.labelPerdaCarga);
+            this.panel1.Controls.Add(this.labelVazao);
+            this.panel1.Controls.Add(this.label23);
+            this.panel1.Controls.Add(this.label21);
+            this.panel1.Controls.Add(this.label20);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 39);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(393, 102);
+            this.panel1.TabIndex = 2;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(12, 14);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(178, 16);
+            this.label20.TabIndex = 0;
+            this.label20.Text = "Ponto de operação";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(141, 41);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(47, 11);
+            this.label21.TabIndex = 1;
+            this.label21.Text = "Vazão:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(78, 63);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(110, 11);
+            this.label23.TabIndex = 2;
+            this.label23.Text = "Perda de carga:";
+            // 
+            // labelVazao
+            // 
+            this.labelVazao.AutoSize = true;
+            this.labelVazao.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelVazao.Location = new System.Drawing.Point(195, 41);
+            this.labelVazao.Name = "labelVazao";
+            this.labelVazao.Size = new System.Drawing.Size(12, 11);
+            this.labelVazao.TabIndex = 3;
+            this.labelVazao.Text = "0";
+            // 
+            // labelPerdaCarga
+            // 
+            this.labelPerdaCarga.AutoSize = true;
+            this.labelPerdaCarga.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPerdaCarga.Location = new System.Drawing.Point(195, 63);
+            this.labelPerdaCarga.Name = "labelPerdaCarga";
+            this.labelPerdaCarga.Size = new System.Drawing.Size(12, 11);
+            this.labelPerdaCarga.TabIndex = 4;
+            this.labelPerdaCarga.Text = "0";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(236, 41);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(33, 11);
+            this.label27.TabIndex = 5;
+            this.label27.Text = "m³/h";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(236, 63);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(12, 11);
+            this.label28.TabIndex = 6;
+            this.label28.Text = "m";
+            // 
             // FormsAutoBomba
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -647,6 +809,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCeq)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarBeq)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarAeq)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -689,5 +857,17 @@
         private System.Windows.Forms.TrackBar trackBarCeq;
         private System.Windows.Forms.TrackBar trackBarBeq;
         private System.Windows.Forms.TrackBar trackBarAeq;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label labelPerdaCarga;
+        private System.Windows.Forms.Label labelVazao;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
     }
 }

@@ -65,8 +65,12 @@ namespace SimulOP.Forms
 
             // Plotagem do ponto de operacao
             chart2.Series[2].Points.DataBindXY(pontoOperacaoX, pontoOperacaoY);
-            chart2.Series[2].Label = "Ponto de operacao (" + Math.Round(pontoOperacaoX[0], 1) + " [m^3/h] ; "
+            chart2.Series[2].Label = "Ponto de operacao (" + Math.Round(pontoOperacaoX[0], 1) + " [m³/h] ; "
                 + Math.Round(pontoOperacaoY[0], 1) + " [m])";
+
+            // Apresentação do ponto de operação no campo Saídas
+            labelVazao.Text = Math.Round(pontoOperacaoX[0], 1).ToString();
+            labelPerdaCarga.Text = Math.Round(pontoOperacaoY[0], 1).ToString();
         }
 
         public FormsAutoBomba()
