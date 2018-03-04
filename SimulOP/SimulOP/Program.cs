@@ -67,7 +67,7 @@ namespace SimulOP
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Forms.FormsAutoBomba());
+                Application.Run(new FormsMaster());
              }            
         }
      }

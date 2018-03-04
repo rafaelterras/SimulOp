@@ -101,7 +101,7 @@
             this.comBombaToolStripMenuItem,
             this.comSingularidadeEBombaToolStripMenuItem});
             this.tubulaçõesToolStripMenuItem.Name = "tubulaçõesToolStripMenuItem";
-            this.tubulaçõesToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.tubulaçõesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.tubulaçõesToolStripMenuItem.Text = "Tubulações";
             // 
             // simplesToolStripMenuItem
@@ -128,17 +128,18 @@
             this.comSingularidadeEBombaToolStripMenuItem.Name = "comSingularidadeEBombaToolStripMenuItem";
             this.comSingularidadeEBombaToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
             this.comSingularidadeEBombaToolStripMenuItem.Text = "Com singularidade e bomba";
+            this.comSingularidadeEBombaToolStripMenuItem.Click += new System.EventHandler(this.comSingularidadeEBombaToolStripMenuItem_Click);
             // 
             // filtrosToolStripMenuItem
             // 
             this.filtrosToolStripMenuItem.Name = "filtrosToolStripMenuItem";
-            this.filtrosToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.filtrosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.filtrosToolStripMenuItem.Text = "Filtros";
             // 
             // compressoresToolStripMenuItem
             // 
             this.compressoresToolStripMenuItem.Name = "compressoresToolStripMenuItem";
-            this.compressoresToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.compressoresToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.compressoresToolStripMenuItem.Text = "Compressores";
             // 
             // operaçõesUnitáriasIIToolStripMenuItem
