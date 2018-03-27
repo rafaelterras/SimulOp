@@ -42,7 +42,7 @@ namespace SimulOP
         /// </summary>
         /// <param name="arrayBomba">Um array com as bombas que se deseja ver a equivalente. </param>
         /// <param name="tipo">O Tipo de associação ("série" ou "paralelo"). </param>
-        void BombaEquivalente(Array arrayBomba, string tipo);
+        void BombaEquivalente(Bomba[] arrayBomba, string tipo);
 
         /// <summary>
         /// Calcula a altura da bomba apartir da vazão.

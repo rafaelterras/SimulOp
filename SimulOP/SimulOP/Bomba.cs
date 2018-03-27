@@ -58,6 +58,27 @@ namespace SimulOP
             this.fluido = fluido;
             this.tubulacao = tubulacao;
         }
+
+        /// <summary>
+        /// Constructor para bombas em assiciação
+        /// </summary>
+        /// <param name="bomba1">Uma das Bombas</param>
+        /// <param name="bomba2">Uma das Bombas</param>
+        /// <param name="tipo">O Tipo de associação ("série" ou "paralelo")</param>
+        public Bomba(Bomba bomba1, Bomba bomba2, string tipo)
+        {
+            if (bomba1.fluido.Equals(bomba2.fluido) && bomba1.tubulacao.Equals(bomba2.tubulacao))
+            {
+                this.fluido = bomba1.fluido;
+                this.tubulacao = bomba1.tubulacao;
+                this.BombaEquivalente(new Bomba[] { bomba1, bomba2 }, tipo);
+            }
+            else
+            {
+                throw new Exception("As bombas precisam ter o mesmo objeto Fluido e Tubulacao para serem usadas em associacao");
+            }
+        }
+
         #endregion
 
         /// <summary>
@@ -65,7 +86,7 @@ namespace SimulOP
         /// </summary>
         /// <param name="arrayBomba">Um array com as bombas que se deseja ver a equivalente. </param>
         /// <param name="tipo">O Tipo de associação ("série" ou "paralelo"). </param>
-        public void BombaEquivalente(Array arrayBomba, string tipo)
+        public void BombaEquivalente(Bomba[] arrayBomba, string tipo)
         {
             double[] novaEquacaoBomba = new double[4];
             int i = 0;
@@ -82,7 +103,7 @@ namespace SimulOP
                     }
                 }
             }
-            if (tipo.ToLower() == "paralelo")
+            else if (tipo.ToLower() == "paralelo")
             {
                 throw new System.NotImplementedException("Bombas em paralelo ainda não implementadas");
             }
