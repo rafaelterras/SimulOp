@@ -51,21 +51,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Batelada.cs" />
-    <Compile Include="Bomba.cs" />
-    <Compile Include="Ciclone.cs" />
-    <Compile Include="ColunaDeAbsorcao.cs" />
-    <Compile Include="Compressor.cs" />
-    <Compile Include="Continuo.cs" />
-    <Compile Include="Cotovelo.cs" />
-    <Compile Include="Cristalizador.cs" />
-    <Compile Include="DestiBatelada.cs" />
-    <Compile Include="DestiContinuo.cs" />
-    <Compile Include="Equipamentos.cs" />
-    <Compile Include="Evaporador.cs" />
-    <Compile Include="Filtros.cs" />
-    <Compile Include="Flash.cs" />
-    <Compile Include="Fluido.cs" />
+    <Compile Include="EquipamentosReatores\Batelada.cs" />
+    <Compile Include="EquipamentosOPI\Bomba.cs" />
+    <Compile Include="EquipamentosOPI\Ciclone.cs" />
+    <Compile Include="EquipamentosOPIII\ColunaDeAbsorcao.cs" />
+    <Compile Include="EquipamentosOPI\Compressor.cs" />
+    <Compile Include="EquipamentosOPIII\Continuo.cs" />
+    <Compile Include="EquipamentosOPI\Cotovelo.cs" />
+    <Compile Include="EquipamentosOPIII\Cristalizador.cs" />
+    <Compile Include="EquipamentosOPIII\DestiBatelada.cs" />
+    <Compile Include="EquipamentosOPIII\DestiContinuo.cs" />
+    <Compile Include="Geral\Equipamentos.cs" />
+    <Compile Include="EquipamentosOPII\Evaporador.cs" />
+    <Compile Include="EquipamentosOPI\Filtros.cs" />
+    <Compile Include="EquipamentosOPIII\Flash.cs" />
+    <Compile Include="Geral\Fluido.cs" />
     <Compile Include="Forms\FormsAutoBomba.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,22 +90,22 @@
     <Compile Include="Forms\FormsModelOp.Designer.cs">
       <DependentUpon>FormsModelOp.cs</DependentUpon>
     </Compile>
-    <Compile Include="IBomba.cs" />
-    <Compile Include="IDestilacao.cs" />
-    <Compile Include="ISingulariedade.cs" />
-    <Compile Include="ITrocadorDeCalor.cs" />
-    <Compile Include="ITubulacao.cs" />
+    <Compile Include="interfaces\IBomba.cs" />
+    <Compile Include="interfaces\IDestilacao.cs" />
+    <Compile Include="interfaces\ISingulariedade.cs" />
+    <Compile Include="interfaces\ITrocadorDeCalor.cs" />
+    <Compile Include="interfaces\ITubulacao.cs" />
     <Compile Include="Forms\FormsMaster.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormsMaster.Designer.cs">
       <DependentUpon>FormsMaster.cs</DependentUpon>
     </Compile>
-    <Compile Include="MembranaDeSeparacao.cs" />
-    <Compile Include="EquipamentoOPI.cs" />
-    <Compile Include="EquipamentoOPII.cs" />
-    <Compile Include="EquipamentoOPIII.cs" />
-    <Compile Include="PFR.cs" />
+    <Compile Include="EquipamentosOPIII\MembranaDeSeparacao.cs" />
+    <Compile Include="EquipamentosOPI\EquipamentoOPI.cs" />
+    <Compile Include="EquipamentosOPII\EquipamentoOPII.cs" />
+    <Compile Include="EquipamentosOPIII\EquipamentoOPIII.cs" />
+    <Compile Include="EquipamentosReatores\PFR.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -113,19 +113,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ReatorCSTR.cs" />
-    <Compile Include="Reatores.cs" />
-    <Compile Include="Secador.cs" />
-    <Compile Include="Singularidade.cs" />
-    <Compile Include="TorreDeDestilacao.cs" />
-    <Compile Include="TorreDeResfriamento.cs" />
-    <Compile Include="TrocadorCascoETubos.cs" />
-    <Compile Include="TrocadordeCalor.cs" />
-    <Compile Include="TrocadorDePlacas.cs" />
-    <Compile Include="TrocadorDuploTubo.cs" />
-    <Compile Include="Tubulacao.cs" />
-    <Compile Include="Valvula.cs" />
-    <Compile Include="Ventilador.cs" />
+    <Compile Include="EquipamentosReatores\ReatorCSTR.cs" />
+    <Compile Include="EquipamentosReatores\Reatores.cs" />
+    <Compile Include="EquipamentosOPII\Secador.cs" />
+    <Compile Include="EquipamentosOPI\Singularidade.cs" />
+    <Compile Include="EquipamentosOPIII\TorreDeDestilacao.cs" />
+    <Compile Include="EquipamentosOPII\TorreDeResfriamento.cs" />
+    <Compile Include="EquipamentosOPII\TrocadorCascoETubos.cs" />
+    <Compile Include="EquipamentosOPII\TrocadordeCalor.cs" />
+    <Compile Include="EquipamentosOPII\TrocadorDePlacas.cs" />
+    <Compile Include="EquipamentosOPII\TrocadorDuploTubo.cs" />
+    <Compile Include="EquipamentosOPI\Tubulacao.cs" />
+    <Compile Include="EquipamentosOPI\Valvula.cs" />
+    <Compile Include="EquipamentosOPI\Ventilador.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -153,5 +153,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
