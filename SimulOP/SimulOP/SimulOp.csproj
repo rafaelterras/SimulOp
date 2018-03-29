@@ -56,7 +56,7 @@
     <Compile Include="EquipamentosOPI\Ciclone.cs" />
     <Compile Include="EquipamentosOPIII\ColunaDeAbsorcao.cs" />
     <Compile Include="EquipamentosOPI\Compressor.cs" />
-    <Compile Include="EquipamentosOPIII\Continuo.cs" />
+    <Compile Include="EquipamentosReatores\Continuo.cs" />
     <Compile Include="EquipamentosOPI\Cotovelo.cs" />
     <Compile Include="EquipamentosOPIII\Cristalizador.cs" />
     <Compile Include="EquipamentosOPIII\DestiBatelada.cs" />
@@ -90,6 +90,7 @@
     <Compile Include="Forms\FormsModelOp.Designer.cs">
       <DependentUpon>FormsModelOp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Geral\MisturaBinaria.cs" />
     <Compile Include="interfaces\IBomba.cs" />
     <Compile Include="interfaces\IDestilacao.cs" />
     <Compile Include="interfaces\ISingulariedade.cs" />
