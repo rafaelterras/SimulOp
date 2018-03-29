@@ -64,6 +64,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "SimulOp";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -75,7 +76,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(1348, 146);
             this.label2.TabIndex = 1;
-            this.label2.Text = "v.0.1";
+            this.label2.Text = "v.0.25";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3

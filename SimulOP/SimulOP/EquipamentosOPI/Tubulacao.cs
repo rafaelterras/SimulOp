@@ -27,7 +27,7 @@ namespace SimulOP
         /// <summary>
         /// Comprimento equivalente das Singularidades da tubulação [m]
         /// </summary>
-        public double ComprimentoEquivalente { get => comprimentoEquivalente; set => comprimentoEquivalente = value; }
+        public double ComprimentoEquivalente { get => comprimentoEquivalente; }
 
         /// <summary>
         /// Diametro da tubulação [m]
@@ -62,7 +62,15 @@ namespace SimulOP
         /// <summary>
         /// Lista de singularidades que estão na tubulação
         /// </summary>
-        internal List<Singularidade> ListaSingulariedades { get => listaSingulariedades; set => listaSingulariedades = value; }
+        internal List<Singularidade> ListaSingulariedades
+        {
+            get => listaSingulariedades;
+            set
+            {
+                listaSingulariedades = value;
+                this.CalculaComprimentoEquiSing();
+            }
+        }
 
         /// <summary>
         /// Perda de carga da tubulação, depende das condições do escoamento, [m]
@@ -86,6 +94,15 @@ namespace SimulOP
         }
         #endregion
 
+        /// <summary>
+        /// Adiciona a singularidade na lista de lingularidades da tubulação
+        /// </summary>
+        /// <param name="sin">Singularidade a ser adicionada</param>
+        public void AdicionaSingularidade(Singularidade sin)
+        {
+            this.listaSingulariedades.Add(sin);
+        }
+        
         /// <summary>
         /// Calcula o número de Reyolds
         /// </summary>
@@ -158,7 +175,7 @@ namespace SimulOP
                 comprEq = comprEq + sin.ComprimentoEqv;
             }
 
-            this.ComprimentoEquivalente = comprEq;
+            this.comprimentoEquivalente = comprEq;
 
         }
         

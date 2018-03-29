@@ -15,7 +15,7 @@ namespace SimulOP
         /// <summary>
         /// Comprimento equivalente das sigularidades
         /// </summary>
-        double ComprimentoEquivalente { get; set; }
+        double ComprimentoEquivalente { get; }
 
         /// <summary>
         /// Diametro da tubulação (m)

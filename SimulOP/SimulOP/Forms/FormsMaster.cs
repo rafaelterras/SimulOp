@@ -30,5 +30,12 @@ namespace SimulOP
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
         }
+
+        private void comSingularidadeEBombaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.FormsAutoBomba newMDIChild = new Forms.FormsAutoBomba();
+            newMDIChild.MdiParent = this;
+            newMDIChild.Show();
+        }
     }
 }

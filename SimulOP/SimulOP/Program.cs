@@ -30,13 +30,13 @@ namespace SimulOP
                 Singularidade s1 = new Singularidade(1, "Cotovelo");
                 Singularidade s2 = new Singularidade(2, "Cotovelo");
 
-                tubo1.ListaSingulariedades = new List<Singularidade> { s1, s2 };
+                // Cria um tipo especifico de singularidade
+                Valvula valvula = new Valvula(20);
 
-                tubo1.CalculaComprimentoEquiSing();
+                tubo1.ListaSingulariedades = new List<Singularidade> { s1, s2, valvula};
 
                 Bomba bomba1 = new Bomba(new double[] { 0, -2096928, 2649.96, 26 }, agua, tubo1);
                 
-
                 Console.WriteLine("==========Dados da Simulação========");
                 Console.WriteLine("===>Fluido");
                 Console.WriteLine("Densidade : {0} Kg/m^3", agua.Densidade);
@@ -53,7 +53,7 @@ namespace SimulOP
                 bomba1.CalculaVazao();
 
                 Console.WriteLine("==========Resultados da Simulação========");
-                Console.WriteLine("Vazão : {0} m^3/h", bomba1.Vazao * 3600);
+                Console.WriteLine("Vazão : {0} m^3/h", bomba1.Vazao * 1);
                 Console.WriteLine("Perda de carga  : {0} m", bomba1.Tubulacao.PerdaCarga);
                 Console.WriteLine("Altura da bomba : {0} m", bomba1.AlturaManometrica);
 
@@ -61,10 +61,10 @@ namespace SimulOP
                 
             }
             else
-            { 
+            {
                 // This is a hello world commentary.  
                 // Console.WriteLine("Hellow World!!");
-
+                
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new FormsMaster());
