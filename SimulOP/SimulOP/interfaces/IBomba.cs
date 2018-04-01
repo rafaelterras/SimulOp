@@ -20,7 +20,7 @@
         /// <summary>
         /// O fluido que está sendo escoado pela bomba
         /// </summary>
-        Fluido Fluido { get; set; }
+        FluidoOPI Fluido { get; set; }
 
         /// <summary>
         /// A tubulação em que a bomba está instalada

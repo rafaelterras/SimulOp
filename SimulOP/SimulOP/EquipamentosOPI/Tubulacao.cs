@@ -109,11 +109,11 @@ namespace SimulOP
         /// <param name="fluido">O Fluido que está na tubulação. </param>
         /// <param name="vazao">A vazão do fluido [m^3/s]. </param>
         /// <returns> O número de Rynolds [adm]. </returns>
-        public double CalculaReynolds(Fluido fluido, double vazao)
+        public double CalculaReynolds(FluidoOPI fluido, double vazao)
         {
             double re;
 
-            re = (4 * fluido.Densidade * vazao) / (Math.PI * fluido.Viscosidade * this.Diametro);
+            re = (4 * fluido.Material.Densidade * vazao) / (Math.PI * fluido.Material.Viscosidade * this.Diametro);
 
             return re;
         }
@@ -123,7 +123,7 @@ namespace SimulOP
         /// <param name="fluido">O Fluido que está na tubulação. </param>
         /// <param name="vazao">A vazão do fluido [m^3/s]. </param>
         /// <returns> O fator de atrito [adm]. </returns>
-        public double CalculaFAtrito(Fluido fluido, double vazao)
+        public double CalculaFAtrito(FluidoOPI fluido, double vazao)
         {
             double Re = CalculaReynolds(fluido, vazao);
             double A1 = Math.Pow(7 / Re, 0.9);
@@ -148,7 +148,7 @@ namespace SimulOP
         /// <param name="fluido">O Fluido que está na tubulação. </param>
         /// <param name="vazao">A vazão do fluido [m^3/s]. </param>
         /// <returns> A perda de carga [m]. </returns>
-        public double CalculaPerdaCarga(Fluido fluido, double vazao)
+        public double CalculaPerdaCarga(FluidoOPI fluido, double vazao)
         {
             double fAtrito = CalculaFAtrito(fluido, vazao);
             double comprimetoTotal = this.Comprimento + this.ComprimentoEquivalente;

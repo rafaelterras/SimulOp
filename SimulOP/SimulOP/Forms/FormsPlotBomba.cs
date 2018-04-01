@@ -31,7 +31,7 @@ namespace SimulOP
         private void button1_Click(object sender, EventArgs e)
         {
             // Cria o fluido agua usando o constructor
-            Fluido agua = new Fluido(1000, 8.90E-4);
+            FluidoOPI agua = new FluidoOPI(InicializadorObjetos.MaterialFluidoOPI("água"));
 
             // Cria a tubulação tubo1 usando o constructor
             Tubulacao tubo1 = new Tubulacao(0.05, 10, 4.572E-5, 20);
@@ -82,7 +82,7 @@ namespace SimulOP
             double EqBomba = ((trackBar1.Value + 1) / 10.0) * -2096928;
 
             // Cria o fluido agua usando o constructor
-            Fluido agua = new Fluido(1000, 8.90E-4);
+            FluidoOPI agua = new FluidoOPI(1000, 8.90E-4);
 
             // Cria a tubulação tubo1 usando o constructor
             Tubulacao tubo1 = new Tubulacao(0.05, 10, 4.572E-5, 20);

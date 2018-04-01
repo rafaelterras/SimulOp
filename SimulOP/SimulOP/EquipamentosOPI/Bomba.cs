@@ -12,7 +12,7 @@ namespace SimulOP
         private double potencia;
         private double[] equacaoCurva;
         private double alturaManometrica;
-        private Fluido fluido;
+        private FluidoOPI fluido;
         private Tubulacao tubulacao;
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace SimulOP
         /// <summary>
         /// O fluido que está sendo escoado pela bomba
         /// </summary>
-        public Fluido Fluido { get => fluido; set => fluido = value; }
+        public FluidoOPI Fluido { get => fluido; set => fluido = value; }
 
         /// <summary>
         /// A tubulação em que a bomba está instalada
@@ -52,7 +52,7 @@ namespace SimulOP
         /// <param name="equacaoCurva">Coeficientes do polinomio de 3º grau que aproxima a bomba</param>
         /// <param name="fluido">O fluido que está sendo escoado pela bomba</param>
         /// <param name="tubulacao">A tubulação que a bomba está acloplada</param>
-        public Bomba(double[] equacaoCurva, Fluido fluido, Tubulacao tubulacao)
+        public Bomba(double[] equacaoCurva, FluidoOPI fluido, Tubulacao tubulacao)
         {
             this.equacaoCurva = equacaoCurva;
             this.fluido = fluido;

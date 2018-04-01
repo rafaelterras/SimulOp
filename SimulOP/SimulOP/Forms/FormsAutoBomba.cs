@@ -28,7 +28,7 @@ namespace SimulOP.Forms
             double DeqBomba = (trackBarDeq.Value / 500.0) * 26;
 
             // Cria o fluido agua usando o constructor
-            Fluido agua = new Fluido(densidade, viscosidade);
+            FluidoOPI agua = new FluidoOPI(densidade, viscosidade);
 
             // Cria a tubulação tubo1 usando o constructor
             Tubulacao tubo1 = new Tubulacao(diametro, comprimento, rugosidade, elevacao);
