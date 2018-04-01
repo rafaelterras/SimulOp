@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SimulOP
 {
-    abstract class EquipamentoOPIII : Equipamentos
+    public abstract class EquipamentoOPIII : Equipamentos
     {
     }
 }

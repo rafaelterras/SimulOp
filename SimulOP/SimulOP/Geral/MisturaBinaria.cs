@@ -121,5 +121,16 @@ namespace SimulOP
             this.composicaoVap[1] = yLK - 1;
         }
 
+        public double CalculaVap(double xLK)
+        {
+            // Calcula e atualiza o coeficiente de volatividade relativa
+            this.alpha = fluidoLK.PresaoVapor / fluidoHK.PresaoVapor;
+
+            // Calcula com base na equação de Raoult a cencentração do Light Key 
+            double yLK = (this.alpha * xLK) / (1 + xLK * (this.alpha - 1));
+
+            return yLK;
+        }
+
     }
 }

@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace SimulOP
 {
-    public class ColunaMcCabeThiele
+    public class ColunaMcCabeThiele : EquipamentoOPIII
     {
         private MisturaBinaria misturaBinaria;
+        private double[] linhaOP;
 
         public MisturaBinaria MisturaBinaria { get => misturaBinaria; }
 
@@ -22,10 +23,10 @@ namespace SimulOP
             List<double> PlotX = new List<double>();
             List<double> PlotY = new List<double>();
 
-            for (double n = 0; n <= 1.01; n = n + 1.0/div)
+            for (double cLK = 0; cLK <= 1.01; cLK = cLK + 1.0 / div)
             {
-                PlotX.Add(n);
-                misturaBinaria.CalculaVapRaoult(n);
+                PlotX.Add(cLK);
+                misturaBinaria.CalculaVapRaoult(cLK);
                 PlotY.Add(misturaBinaria.ComposicaoVap[0]);
             }
 
@@ -33,16 +34,39 @@ namespace SimulOP
         }
 
 
-        public (List<double> PlotX, List<double> PlotY) PlotPratos(int div)
+        public (List<double> PlotX, List<double> PlotY) PlotPratos(double xD, double xB)
         {
             List<double> PlotX = new List<double>();
             List<double> PlotY = new List<double>();
 
+            double xL = xD;
+            double xV;
 
 
+            while (xL >= xB)
+            {   // Ponto na linha de Operacao
+                PlotX.Add(xL);
+                xV = CurvaOP(xL);
+                PlotY.Add(xV);
 
+                // Delegate para calculo da Equacao [EqVap(x) - xV = 0]
+                double LinhaOPEq(double x) => misturaBinaria.CalculaVap(x) - xV;
+                double eq = AchaRaizBrenet(LinhaOPEq, 0, 1);
 
+                // Ponto na curva de equilivrio
+                PlotY.Add(xV);
+                PlotX.Add(eq);
+
+                xL = eq;
+            }
+            
             return (PlotX, PlotY);
+        }
+
+
+        public double CurvaOP(double cLK)
+        {
+            return cLK;
         }
 
     }
