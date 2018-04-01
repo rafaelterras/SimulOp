@@ -59,7 +59,10 @@ namespace SimulOP
 
                 xL = eq;
             }
-            
+
+            PlotX.Add(xL);
+            PlotY.Add(CurvaOP(xL));
+
             return (PlotX, PlotY);
         }
 

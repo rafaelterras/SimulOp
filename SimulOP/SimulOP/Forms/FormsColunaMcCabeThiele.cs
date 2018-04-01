@@ -22,7 +22,7 @@ namespace SimulOP.Forms
             InitializeComponent();
 
             fluidoBenzeno = new FluidoIdealOPIII(InicializadorObjetos.MaterialFluidoOPIII("benzeno"), 298);
-            fluidoTolueno = new FluidoIdealOPIII(InicializadorObjetos.MaterialFluidoOPIII("água"), 298);
+            fluidoTolueno = new FluidoIdealOPIII(InicializadorObjetos.MaterialFluidoOPIII("tolueno"), 298);
 
             mistura = new MisturaBinaria(fluidoBenzeno, fluidoTolueno, 1, 340, 1E5);
 
