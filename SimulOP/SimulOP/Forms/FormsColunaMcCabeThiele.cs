@@ -26,8 +26,7 @@ namespace SimulOP.Forms
 
             mistura = new MisturaBinaria(fluidoBenzeno, fluidoTolueno, 1, 340, 1E5);
 
-            ColunaMcCabeThiele = new ColunaMcCabeThiele(mistura);
-
+            ColunaMcCabeThiele = new ColunaMcCabeThiele(mistura, 0.95, 0.05, 0.60, 1.59, 1);
         }
 
         private void FormsColunaMcCabeThiele_Load(object sender, EventArgs e)
@@ -47,10 +46,35 @@ namespace SimulOP.Forms
             List<double> plotXP = new List<double>();
             List<double> plotYP = new List<double>();
 
-            (plotXP, plotYP) = ColunaMcCabeThiele.PlotPratos(0.8,0.2);
+            
+            for (double cLK = 0; cLK <= 1.01; cLK = cLK + 1.0 / 60)
+            {
+                plotXP.Add(cLK);
+                plotYP.Add(ColunaMcCabeThiele.LinhaQ(cLK));
+            }
+
+            chart1.Series[1].Points.DataBindXY(plotXP, plotYP);
+                        
+            List<double> plotXP1 = new List<double>();
+            List<double> plotYP1 = new List<double>();
+
+            for (double cLK = 0; cLK <= 1.01; cLK = cLK + 1.0 / 60)
+            {
+                plotXP1.Add(cLK);
+                plotYP1.Add(ColunaMcCabeThiele.LinhaRetif(cLK));
+            }
+
+            chart1.Series[2].Points.DataBindXY(plotXP1, plotYP1);
+
+            ColunaMcCabeThiele.CalculaPontoP();
+
+            /*
+            (plotXP, plotYP) = ColunaMcCabeThiele.PlotPratos();
 
             chart1.Series[1].Points.DataBindXY(plotXP, plotYP);
             chart1.Series[2].Points.DataBindXY(new double[2] { 0, 1 }, new double[2] { 0, 1 });
+            */
+            
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -58,9 +82,18 @@ namespace SimulOP.Forms
             List<double> plotXP = new List<double>();
             List<double> plotYP = new List<double>();
 
-            double xD = 0.49 + trackBar1.Value / 100.0;
+            double xD = 0.50 + trackBar1.Value / 100.0;
 
-            (plotXP, plotYP) = ColunaMcCabeThiele.PlotPratos(xD, 0.05);
+            ColunaMcCabeThiele.TargetXD = xD;
+            
+            List<double> plotXP1 = new List<double>();
+            List<double> plotYP1 = new List<double>();
+
+            (plotXP1, plotYP1) = ColunaMcCabeThiele.PlotCurvaOP(100);
+
+            chart1.Series[2].Points.DataBindXY(plotXP1, plotYP1);
+
+            (plotXP, plotYP) = ColunaMcCabeThiele.PlotPratos();
 
             chart1.Series[1].Points.DataBindXY(plotXP, plotYP);
         }

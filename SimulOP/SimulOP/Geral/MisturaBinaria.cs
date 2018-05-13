@@ -39,16 +39,7 @@ namespace SimulOP
         /// <summary>
         /// Composição da fase líquida [Light Key, Heahy Key]
         /// </summary>
-        public double[] ComposicaoLiq
-        {
-            get => composicaoLiq;
-            set
-            {
-                this.composicaoLiq = value;
-            }
-            
-        }
-
+        public double[] ComposicaoLiq { get => composicaoLiq; set => composicaoLiq = value; }
         /// <summary>
         /// Composição da fase vapor [Light Key, Heahy Key]
         /// </summary>
@@ -121,6 +112,11 @@ namespace SimulOP
             this.composicaoVap[1] = yLK - 1;
         }
 
+        /// <summary>
+        /// Calcula a composisão do fluido LK na fase vapor
+        /// </summary>
+        /// <param name="xLK">Concentração do LK na fase líquida</param>
+        /// <returns>yLK: Composisão do LK na fase vapor</returns>
         public double CalculaVap(double xLK)
         {
             // Calcula e atualiza o coeficiente de volatividade relativa
@@ -131,6 +127,5 @@ namespace SimulOP
 
             return yLK;
         }
-
     }
 }
