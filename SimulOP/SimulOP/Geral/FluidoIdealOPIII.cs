@@ -11,6 +11,7 @@ namespace SimulOP
         private MaterialFluidoOPIII material;
         private double temperatura;
         private double presaoVapor;
+        
 
         public double Temperatura { get => temperatura; set => temperatura = value; }
         public double PresaoVapor

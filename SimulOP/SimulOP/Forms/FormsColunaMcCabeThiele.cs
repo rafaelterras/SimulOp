@@ -34,7 +34,7 @@ namespace SimulOP.Forms
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             List<double> plotX = new List<double>();
             List<double> plotY = new List<double>();
@@ -46,26 +46,10 @@ namespace SimulOP.Forms
             List<double> plotXP = new List<double>();
             List<double> plotYP = new List<double>();
 
-            
-            for (double cLK = 0; cLK <= 1.01; cLK = cLK + 1.0 / 60)
-            {
-                plotXP.Add(cLK);
-                plotYP.Add(ColunaMcCabeThiele.LinhaQ(cLK));
-            }
+            (plotXP, plotYP) = ColunaMcCabeThiele.PlotCurvaQ(100);
 
             chart1.Series[1].Points.DataBindXY(plotXP, plotYP);
                         
-            List<double> plotXP1 = new List<double>();
-            List<double> plotYP1 = new List<double>();
-
-            for (double cLK = 0; cLK <= 1.01; cLK = cLK + 1.0 / 60)
-            {
-                plotXP1.Add(cLK);
-                plotYP1.Add(ColunaMcCabeThiele.LinhaRetif(cLK));
-            }
-
-            chart1.Series[2].Points.DataBindXY(plotXP1, plotYP1);
-
             ColunaMcCabeThiele.CalculaPontoP();
 
             /*
@@ -77,12 +61,12 @@ namespace SimulOP.Forms
             
         }
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
+        private void TrackBar1_Scroll(object sender, EventArgs e)
         {
             List<double> plotXP = new List<double>();
             List<double> plotYP = new List<double>();
 
-            double xD = 0.50 + trackBar1.Value / 100.0;
+            double xD = 0.50 + trbXd.Value / 100.0;
 
             ColunaMcCabeThiele.TargetXD = xD;
             
@@ -96,6 +80,11 @@ namespace SimulOP.Forms
             (plotXP, plotYP) = ColunaMcCabeThiele.PlotPratos();
 
             chart1.Series[1].Points.DataBindXY(plotXP, plotYP);
+        }
+
+        private void btnInputInicial_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

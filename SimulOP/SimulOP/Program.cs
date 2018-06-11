@@ -33,9 +33,9 @@ namespace SimulOP
                 Singularidade s2 = new Singularidade(2, "Cotovelo");
 
                 // Cria um tipo especifico de singularidade
-                Valvula valvula = new Valvula(20);
+                Valvula valvula = new Valvula(20, 0.5);
 
-                tubo1.ListaSingulariedades = new List<Singularidade> { s1, s2, valvula};
+                tubo1.ListaSingulariedades = new List<ISingularidade> { s1, s2, valvula};
 
                 Bomba bomba1 = new Bomba(new double[] { 0, -2096928, 2649.96, 26 }, Fluido, tubo1);
                                                

@@ -12,7 +12,6 @@ namespace SimulOP
 
         public double[] CoefAntoine { get => coefAntoine; }
 
-
         public MaterialFluidoOPIII(string componente, double[] coefAntoine ) : base(componente)
         {
             this.coefAntoine = coefAntoine;

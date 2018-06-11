@@ -35,7 +35,7 @@ namespace SimulOP
         /// <summary>
         /// Pressão da mistura [Pa]
         /// </summary>
-        public double Pressao { get; set; }
+        public double Pressao { get => pressao; set => pressao = value; }
         /// <summary>
         /// Composição da fase líquida [Light Key, Heahy Key]
         /// </summary>

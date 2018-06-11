@@ -1,6 +1,9 @@
 ﻿namespace SimulOP
 {
-    public interface ISingulariedade
+    /// <summary>
+    /// 
+    /// </summary>
+    public interface ISingularidade
     {
         /// <summary>
         /// Comprimento equivalente da singulariedade

@@ -16,7 +16,7 @@ namespace SimulOP
         private double rugosidadeRelativa;
         private double fatorAtrito;
         private double elevacao;
-        private List<Singularidade> listaSingulariedades;
+        private List<ISingularidade> listaSingulariedades;
         private double perdaCarga;
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace SimulOP
         /// <summary>
         /// Lista de singularidades que estão na tubulação
         /// </summary>
-        internal List<Singularidade> ListaSingulariedades
+        internal List<ISingularidade> ListaSingulariedades
         {
             get => listaSingulariedades;
             set
@@ -98,7 +98,7 @@ namespace SimulOP
         /// Adiciona a singularidade na lista de lingularidades da tubulação
         /// </summary>
         /// <param name="sin">Singularidade a ser adicionada</param>
-        public void AdicionaSingularidade(Singularidade sin)
+        public void AdicionaSingularidade(ISingularidade sin)
         {
             this.listaSingulariedades.Add(sin);
         }

@@ -37,7 +37,7 @@ namespace SimulOP.Forms
             Singularidade s1 = new Singularidade(1, "Cotovelo");
             Singularidade s2 = new Singularidade(2, "Cotovelo");
 
-            tubo1.ListaSingulariedades = new List<Singularidade> { s1, s2 };
+            tubo1.ListaSingulariedades = new List<ISingularidade> { s1, s2 };
 
             Bomba bomba1 = new Bomba(new double[] { AeqBomba, BeqBomba, CeqBomba, DeqBomba }, agua, tubo1);
 

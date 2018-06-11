@@ -106,7 +106,7 @@
     <Compile Include="Interfaces\IBomba.cs" />
     <Compile Include="Interfaces\IDestilacao.cs" />
     <Compile Include="Interfaces\IMaterialFluidoOPI.cs" />
-    <Compile Include="Interfaces\ISingulariedade.cs" />
+    <Compile Include="Interfaces\ISingularidade.cs" />
     <Compile Include="Interfaces\ITrocadorDeCalor.cs" />
     <Compile Include="Interfaces\ITubulacao.cs" />
     <Compile Include="Forms\FormsMaster.cs">
