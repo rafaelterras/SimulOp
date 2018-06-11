@@ -252,7 +252,16 @@ namespace SimulOP
             this.CalculaPontoP();
 
             while (xLK >= this.targetXB)
-            {   // Ponto na linha de Operacao
+            {
+                if (PlotX.Count > 30)
+                {
+                    PlotX.Add(xLK);
+                    PlotY.Add(CurvaOP(xLK));
+
+                    return (PlotX, PlotY);
+                }
+                
+                // Ponto na linha de Operacao
                 PlotX.Add(xLK);
                 yLK = CurvaOP(xLK);
                 PlotY.Add(yLK);

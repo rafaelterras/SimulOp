@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.gubInputInicial = new System.Windows.Forms.GroupBox();
             this.nudRefluxo = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
@@ -72,7 +72,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.trbCondicaoEntradaDin = new System.Windows.Forms.TrackBar();
             this.trbRefluxoDin = new System.Windows.Forms.TrackBar();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.gubInputInicial.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudRefluxo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudFracaoEntradaLK)).BeginInit();
@@ -94,40 +94,40 @@
             ((System.ComponentModel.ISupportInitialize)(this.trbRefluxoDin)).BeginInit();
             this.SuspendLayout();
             // 
-            // chart1
+            // chart
             // 
-            chartArea1.AxisX.Maximum = 1D;
-            chartArea1.AxisX.Minimum = 0D;
-            chartArea1.AxisY.Maximum = 1D;
-            chartArea1.AxisY.Minimum = 0D;
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(270, 12);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series2.BorderWidth = 2;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Color = System.Drawing.Color.Black;
-            series2.Legend = "Legend1";
-            series2.Name = "Series2";
-            series3.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Color = System.Drawing.Color.Gray;
-            series3.Legend = "Legend1";
-            series3.Name = "Series3";
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
-            this.chart1.Series.Add(series3);
-            this.chart1.Size = new System.Drawing.Size(600, 426);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
+            chartArea3.AxisX.Maximum = 1D;
+            chartArea3.AxisX.Minimum = 0D;
+            chartArea3.AxisY.Maximum = 1D;
+            chartArea3.AxisY.Minimum = 0D;
+            chartArea3.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart.Legends.Add(legend3);
+            this.chart.Location = new System.Drawing.Point(270, 12);
+            this.chart.Name = "chart";
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series7.Legend = "Legend1";
+            series7.Name = "Series1";
+            series8.BorderWidth = 2;
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series8.Color = System.Drawing.Color.Black;
+            series8.Legend = "Legend1";
+            series8.Name = "Series2";
+            series9.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series9.Color = System.Drawing.Color.Gray;
+            series9.Legend = "Legend1";
+            series9.Name = "Series3";
+            this.chart.Series.Add(series7);
+            this.chart.Series.Add(series8);
+            this.chart.Series.Add(series9);
+            this.chart.Size = new System.Drawing.Size(600, 426);
+            this.chart.TabIndex = 0;
+            this.chart.Text = "chart";
             // 
             // gubInputInicial
             // 
@@ -158,6 +158,11 @@
             // nudRefluxo
             // 
             this.nudRefluxo.DecimalPlaces = 1;
+            this.nudRefluxo.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.nudRefluxo.Location = new System.Drawing.Point(195, 153);
             this.nudRefluxo.Maximum = new decimal(new int[] {
             10,
@@ -334,7 +339,7 @@
             this.nudTemperatura.Size = new System.Drawing.Size(51, 20);
             this.nudTemperatura.TabIndex = 5;
             this.nudTemperatura.Value = new decimal(new int[] {
-            25,
+            50,
             0,
             0,
             0});
@@ -548,7 +553,6 @@
             this.trbTemperaturaDin.Name = "trbTemperaturaDin";
             this.trbTemperaturaDin.Size = new System.Drawing.Size(188, 45);
             this.trbTemperaturaDin.TabIndex = 16;
-            this.trbTemperaturaDin.Value = 7;
             // 
             // nudTemperaturaDin
             // 
@@ -560,7 +564,7 @@
             0,
             0});
             this.nudTemperaturaDin.Minimum = new decimal(new int[] {
-            10,
+            50,
             0,
             0,
             0});
@@ -568,7 +572,7 @@
             this.nudTemperaturaDin.Size = new System.Drawing.Size(50, 20);
             this.nudTemperaturaDin.TabIndex = 14;
             this.nudTemperaturaDin.Value = new decimal(new int[] {
-            25,
+            50,
             0,
             0,
             0});
@@ -691,11 +695,11 @@
             this.ClientSize = new System.Drawing.Size(1096, 527);
             this.Controls.Add(this.gubVariaveis);
             this.Controls.Add(this.gubInputInicial);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.chart);
             this.Name = "FormsColunaMcCabeThiele";
             this.Text = "FormsColunaMcCabeThiele";
             this.Load += new System.EventHandler(this.FormsColunaMcCabeThiele_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.gubInputInicial.ResumeLayout(false);
             this.gubInputInicial.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudRefluxo)).EndInit();
@@ -723,7 +727,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart;
         private System.Windows.Forms.GroupBox gubInputInicial;
         private System.Windows.Forms.ComboBox cmbFluidoLK;
         private System.Windows.Forms.Label label1;
