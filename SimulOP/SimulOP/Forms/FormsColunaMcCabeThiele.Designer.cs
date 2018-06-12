@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.gubInputInicial = new System.Windows.Forms.GroupBox();
             this.nudRefluxo = new System.Windows.Forms.NumericUpDown();
@@ -96,35 +96,35 @@
             // 
             // chart
             // 
-            chartArea3.AxisX.Maximum = 1D;
-            chartArea3.AxisX.Minimum = 0D;
-            chartArea3.AxisY.Maximum = 1D;
-            chartArea3.AxisY.Minimum = 0D;
-            chartArea3.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart.Legends.Add(legend3);
+            chartArea2.AxisX.Maximum = 1D;
+            chartArea2.AxisX.Minimum = 0D;
+            chartArea2.AxisY.Maximum = 1D;
+            chartArea2.AxisY.Minimum = 0D;
+            chartArea2.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart.Legends.Add(legend2);
             this.chart.Location = new System.Drawing.Point(270, 12);
             this.chart.Name = "chart";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            series8.BorderWidth = 2;
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series8.Color = System.Drawing.Color.Black;
-            series8.Legend = "Legend1";
-            series8.Name = "Series2";
-            series9.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series9.Color = System.Drawing.Color.Gray;
-            series9.Legend = "Legend1";
-            series9.Name = "Series3";
-            this.chart.Series.Add(series7);
-            this.chart.Series.Add(series8);
-            this.chart.Series.Add(series9);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            series5.BorderWidth = 2;
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.Color = System.Drawing.Color.Black;
+            series5.Legend = "Legend1";
+            series5.Name = "Series2";
+            series6.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.Color = System.Drawing.Color.Gray;
+            series6.Legend = "Legend1";
+            series6.Name = "Series3";
+            this.chart.Series.Add(series4);
+            this.chart.Series.Add(series5);
+            this.chart.Series.Add(series6);
             this.chart.Size = new System.Drawing.Size(600, 426);
             this.chart.TabIndex = 0;
             this.chart.Text = "chart";
@@ -195,7 +195,7 @@
             // 
             // nudFracaoEntradaLK
             // 
-            this.nudFracaoEntradaLK.DecimalPlaces = 1;
+            this.nudFracaoEntradaLK.DecimalPlaces = 2;
             this.nudFracaoEntradaLK.Location = new System.Drawing.Point(195, 127);
             this.nudFracaoEntradaLK.Maximum = new decimal(new int[] {
             8,
@@ -229,6 +229,11 @@
             // nudRazaoQ
             // 
             this.nudRazaoQ.DecimalPlaces = 1;
+            this.nudRazaoQ.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.nudRazaoQ.Location = new System.Drawing.Point(195, 101);
             this.nudRazaoQ.Maximum = new decimal(new int[] {
             2,
@@ -243,6 +248,7 @@
             this.nudRazaoQ.Name = "nudRazaoQ";
             this.nudRazaoQ.Size = new System.Drawing.Size(51, 20);
             this.nudRazaoQ.TabIndex = 12;
+            this.nudRazaoQ.ValueChanged += new System.EventHandler(this.nudRazaoQ_ValueChanged);
             // 
             // label9
             // 
@@ -277,6 +283,7 @@
             this.cmbCondicaoEntrada.Name = "cmbCondicaoEntrada";
             this.cmbCondicaoEntrada.Size = new System.Drawing.Size(138, 21);
             this.cmbCondicaoEntrada.TabIndex = 9;
+            this.cmbCondicaoEntrada.SelectedIndexChanged += new System.EventHandler(this.cmbCondicaoEntrada_SelectedIndexChanged);
             // 
             // nudPressao
             // 
@@ -423,6 +430,7 @@
             this.gubVariaveis.TabIndex = 4;
             this.gubVariaveis.TabStop = false;
             this.gubVariaveis.Text = "Variáveis dinâmicas";
+            this.gubVariaveis.Visible = false;
             // 
             // nudRefluxoDin
             // 
@@ -446,6 +454,7 @@
             0,
             0,
             65536});
+            this.nudRefluxoDin.ValueChanged += new System.EventHandler(this.nudRefluxoDin_ValueChanged);
             // 
             // label14
             // 
@@ -470,21 +479,27 @@
             this.cmbCondicaoEntradaDin.Name = "cmbCondicaoEntradaDin";
             this.cmbCondicaoEntradaDin.Size = new System.Drawing.Size(138, 21);
             this.cmbCondicaoEntradaDin.TabIndex = 17;
+            this.cmbCondicaoEntradaDin.SelectedIndexChanged += new System.EventHandler(this.cmbCondicaoEntradaDin_SelectedIndexChanged);
             // 
             // nudCondicaoEntradaDin
             // 
             this.nudCondicaoEntradaDin.DecimalPlaces = 1;
-            this.nudCondicaoEntradaDin.Location = new System.Drawing.Point(147, 67);
-            this.nudCondicaoEntradaDin.Maximum = new decimal(new int[] {
-            8,
+            this.nudCondicaoEntradaDin.Increment = new decimal(new int[] {
+            1,
             0,
             0,
             65536});
+            this.nudCondicaoEntradaDin.Location = new System.Drawing.Point(147, 67);
+            this.nudCondicaoEntradaDin.Maximum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.nudCondicaoEntradaDin.Minimum = new decimal(new int[] {
             2,
             0,
             0,
-            65536});
+            -2147483648});
             this.nudCondicaoEntradaDin.Name = "nudCondicaoEntradaDin";
             this.nudCondicaoEntradaDin.Size = new System.Drawing.Size(50, 20);
             this.nudCondicaoEntradaDin.TabIndex = 20;
@@ -493,6 +508,7 @@
             0,
             0,
             65536});
+            this.nudCondicaoEntradaDin.ValueChanged += new System.EventHandler(this.nudCondicaoEntradaDin_ValueChanged);
             // 
             // label13
             // 
@@ -512,10 +528,16 @@
             this.trbFracaoEntradaLKDin.Size = new System.Drawing.Size(188, 45);
             this.trbFracaoEntradaLKDin.TabIndex = 19;
             this.trbFracaoEntradaLKDin.Value = 25;
+            this.trbFracaoEntradaLKDin.Scroll += new System.EventHandler(this.trbFracaoEntradaLKDin_Scroll);
             // 
             // nudFracaoEntradaLKDin
             // 
-            this.nudFracaoEntradaLKDin.DecimalPlaces = 1;
+            this.nudFracaoEntradaLKDin.DecimalPlaces = 2;
+            this.nudFracaoEntradaLKDin.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            131072});
             this.nudFracaoEntradaLKDin.Location = new System.Drawing.Point(147, 13);
             this.nudFracaoEntradaLKDin.Maximum = new decimal(new int[] {
             8,
@@ -535,6 +557,7 @@
             0,
             0,
             65536});
+            this.nudFracaoEntradaLKDin.ValueChanged += new System.EventHandler(this.nudFracaoEntradaLKDin_ValueChanged);
             // 
             // label12
             // 
@@ -553,6 +576,7 @@
             this.trbTemperaturaDin.Name = "trbTemperaturaDin";
             this.trbTemperaturaDin.Size = new System.Drawing.Size(188, 45);
             this.trbTemperaturaDin.TabIndex = 16;
+            this.trbTemperaturaDin.Scroll += new System.EventHandler(this.trbTemperaturaDin_Scroll);
             // 
             // nudTemperaturaDin
             // 
@@ -576,6 +600,7 @@
             0,
             0,
             0});
+            this.nudTemperaturaDin.ValueChanged += new System.EventHandler(this.nudTemperaturaDin_ValueChanged);
             // 
             // label7
             // 
@@ -595,6 +620,7 @@
             this.trbXb.Size = new System.Drawing.Size(188, 45);
             this.trbXb.TabIndex = 13;
             this.trbXb.Value = 10;
+            this.trbXb.Scroll += new System.EventHandler(this.trbXb_Scroll);
             // 
             // nudXb
             // 
@@ -618,6 +644,7 @@
             0,
             0,
             131072});
+            this.nudXb.ValueChanged += new System.EventHandler(this.nudXb_ValueChanged);
             // 
             // label6
             // 
@@ -637,6 +664,7 @@
             this.trbXd.Size = new System.Drawing.Size(188, 45);
             this.trbXd.TabIndex = 10;
             this.trbXd.Value = 45;
+            this.trbXd.Scroll += new System.EventHandler(this.trbXd_Scroll);
             // 
             // nudXd
             // 
@@ -660,6 +688,7 @@
             0,
             0,
             65536});
+            this.nudXd.ValueChanged += new System.EventHandler(this.nudXd_ValueChanged);
             // 
             // label5
             // 
@@ -679,14 +708,17 @@
             this.trbCondicaoEntradaDin.Size = new System.Drawing.Size(188, 45);
             this.trbCondicaoEntradaDin.TabIndex = 22;
             this.trbCondicaoEntradaDin.Value = 25;
+            this.trbCondicaoEntradaDin.Scroll += new System.EventHandler(this.trbCondicaoEntradaDin_Scroll);
             // 
             // trbRefluxoDin
             // 
+            this.trbRefluxoDin.LargeChange = 1;
             this.trbRefluxoDin.Location = new System.Drawing.Point(9, 171);
             this.trbRefluxoDin.Maximum = 50;
             this.trbRefluxoDin.Name = "trbRefluxoDin";
             this.trbRefluxoDin.Size = new System.Drawing.Size(188, 45);
             this.trbRefluxoDin.TabIndex = 25;
+            this.trbRefluxoDin.Scroll += new System.EventHandler(this.trbRefluxoDin_Scroll);
             // 
             // FormsColunaMcCabeThiele
             // 
