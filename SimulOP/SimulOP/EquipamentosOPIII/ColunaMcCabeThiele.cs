@@ -212,7 +212,6 @@ namespace SimulOP
 
                 this.pontoP = pontoP;
             }
-            Console.WriteLine($"Ponto P calculado: ({pontoP[0]},{pontoP[1]})");
         }
 
         #region Funções de Plots para os gráficos
@@ -293,10 +292,7 @@ namespace SimulOP
             List<double> PlotX = new List<double>();
             List<double> PlotY = new List<double>();
 
-            if (this.pontoP == null)
-            {
-                CalculaPontoP();
-            }
+            CalculaPontoP();
 
             for (double xLK = 0; xLK <= 1.01; xLK = xLK + 1.0 / div)
             {
