@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SimulOP.Forms
@@ -25,6 +19,8 @@ namespace SimulOP.Forms
         private List<double> pratosY = new List<double>();
         private List<double> linhaOPX = new List<double>();
         private List<double> linhaOPY = new List<double>();
+        private List<double> linhaQX = new List<double>();
+        private List<double> linhaQY = new List<double>();
 
         // Strings e doubles da UI - Input Inicial
         private string cmbFluidoLKTxt;
@@ -51,102 +47,20 @@ namespace SimulOP.Forms
         private double nudTemperaturaDinDbl;
         private int trbTemperaturaDinInt;
 
-        private int test = 0;
-
         public FormsColunaMcCabeThiele()
         {
             InitializeComponent();
         }
 
-        private void AtualizaEquilibrio()
-        {
-            eqX.Clear();
-            eqY.Clear();
-
-            (eqX, eqY) = ColunaMcCabeThiele.PlotEquilibrio(100);
-
-            chart.Series[0].Points.DataBindXY(eqX, eqY);
-        }
-
-        private void AtualizaPratos()
-        {
-            pratosX.Clear();
-            pratosY.Clear();
-
-            (pratosX, pratosY) = ColunaMcCabeThiele.PlotPratos();
-
-            chart.Series[1].Points.DataBindXY(pratosX, pratosY);
-        }
-
-        private void AtualizaLinhasOP()
-        {
-            linhaOPX.Clear();
-            linhaOPY.Clear();
-
-            (linhaOPX, linhaOPY) = ColunaMcCabeThiele.PlotCurvaOP(100);
-
-            chart.Series[2].Points.Clear();
-
-            chart.Series[2].Points.DataBindXY(linhaOPX, linhaOPY);
-        }
-
-        private void AtualizaLinhaQ()
-        {
-
-        }
-        
         private void FormsColunaMcCabeThiele_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void btnInputInicial_Click(object sender, EventArgs e)
+        private void EventosInputs(bool ativar)
         {
-            cmbFluidoLKTxt = cmbFluidoLK.Text;
-            cmbFluidoHKTxt = cmbFluidoHK.Text;
-            cmbCondicaoEntradaTxt = "Vapor saturado";
-            nudRazaoQDbl = 0.0;
-            nudFracaoEntradaLKDbl = 0.5;
-            nudRefluxoDbl = 2.0;
-            nudXdDbl = 0.9;
-            nudXbDbl = 0.1;
-            nudTemperaturaDbl = 50 + 273.15; // Temperatura tem que ser usada em Kelvin
-            nudPressaoDbl = 1.0;
-
-            if (cmbFluidoLKTxt != "" && cmbFluidoHKTxt != "")
+            if (ativar)
             {
-                fluidoLK = new FluidoIdealOPIII(InicializadorObjetos.MaterialFluidoOPIII(cmbFluidoLKTxt), nudTemperaturaDbl);
-                fluidoHK = new FluidoIdealOPIII(InicializadorObjetos.MaterialFluidoOPIII(cmbFluidoHKTxt), nudTemperaturaDbl);
-                mistura = new MisturaBinaria(fluidoLK, fluidoHK, nudFracaoEntradaLKDbl, nudTemperaturaDbl, nudPressaoDbl);
-                ColunaMcCabeThiele = new ColunaMcCabeThiele(mistura, nudXdDbl, nudXbDbl, nudFracaoEntradaLKDbl, nudRefluxoDbl, nudRazaoQDbl);
-
-                AtualizaEquilibrio();
-                AtualizaLinhasOP();
-                AtualizaLinhaQ();
-                AtualizaPratos();
-
-                // Desincreve dos eventos para evitar chamar as funcoes mais de uma vez
-                nudFracaoEntradaLKDin.ValueChanged -= nudFracaoEntradaLKDin_ValueChanged;
-                trbFracaoEntradaLKDin.Scroll -= trbFracaoEntradaLKDin_Scroll;
-                nudRefluxoDin.ValueChanged -= nudRefluxoDin_ValueChanged;
-                trbRefluxoDin.Scroll -= trbRefluxoDin_Scroll;
-                nudXd.ValueChanged -= nudXd_ValueChanged;
-                trbXd.Scroll -= trbXd_Scroll;
-                nudXb.ValueChanged -= nudXb_ValueChanged;
-                trbXb.Scroll -= trbXb_Scroll;
-                nudTemperaturaDin.ValueChanged -= nudTemperaturaDin_ValueChanged;
-                trbTemperaturaDin.Scroll -= trbTemperaturaDin_Scroll;
-                nudCondicaoEntradaDin.ValueChanged -= nudCondicaoEntradaDin_ValueChanged;
-                cmbCondicaoEntradaDin.SelectedIndexChanged -= cmbCondicaoEntradaDin_SelectedIndexChanged;
-                trbCondicaoEntradaDin.Scroll -= trbCondicaoEntradaDin_Scroll;
-
-                cmbCondicaoEntradaDin.Text = cmbCondicaoEntradaTxt.ToLower();
-                nudFracaoEntradaLKDin.Value = Convert.ToDecimal(nudFracaoEntradaLKDbl);
-                nudRefluxoDin.Value = Convert.ToDecimal(nudRefluxoDbl);
-                nudXd.Value = Convert.ToDecimal(nudXdDbl);
-                nudXb.Value = Convert.ToDecimal(nudXbDbl);
-                nudTemperaturaDin.Value = Convert.ToDecimal(nudTemperaturaDbl - 273.15);
-
                 // Re-inscreve aos eventos
                 nudFracaoEntradaLKDin.ValueChanged += nudFracaoEntradaLKDin_ValueChanged;
                 trbFracaoEntradaLKDin.Scroll += trbFracaoEntradaLKDin_Scroll;
@@ -161,6 +75,105 @@ namespace SimulOP.Forms
                 nudCondicaoEntradaDin.ValueChanged += nudCondicaoEntradaDin_ValueChanged;
                 cmbCondicaoEntradaDin.SelectedIndexChanged += cmbCondicaoEntradaDin_SelectedIndexChanged;
                 trbCondicaoEntradaDin.Scroll += trbCondicaoEntradaDin_Scroll;
+            }
+            else
+            {
+                // Desincreve dos eventos para evitar chamar as funcoes mais de uma vez
+                nudFracaoEntradaLKDin.ValueChanged -= nudFracaoEntradaLKDin_ValueChanged;
+                trbFracaoEntradaLKDin.Scroll -= trbFracaoEntradaLKDin_Scroll;
+                nudRefluxoDin.ValueChanged -= nudRefluxoDin_ValueChanged;
+                trbRefluxoDin.Scroll -= trbRefluxoDin_Scroll;
+                nudXd.ValueChanged -= nudXd_ValueChanged;
+                trbXd.Scroll -= trbXd_Scroll;
+                nudXb.ValueChanged -= nudXb_ValueChanged;
+                trbXb.Scroll -= trbXb_Scroll;
+                nudTemperaturaDin.ValueChanged -= nudTemperaturaDin_ValueChanged;
+                trbTemperaturaDin.Scroll -= trbTemperaturaDin_Scroll;
+                nudCondicaoEntradaDin.ValueChanged -= nudCondicaoEntradaDin_ValueChanged;
+                cmbCondicaoEntradaDin.SelectedIndexChanged -= cmbCondicaoEntradaDin_SelectedIndexChanged;
+                trbCondicaoEntradaDin.Scroll -= trbCondicaoEntradaDin_Scroll;
+            }
+        }
+
+        private void AtualizaEquilibrio()
+        {
+            eqX.Clear();
+            eqY.Clear();
+            chart.Series[0].Points.Clear();
+            
+            (eqX, eqY) = ColunaMcCabeThiele.PlotEquilibrio(100);
+
+            chart.Series[0].Points.DataBindXY(eqX, eqY);
+        }
+
+        private void AtualizaPratos()
+        {
+            pratosX.Clear();
+            pratosY.Clear();
+            chart.Series[1].Points.Clear();
+
+            (pratosX, pratosY) = ColunaMcCabeThiele.PlotPratos();
+
+            chart.Series[1].Points.DataBindXY(pratosX, pratosY);
+        }
+
+        private void AtualizaLinhasOP()
+        {
+            linhaOPX.Clear();
+            linhaOPY.Clear();
+            chart.Series[2].Points.Clear();
+
+            (linhaOPX, linhaOPY) = ColunaMcCabeThiele.PlotCurvaOP(100);
+            
+            chart.Series[2].Points.DataBindXY(linhaOPX, linhaOPY);
+        }
+
+        private void AtualizaLinhaQ()
+        {
+            linhaQX.Clear();
+            linhaQY.Clear();
+            //chart.Series[1].Points.Clear();
+            
+            //(linhaQX, linhaQY) = ColunaMcCabeThiele.PlotCurvaQ(20);
+
+
+        }      
+ 
+        private void btnInputInicial_Click(object sender, EventArgs e)
+        {
+            cmbFluidoLKTxt = cmbFluidoLK.Text;
+            cmbFluidoHKTxt = cmbFluidoHK.Text;
+            cmbCondicaoEntradaTxt = "Vapor saturado";
+            nudRazaoQDbl = 0.0;
+            nudFracaoEntradaLKDbl = 0.5;
+            nudRefluxoDbl = 2.0;
+            nudXdDbl = 0.9;
+            nudXbDbl = 0.1;
+            nudTemperaturaDbl = 50 + 273.15; // Temperatura tem que ser usada em Kelvin
+            nudPressaoDbl = 1E5;
+
+            if (cmbFluidoLKTxt != "" && cmbFluidoHKTxt != "")
+            {
+                fluidoLK = new FluidoIdealOPIII(InicializadorObjetos.MaterialFluidoOPIII(cmbFluidoLKTxt), nudTemperaturaDbl);
+                fluidoHK = new FluidoIdealOPIII(InicializadorObjetos.MaterialFluidoOPIII(cmbFluidoHKTxt), nudTemperaturaDbl);
+                mistura = new MisturaBinaria(fluidoLK, fluidoHK, nudFracaoEntradaLKDbl, nudTemperaturaDbl, nudPressaoDbl);
+                ColunaMcCabeThiele = new ColunaMcCabeThiele(mistura, nudXdDbl, nudXbDbl, nudFracaoEntradaLKDbl, nudRefluxoDbl, nudRazaoQDbl);
+
+                AtualizaEquilibrio();
+                AtualizaLinhasOP();
+                AtualizaLinhaQ();
+                AtualizaPratos();
+
+                EventosInputs(false);
+
+                cmbCondicaoEntradaDin.Text = cmbCondicaoEntradaTxt.ToLower();
+                nudFracaoEntradaLKDin.Value = Convert.ToDecimal(nudFracaoEntradaLKDbl);
+                nudRefluxoDin.Value = Convert.ToDecimal(nudRefluxoDbl);
+                nudXd.Value = Convert.ToDecimal(nudXdDbl);
+                nudXb.Value = Convert.ToDecimal(nudXbDbl);
+                nudTemperaturaDin.Value = Convert.ToDecimal(nudTemperaturaDbl - 273.15);
+
+                EventosInputs(true);
 
                 gubVariaveis.Visible = true;
             }
@@ -242,16 +255,7 @@ namespace SimulOP.Forms
         private void AtualizaParDin(NumericUpDown nud, TrackBar trb, double x)
         {
             // Desincreve dos eventos para evitar chamar as funcoes mais de uma vez
-            nudFracaoEntradaLKDin.ValueChanged -= nudFracaoEntradaLKDin_ValueChanged;
-            trbFracaoEntradaLKDin.Scroll -= trbFracaoEntradaLKDin_Scroll;
-            nudRefluxoDin.ValueChanged -= nudRefluxoDin_ValueChanged;
-            trbRefluxoDin.Scroll -= trbRefluxoDin_Scroll;
-            nudXd.ValueChanged -= nudXd_ValueChanged;
-            trbXd.Scroll -= trbXd_Scroll;
-            nudXb.ValueChanged -= nudXb_ValueChanged;
-            trbXb.Scroll -= trbXb_Scroll;
-            nudTemperaturaDin.ValueChanged -= nudTemperaturaDin_ValueChanged;
-            trbTemperaturaDin.Scroll -= trbTemperaturaDin_Scroll;
+            EventosInputs(false);
 
             // Numeric Up and Down
             nud.Value = Convert.ToDecimal(x);
@@ -272,7 +276,6 @@ namespace SimulOP.Forms
                     AtualizaPratos();
                     break;
                 case "nudRefluxoDin": // Mudança no refluxo
-                    Console.WriteLine($"Valor RR = {x}");
                     nudRefluxoDinDbl = x;
                     trbRefluxoDinInt = trbInt;
                     ColunaMcCabeThiele.RefluxRatio = nudRefluxoDinDbl;
@@ -307,17 +310,8 @@ namespace SimulOP.Forms
                     throw new Exception($"{nud.Name} nao era esperado!");
             }
 
-            // Re-inscreve aos eventos
-            nudFracaoEntradaLKDin.ValueChanged += nudFracaoEntradaLKDin_ValueChanged;
-            trbFracaoEntradaLKDin.Scroll += trbFracaoEntradaLKDin_Scroll;
-            nudRefluxoDin.ValueChanged += nudRefluxoDin_ValueChanged;
-            trbRefluxoDin.Scroll += trbRefluxoDin_Scroll;
-            nudXd.ValueChanged += nudXd_ValueChanged;
-            trbXd.Scroll += trbXd_Scroll;
-            nudXb.ValueChanged += nudXb_ValueChanged;
-            trbXb.Scroll += trbXb_Scroll;
-            nudTemperaturaDin.ValueChanged += nudTemperaturaDin_ValueChanged;
-            trbTemperaturaDin.Scroll += trbTemperaturaDin_Scroll;
+            // Re-inscreve-se aos eventos
+            EventosInputs(true);
         }               
 
         #region Fracao LK Din
@@ -382,9 +376,7 @@ namespace SimulOP.Forms
         private void AtualizaCondicaoEntradaDinIputs(double q)
         {
             // Desincreve dos eventos para evitar chamar as funcoes mais de uma vez
-            nudCondicaoEntradaDin.ValueChanged -= nudCondicaoEntradaDin_ValueChanged;
-            cmbCondicaoEntradaDin.SelectedIndexChanged -= cmbCondicaoEntradaDin_SelectedIndexChanged;
-            trbCondicaoEntradaDin.Scroll -= trbCondicaoEntradaDin_Scroll;
+            EventosInputs(false);
 
             // Numeric Up and Down
             nudRazaoQDinDbl = q;
@@ -425,9 +417,7 @@ namespace SimulOP.Forms
             AtualizaPratos();
 
             // Re-inscreve aos eventos
-            nudCondicaoEntradaDin.ValueChanged += nudCondicaoEntradaDin_ValueChanged;
-            cmbCondicaoEntradaDin.SelectedIndexChanged += cmbCondicaoEntradaDin_SelectedIndexChanged;
-            trbCondicaoEntradaDin.Scroll += trbCondicaoEntradaDin_Scroll;
+            EventosInputs(true);
         }
         #endregion
 

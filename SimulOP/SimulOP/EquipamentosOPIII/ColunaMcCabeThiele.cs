@@ -89,14 +89,6 @@ namespace SimulOP
         #endregion
 
         /// <summary>
-        /// Faz o calculo do equilibrio da coluna
-        /// </summary>
-        public void CalculaEquilibrio()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
         /// Altera o valor q da entrada do fluido, representando o estado de aquecimento/resfriamento do líquido
         /// </summary>
         /// <param name="condicao">Condição do fluido de entrada (líquido/vapor saturado, líquido sub-resfriado, vapor super aquecido e parcialmente vaporizado)</param>
