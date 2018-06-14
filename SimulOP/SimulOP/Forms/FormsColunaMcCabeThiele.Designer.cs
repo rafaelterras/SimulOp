@@ -28,13 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.gubInputInicial = new System.Windows.Forms.GroupBox();
+            this.btnInputInicial = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbFluidoHK = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbFluidoLK = new System.Windows.Forms.ComboBox();
             this.nudRefluxo = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.nudFracaoEntradaLK = new System.Windows.Forms.NumericUpDown();
@@ -45,13 +51,8 @@
             this.cmbCondicaoEntrada = new System.Windows.Forms.ComboBox();
             this.nudPressao = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnInputInicial = new System.Windows.Forms.Button();
             this.nudTemperatura = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cmbFluidoHK = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbFluidoLK = new System.Windows.Forms.ComboBox();
             this.gubVariaveis = new System.Windows.Forms.GroupBox();
             this.nudRefluxoDin = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
@@ -72,7 +73,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.trbCondicaoEntradaDin = new System.Windows.Forms.TrackBar();
             this.trbRefluxoDin = new System.Windows.Forms.TrackBar();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gubResultados = new System.Windows.Forms.GroupBox();
+            this.txbAlpha = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txbPratoIdeal = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txbNPratos = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.gubGrafico = new System.Windows.Forms.GroupBox();
+            this.txbConvergencia = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.gubInputInicial.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudRefluxo)).BeginInit();
@@ -93,42 +102,64 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudXd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbCondicaoEntradaDin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbRefluxoDin)).BeginInit();
+            this.gubResultados.SuspendLayout();
             this.SuspendLayout();
             // 
             // chart
             // 
-            chartArea2.AxisX.Maximum = 1D;
-            chartArea2.AxisX.Minimum = 0D;
-            chartArea2.AxisY.Maximum = 1D;
-            chartArea2.AxisY.Minimum = 0D;
-            chartArea2.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart.Legends.Add(legend2);
-            this.chart.Location = new System.Drawing.Point(224, 15);
+            chartArea6.AxisX.Interval = 0.1D;
+            chartArea6.AxisX.MajorGrid.Enabled = false;
+            chartArea6.AxisX.Maximum = 1D;
+            chartArea6.AxisX.Minimum = 0D;
+            chartArea6.AxisX.MinorGrid.Enabled = true;
+            chartArea6.AxisX.MinorGrid.Interval = 0.1D;
+            chartArea6.AxisX.MinorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea6.AxisX.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea6.AxisY.Interval = 0.1D;
+            chartArea6.AxisY.MajorGrid.Enabled = false;
+            chartArea6.AxisY.Maximum = 1D;
+            chartArea6.AxisY.Minimum = 0D;
+            chartArea6.AxisY.MinorGrid.Enabled = true;
+            chartArea6.AxisY.MinorGrid.Interval = 0.1D;
+            chartArea6.AxisY.MinorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea6.AxisY.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea6.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chart.Legends.Add(legend6);
+            this.chart.Location = new System.Drawing.Point(239, 29);
             this.chart.Name = "chart";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            series5.BorderWidth = 2;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.Color = System.Drawing.Color.Black;
-            series5.Legend = "Legend1";
-            series5.Name = "Series2";
-            series6.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.Color = System.Drawing.Color.Gray;
-            series6.Legend = "Legend1";
-            series6.Name = "Series3";
-            this.chart.Series.Add(series4);
-            this.chart.Series.Add(series5);
-            this.chart.Series.Add(series6);
-            this.chart.Size = new System.Drawing.Size(748, 426);
+            series21.ChartArea = "ChartArea1";
+            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series21.Legend = "Legend1";
+            series21.Name = "Equilibrio";
+            series22.BorderWidth = 2;
+            series22.ChartArea = "ChartArea1";
+            series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series22.Color = System.Drawing.Color.Black;
+            series22.IsVisibleInLegend = false;
+            series22.Legend = "Legend1";
+            series22.Name = "Pratos";
+            series23.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series23.ChartArea = "ChartArea1";
+            series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series23.Color = System.Drawing.Color.Gray;
+            series23.Legend = "Legend1";
+            series23.Name = "LinhaOP";
+            series24.ChartArea = "ChartArea1";
+            series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series24.Color = System.Drawing.Color.Tomato;
+            series24.Legend = "Legend1";
+            series24.Name = "PontoQ";
+            series24.YValuesPerPoint = 2;
+            this.chart.Series.Add(series21);
+            this.chart.Series.Add(series22);
+            this.chart.Series.Add(series23);
+            this.chart.Series.Add(series24);
+            this.chart.Size = new System.Drawing.Size(748, 404);
             this.chart.TabIndex = 0;
             this.chart.Text = "chart";
+            this.chart.Visible = false;
             // 
             // gubInputInicial
             // 
@@ -144,6 +175,60 @@
             this.gubInputInicial.TabStop = false;
             this.gubInputInicial.Text = "Input inicial";
             // 
+            // btnInputInicial
+            // 
+            this.btnInputInicial.Location = new System.Drawing.Point(125, 74);
+            this.btnInputInicial.Name = "btnInputInicial";
+            this.btnInputInicial.Size = new System.Drawing.Size(75, 23);
+            this.btnInputInicial.TabIndex = 2;
+            this.btnInputInicial.Text = "Calcular";
+            this.btnInputInicial.UseVisualStyleBackColor = true;
+            this.btnInputInicial.Click += new System.EventHandler(this.btnInputInicial_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label2.Location = new System.Drawing.Point(6, 49);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Fluido HK";
+            // 
+            // cmbFluidoHK
+            // 
+            this.cmbFluidoHK.FormattingEnabled = true;
+            this.cmbFluidoHK.Items.AddRange(new object[] {
+            "Benzeno",
+            "Tolueno",
+            "Naftaleno"});
+            this.cmbFluidoHK.Location = new System.Drawing.Point(79, 47);
+            this.cmbFluidoHK.Name = "cmbFluidoHK";
+            this.cmbFluidoHK.Size = new System.Drawing.Size(121, 21);
+            this.cmbFluidoHK.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label1.Location = new System.Drawing.Point(6, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Fluido LK";
+            // 
+            // cmbFluidoLK
+            // 
+            this.cmbFluidoLK.FormattingEnabled = true;
+            this.cmbFluidoLK.Items.AddRange(new object[] {
+            "Benzeno",
+            "Tolueno",
+            "Naftaleno"});
+            this.cmbFluidoLK.Location = new System.Drawing.Point(79, 20);
+            this.cmbFluidoLK.Name = "cmbFluidoLK";
+            this.cmbFluidoLK.Size = new System.Drawing.Size(121, 21);
+            this.cmbFluidoLK.TabIndex = 0;
+            // 
             // nudRefluxo
             // 
             this.nudRefluxo.DecimalPlaces = 1;
@@ -152,7 +237,7 @@
             0,
             0,
             65536});
-            this.nudRefluxo.Location = new System.Drawing.Point(819, 533);
+            this.nudRefluxo.Location = new System.Drawing.Point(1155, 140);
             this.nudRefluxo.Maximum = new decimal(new int[] {
             10,
             0,
@@ -177,7 +262,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label11.Location = new System.Drawing.Point(630, 535);
+            this.label11.Location = new System.Drawing.Point(966, 142);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(90, 13);
             this.label11.TabIndex = 15;
@@ -187,7 +272,7 @@
             // nudFracaoEntradaLK
             // 
             this.nudFracaoEntradaLK.DecimalPlaces = 2;
-            this.nudFracaoEntradaLK.Location = new System.Drawing.Point(819, 507);
+            this.nudFracaoEntradaLK.Location = new System.Drawing.Point(1155, 114);
             this.nudFracaoEntradaLK.Maximum = new decimal(new int[] {
             8,
             0,
@@ -212,7 +297,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label10.Location = new System.Drawing.Point(630, 509);
+            this.label10.Location = new System.Drawing.Point(966, 116);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(128, 13);
             this.label10.TabIndex = 13;
@@ -227,7 +312,7 @@
             0,
             0,
             65536});
-            this.nudRazaoQ.Location = new System.Drawing.Point(819, 481);
+            this.nudRazaoQ.Location = new System.Drawing.Point(1155, 88);
             this.nudRazaoQ.Maximum = new decimal(new int[] {
             2,
             0,
@@ -248,7 +333,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label9.Location = new System.Drawing.Point(630, 483);
+            this.label9.Location = new System.Drawing.Point(966, 90);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(97, 13);
             this.label9.TabIndex = 11;
@@ -259,7 +344,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label8.Location = new System.Drawing.Point(630, 456);
+            this.label8.Location = new System.Drawing.Point(966, 63);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(94, 13);
             this.label8.TabIndex = 10;
@@ -275,7 +360,7 @@
             "Parcialmente vaporizado",
             "Vapor saturado",
             "Vapor super aquecido"});
-            this.cmbCondicaoEntrada.Location = new System.Drawing.Point(732, 453);
+            this.cmbCondicaoEntrada.Location = new System.Drawing.Point(1068, 60);
             this.cmbCondicaoEntrada.Name = "cmbCondicaoEntrada";
             this.cmbCondicaoEntrada.Size = new System.Drawing.Size(138, 21);
             this.cmbCondicaoEntrada.TabIndex = 9;
@@ -285,7 +370,7 @@
             // nudPressao
             // 
             this.nudPressao.DecimalPlaces = 1;
-            this.nudPressao.Location = new System.Drawing.Point(819, 585);
+            this.nudPressao.Location = new System.Drawing.Point(1155, 192);
             this.nudPressao.Maximum = new decimal(new int[] {
             20,
             0,
@@ -310,27 +395,17 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label4.Location = new System.Drawing.Point(630, 587);
+            this.label4.Location = new System.Drawing.Point(966, 194);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 13);
             this.label4.TabIndex = 7;
             this.label4.Text = "Pressão [bar]";
             this.label4.Visible = false;
             // 
-            // btnInputInicial
-            // 
-            this.btnInputInicial.Location = new System.Drawing.Point(125, 74);
-            this.btnInputInicial.Name = "btnInputInicial";
-            this.btnInputInicial.Size = new System.Drawing.Size(75, 23);
-            this.btnInputInicial.TabIndex = 6;
-            this.btnInputInicial.Text = "Calcular";
-            this.btnInputInicial.UseVisualStyleBackColor = true;
-            this.btnInputInicial.Click += new System.EventHandler(this.btnInputInicial_Click);
-            // 
             // nudTemperatura
             // 
             this.nudTemperatura.DecimalPlaces = 1;
-            this.nudTemperatura.Location = new System.Drawing.Point(819, 559);
+            this.nudTemperatura.Location = new System.Drawing.Point(1155, 166);
             this.nudTemperatura.Maximum = new decimal(new int[] {
             200,
             0,
@@ -355,54 +430,12 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label3.Location = new System.Drawing.Point(630, 561);
+            this.label3.Location = new System.Drawing.Point(966, 168);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Temperatura [ºC]";
             this.label3.Visible = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label2.Location = new System.Drawing.Point(6, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Fluido HK";
-            // 
-            // cmbFluidoHK
-            // 
-            this.cmbFluidoHK.FormattingEnabled = true;
-            this.cmbFluidoHK.Items.AddRange(new object[] {
-            "Benzeno",
-            "Tolueno"});
-            this.cmbFluidoHK.Location = new System.Drawing.Point(79, 47);
-            this.cmbFluidoHK.Name = "cmbFluidoHK";
-            this.cmbFluidoHK.Size = new System.Drawing.Size(121, 21);
-            this.cmbFluidoHK.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label1.Location = new System.Drawing.Point(6, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Fluido LK";
-            // 
-            // cmbFluidoLK
-            // 
-            this.cmbFluidoLK.FormattingEnabled = true;
-            this.cmbFluidoLK.Items.AddRange(new object[] {
-            "Benzeno",
-            "Tolueno"});
-            this.cmbFluidoLK.Location = new System.Drawing.Point(79, 20);
-            this.cmbFluidoLK.Name = "cmbFluidoLK";
-            this.cmbFluidoLK.Size = new System.Drawing.Size(121, 21);
-            this.cmbFluidoLK.TabIndex = 0;
             // 
             // gubVariaveis
             // 
@@ -425,7 +458,7 @@
             this.gubVariaveis.Controls.Add(this.label5);
             this.gubVariaveis.Controls.Add(this.trbCondicaoEntradaDin);
             this.gubVariaveis.Controls.Add(this.trbRefluxoDin);
-            this.gubVariaveis.Location = new System.Drawing.Point(12, 194);
+            this.gubVariaveis.Location = new System.Drawing.Point(12, 191);
             this.gubVariaveis.Name = "gubVariaveis";
             this.gubVariaveis.Size = new System.Drawing.Size(206, 384);
             this.gubVariaveis.TabIndex = 4;
@@ -436,6 +469,11 @@
             // nudRefluxoDin
             // 
             this.nudRefluxoDin.DecimalPlaces = 1;
+            this.nudRefluxoDin.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.nudRefluxoDin.Location = new System.Drawing.Point(147, 153);
             this.nudRefluxoDin.Maximum = new decimal(new int[] {
             10,
@@ -449,7 +487,7 @@
             65536});
             this.nudRefluxoDin.Name = "nudRefluxoDin";
             this.nudRefluxoDin.Size = new System.Drawing.Size(50, 20);
-            this.nudRefluxoDin.TabIndex = 23;
+            this.nudRefluxoDin.TabIndex = 5;
             this.nudRefluxoDin.Value = new decimal(new int[] {
             12,
             0,
@@ -503,7 +541,7 @@
             -2147483648});
             this.nudCondicaoEntradaDin.Name = "nudCondicaoEntradaDin";
             this.nudCondicaoEntradaDin.Size = new System.Drawing.Size(50, 20);
-            this.nudCondicaoEntradaDin.TabIndex = 20;
+            this.nudCondicaoEntradaDin.TabIndex = 4;
             this.nudCondicaoEntradaDin.Value = new decimal(new int[] {
             5,
             0,
@@ -523,11 +561,12 @@
             // 
             // trbFracaoEntradaLKDin
             // 
+            this.trbFracaoEntradaLKDin.LargeChange = 1;
             this.trbFracaoEntradaLKDin.Location = new System.Drawing.Point(9, 31);
             this.trbFracaoEntradaLKDin.Maximum = 50;
             this.trbFracaoEntradaLKDin.Name = "trbFracaoEntradaLKDin";
             this.trbFracaoEntradaLKDin.Size = new System.Drawing.Size(188, 45);
-            this.trbFracaoEntradaLKDin.TabIndex = 19;
+            this.trbFracaoEntradaLKDin.TabIndex = 9;
             this.trbFracaoEntradaLKDin.Value = 25;
             this.trbFracaoEntradaLKDin.Scroll += new System.EventHandler(this.trbFracaoEntradaLKDin_Scroll);
             // 
@@ -552,7 +591,7 @@
             65536});
             this.nudFracaoEntradaLKDin.Name = "nudFracaoEntradaLKDin";
             this.nudFracaoEntradaLKDin.Size = new System.Drawing.Size(50, 20);
-            this.nudFracaoEntradaLKDin.TabIndex = 17;
+            this.nudFracaoEntradaLKDin.TabIndex = 3;
             this.nudFracaoEntradaLKDin.Value = new decimal(new int[] {
             5,
             0,
@@ -576,7 +615,7 @@
             this.trbTemperaturaDin.Maximum = 50;
             this.trbTemperaturaDin.Name = "trbTemperaturaDin";
             this.trbTemperaturaDin.Size = new System.Drawing.Size(188, 45);
-            this.trbTemperaturaDin.TabIndex = 16;
+            this.trbTemperaturaDin.TabIndex = 14;
             this.trbTemperaturaDin.Scroll += new System.EventHandler(this.trbTemperaturaDin_Scroll);
             // 
             // nudTemperaturaDin
@@ -595,7 +634,7 @@
             0});
             this.nudTemperaturaDin.Name = "nudTemperaturaDin";
             this.nudTemperaturaDin.Size = new System.Drawing.Size(50, 20);
-            this.nudTemperaturaDin.TabIndex = 14;
+            this.nudTemperaturaDin.TabIndex = 8;
             this.nudTemperaturaDin.Value = new decimal(new int[] {
             50,
             0,
@@ -626,6 +665,11 @@
             // nudXb
             // 
             this.nudXb.DecimalPlaces = 3;
+            this.nudXb.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             this.nudXb.Location = new System.Drawing.Point(147, 256);
             this.nudXb.Maximum = new decimal(new int[] {
             49,
@@ -639,7 +683,7 @@
             196608});
             this.nudXb.Name = "nudXb";
             this.nudXb.Size = new System.Drawing.Size(50, 20);
-            this.nudXb.TabIndex = 11;
+            this.nudXb.TabIndex = 7;
             this.nudXb.Value = new decimal(new int[] {
             1,
             0,
@@ -663,13 +707,18 @@
             this.trbXd.Maximum = 50;
             this.trbXd.Name = "trbXd";
             this.trbXd.Size = new System.Drawing.Size(188, 45);
-            this.trbXd.TabIndex = 10;
+            this.trbXd.TabIndex = 12;
             this.trbXd.Value = 45;
             this.trbXd.Scroll += new System.EventHandler(this.trbXd_Scroll);
             // 
             // nudXd
             // 
             this.nudXd.DecimalPlaces = 3;
+            this.nudXd.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             this.nudXd.Location = new System.Drawing.Point(147, 205);
             this.nudXd.Maximum = new decimal(new int[] {
             999,
@@ -683,7 +732,7 @@
             65536});
             this.nudXd.Name = "nudXd";
             this.nudXd.Size = new System.Drawing.Size(50, 20);
-            this.nudXd.TabIndex = 9;
+            this.nudXd.TabIndex = 6;
             this.nudXd.Value = new decimal(new int[] {
             9,
             0,
@@ -707,7 +756,7 @@
             this.trbCondicaoEntradaDin.Maximum = 50;
             this.trbCondicaoEntradaDin.Name = "trbCondicaoEntradaDin";
             this.trbCondicaoEntradaDin.Size = new System.Drawing.Size(188, 45);
-            this.trbCondicaoEntradaDin.TabIndex = 22;
+            this.trbCondicaoEntradaDin.TabIndex = 10;
             this.trbCondicaoEntradaDin.Value = 25;
             this.trbCondicaoEntradaDin.Scroll += new System.EventHandler(this.trbCondicaoEntradaDin_Scroll);
             // 
@@ -718,24 +767,113 @@
             this.trbRefluxoDin.Maximum = 50;
             this.trbRefluxoDin.Name = "trbRefluxoDin";
             this.trbRefluxoDin.Size = new System.Drawing.Size(188, 45);
-            this.trbRefluxoDin.TabIndex = 25;
+            this.trbRefluxoDin.TabIndex = 11;
+            this.trbRefluxoDin.Value = 5;
             this.trbRefluxoDin.Scroll += new System.EventHandler(this.trbRefluxoDin_Scroll);
             // 
-            // groupBox1
+            // gubResultados
             // 
-            this.groupBox1.Location = new System.Drawing.Point(233, 452);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(337, 126);
-            this.groupBox1.TabIndex = 17;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Resultados";
+            this.gubResultados.Controls.Add(this.txbAlpha);
+            this.gubResultados.Controls.Add(this.label17);
+            this.gubResultados.Controls.Add(this.txbPratoIdeal);
+            this.gubResultados.Controls.Add(this.label16);
+            this.gubResultados.Controls.Add(this.txbNPratos);
+            this.gubResultados.Controls.Add(this.label15);
+            this.gubResultados.Location = new System.Drawing.Point(233, 449);
+            this.gubResultados.Name = "gubResultados";
+            this.gubResultados.Size = new System.Drawing.Size(763, 126);
+            this.gubResultados.TabIndex = 17;
+            this.gubResultados.TabStop = false;
+            this.gubResultados.Text = "Resultados";
+            this.gubResultados.Visible = false;
+            // 
+            // txbAlpha
+            // 
+            this.txbAlpha.Location = new System.Drawing.Point(126, 19);
+            this.txbAlpha.Name = "txbAlpha";
+            this.txbAlpha.ReadOnly = true;
+            this.txbAlpha.Size = new System.Drawing.Size(34, 20);
+            this.txbAlpha.TabIndex = 24;
+            this.txbAlpha.Text = "-";
+            this.txbAlpha.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 22);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(78, 13);
+            this.label17.TabIndex = 23;
+            this.label17.Text = "Valor do alpha:";
+            // 
+            // txbPratoIdeal
+            // 
+            this.txbPratoIdeal.Location = new System.Drawing.Point(126, 71);
+            this.txbPratoIdeal.Name = "txbPratoIdeal";
+            this.txbPratoIdeal.ReadOnly = true;
+            this.txbPratoIdeal.Size = new System.Drawing.Size(78, 20);
+            this.txbPratoIdeal.TabIndex = 22;
+            this.txbPratoIdeal.Text = "-";
+            this.txbPratoIdeal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 74);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(114, 13);
+            this.label16.TabIndex = 21;
+            this.label16.Text = "Prato de entrada ideal:";
+            // 
+            // txbNPratos
+            // 
+            this.txbNPratos.Location = new System.Drawing.Point(126, 45);
+            this.txbNPratos.Name = "txbNPratos";
+            this.txbNPratos.ReadOnly = true;
+            this.txbNPratos.Size = new System.Drawing.Size(34, 20);
+            this.txbNPratos.TabIndex = 20;
+            this.txbNPratos.Text = "-";
+            this.txbNPratos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 48);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(94, 13);
+            this.label15.TabIndex = 19;
+            this.label15.Text = "Número de pratos:";
+            // 
+            // gubGrafico
+            // 
+            this.gubGrafico.Location = new System.Drawing.Point(233, 10);
+            this.gubGrafico.Name = "gubGrafico";
+            this.gubGrafico.Size = new System.Drawing.Size(763, 433);
+            this.gubGrafico.TabIndex = 18;
+            this.gubGrafico.TabStop = false;
+            this.gubGrafico.Text = "Gráfico";
+            // 
+            // txbConvergencia
+            // 
+            this.txbConvergencia.BackColor = System.Drawing.SystemColors.Control;
+            this.txbConvergencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbConvergencia.ForeColor = System.Drawing.Color.Green;
+            this.txbConvergencia.Location = new System.Drawing.Point(12, 135);
+            this.txbConvergencia.Name = "txbConvergencia";
+            this.txbConvergencia.ReadOnly = true;
+            this.txbConvergencia.Size = new System.Drawing.Size(206, 29);
+            this.txbConvergencia.TabIndex = 25;
+            this.txbConvergencia.Text = "OK";
+            this.txbConvergencia.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txbConvergencia.Visible = false;
             // 
             // FormsColunaMcCabeThiele
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 590);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(1008, 581);
+            this.Controls.Add(this.txbConvergencia);
+            this.Controls.Add(this.gubResultados);
             this.Controls.Add(this.nudRefluxo);
             this.Controls.Add(this.gubVariaveis);
             this.Controls.Add(this.label11);
@@ -751,6 +889,7 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cmbCondicaoEntrada);
+            this.Controls.Add(this.gubGrafico);
             this.Name = "FormsColunaMcCabeThiele";
             this.Text = "FormsColunaMcCabeThiele";
             this.Load += new System.EventHandler(this.FormsColunaMcCabeThiele_Load);
@@ -776,6 +915,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudXd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbCondicaoEntradaDin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbRefluxoDin)).EndInit();
+            this.gubResultados.ResumeLayout(false);
+            this.gubResultados.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -822,6 +963,14 @@
         private System.Windows.Forms.TrackBar trbRefluxoDin;
         private System.Windows.Forms.NumericUpDown nudRefluxoDin;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gubResultados;
+        private System.Windows.Forms.GroupBox gubGrafico;
+        private System.Windows.Forms.TextBox txbNPratos;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txbPratoIdeal;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txbAlpha;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txbConvergencia;
     }
 }

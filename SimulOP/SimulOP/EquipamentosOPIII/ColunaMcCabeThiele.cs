@@ -65,6 +65,7 @@ namespace SimulOP
             this.feedZF = feedZF;
             this.refluxRatio = refluxRatio;
             this.feedConditionQ = feedConditionQ;
+            CalculaPontoP();
         }
 
         /// <summary>
@@ -84,6 +85,7 @@ namespace SimulOP
             this.feedZF = feedZF;
             this.refluxRatio = refluxRatio;
             CondicaoEntrada(condicaoEntrada);
+            CalculaPontoP();
         }
 
         #endregion
@@ -244,7 +246,7 @@ namespace SimulOP
 
             while (xLK >= this.targetXB)
             {
-                if (PlotX.Count > 30)
+                if (PlotX.Count > 100)
                 {
                     PlotX.Add(xLK);
                     PlotY.Add(CurvaOP(xLK));

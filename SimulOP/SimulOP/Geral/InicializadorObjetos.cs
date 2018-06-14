@@ -56,6 +56,9 @@
                 case "tolueno":
                     coefAntoine = new double[3] { 4.14157, 1377.578, -50.507 };
                     break;
+                case "naftaleno":
+                    coefAntoine = new double[3] { 4.27117, 1831.571 , -61.329 };
+                    break;
                 default:
                     return null;
             }

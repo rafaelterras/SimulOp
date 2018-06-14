@@ -11,6 +11,7 @@ namespace SimulOP.Forms
         private FluidoIdealOPIII fluidoHK;
         private MisturaBinaria mistura;
         private ColunaMcCabeThiele ColunaMcCabeThiele;
+        private bool erroConvergencia = false;
 
         // Listas para plots
         private List<double> eqX = new List<double>();
@@ -99,33 +100,37 @@ namespace SimulOP.Forms
         {
             eqX.Clear();
             eqY.Clear();
-            chart.Series[0].Points.Clear();
-            
+            chart.Series["Equilibrio"].Points.Clear();
+
             (eqX, eqY) = ColunaMcCabeThiele.PlotEquilibrio(100);
 
-            chart.Series[0].Points.DataBindXY(eqX, eqY);
+            chart.Series["Equilibrio"].Points.DataBindXY(eqX, eqY);
+
+            txbAlpha.Text = Math.Round(ColunaMcCabeThiele.MisturaBinaria.Alpha, 2).ToString();
         }
 
         private void AtualizaPratos()
         {
             pratosX.Clear();
             pratosY.Clear();
-            chart.Series[1].Points.Clear();
+            chart.Series["Pratos"].Points.Clear();
 
             (pratosX, pratosY) = ColunaMcCabeThiele.PlotPratos();
 
-            chart.Series[1].Points.DataBindXY(pratosX, pratosY);
+            chart.Series["Pratos"].Points.DataBindXY(pratosX, pratosY);
         }
 
         private void AtualizaLinhasOP()
         {
             linhaOPX.Clear();
             linhaOPY.Clear();
-            chart.Series[2].Points.Clear();
+            chart.Series["LinhaOP"].Points.Clear();
+            chart.Series["PontoQ"].Points.Clear();
 
             (linhaOPX, linhaOPY) = ColunaMcCabeThiele.PlotCurvaOP(100);
-            
-            chart.Series[2].Points.DataBindXY(linhaOPX, linhaOPY);
+
+            chart.Series["LinhaOP"].Points.DataBindXY(linhaOPX, linhaOPY);
+            chart.Series["PontoQ"].Points.AddXY(ColunaMcCabeThiele.PontoP[0], ColunaMcCabeThiele.PontoP[1]);
         }
 
         private void AtualizaLinhaQ()
@@ -133,11 +138,64 @@ namespace SimulOP.Forms
             linhaQX.Clear();
             linhaQY.Clear();
             //chart.Series[1].Points.Clear();
-            
+
             //(linhaQX, linhaQY) = ColunaMcCabeThiele.PlotCurvaQ(20);
+        }
 
+        private void VerificaConvergencia()
+        {
+            string localPratoIdeal = "-";
+            
+            // Equilibrio
+            if (ColunaMcCabeThiele.PontoP[1] > ColunaMcCabeThiele.MisturaBinaria.CalculaVap(ColunaMcCabeThiele.PontoP[0]))
+            {
+                erroConvergencia = true;
+            }
+            else
+            {
+                erroConvergencia = false;
+            }
 
-        }      
+            // Pratos
+            if (erroConvergencia || pratosX.Count == 100)
+            {
+                erroConvergencia = true;
+            }
+            else
+            {
+                for (int i = 1; i < pratosX.Count - 2; i = i + 2)
+                {
+
+                    if (ColunaMcCabeThiele.PontoP[0] <= pratosX[i] && ColunaMcCabeThiele.PontoP[0] > pratosX[i + 2])
+                    {
+                        erroConvergencia = false;
+                        localPratoIdeal = $"entre {(i + 1) / 2} e {(i + 3) / 2}";
+                        break;
+                    }
+                    else
+                    {
+                        erroConvergencia = true;
+                    }
+                }
+            }
+
+            if (erroConvergencia)
+            {
+                txbConvergencia.Text = "Erro de convergência!";
+                txbConvergencia.ForeColor = System.Drawing.Color.Maroon;
+
+                txbNPratos.Text = "-";
+                txbPratoIdeal.Text = "-";
+            }
+            else
+            {
+                txbConvergencia.Text = "OK";
+                txbConvergencia.ForeColor = System.Drawing.Color.Green;
+
+                txbNPratos.Text = ((pratosX.Count - 1) / 2).ToString();
+                txbPratoIdeal.Text = localPratoIdeal;
+            }
+        }
  
         private void btnInputInicial_Click(object sender, EventArgs e)
         {
@@ -152,30 +210,53 @@ namespace SimulOP.Forms
             nudTemperaturaDbl = 50 + 273.15; // Temperatura tem que ser usada em Kelvin
             nudPressaoDbl = 1E5;
 
-            if (cmbFluidoLKTxt != "" && cmbFluidoHKTxt != "")
+            if (cmbFluidoLKTxt != "" && cmbFluidoHKTxt != "" && cmbFluidoLKTxt != cmbFluidoHKTxt)
             {
+                //EventosInputs(false);
+                
                 fluidoLK = new FluidoIdealOPIII(InicializadorObjetos.MaterialFluidoOPIII(cmbFluidoLKTxt), nudTemperaturaDbl);
                 fluidoHK = new FluidoIdealOPIII(InicializadorObjetos.MaterialFluidoOPIII(cmbFluidoHKTxt), nudTemperaturaDbl);
                 mistura = new MisturaBinaria(fluidoLK, fluidoHK, nudFracaoEntradaLKDbl, nudTemperaturaDbl, nudPressaoDbl);
-                ColunaMcCabeThiele = new ColunaMcCabeThiele(mistura, nudXdDbl, nudXbDbl, nudFracaoEntradaLKDbl, nudRefluxoDbl, nudRazaoQDbl);
 
-                AtualizaEquilibrio();
-                AtualizaLinhasOP();
-                AtualizaLinhaQ();
-                AtualizaPratos();
+                if (mistura.Alpha > 1) // Condição para que a coluna fique em função do LK
+                {
+                    ColunaMcCabeThiele = new ColunaMcCabeThiele(mistura, nudXdDbl, nudXbDbl, nudFracaoEntradaLKDbl, nudRefluxoDbl, nudRazaoQDbl);
 
-                EventosInputs(false);
+                    AtualizaEquilibrio();
+                    AtualizaLinhasOP();
+                    AtualizaLinhaQ();
+                    AtualizaPratos();
 
-                cmbCondicaoEntradaDin.Text = cmbCondicaoEntradaTxt.ToLower();
-                nudFracaoEntradaLKDin.Value = Convert.ToDecimal(nudFracaoEntradaLKDbl);
-                nudRefluxoDin.Value = Convert.ToDecimal(nudRefluxoDbl);
-                nudXd.Value = Convert.ToDecimal(nudXdDbl);
-                nudXb.Value = Convert.ToDecimal(nudXbDbl);
-                nudTemperaturaDin.Value = Convert.ToDecimal(nudTemperaturaDbl - 273.15);
+                    chart.Series["Equilibrio"].LegendText = $"ELV {cmbFluidoLKTxt}, {cmbFluidoHKTxt}";
+                    chart.Series["LinhaOP"].LegendText = "Linha de Operação";
+                    chart.Series["PontoQ"].LegendText = "PontoQ";
+                    txbConvergencia.Text = "OK";
+                    txbConvergencia.ForeColor = System.Drawing.Color.Green;
 
-                EventosInputs(true);
+                    cmbCondicaoEntradaDin.Text = cmbCondicaoEntradaTxt.ToLower();
+                    nudFracaoEntradaLKDin.Value = Convert.ToDecimal(nudFracaoEntradaLKDbl);
+                    nudRefluxoDin.Value = Convert.ToDecimal(nudRefluxoDbl);
+                    nudXd.Value = Convert.ToDecimal(nudXdDbl);
+                    nudXb.Value = Convert.ToDecimal(nudXbDbl);
+                    nudTemperaturaDin.Value = Convert.ToDecimal(nudTemperaturaDbl - 273.15);
 
-                gubVariaveis.Visible = true;
+                    VerificaConvergencia();
+
+                    //EventosInputs(true);
+
+                    txbConvergencia.Visible = true;
+                    gubVariaveis.Visible = true;
+                    gubResultados.Visible = true;
+                    chart.Visible = true;
+                }
+                else
+                {
+                    txbConvergencia.Text = "Fluido HK é mais volátil";
+                    txbConvergencia.ForeColor = System.Drawing.Color.Maroon;
+                    chart.Visible = false;
+                    gubVariaveis.Visible = false;
+                    gubResultados.Visible = false;
+                }
             }
         }
 
@@ -310,6 +391,8 @@ namespace SimulOP.Forms
                     throw new Exception($"{nud.Name} nao era esperado!");
             }
 
+            VerificaConvergencia();
+
             // Re-inscreve-se aos eventos
             EventosInputs(true);
         }               
@@ -415,6 +498,8 @@ namespace SimulOP.Forms
             AtualizaLinhasOP();
             AtualizaLinhaQ();
             AtualizaPratos();
+
+            VerificaConvergencia();
 
             // Re-inscreve aos eventos
             EventosInputs(true);
