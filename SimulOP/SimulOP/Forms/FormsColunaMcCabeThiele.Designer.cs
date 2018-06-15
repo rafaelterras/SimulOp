@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.gubInputInicial = new System.Windows.Forms.GroupBox();
             this.btnInputInicial = new System.Windows.Forms.Button();
@@ -107,56 +107,56 @@
             // 
             // chart
             // 
-            chartArea6.AxisX.Interval = 0.1D;
-            chartArea6.AxisX.MajorGrid.Enabled = false;
-            chartArea6.AxisX.Maximum = 1D;
-            chartArea6.AxisX.Minimum = 0D;
-            chartArea6.AxisX.MinorGrid.Enabled = true;
-            chartArea6.AxisX.MinorGrid.Interval = 0.1D;
-            chartArea6.AxisX.MinorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea6.AxisX.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea6.AxisY.Interval = 0.1D;
-            chartArea6.AxisY.MajorGrid.Enabled = false;
-            chartArea6.AxisY.Maximum = 1D;
-            chartArea6.AxisY.Minimum = 0D;
-            chartArea6.AxisY.MinorGrid.Enabled = true;
-            chartArea6.AxisY.MinorGrid.Interval = 0.1D;
-            chartArea6.AxisY.MinorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea6.AxisY.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea6.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chart.Legends.Add(legend6);
+            chartArea1.AxisX.Interval = 0.1D;
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisX.Maximum = 1D;
+            chartArea1.AxisX.Minimum = 0D;
+            chartArea1.AxisX.MinorGrid.Enabled = true;
+            chartArea1.AxisX.MinorGrid.Interval = 0.1D;
+            chartArea1.AxisX.MinorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea1.AxisX.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisY.Interval = 0.1D;
+            chartArea1.AxisY.MajorGrid.Enabled = false;
+            chartArea1.AxisY.Maximum = 1D;
+            chartArea1.AxisY.Minimum = 0D;
+            chartArea1.AxisY.MinorGrid.Enabled = true;
+            chartArea1.AxisY.MinorGrid.Interval = 0.1D;
+            chartArea1.AxisY.MinorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea1.AxisY.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart.Legends.Add(legend1);
             this.chart.Location = new System.Drawing.Point(239, 29);
             this.chart.Name = "chart";
-            series21.ChartArea = "ChartArea1";
-            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series21.Legend = "Legend1";
-            series21.Name = "Equilibrio";
-            series22.BorderWidth = 2;
-            series22.ChartArea = "ChartArea1";
-            series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series22.Color = System.Drawing.Color.Black;
-            series22.IsVisibleInLegend = false;
-            series22.Legend = "Legend1";
-            series22.Name = "Pratos";
-            series23.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            series23.ChartArea = "ChartArea1";
-            series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series23.Color = System.Drawing.Color.Gray;
-            series23.Legend = "Legend1";
-            series23.Name = "LinhaOP";
-            series24.ChartArea = "ChartArea1";
-            series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series24.Color = System.Drawing.Color.Tomato;
-            series24.Legend = "Legend1";
-            series24.Name = "PontoQ";
-            series24.YValuesPerPoint = 2;
-            this.chart.Series.Add(series21);
-            this.chart.Series.Add(series22);
-            this.chart.Series.Add(series23);
-            this.chart.Series.Add(series24);
-            this.chart.Size = new System.Drawing.Size(748, 404);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Equilibrio";
+            series2.BorderWidth = 2;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Color = System.Drawing.Color.Black;
+            series2.IsVisibleInLegend = false;
+            series2.Legend = "Legend1";
+            series2.Name = "Pratos";
+            series3.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Color = System.Drawing.Color.Gray;
+            series3.Legend = "Legend1";
+            series3.Name = "LinhaOP";
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series4.Color = System.Drawing.Color.Tomato;
+            series4.Legend = "Legend1";
+            series4.Name = "PontoQ";
+            series4.YValuesPerPoint = 2;
+            this.chart.Series.Add(series1);
+            this.chart.Series.Add(series2);
+            this.chart.Series.Add(series3);
+            this.chart.Series.Add(series4);
+            this.chart.Size = new System.Drawing.Size(603, 404);
             this.chart.TabIndex = 0;
             this.chart.Text = "chart";
             this.chart.Visible = false;
@@ -237,7 +237,7 @@
             0,
             0,
             65536});
-            this.nudRefluxo.Location = new System.Drawing.Point(1155, 140);
+            this.nudRefluxo.Location = new System.Drawing.Point(1055, 92);
             this.nudRefluxo.Maximum = new decimal(new int[] {
             10,
             0,
@@ -262,7 +262,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label11.Location = new System.Drawing.Point(966, 142);
+            this.label11.Location = new System.Drawing.Point(866, 94);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(90, 13);
             this.label11.TabIndex = 15;
@@ -272,7 +272,7 @@
             // nudFracaoEntradaLK
             // 
             this.nudFracaoEntradaLK.DecimalPlaces = 2;
-            this.nudFracaoEntradaLK.Location = new System.Drawing.Point(1155, 114);
+            this.nudFracaoEntradaLK.Location = new System.Drawing.Point(1055, 66);
             this.nudFracaoEntradaLK.Maximum = new decimal(new int[] {
             8,
             0,
@@ -297,7 +297,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label10.Location = new System.Drawing.Point(966, 116);
+            this.label10.Location = new System.Drawing.Point(866, 68);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(128, 13);
             this.label10.TabIndex = 13;
@@ -312,7 +312,7 @@
             0,
             0,
             65536});
-            this.nudRazaoQ.Location = new System.Drawing.Point(1155, 88);
+            this.nudRazaoQ.Location = new System.Drawing.Point(1055, 40);
             this.nudRazaoQ.Maximum = new decimal(new int[] {
             2,
             0,
@@ -333,7 +333,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label9.Location = new System.Drawing.Point(966, 90);
+            this.label9.Location = new System.Drawing.Point(866, 42);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(97, 13);
             this.label9.TabIndex = 11;
@@ -344,7 +344,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label8.Location = new System.Drawing.Point(966, 63);
+            this.label8.Location = new System.Drawing.Point(866, 15);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(94, 13);
             this.label8.TabIndex = 10;
@@ -360,7 +360,7 @@
             "Parcialmente vaporizado",
             "Vapor saturado",
             "Vapor super aquecido"});
-            this.cmbCondicaoEntrada.Location = new System.Drawing.Point(1068, 60);
+            this.cmbCondicaoEntrada.Location = new System.Drawing.Point(968, 12);
             this.cmbCondicaoEntrada.Name = "cmbCondicaoEntrada";
             this.cmbCondicaoEntrada.Size = new System.Drawing.Size(138, 21);
             this.cmbCondicaoEntrada.TabIndex = 9;
@@ -370,7 +370,7 @@
             // nudPressao
             // 
             this.nudPressao.DecimalPlaces = 1;
-            this.nudPressao.Location = new System.Drawing.Point(1155, 192);
+            this.nudPressao.Location = new System.Drawing.Point(1055, 144);
             this.nudPressao.Maximum = new decimal(new int[] {
             20,
             0,
@@ -395,7 +395,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label4.Location = new System.Drawing.Point(966, 194);
+            this.label4.Location = new System.Drawing.Point(866, 146);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 13);
             this.label4.TabIndex = 7;
@@ -405,7 +405,7 @@
             // nudTemperatura
             // 
             this.nudTemperatura.DecimalPlaces = 1;
-            this.nudTemperatura.Location = new System.Drawing.Point(1155, 166);
+            this.nudTemperatura.Location = new System.Drawing.Point(1055, 118);
             this.nudTemperatura.Maximum = new decimal(new int[] {
             200,
             0,
@@ -430,7 +430,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label3.Location = new System.Drawing.Point(966, 168);
+            this.label3.Location = new System.Drawing.Point(866, 120);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 13);
             this.label3.TabIndex = 4;
@@ -781,7 +781,7 @@
             this.gubResultados.Controls.Add(this.label15);
             this.gubResultados.Location = new System.Drawing.Point(233, 449);
             this.gubResultados.Name = "gubResultados";
-            this.gubResultados.Size = new System.Drawing.Size(763, 126);
+            this.gubResultados.Size = new System.Drawing.Size(623, 126);
             this.gubResultados.TabIndex = 17;
             this.gubResultados.TabStop = false;
             this.gubResultados.Text = "Resultados";
@@ -848,7 +848,7 @@
             // 
             this.gubGrafico.Location = new System.Drawing.Point(233, 10);
             this.gubGrafico.Name = "gubGrafico";
-            this.gubGrafico.Size = new System.Drawing.Size(763, 433);
+            this.gubGrafico.Size = new System.Drawing.Size(623, 433);
             this.gubGrafico.TabIndex = 18;
             this.gubGrafico.TabStop = false;
             this.gubGrafico.Text = "Gráfico";
@@ -871,7 +871,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 581);
+            this.ClientSize = new System.Drawing.Size(865, 581);
             this.Controls.Add(this.txbConvergencia);
             this.Controls.Add(this.gubResultados);
             this.Controls.Add(this.nudRefluxo);
