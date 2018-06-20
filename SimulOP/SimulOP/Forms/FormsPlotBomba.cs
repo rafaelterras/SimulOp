@@ -47,9 +47,9 @@ namespace SimulOP
             // Atualiza os valores da bomba
             bomba1.CalculaVazao();
 
-            double[] plotX;
-            double[] plotYBomba;
-            double[] plotYtubo;
+            List<double> plotX;
+            List<double> plotYBomba;
+            List<double> plotYtubo;
 
             // Prepara os pontos para plotagem
             (plotX, plotYBomba, plotYtubo) = bomba1.PreparaPlot(40);
@@ -98,9 +98,9 @@ namespace SimulOP
             // Atualiza os valores da bomba
             bomba1.CalculaVazao();
 
-            double[] plotX;
-            double[] plotYBomba;
-            double[] plotYtubo;
+            List<double> plotX;
+            List<double> plotYBomba;
+            List<double> plotYtubo;
 
             // Prepara os pontos para plotagem
             (plotX, plotYBomba, plotYtubo) = bomba1.PreparaPlot(40);

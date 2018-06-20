@@ -22,7 +22,7 @@ namespace SimulOP.Forms
             double vazao = Convert.ToDouble(numericUpDown1.Value);
             double pressaoAtm = Convert.ToDouble(numericUpDown11.Value);
 
-            FluidoOPI agua = new FluidoOPI(InicializadorObjetos.MaterialFluidoOPI("água"));
+            FluidoIdealOPIII agua = new FluidoIdealOPIII(new MaterialFluidoOPIII("NA", Convert.ToDouble(numericUpDown9.Value), Convert.ToDouble(numericUpDown10.Value), new double[3] { 4.6543, 1435.264, -64.848 }) , Convert.ToDouble(numericUpDown7.Value) + 273.15);
 
             Tubulacao tubulacaoSuccao = new Tubulacao(Convert.ToDouble(numericUpDown4.Value) / 100,
                 Convert.ToDouble(numericUpDown6.Value), Convert.ToDouble(numericUpDown3.Value) / 1000,
@@ -40,19 +40,19 @@ namespace SimulOP.Forms
 
             BombaCompleta bombaCompleta = new BombaCompleta(new double[] { 0.00, 0.00, 0.00, 0.00 }, agua, tubulacaoSuccao, 
                 tubulacaoRecalque, Convert.ToDouble(numericUpDown11.Value), Convert.ToDouble(numericUpDown13.Value), Convert.ToDouble(numericUpDown12.Value));
-
+                        
             /// Item a)
-            label38.Text = Convert.ToString(Math.Round(tubulacaoCompleta.CalculaReynolds(agua, vazao)));
-            label39.Text = Convert.ToString(Math.Round(100000 * tubulacaoCompleta.CalculaFAtrito(agua, vazao)) / 100000);
-            label44.Text = Convert.ToString(Math.Round(10000 * tubulacaoCompleta.CalculaPerdaCarga(agua, vazao)) / 10000);
-            label48.Text = Convert.ToString(Math.Round(10000 * tubulacaoCompleta.CalculaPerdaCarga(agua, vazao)) / 10000 + tubulacaoCompleta.Elevacao);
+            label38.Text = Convert.ToString(Math.Round(tubulacaoCompleta.CalculaReynolds(agua.Material, vazao)));
+            label39.Text = Convert.ToString(Math.Round(100000 * tubulacaoCompleta.CalculaFAtrito(agua.Material, vazao)) / 100000);
+            label44.Text = Convert.ToString(Math.Round(10000 * tubulacaoCompleta.CalculaPerdaCarga(agua.Material, vazao)) / 10000);
+            label48.Text = Convert.ToString(Math.Round(10000 * tubulacaoCompleta.CalculaPerdaCarga(agua.Material, vazao)) / 10000 + tubulacaoCompleta.Elevacao);
 
             /// Item b)
             label50.Text = Convert.ToString(Math.Round(100 * agua.ConvertePressaoEmM(pressaoAtm)) / 100);
             label51.Text = Convert.ToString(numericUpDown8.Value);
-            label55.Text = Convert.ToString(Math.Round(1000 * agua.ConvertePressaoEmM(agua.PresaoVapor)) / 1000);
-            label53.Text = Convert.ToString(Math.Round(100 * tubulacaoSuccao.CalculaPerdaCarga(agua, vazao)) / 100);
-            label57.Text = Convert.ToString(Math.Round(100 * bombaCompleta.npshDisponivel(pressaoAtm, agua.PresaoVapor)) / 100);
+            label55.Text = Convert.ToString(Math.Round(1000 * agua.ConvertePressaoEmM(agua.PresaoVapor), 2) / 1000);
+            label53.Text = Convert.ToString(Math.Round(100 * tubulacaoSuccao.CalculaPerdaCarga(agua.Material, vazao)) / 100);
+            label57.Text = Convert.ToString(Math.Round(100 * bombaCompleta.npshDisponivel()) / 100);
             label60.Text = Convert.ToString(bombaCompleta.NPSHRequerido);
             if (Convert.ToDouble(label57.Text) > Convert.ToDouble(label60.Text))
             {
@@ -66,7 +66,7 @@ namespace SimulOP.Forms
             }
 
             /// Item c)
-            bombaCompleta.CalcAlturaBomba(vazao);
+            bombaCompleta.CalculaAlturaManoRequerida(vazao);
             double potenciaW = bombaCompleta.CalculaPotencia(vazao);
             double tempoS = Convert.ToDouble(numericUpDown14.Value) / vazao;
 

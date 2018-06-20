@@ -75,6 +75,12 @@
     <Compile Include="Forms\FormsExercicioOP1.designer.cs">
       <DependentUpon>FormsExercicioOP1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormsMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsMaster.Designer.cs">
+      <DependentUpon>FormsMaster.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geral\Equipamentos.cs" />
     <Compile Include="EquipamentosOPII\Evaporador.cs" />
     <Compile Include="EquipamentosOPI\Filtros.cs" />
@@ -117,12 +123,6 @@
     <Compile Include="Interfaces\ISingularidade.cs" />
     <Compile Include="Interfaces\ITrocadorDeCalor.cs" />
     <Compile Include="Interfaces\ITubulacao.cs" />
-    <Compile Include="Forms\FormsMaster.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormsMaster.Designer.cs">
-      <DependentUpon>FormsMaster.cs</DependentUpon>
-    </Compile>
     <Compile Include="EquipamentosOPIII\MembranaDeSeparacao.cs" />
     <Compile Include="EquipamentosOPI\EquipamentoOPI.cs" />
     <Compile Include="EquipamentosOPII\EquipamentoOPII.cs" />
@@ -165,11 +165,11 @@
     <EmbeddedResource Include="Forms\FormsExercicioOP1.resx">
       <DependentUpon>FormsExercicioOP1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormsPlotBomba.resx">
-      <DependentUpon>FormsPlotBomba.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormsMaster.resx">
       <DependentUpon>FormsMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsPlotBomba.resx">
+      <DependentUpon>FormsPlotBomba.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormsInício.resx">
       <DependentUpon>FormsInício.cs</DependentUpon>

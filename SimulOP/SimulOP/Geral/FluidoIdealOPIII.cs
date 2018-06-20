@@ -12,7 +12,6 @@ namespace SimulOP
         private double temperatura;
         private double presaoVapor;
         
-
         public double Temperatura { get => temperatura; set => temperatura = value; }
         public double PresaoVapor
         {
@@ -36,10 +35,17 @@ namespace SimulOP
         /// </summary>
         private void CalculaPvap()
         {
-            // A equação de Antoine usa a temperatura em ºC
             double Pvap = Math.Pow(10.0, material.CoefAntoine[0] - (material.CoefAntoine[1] / (material.CoefAntoine[2] + this.temperatura)));
 
-            this.presaoVapor = Pvap;
+            this.presaoVapor = Pvap * 1e5;
+        }
+
+        public double ConvertePressaoEmM(double pressao)
+        {
+            double pressaoM;
+
+            pressaoM = pressao / (this.material.Densidade * Equipamentos.g);
+            return pressaoM;
         }
     }
 }

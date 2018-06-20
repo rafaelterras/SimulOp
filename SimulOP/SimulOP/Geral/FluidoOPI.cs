@@ -29,8 +29,6 @@ namespace SimulOP
         {
             material = new MaterialFluidoOPI("[Não especificado]", densidade, viscosidade);
         }
-
-
         #endregion
 
         public double ConvertePressaoEmM(double pressao)

@@ -86,6 +86,14 @@ namespace SimulOP
             }
         }
 
+        protected Bomba(double[] equacaoCurva, Tubulacao tubulacao, double rendimento = 1.0)
+        {
+            this.equacaoCurva = equacaoCurva;
+            this.fluido = null;
+            this.tubulacaoDescarga = tubulacao;
+            this.rendimento = rendimento;
+        }
+
         #endregion
 
         /// <summary>
@@ -141,7 +149,7 @@ namespace SimulOP
         /// <returns> O valor da Equação de bernoulli [m]. </returns>
         public virtual double Bernoulli(double vazao)
         {
-            return this.CalcAlturaBomba(vazao) - TubulacaoDescarga.CalculaPerdaCarga(Fluido, vazao) - TubulacaoDescarga.Elevacao;
+            return this.CalcAlturaBomba(vazao) - TubulacaoDescarga.CalculaPerdaCarga(Fluido.Material, vazao) - TubulacaoDescarga.Elevacao;
         }
 
         /// <summary>
@@ -155,7 +163,7 @@ namespace SimulOP
 
             this.vazao = vazao;
             this.alturaManometrica = CalcAlturaBomba(vazao);
-            this.TubulacaoDescarga.CalculaPerdaCarga(Fluido, this.Vazao);
+            this.TubulacaoDescarga.CalculaPerdaCarga(Fluido.Material, this.Vazao);
         }
 
         public virtual (List<double> plotX, List<double> plotYBomba, List<double> plotYTubo) PreparaPlot (int nMax = 40)
@@ -173,7 +181,7 @@ namespace SimulOP
                 vazao = (i + 1) * (this.vazao / (nMax / 2));
 
                 h = this.CalcAlturaBomba(vazao);
-                hf = this.tubulacaoDescarga.CalculaPerdaCarga(this.fluido, vazao) + this.tubulacaoDescarga.Elevacao;
+                hf = this.tubulacaoDescarga.CalculaPerdaCarga(this.fluido.Material, vazao) + this.tubulacaoDescarga.Elevacao;
                 if (h > 0)
                 {
                     listX.Add(Math.Round(vazao * 3600,2));
@@ -193,10 +201,15 @@ namespace SimulOP
         /// </summary>
         /// <param name="vazao">Vazão de liquido que passa na bomba [m^3/s]</param>
         /// <returns></returns>
-        public double CalculaPotencia(double vazao)
+        public virtual double CalculaPotencia(double vazao)
         {
             this.potencia = fluido.Material.Densidade * g * vazao * alturaManometrica / rendimento;
             return this.Potencia;
+        }
+
+        public virtual void CalculaAlturaManoRequerida(double vazao)
+        {
+            alturaManometrica = tubulacaoDescarga.CalculaPerdaCarga(Fluido.Material, vazao) + tubulacaoDescarga.Elevacao;
         }
     }
 }

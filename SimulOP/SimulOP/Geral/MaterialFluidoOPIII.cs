@@ -6,20 +6,14 @@ using System.Threading.Tasks;
 
 namespace SimulOP
 {
-    public class MaterialFluidoOPIII : Material
+    public class MaterialFluidoOPIII : MaterialFluidoOPI
     {
         private double[] coefAntoine;
-        private double densidade;
-        private double viscosidade;
 
         public double[] CoefAntoine { get => coefAntoine; }
-        public double Densidade { get => densidade; }
-        public double Viscosidade { get => viscosidade; }
 
-        public MaterialFluidoOPIII(string componente, double densidade, double viscosidade, double[] coefAntoine) : base(componente)
+        public MaterialFluidoOPIII(string componente, double densidade, double viscosidade, double[] coefAntoine) : base(componente, densidade, viscosidade)
         {
-            this.densidade = densidade;
-            this.viscosidade = viscosidade;
             this.coefAntoine = coefAntoine;
         }
 

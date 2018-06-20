@@ -116,21 +116,21 @@ namespace SimulOP
         /// <param name="fluido">O Fluido que está na tubulação. </param>
         /// <param name="vazao">A vazão do fluido [m^3/s]. </param>
         /// <returns> O número de Rynolds [adm]. </returns>
-        public double CalculaReynolds(FluidoOPI fluido, double vazao)
+        public double CalculaReynolds(IMaterialFluidoOPI material, double vazao)
         {
             double re;
 
-            re = (4 * fluido.Material.Densidade * vazao) / (Math.PI * fluido.Material.Viscosidade * this.Diametro);
+            re = (4 * material.Densidade * vazao) / (Math.PI * material.Viscosidade * this.Diametro);
 
             return re;
         }
         /// <summary>
         /// Calcula o fator de atrito de acordo com a correlação de Fanning.
         /// </summary>
-        /// <param name="fluido">O Fluido que está na tubulação. </param>
+        /// <param name="material">O Fluido que está na tubulação. </param>
         /// <param name="vazao">A vazão do fluido [m^3/s]. </param>
         /// <returns> O fator de atrito [adm]. </returns>
-        public double CalculaFAtrito(FluidoOPI fluido, double vazao)
+        public double CalculaFAtrito(IMaterialFluidoOPI material, double vazao)
         {
             double Re;
             double A1;
@@ -145,7 +145,7 @@ namespace SimulOP
             switch (metodoFatrito)
             {
                 case "fanning":
-                    Re = CalculaReynolds(fluido, vazao);
+                    Re = CalculaReynolds(material, vazao);
                     A1 = Math.Pow(7 / Re, 0.9);
                     A2 = 0.27 * this.RugosidadeRelativa;
                     A = Math.Pow(-2.475 * Math.Log(A1 + A2), 16);
@@ -157,7 +157,7 @@ namespace SimulOP
                     fA = 2 * Math.Pow(fA1 + fA2, 1.0 / 12.0);
                     break;
                 case "haaland":
-                    Re = CalculaReynolds(fluido, vazao);
+                    Re = CalculaReynolds(material, vazao);
                     A = Math.Pow(this.RugosidadeRelativa / 3.7, 1.11);
                     B = 6.9 / Re;
 
@@ -175,12 +175,12 @@ namespace SimulOP
         /// <summary>
         /// Cálcula a perda de carga da tubulação
         /// </summary>
-        /// <param name="fluido">O Fluido que está na tubulação. </param>
+        /// <param name="material">O Fluido que está na tubulação. </param>
         /// <param name="vazao">A vazão do fluido [m^3/s]. </param>
         /// <returns> A perda de carga [m]. </returns>
-        public double CalculaPerdaCarga(FluidoOPI fluido, double vazao)
+        public double CalculaPerdaCarga(IMaterialFluidoOPI material, double vazao)
         {
-            double fAtrito = CalculaFAtrito(fluido, vazao);
+            double fAtrito = CalculaFAtrito(material, vazao);
             double comprimetoTotal = this.Comprimento + this.ComprimentoEquivalente;
             double hf1 = (32 / Math.Pow(Math.PI, 2));
             double hf2 = fAtrito * comprimetoTotal * Math.Pow(vazao, 2) / (Math.Pow(this.Diametro, 5.0) * g);
