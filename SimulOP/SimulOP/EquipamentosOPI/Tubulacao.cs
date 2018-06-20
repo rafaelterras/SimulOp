@@ -18,6 +18,7 @@ namespace SimulOP
         private double elevacao;
         private List<ISingularidade> listaSingulariedades;
         private double perdaCarga;
+        private string metodoFatrito;
 
         /// <summary>
         /// Comprimento da tubulação [m]
@@ -77,6 +78,11 @@ namespace SimulOP
         /// </summary>
         public double PerdaCarga { get => perdaCarga; set => perdaCarga = value; }
 
+        ///<summary>
+        /// Especifica o método utilizado para calcular o fator de atrito.
+        /// </summary>
+        public string MetodoFatrito { get => metodoFatrito; set => metodoFatrito = value; }
+
         /// <summary>
         /// Constructor para o objeto Tubulação. Checar se é só isso que realmente é necessário/faz sentido inicializar
         /// </summary>
@@ -84,13 +90,14 @@ namespace SimulOP
         /// <param name="comprimento">Comprimento da tubulação [m]</param>
         /// <param name="rugosidade">Rugosidade da tubulação [m]</param>
         /// <param name="elevacao">Diferença de altura entre o começo e o fim da tubulação [m]</param>
-        public Tubulacao(double diametro, double comprimento, double rugosidade, double elevacao)
+        public Tubulacao(double diametro, double comprimento, double rugosidade, double elevacao, string metodoFatrito = "fanning")
         {
             this.diametro = diametro;
             this.comprimento = comprimento;
             this.rugosidade = rugosidade;
             this.elevacao = elevacao;
             this.rugosidadeRelativa = rugosidade / diametro;
+            this.metodoFatrito = metodoFatrito;
         }
         #endregion
 
@@ -125,21 +132,44 @@ namespace SimulOP
         /// <returns> O fator de atrito [adm]. </returns>
         public double CalculaFAtrito(FluidoOPI fluido, double vazao)
         {
-            double Re = CalculaReynolds(fluido, vazao);
-            double A1 = Math.Pow(7 / Re, 0.9);
-            double A2 = 0.27 * this.RugosidadeRelativa;
-            double A = Math.Pow(-2.475 * Math.Log(A1 + A2), 16);
-            double B = Math.Pow((37530 / Re), 16.0);
+            double Re;
+            double A1;
+            double A2;
+            double A;
+            double B;
+            double fA1;
+            double fA2;
+            double fA;
+            double invRaizFA;
 
-            double fA1 = Math.Pow(8 / Re, 12);
-            double fA2 = 1 / Math.Pow(A + B, 3.0 / 2.0);
+            switch (metodoFatrito)
+            {
+                case "fanning":
+                    Re = CalculaReynolds(fluido, vazao);
+                    A1 = Math.Pow(7 / Re, 0.9);
+                    A2 = 0.27 * this.RugosidadeRelativa;
+                    A = Math.Pow(-2.475 * Math.Log(A1 + A2), 16);
+                    B = Math.Pow((37530 / Re), 16.0);
 
-            double fA = 2 * Math.Pow(fA1 + fA2, 1.0 / 12.0);
+                    fA1 = Math.Pow(8 / Re, 12);
+                    fA2 = 1 / Math.Pow(A + B, 3.0 / 2.0);
 
-            //Console.WriteLine("fA = {0}", fA);
-            
+                    fA = 2 * Math.Pow(fA1 + fA2, 1.0 / 12.0);
+                    break;
+                case "haaland":
+                    Re = CalculaReynolds(fluido, vazao);
+                    A = Math.Pow(this.RugosidadeRelativa / 3.7, 1.11);
+                    B = 6.9 / Re;
+
+                    invRaizFA = -3.6 * Math.Log10(A + B);
+                    fA = 1 / Math.Pow(invRaizFA, 2);
+                    break;
+                default:
+                    throw new Exception("Especifique o método.");
+            }
+
             return fA;
-            
+
         }
 
         /// <summary>
@@ -157,8 +187,6 @@ namespace SimulOP
 
             this.PerdaCarga = hf1 * hf2;
 
-            //Console.WriteLine("===>Preda carga: {0}",this.perdaCarga);
-
             return this.PerdaCarga;
         }
 
@@ -170,7 +198,7 @@ namespace SimulOP
         {
             double comprEq = 0;
 
-            foreach(Singularidade sin in this.ListaSingulariedades)
+            foreach(ISingularidade sin in this.ListaSingulariedades)
             {
                 comprEq = comprEq + sin.ComprimentoEqv;
             }

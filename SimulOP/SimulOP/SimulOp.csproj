@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EquipamentosOPIII\ColunaMcCabeThiele.cs" />
+    <Compile Include="EquipamentosOPI\BombaCompleta.cs" />
     <Compile Include="EquipamentosReatores\Batelada.cs" />
     <Compile Include="EquipamentosOPI\Bomba.cs" />
     <Compile Include="EquipamentosOPI\Ciclone.cs" />
@@ -67,6 +68,12 @@
     </Compile>
     <Compile Include="Forms\FormsColunaMcCabeThiele.Designer.cs">
       <DependentUpon>FormsColunaMcCabeThiele.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsExercicioOP1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsExercicioOP1.Designer.cs">
+      <DependentUpon>FormsExercicioOP1.cs</DependentUpon>
     </Compile>
     <Compile Include="Geral\Equipamentos.cs" />
     <Compile Include="EquipamentosOPII\Evaporador.cs" />
@@ -105,6 +112,7 @@
     <Compile Include="Geral\MisturaBinaria.cs" />
     <Compile Include="Interfaces\IBomba.cs" />
     <Compile Include="Interfaces\IDestilacao.cs" />
+    <Compile Include="Interfaces\IFluidoBomba.cs" />
     <Compile Include="Interfaces\IMaterialFluidoOPI.cs" />
     <Compile Include="Interfaces\ISingularidade.cs" />
     <Compile Include="Interfaces\ITrocadorDeCalor.cs" />
@@ -153,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormsColunaMcCabeThiele.resx">
       <DependentUpon>FormsColunaMcCabeThiele.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsExercicioOP1.resx">
+      <DependentUpon>FormsExercicioOP1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormsPlotBomba.resx">
       <DependentUpon>FormsPlotBomba.cs</DependentUpon>

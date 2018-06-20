@@ -14,6 +14,7 @@ namespace SimulOP
         private double alturaManometrica;
         private FluidoOPI fluido;
         private Tubulacao tubulacao;
+        private double rendimento;
 
         /// <summary>
         /// Vazão de fluido (m^3/s)
@@ -44,7 +45,12 @@ namespace SimulOP
         /// <summary>
         /// A tubulação em que a bomba está instalada
         /// </summary>
-        public Tubulacao Tubulacao { get => tubulacao; set => tubulacao = value; }
+        public Tubulacao TubulacaoDescarga { get => tubulacao; set => tubulacao = value; }
+
+        /// <summary>
+        /// Rendimento elétrico da bomba
+        /// </summary>
+        public double Rendimento { get => rendimento; set => rendimento = value; }
 
         /// <summary>
         /// Constructor do objeto Bomba
@@ -134,7 +140,7 @@ namespace SimulOP
         /// <returns> O valor da Equação de bernoulli [m]. </returns>
         public double Bernoulli(double vazao)
         {
-            return this.CalcAlturaBomba(vazao) - Tubulacao.CalculaPerdaCarga(Fluido, vazao) - Tubulacao.Elevacao;
+            return this.CalcAlturaBomba(vazao) - TubulacaoDescarga.CalculaPerdaCarga(Fluido, vazao) - TubulacaoDescarga.Elevacao;
         }
 
         /// <summary>
@@ -148,7 +154,7 @@ namespace SimulOP
 
             this.vazao = vazao;
             this.alturaManometrica = CalcAlturaBomba(vazao);
-            this.Tubulacao.CalculaPerdaCarga(Fluido, this.Vazao);
+            this.TubulacaoDescarga.CalculaPerdaCarga(Fluido, this.Vazao);
         }
 
         public (double[] plotX, double[] plotYBomba, double[] plotYTubo) PreparaPlot (int nMax = 40)
@@ -200,7 +206,8 @@ namespace SimulOP
         /// <returns></returns>
         public double CalculaPotencia(double vazao)
         {
-            throw new System.NotImplementedException("Calculo de Potência ainda não definido");
+            this.potencia = fluido.Material.Densidade * g * vazao * alturaManometrica / rendimento;
+            return this.Potencia;
         }
     }
 }

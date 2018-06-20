@@ -56,7 +56,7 @@ namespace SimulOP
 
                 Console.WriteLine("==========Resultados da Simulação========");
                 Console.WriteLine("Vazão : {0} m^3/h", bomba1.Vazao * 1);
-                Console.WriteLine("Perda de carga  : {0} m", bomba1.Tubulacao.PerdaCarga);
+                Console.WriteLine("Perda de carga  : {0} m", bomba1.TubulacaoDescarga.PerdaCarga);
                 Console.WriteLine("Altura da bomba : {0} m", bomba1.AlturaManometrica);
 
                 Console.ReadLine();
@@ -69,7 +69,7 @@ namespace SimulOP
                 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Forms.FormsColunaMcCabeThiele());
+                Application.Run(new Forms.FormsExercicioOP1());
              }            
         }
      }
