@@ -72,7 +72,7 @@
     <Compile Include="Forms\FormsExercicioOP1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormsExercicioOP1.Designer.cs">
+    <Compile Include="Forms\FormsExercicioOP1.designer.cs">
       <DependentUpon>FormsExercicioOP1.cs</DependentUpon>
     </Compile>
     <Compile Include="Geral\Equipamentos.cs" />

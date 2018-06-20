@@ -33,5 +33,13 @@ namespace SimulOP
 
         #endregion
 
+        public double ConvertePressaoEmM(double pressao)
+        {
+            double pressaoM;
+
+            pressaoM = pressao / (this.material.Densidade * Equipamentos.g);
+            return pressaoM;
+        }
+
     }
 }

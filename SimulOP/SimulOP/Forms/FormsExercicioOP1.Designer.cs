@@ -104,19 +104,46 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label49 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label52 = new System.Windows.Forms.Label();
+            this.label61 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.label58 = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
             this.label54 = new System.Windows.Forms.Label();
             this.label55 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
-            this.label57 = new System.Windows.Forms.Label();
-            this.label58 = new System.Windows.Forms.Label();
-            this.label59 = new System.Windows.Forms.Label();
-            this.label60 = new System.Windows.Forms.Label();
-            this.label61 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label62 = new System.Windows.Forms.Label();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label64 = new System.Windows.Forms.Label();
+            this.label65 = new System.Windows.Forms.Label();
+            this.label66 = new System.Windows.Forms.Label();
+            this.label67 = new System.Windows.Forms.Label();
+            this.label68 = new System.Windows.Forms.Label();
+            this.label69 = new System.Windows.Forms.Label();
+            this.label70 = new System.Windows.Forms.Label();
+            this.label71 = new System.Windows.Forms.Label();
+            this.label72 = new System.Windows.Forms.Label();
+            this.label73 = new System.Windows.Forms.Label();
+            this.label74 = new System.Windows.Forms.Label();
+            this.label75 = new System.Windows.Forms.Label();
+            this.label76 = new System.Windows.Forms.Label();
+            this.label77 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label78 = new System.Windows.Forms.Label();
+            this.label79 = new System.Windows.Forms.Label();
+            this.label80 = new System.Windows.Forms.Label();
+            this.label81 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -142,6 +169,9 @@
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -302,11 +332,6 @@
             // numericUpDown14
             // 
             this.numericUpDown14.Font = new System.Drawing.Font("Lucida Console", 8.25F);
-            this.numericUpDown14.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
             this.numericUpDown14.Location = new System.Drawing.Point(122, 386);
             this.numericUpDown14.Maximum = new decimal(new int[] {
             10000,
@@ -975,6 +1000,9 @@
             this.tableLayoutPanel5.Controls.Add(this.groupBox2, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel6, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.groupBox3, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel7, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.groupBox4, 2, 1);
+            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel8, 2, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 40);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -986,6 +1014,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label79);
+            this.groupBox2.Controls.Add(this.label78);
             this.groupBox2.Controls.Add(this.label47);
             this.groupBox2.Controls.Add(this.label48);
             this.groupBox2.Controls.Add(this.label46);
@@ -1011,121 +1041,133 @@
             // 
             this.label47.AutoSize = true;
             this.label47.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label47.Location = new System.Drawing.Point(213, 169);
+            this.label47.Location = new System.Drawing.Point(223, 169);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(18, 16);
             this.label47.TabIndex = 11;
             this.label47.Text = "=";
+            this.label47.Visible = false;
             // 
             // label48
             // 
             this.label48.AutoSize = true;
             this.label48.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label48.Location = new System.Drawing.Point(242, 169);
+            this.label48.Location = new System.Drawing.Point(252, 169);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(78, 16);
             this.label48.TabIndex = 10;
             this.label48.Text = "33,1487";
+            this.label48.Visible = false;
             // 
             // label46
             // 
             this.label46.AutoSize = true;
             this.label46.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label46.Location = new System.Drawing.Point(6, 169);
+            this.label46.Location = new System.Drawing.Point(16, 169);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(188, 16);
             this.label46.TabIndex = 9;
             this.label46.Text = "Altura manométrica";
+            this.label46.Visible = false;
             // 
             // label43
             // 
             this.label43.AutoSize = true;
             this.label43.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label43.Location = new System.Drawing.Point(213, 127);
+            this.label43.Location = new System.Drawing.Point(223, 127);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(18, 16);
             this.label43.TabIndex = 8;
             this.label43.Text = "=";
+            this.label43.Visible = false;
             // 
             // label44
             // 
             this.label44.AutoSize = true;
             this.label44.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label44.Location = new System.Drawing.Point(242, 127);
+            this.label44.Location = new System.Drawing.Point(252, 127);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(78, 16);
             this.label44.TabIndex = 7;
             this.label44.Text = "13,1487";
+            this.label44.Visible = false;
             // 
             // label45
             // 
             this.label45.AutoSize = true;
             this.label45.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label45.Location = new System.Drawing.Point(6, 127);
+            this.label45.Location = new System.Drawing.Point(16, 127);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(148, 16);
             this.label45.TabIndex = 6;
             this.label45.Text = "Perda de carga";
+            this.label45.Visible = false;
             // 
             // label42
             // 
             this.label42.AutoSize = true;
             this.label42.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label42.Location = new System.Drawing.Point(213, 85);
+            this.label42.Location = new System.Drawing.Point(223, 85);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(18, 16);
             this.label42.TabIndex = 5;
             this.label42.Text = "=";
+            this.label42.Visible = false;
             // 
             // label41
             // 
             this.label41.AutoSize = true;
             this.label41.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label41.Location = new System.Drawing.Point(213, 43);
+            this.label41.Location = new System.Drawing.Point(223, 43);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(18, 16);
             this.label41.TabIndex = 4;
             this.label41.Text = "=";
+            this.label41.Visible = false;
             // 
             // label39
             // 
             this.label39.AutoSize = true;
             this.label39.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label39.Location = new System.Drawing.Point(242, 85);
+            this.label39.Location = new System.Drawing.Point(252, 85);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(78, 16);
             this.label39.TabIndex = 3;
             this.label39.Text = "0,00497";
+            this.label39.Visible = false;
             // 
             // label40
             // 
             this.label40.AutoSize = true;
             this.label40.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label40.Location = new System.Drawing.Point(6, 85);
+            this.label40.Location = new System.Drawing.Point(16, 85);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(158, 16);
             this.label40.TabIndex = 2;
             this.label40.Text = "Fator de atrito";
+            this.label40.Visible = false;
             // 
             // label38
             // 
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label38.Location = new System.Drawing.Point(242, 43);
+            this.label38.Location = new System.Drawing.Point(252, 43);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(78, 16);
             this.label38.TabIndex = 1;
             this.label38.Text = "1273240";
+            this.label38.Visible = false;
             // 
             // label37
             // 
             this.label37.AutoSize = true;
             this.label37.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label37.Location = new System.Drawing.Point(6, 43);
+            this.label37.Location = new System.Drawing.Point(16, 43);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(188, 16);
             this.label37.TabIndex = 0;
             this.label37.Text = "Número de Reynolds";
+            this.label37.Visible = false;
             // 
             // tableLayoutPanel6
             // 
@@ -1139,7 +1181,7 @@
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(349, 36);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
@@ -1169,6 +1211,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label80);
             this.groupBox3.Controls.Add(this.label61);
             this.groupBox3.Controls.Add(this.label60);
             this.groupBox3.Controls.Add(this.label59);
@@ -1191,105 +1234,27 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Item b)";
             // 
-            // label49
+            // label61
             // 
-            this.label49.AutoSize = true;
-            this.label49.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label49.Location = new System.Drawing.Point(40, 43);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(48, 16);
-            this.label49.TabIndex = 0;
-            this.label49.Text = "Pa =";
+            this.label61.AutoSize = true;
+            this.label61.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label61.Location = new System.Drawing.Point(46, 169);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(258, 16);
+            this.label61.TabIndex = 12;
+            this.label61.Text = "Não pode haver cavitação!";
+            this.label61.Visible = false;
             // 
-            // label50
+            // label60
             // 
-            this.label50.AutoSize = true;
-            this.label50.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label50.Location = new System.Drawing.Point(94, 43);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(58, 16);
-            this.label50.TabIndex = 1;
-            this.label50.Text = "10,00";
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label51.Location = new System.Drawing.Point(246, 43);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(58, 16);
-            this.label51.TabIndex = 3;
-            this.label51.Text = "10,00";
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label52.Location = new System.Drawing.Point(192, 43);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(48, 16);
-            this.label52.TabIndex = 2;
-            this.label52.Text = "Pz =";
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label53.Location = new System.Drawing.Point(246, 85);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(58, 16);
-            this.label53.TabIndex = 7;
-            this.label53.Text = "10,00";
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label54.Location = new System.Drawing.Point(192, 85);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(48, 16);
-            this.label54.TabIndex = 6;
-            this.label54.Text = "Pz =";
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label55.Location = new System.Drawing.Point(94, 85);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(58, 16);
-            this.label55.TabIndex = 5;
-            this.label55.Text = "10,00";
-            // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label56.Location = new System.Drawing.Point(40, 85);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(48, 16);
-            this.label56.TabIndex = 4;
-            this.label56.Text = "Pa =";
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label57.Location = new System.Drawing.Point(147, 127);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(58, 16);
-            this.label57.TabIndex = 9;
-            this.label57.Text = "10,00";
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label58.Location = new System.Drawing.Point(63, 127);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(78, 16);
-            this.label58.TabIndex = 8;
-            this.label58.Text = "NPSHd =";
+            this.label60.AutoSize = true;
+            this.label60.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label60.Location = new System.Drawing.Point(235, 127);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(18, 16);
+            this.label60.TabIndex = 11;
+            this.label60.Text = "6";
+            this.label60.Visible = false;
             // 
             // label59
             // 
@@ -1300,26 +1265,445 @@
             this.label59.Size = new System.Drawing.Size(18, 16);
             this.label59.TabIndex = 10;
             this.label59.Text = ">";
+            this.label59.Visible = false;
             // 
-            // label60
+            // label57
             // 
-            this.label60.AutoSize = true;
-            this.label60.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label60.Location = new System.Drawing.Point(235, 127);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(48, 16);
-            this.label60.TabIndex = 11;
-            this.label60.Text = "5,00";
+            this.label57.AutoSize = true;
+            this.label57.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label57.Location = new System.Drawing.Point(147, 127);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(58, 16);
+            this.label57.TabIndex = 9;
+            this.label57.Text = "10,78";
+            this.label57.Visible = false;
             // 
-            // label61
+            // label58
             // 
-            this.label61.AutoSize = true;
-            this.label61.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.label61.Location = new System.Drawing.Point(46, 169);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(258, 16);
-            this.label61.TabIndex = 12;
-            this.label61.Text = "Não pode haver cavitação!";
+            this.label58.AutoSize = true;
+            this.label58.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label58.Location = new System.Drawing.Point(63, 127);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(78, 16);
+            this.label58.TabIndex = 8;
+            this.label58.Text = "NPSHd =";
+            this.label58.Visible = false;
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label53.Location = new System.Drawing.Point(246, 85);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(48, 16);
+            this.label53.TabIndex = 7;
+            this.label53.Text = "1,31";
+            this.label53.Visible = false;
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label54.Location = new System.Drawing.Point(192, 85);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(48, 16);
+            this.label54.TabIndex = 6;
+            this.label54.Text = "Pf =";
+            this.label54.Visible = false;
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label55.Location = new System.Drawing.Point(94, 85);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(58, 16);
+            this.label55.TabIndex = 5;
+            this.label55.Text = "0,238";
+            this.label55.Visible = false;
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label56.Location = new System.Drawing.Point(40, 85);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(48, 16);
+            this.label56.TabIndex = 4;
+            this.label56.Text = "Pv =";
+            this.label56.Visible = false;
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label51.Location = new System.Drawing.Point(246, 43);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(18, 16);
+            this.label51.TabIndex = 3;
+            this.label51.Text = "2";
+            this.label51.Visible = false;
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label52.Location = new System.Drawing.Point(192, 43);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(48, 16);
+            this.label52.TabIndex = 2;
+            this.label52.Text = "Pz =";
+            this.label52.Visible = false;
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label50.Location = new System.Drawing.Point(94, 43);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(58, 16);
+            this.label50.TabIndex = 1;
+            this.label50.Text = "10,33";
+            this.label50.Visible = false;
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label49.Location = new System.Drawing.Point(40, 43);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(48, 16);
+            this.label49.TabIndex = 0;
+            this.label49.Text = "Pa =";
+            this.label49.Visible = false;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 2;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Controls.Add(this.button4, 1, 0);
+            this.tableLayoutPanel7.Controls.Add(this.button3, 0, 0);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(358, 3);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 1;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(349, 36);
+            this.tableLayoutPanel7.TabIndex = 3;
+            // 
+            // button3
+            // 
+            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button3.Font = new System.Drawing.Font("Lucida Console", 8.25F);
+            this.button3.Location = new System.Drawing.Point(3, 3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(168, 30);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "Próximo passo";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.OcultaMostraProximoItemB);
+            // 
+            // button4
+            // 
+            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button4.Font = new System.Drawing.Font("Lucida Console", 8.25F);
+            this.button4.Location = new System.Drawing.Point(177, 3);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(169, 30);
+            this.button4.TabIndex = 1;
+            this.button4.Text = "Resolução completa";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.OcultaMostraItemB);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label81);
+            this.groupBox4.Controls.Add(this.label77);
+            this.groupBox4.Controls.Add(this.label76);
+            this.groupBox4.Controls.Add(this.label75);
+            this.groupBox4.Controls.Add(this.label74);
+            this.groupBox4.Controls.Add(this.label73);
+            this.groupBox4.Controls.Add(this.label72);
+            this.groupBox4.Controls.Add(this.label71);
+            this.groupBox4.Controls.Add(this.label70);
+            this.groupBox4.Controls.Add(this.label69);
+            this.groupBox4.Controls.Add(this.label68);
+            this.groupBox4.Controls.Add(this.label67);
+            this.groupBox4.Controls.Add(this.label66);
+            this.groupBox4.Controls.Add(this.label65);
+            this.groupBox4.Controls.Add(this.label64);
+            this.groupBox4.Controls.Add(this.label63);
+            this.groupBox4.Controls.Add(this.label62);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox4.Font = new System.Drawing.Font("Lucida Console", 15.75F);
+            this.groupBox4.Location = new System.Drawing.Point(713, 45);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(351, 374);
+            this.groupBox4.TabIndex = 4;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Item c)";
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label62.Location = new System.Drawing.Point(35, 43);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(58, 16);
+            this.label62.TabIndex = 0;
+            this.label62.Text = "Pot =";
+            this.label62.Visible = false;
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label63.Location = new System.Drawing.Point(99, 43);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(68, 16);
+            this.label63.TabIndex = 1;
+            this.label63.Text = "203174";
+            this.label63.Visible = false;
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label64.Location = new System.Drawing.Point(173, 43);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(38, 16);
+            this.label64.TabIndex = 2;
+            this.label64.Text = "W =";
+            this.label64.Visible = false;
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label65.Location = new System.Drawing.Point(244, 43);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(38, 16);
+            this.label65.TabIndex = 3;
+            this.label65.Text = "203";
+            this.label65.Visible = false;
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label66.Location = new System.Drawing.Point(288, 43);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(28, 16);
+            this.label66.TabIndex = 4;
+            this.label66.Text = "kW";
+            this.label66.Visible = false;
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label67.Location = new System.Drawing.Point(15, 85);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(78, 16);
+            this.label67.TabIndex = 5;
+            this.label67.Text = "Tempo =";
+            this.label67.Visible = false;
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label68.Location = new System.Drawing.Point(139, 85);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(28, 16);
+            this.label68.TabIndex = 6;
+            this.label68.Text = "20";
+            this.label68.Visible = false;
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label69.Location = new System.Drawing.Point(173, 85);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(38, 16);
+            this.label69.TabIndex = 7;
+            this.label69.Text = "s =";
+            this.label69.Visible = false;
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label70.Location = new System.Drawing.Point(214, 85);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(68, 16);
+            this.label70.TabIndex = 8;
+            this.label70.Text = "0,0056";
+            this.label70.Visible = false;
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label71.Location = new System.Drawing.Point(288, 85);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(18, 16);
+            this.label71.TabIndex = 9;
+            this.label71.Text = "h";
+            this.label71.Visible = false;
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label72.Location = new System.Drawing.Point(53, 127);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(158, 16);
+            this.label72.TabIndex = 10;
+            this.label72.Text = "Energia gasta =";
+            this.label72.Visible = false;
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label73.Location = new System.Drawing.Point(234, 127);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(48, 16);
+            this.label73.TabIndex = 11;
+            this.label73.Text = "1,13";
+            this.label73.Visible = false;
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label74.Location = new System.Drawing.Point(288, 127);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(38, 16);
+            this.label74.TabIndex = 12;
+            this.label74.Text = "kWh";
+            this.label74.Visible = false;
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label75.Location = new System.Drawing.Point(73, 169);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(138, 16);
+            this.label75.TabIndex = 13;
+            this.label75.Text = "Custo total =";
+            this.label75.Visible = false;
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label76.Location = new System.Drawing.Point(224, 169);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(58, 16);
+            this.label76.TabIndex = 14;
+            this.label76.Text = "0,248";
+            this.label76.Visible = false;
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.label77.Location = new System.Drawing.Point(288, 169);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(18, 16);
+            this.label77.TabIndex = 15;
+            this.label77.Text = "$";
+            this.label77.Visible = false;
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 2;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Controls.Add(this.button6, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.button5, 0, 0);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(713, 3);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 1;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(351, 36);
+            this.tableLayoutPanel8.TabIndex = 5;
+            // 
+            // button5
+            // 
+            this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button5.Font = new System.Drawing.Font("Lucida Console", 8.25F);
+            this.button5.Location = new System.Drawing.Point(3, 3);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(169, 30);
+            this.button5.TabIndex = 0;
+            this.button5.Text = "Próximo passo";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.OcultaMostraProximoItemC);
+            // 
+            // button6
+            // 
+            this.button6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button6.Font = new System.Drawing.Font("Lucida Console", 8.25F);
+            this.button6.Location = new System.Drawing.Point(178, 3);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(170, 30);
+            this.button6.TabIndex = 1;
+            this.button6.Text = "Resolução completa";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.OcultaMostraItemC);
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Font = new System.Drawing.Font("Lucida Console", 8.25F);
+            this.label78.Location = new System.Drawing.Point(47, 256);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(250, 11);
+            this.label78.TabIndex = 12;
+            this.label78.Text = "Perda de carga e altura manométrica";
+            this.label78.Visible = false;
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Font = new System.Drawing.Font("Lucida Console", 8.25F);
+            this.label79.Location = new System.Drawing.Point(93, 277);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(152, 11);
+            this.label79.TabIndex = 13;
+            this.label79.Text = " apresentadas em [m].";
+            this.label79.Visible = false;
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Font = new System.Drawing.Font("Lucida Console", 8.25F);
+            this.label80.Location = new System.Drawing.Point(82, 268);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(187, 11);
+            this.label80.TabIndex = 13;
+            this.label80.Text = "Todos apresentados em [m].";
+            this.label80.Visible = false;
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Font = new System.Drawing.Font("Lucida Console", 8.25F);
+            this.label81.Location = new System.Drawing.Point(52, 268);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(264, 11);
+            this.label81.TabIndex = 16;
+            this.label81.Text = "Unidades indicadas junto aos valores.";
+            this.label81.Visible = false;
             // 
             // FormsExercicioOP1
             // 
@@ -1362,6 +1746,10 @@
             this.tableLayoutPanel6.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.tableLayoutPanel8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1456,5 +1844,32 @@
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.Label label68;
+        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.Label label77;
+        private System.Windows.Forms.Label label76;
+        private System.Windows.Forms.Label label75;
+        private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.Label label80;
+        private System.Windows.Forms.Label label81;
     }
 }
