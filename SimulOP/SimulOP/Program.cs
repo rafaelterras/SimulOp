@@ -20,8 +20,10 @@ namespace SimulOP
                 Console.WriteLine("======== Teste com Math.net ==========");
                 Console.WriteLine("");
 
+                MaterialFluidoOPI agua = InicializadorObjetos.MaterialFluidoOPI("água");
+
                 // Cria o fluido agua usando o constructor
-                Fluido agua = new Fluido(1000, 8.90E-4);
+                FluidoOPI Fluido = new FluidoOPI(agua);
 
                 // Cria a tubulação tubo1 usando o constructor
                 Tubulacao tubo1 = new Tubulacao(0.05, 10, 4.572E-5, 0);
@@ -31,16 +33,16 @@ namespace SimulOP
                 Singularidade s2 = new Singularidade(2, "Cotovelo");
 
                 // Cria um tipo especifico de singularidade
-                Valvula valvula = new Valvula(20);
+                Valvula valvula = new Valvula(20, 0.5);
 
-                tubo1.ListaSingulariedades = new List<Singularidade> { s1, s2, valvula};
+                tubo1.ListaSingulariedades = new List<ISingularidade> { s1, s2, valvula};
 
-                Bomba bomba1 = new Bomba(new double[] { 0, -2096928, 2649.96, 26 }, agua, tubo1);
-                
+                Bomba bomba1 = new Bomba(new double[] { 0, -2096928, 2649.96, 26 }, Fluido, tubo1);
+                                               
                 Console.WriteLine("==========Dados da Simulação========");
                 Console.WriteLine("===>Fluido");
-                Console.WriteLine("Densidade : {0} Kg/m^3", agua.Densidade);
-                Console.WriteLine("Viscosidade : {0} Pa*s", agua.Viscosidade);
+                Console.WriteLine("Densidade : {0} Kg/m^3", Fluido.Material.Densidade);
+                Console.WriteLine("Viscosidade : {0} Pa*s", Fluido.Material.Viscosidade);
                 Console.WriteLine("===>Tubulação");
                 Console.WriteLine("Diametro : {0} m", tubo1.Diametro);
                 Console.WriteLine("Comprimento : {0} m", tubo1.Comprimento);
@@ -54,7 +56,7 @@ namespace SimulOP
 
                 Console.WriteLine("==========Resultados da Simulação========");
                 Console.WriteLine("Vazão : {0} m^3/h", bomba1.Vazao * 1);
-                Console.WriteLine("Perda de carga  : {0} m", bomba1.Tubulacao.PerdaCarga);
+                Console.WriteLine("Perda de carga  : {0} m", bomba1.TubulacaoDescarga.PerdaCarga);
                 Console.WriteLine("Altura da bomba : {0} m", bomba1.AlturaManometrica);
 
                 Console.ReadLine();
@@ -67,7 +69,7 @@ namespace SimulOP
                 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new FormsMaster());
+                Application.Run(new Forms.FormsMaster());
              }            
         }
      }

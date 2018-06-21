@@ -19,7 +19,7 @@ namespace SimulOP.Forms
 
         public void CalculaTudo(object sender, EventArgs e)
         {
-            Fluido agua = new Fluido(Convert.ToDouble(numericUpDown1.Value) * 1000, Convert.ToDouble(numericUpDown8.Value) / 1000);
+            FluidoOPI agua = new FluidoOPI(Convert.ToDouble(numericUpDown1.Value) * 1000, Convert.ToDouble(numericUpDown8.Value) / 1000);
 
             Tubulacao tubo1 = new Tubulacao(Convert.ToDouble(numericUpDown4.Value) / 100, 
                 Convert.ToDouble(numericUpDown3.Value), Convert.ToDouble(numericUpDown9.Value) / 1000000, 
@@ -27,7 +27,7 @@ namespace SimulOP.Forms
 
             label25.Visible = true;
             label26.Visible = true;
-            label26.Text = (Math.Round(tubo1.CalculaPerdaCarga(agua, Convert.ToDouble(numericUpDown2.Value) / 3600) + tubo1.Elevacao, 6)).ToString() + " m";
+            label26.Text = (Math.Round(tubo1.CalculaPerdaCarga(agua.Material, Convert.ToDouble(numericUpDown2.Value) / 3600) + tubo1.Elevacao, 6)).ToString() + " m";
             if (this.numericUpDown6.Value == -1)
             {
                 if (this.numericUpDown7.Value != -1)
@@ -35,7 +35,7 @@ namespace SimulOP.Forms
                     label27.Visible = true;
                     label27.Text = "Pressão na saída";
                     label28.Visible = true;
-                    label28.Text = (Math.Round((Convert.ToDouble(numericUpDown7.Value)) - ((agua.Densidade * 9.80665 * tubo1.CalculaPerdaCarga(agua, Convert.ToDouble(numericUpDown2.Value) / 3600) + tubo1.Elevacao) / 101325), 6)).ToString() + " atm";
+                    label28.Text = (Math.Round((Convert.ToDouble(numericUpDown7.Value)) - ((agua.Material.Densidade * 9.80665 * tubo1.CalculaPerdaCarga(agua.Material, Convert.ToDouble(numericUpDown2.Value) / 3600) + tubo1.Elevacao) / 101325), 6)).ToString() + " atm";
                 }
             }
             else
@@ -45,14 +45,14 @@ namespace SimulOP.Forms
                     label27.Visible = true;
                     label27.Text = "Compatibilidade";
                     label28.Visible = true;
-                    label28.Text = (Math.Round((Convert.ToDouble(numericUpDown7.Value) - (Convert.ToDouble(numericUpDown6.Value))) - ((agua.Densidade * 9.80665 * tubo1.CalculaPerdaCarga(agua, Convert.ToDouble(numericUpDown2.Value) / 3600) + tubo1.Elevacao) / 101325), 6)).ToString() + " atm";
+                    label28.Text = (Math.Round((Convert.ToDouble(numericUpDown7.Value) - (Convert.ToDouble(numericUpDown6.Value))) - ((agua.Material.Densidade * 9.80665 * tubo1.CalculaPerdaCarga(agua.Material, Convert.ToDouble(numericUpDown2.Value) / 3600) + tubo1.Elevacao) / 101325), 6)).ToString() + " atm";
                 }
                 else
                 {
                     label27.Visible = true;
                     label27.Text = "Pressão na entrada";
                     label28.Visible = true;
-                    label28.Text = (Math.Round((Convert.ToDouble(numericUpDown6.Value)) + ((agua.Densidade * 9.80665 * tubo1.CalculaPerdaCarga(agua, Convert.ToDouble(numericUpDown2.Value) / 3600) + tubo1.Elevacao) / 101325), 6)).ToString() + " atm";
+                    label28.Text = (Math.Round((Convert.ToDouble(numericUpDown6.Value)) + ((agua.Material.Densidade * 9.80665 * tubo1.CalculaPerdaCarga(agua.Material, Convert.ToDouble(numericUpDown2.Value) / 3600) + tubo1.Elevacao) / 101325), 6)).ToString() + " atm";
                 }
             }
         }

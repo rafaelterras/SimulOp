@@ -1,4 +1,4 @@
-﻿namespace SimulOP
+﻿namespace SimulOP.Forms
 {
     partial class FormsMaster
     {
@@ -36,6 +36,7 @@
             this.comSingularidadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comBombaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comSingularidadeEBombaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exercícioResolvidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filtrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compressoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operaçõesUnitáriasIIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,9 +100,10 @@
             this.simplesToolStripMenuItem,
             this.comSingularidadeToolStripMenuItem,
             this.comBombaToolStripMenuItem,
-            this.comSingularidadeEBombaToolStripMenuItem});
+            this.comSingularidadeEBombaToolStripMenuItem,
+            this.exercícioResolvidoToolStripMenuItem});
             this.tubulaçõesToolStripMenuItem.Name = "tubulaçõesToolStripMenuItem";
-            this.tubulaçõesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tubulaçõesToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.tubulaçõesToolStripMenuItem.Text = "Tubulações";
             // 
             // simplesToolStripMenuItem
@@ -130,16 +132,23 @@
             this.comSingularidadeEBombaToolStripMenuItem.Text = "Com singularidade e bomba";
             this.comSingularidadeEBombaToolStripMenuItem.Click += new System.EventHandler(this.comSingularidadeEBombaToolStripMenuItem_Click);
             // 
+            // exercícioResolvidoToolStripMenuItem
+            // 
+            this.exercícioResolvidoToolStripMenuItem.Name = "exercícioResolvidoToolStripMenuItem";
+            this.exercícioResolvidoToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.exercícioResolvidoToolStripMenuItem.Text = "Exercício resolvido";
+            this.exercícioResolvidoToolStripMenuItem.Click += new System.EventHandler(this.exercicioResolvidoOP1ToolStripMenuItem_Click);
+            // 
             // filtrosToolStripMenuItem
             // 
             this.filtrosToolStripMenuItem.Name = "filtrosToolStripMenuItem";
-            this.filtrosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.filtrosToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.filtrosToolStripMenuItem.Text = "Filtros";
             // 
             // compressoresToolStripMenuItem
             // 
             this.compressoresToolStripMenuItem.Name = "compressoresToolStripMenuItem";
-            this.compressoresToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.compressoresToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.compressoresToolStripMenuItem.Text = "Compressores";
             // 
             // operaçõesUnitáriasIIToolStripMenuItem
@@ -253,8 +262,9 @@
             // contínuaToolStripMenuItem
             // 
             this.contínuaToolStripMenuItem.Name = "contínuaToolStripMenuItem";
-            this.contínuaToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.contínuaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.contínuaToolStripMenuItem.Text = "Contínuas";
+            this.contínuaToolStripMenuItem.Click += new System.EventHandler(this.contínuaToolStripMenuItem_Click);
             // 
             // reatoresToolStripMenuItem
             // 
@@ -301,7 +311,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormsMaster";
-            this.Text = "SimulOp v.0.1";
+            this.Text = "SimulOp v.0.25";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormsMaster_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -344,5 +354,6 @@
         private System.Windows.Forms.ToolStripMenuItem contínuosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cSTRToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pFRToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exercícioResolvidoToolStripMenuItem;
     }
 }

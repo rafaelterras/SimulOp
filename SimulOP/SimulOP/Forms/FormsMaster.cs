@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SimulOP
+namespace SimulOP.Forms
 {
     public partial class FormsMaster : Form
     {
@@ -34,6 +34,20 @@ namespace SimulOP
         private void comSingularidadeEBombaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Forms.FormsAutoBomba newMDIChild = new Forms.FormsAutoBomba();
+            newMDIChild.MdiParent = this;
+            newMDIChild.Show();
+        }
+
+        private void exercicioResolvidoOP1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.FormsExercicioOP1 newMDIChild = new Forms.FormsExercicioOP1();
+            newMDIChild.MdiParent = this;
+            newMDIChild.Show();
+        }
+
+        private void contínuaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.FormsColunaMcCabeThiele newMDIChild = new Forms.FormsColunaMcCabeThiele();
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
         }

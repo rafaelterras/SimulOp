@@ -20,17 +20,22 @@
         /// <summary>
         /// O fluido que está sendo escoado pela bomba
         /// </summary>
-        Fluido Fluido { get; set; }
+        FluidoOPI Fluido { get; set; }
 
         /// <summary>
-        /// A tubulação em que a bomba está instalada
+        /// A tubulação de descarga em que a bomba está instalada
         /// </summary>
-        Tubulacao Tubulacao { get; set; }
+        Tubulacao TubulacaoDescarga { get; set; }
 
         /// <summary>
         /// Altura monometrica da bomba [m]
         /// </summary>
         double AlturaManometrica { get; }
+
+        /// <summary>
+        /// Rendimento elétrico da bomba
+        /// </summary>
+        double Rendimento { get; set; }
 
         /// <summary>
         /// Atualiza bomba pra uma bomba equivalente.

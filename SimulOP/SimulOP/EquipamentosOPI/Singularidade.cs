@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SimulOP
 {
-    class Singularidade : EquipamentoOPI, ISingulariedade
+    class Singularidade : EquipamentoOPI, ISingularidade
     {
         private double comprimentoEqv;
         private string tipo;

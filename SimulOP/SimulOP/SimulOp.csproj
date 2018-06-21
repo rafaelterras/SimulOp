@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EquipamentosOPIII\ColunaMcCabeThiele.cs" />
+    <Compile Include="EquipamentosOPI\BombaCompleta.cs" />
     <Compile Include="EquipamentosReatores\Batelada.cs" />
     <Compile Include="EquipamentosOPI\Bomba.cs" />
     <Compile Include="EquipamentosOPI\Ciclone.cs" />
@@ -61,11 +63,30 @@
     <Compile Include="EquipamentosOPIII\Cristalizador.cs" />
     <Compile Include="EquipamentosOPIII\DestiBatelada.cs" />
     <Compile Include="EquipamentosOPIII\DestiContinuo.cs" />
+    <Compile Include="Forms\FormsColunaMcCabeThiele.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsColunaMcCabeThiele.Designer.cs">
+      <DependentUpon>FormsColunaMcCabeThiele.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsExercicioOP1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsExercicioOP1.designer.cs">
+      <DependentUpon>FormsExercicioOP1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsMaster.Designer.cs">
+      <DependentUpon>FormsMaster.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geral\Equipamentos.cs" />
     <Compile Include="EquipamentosOPII\Evaporador.cs" />
     <Compile Include="EquipamentosOPI\Filtros.cs" />
     <Compile Include="EquipamentosOPIII\Flash.cs" />
-    <Compile Include="Geral\Fluido.cs" />
+    <Compile Include="Geral\FluidoIdealOPIII.cs" />
+    <Compile Include="Geral\FluidoOPI.cs" />
     <Compile Include="Forms\FormsAutoBomba.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,18 +111,18 @@
     <Compile Include="Forms\FormsModelOp.Designer.cs">
       <DependentUpon>FormsModelOp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Geral\InicializadorObjetos.cs" />
+    <Compile Include="Geral\Material.cs" />
+    <Compile Include="Geral\MaterialFluidoOPI.cs" />
+    <Compile Include="Geral\MaterialFluidoOPIII.cs" />
     <Compile Include="Geral\MisturaBinaria.cs" />
-    <Compile Include="interfaces\IBomba.cs" />
-    <Compile Include="interfaces\IDestilacao.cs" />
-    <Compile Include="interfaces\ISingulariedade.cs" />
-    <Compile Include="interfaces\ITrocadorDeCalor.cs" />
-    <Compile Include="interfaces\ITubulacao.cs" />
-    <Compile Include="Forms\FormsMaster.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormsMaster.Designer.cs">
-      <DependentUpon>FormsMaster.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Interfaces\IBomba.cs" />
+    <Compile Include="Interfaces\IDestilacao.cs" />
+    <Compile Include="Interfaces\IFluidoBomba.cs" />
+    <Compile Include="Interfaces\IMaterialFluidoOPI.cs" />
+    <Compile Include="Interfaces\ISingularidade.cs" />
+    <Compile Include="Interfaces\ITrocadorDeCalor.cs" />
+    <Compile Include="Interfaces\ITubulacao.cs" />
     <Compile Include="EquipamentosOPIII\MembranaDeSeparacao.cs" />
     <Compile Include="EquipamentosOPI\EquipamentoOPI.cs" />
     <Compile Include="EquipamentosOPII\EquipamentoOPII.cs" />
@@ -131,17 +152,24 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\FormsAutoBomba.resx">
       <DependentUpon>FormsAutoBomba.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormsPlotBomba.resx">
-      <DependentUpon>FormsPlotBomba.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormsColunaMcCabeThiele.resx">
+      <DependentUpon>FormsColunaMcCabeThiele.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsExercicioOP1.resx">
+      <DependentUpon>FormsExercicioOP1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormsMaster.resx">
       <DependentUpon>FormsMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsPlotBomba.resx">
+      <DependentUpon>FormsPlotBomba.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormsInício.resx">
       <DependentUpon>FormsInício.cs</DependentUpon>

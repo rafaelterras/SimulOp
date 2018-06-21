@@ -6,7 +6,7 @@ using MathNet.Numerics;
 
 namespace SimulOP
 {
-    internal abstract class Equipamentos
+    public abstract class Equipamentos
     {
         /// <summary>
         /// Constante: Aceleração da gravidade [m/s^2]

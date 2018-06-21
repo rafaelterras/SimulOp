@@ -5,12 +5,12 @@
         /// <summary>
         /// Fluido frio na entrada
         /// </summary>
-        Fluido fluidoQuenteEntrada { get; set; }
+        FluidoOPI fluidoQuenteEntrada { get; set; }
 
         /// <summary>
         /// Fluido quente na entrada
         /// </summary>
-        Fluido fluidoFrioEntrada { get; set; }
+        FluidoOPI fluidoFrioEntrada { get; set; }
 
         /// <summary>
         /// Coeficiente global de troca térmica (U) (J/m^1 k)
@@ -30,12 +30,12 @@
         /// <summary>
         /// Fluido frio na saida
         /// </summary>
-        Fluido fluidoFrioSaida { get; set; }
+        FluidoOPI fluidoFrioSaida { get; set; }
 
         /// <summary>
         /// Fluido quente na saida
         /// </summary>
-        Fluido fluidoQuenteSaida { get; set; }
+        FluidoOPI fluidoQuenteSaida { get; set; }
 
         /// <summary>
         /// Calor transferido do fluido quente para o frio (W)

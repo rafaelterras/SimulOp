@@ -28,7 +28,7 @@ namespace SimulOP.Forms
             double DeqBomba = (trackBarDeq.Value / 500.0) * 26;
 
             // Cria o fluido agua usando o constructor
-            Fluido agua = new Fluido(densidade, viscosidade);
+            FluidoOPI agua = new FluidoOPI(densidade, viscosidade);
 
             // Cria a tubulação tubo1 usando o constructor
             Tubulacao tubo1 = new Tubulacao(diametro, comprimento, rugosidade, elevacao);
@@ -37,16 +37,16 @@ namespace SimulOP.Forms
             Singularidade s1 = new Singularidade(1, "Cotovelo");
             Singularidade s2 = new Singularidade(2, "Cotovelo");
 
-            tubo1.ListaSingulariedades = new List<Singularidade> { s1, s2 };
+            tubo1.ListaSingulariedades = new List<ISingularidade> { s1, s2 };
 
             Bomba bomba1 = new Bomba(new double[] { AeqBomba, BeqBomba, CeqBomba, DeqBomba }, agua, tubo1);
 
             // Atualiza os valores da bomba
             bomba1.CalculaVazao();
 
-            double[] plotX;
-            double[] plotYBomba;
-            double[] plotYtubo;
+            List<double> plotX;
+            List<double> plotYBomba;
+            List<double> plotYtubo;
 
             // Prepara os pontos para plotagem
             (plotX, plotYBomba, plotYtubo) = bomba1.PreparaPlot(40);

@@ -31,7 +31,7 @@ namespace SimulOP
         private void button1_Click(object sender, EventArgs e)
         {
             // Cria o fluido agua usando o constructor
-            Fluido agua = new Fluido(1000, 8.90E-4);
+            FluidoOPI agua = new FluidoOPI(InicializadorObjetos.MaterialFluidoOPI("água"));
 
             // Cria a tubulação tubo1 usando o constructor
             Tubulacao tubo1 = new Tubulacao(0.05, 10, 4.572E-5, 20);
@@ -40,16 +40,16 @@ namespace SimulOP
             Singularidade s1 = new Singularidade(1, "Cotovelo");
             Singularidade s2 = new Singularidade(2, "Cotovelo");
 
-            tubo1.ListaSingulariedades = new List<Singularidade> { s1, s2 };
+            tubo1.ListaSingulariedades = new List<ISingularidade> { s1, s2 };
 
             Bomba bomba1 = new Bomba(new double[] { 0, -2096928, 2649.96, 26 }, agua, tubo1);
 
             // Atualiza os valores da bomba
             bomba1.CalculaVazao();
 
-            double[] plotX;
-            double[] plotYBomba;
-            double[] plotYtubo;
+            List<double> plotX;
+            List<double> plotYBomba;
+            List<double> plotYtubo;
 
             // Prepara os pontos para plotagem
             (plotX, plotYBomba, plotYtubo) = bomba1.PreparaPlot(40);
@@ -82,7 +82,7 @@ namespace SimulOP
             double EqBomba = ((trackBar1.Value + 1) / 10.0) * -2096928;
 
             // Cria o fluido agua usando o constructor
-            Fluido agua = new Fluido(1000, 8.90E-4);
+            FluidoOPI agua = new FluidoOPI(1000, 8.90E-4);
 
             // Cria a tubulação tubo1 usando o constructor
             Tubulacao tubo1 = new Tubulacao(0.05, 10, 4.572E-5, 20);
@@ -91,16 +91,16 @@ namespace SimulOP
             Singularidade s1 = new Singularidade(1, "Cotovelo");
             Singularidade s2 = new Singularidade(2, "Cotovelo");
 
-            tubo1.ListaSingulariedades = new List<Singularidade> { s1, s2 };
+            tubo1.ListaSingulariedades = new List<ISingularidade> { s1, s2 };
 
             Bomba bomba1 = new Bomba(new double[] { 0, EqBomba, 2649.96, 26 }, agua, tubo1);
 
             // Atualiza os valores da bomba
             bomba1.CalculaVazao();
 
-            double[] plotX;
-            double[] plotYBomba;
-            double[] plotYtubo;
+            List<double> plotX;
+            List<double> plotYBomba;
+            List<double> plotYtubo;
 
             // Prepara os pontos para plotagem
             (plotX, plotYBomba, plotYtubo) = bomba1.PreparaPlot(40);

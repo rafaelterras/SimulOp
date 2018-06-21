@@ -8,12 +8,13 @@ namespace SimulOP
     class Bomba : EquipamentoOPI, IBomba
     {
         #region Inicialização das variaveis e do Constructor
-        private double vazao;
-        private double potencia;
-        private double[] equacaoCurva;
-        private double alturaManometrica;
-        private Fluido fluido;
-        private Tubulacao tubulacao;
+        protected double vazao;
+        protected double potencia;
+        protected double[] equacaoCurva;
+        protected double alturaManometrica;
+        protected FluidoOPI fluido;
+        protected Tubulacao tubulacaoDescarga;
+        protected double rendimento;
 
         /// <summary>
         /// Vazão de fluido (m^3/s)
@@ -39,12 +40,17 @@ namespace SimulOP
         /// <summary>
         /// O fluido que está sendo escoado pela bomba
         /// </summary>
-        public Fluido Fluido { get => fluido; set => fluido = value; }
+        public FluidoOPI Fluido { get => fluido; set => fluido = value; }
 
         /// <summary>
         /// A tubulação em que a bomba está instalada
         /// </summary>
-        public Tubulacao Tubulacao { get => tubulacao; set => tubulacao = value; }
+        public Tubulacao TubulacaoDescarga { get => tubulacaoDescarga; set => tubulacaoDescarga = value; }
+
+        /// <summary>
+        /// Rendimento elétrico da bomba
+        /// </summary>
+        public double Rendimento { get => rendimento; set => rendimento = value; }
 
         /// <summary>
         /// Constructor do objeto Bomba
@@ -52,11 +58,12 @@ namespace SimulOP
         /// <param name="equacaoCurva">Coeficientes do polinomio de 3º grau que aproxima a bomba</param>
         /// <param name="fluido">O fluido que está sendo escoado pela bomba</param>
         /// <param name="tubulacao">A tubulação que a bomba está acloplada</param>
-        public Bomba(double[] equacaoCurva, Fluido fluido, Tubulacao tubulacao)
+        public Bomba(double[] equacaoCurva, FluidoOPI fluido, Tubulacao tubulacao, double rendimento = 1.0)
         {
             this.equacaoCurva = equacaoCurva;
             this.fluido = fluido;
-            this.tubulacao = tubulacao;
+            this.tubulacaoDescarga = tubulacao;
+            this.rendimento = rendimento;
         }
 
         /// <summary>
@@ -67,16 +74,24 @@ namespace SimulOP
         /// <param name="tipo">O Tipo de associação ("série" ou "paralelo")</param>
         public Bomba(Bomba bomba1, Bomba bomba2, string tipo)
         {
-            if (bomba1.fluido.Equals(bomba2.fluido) && bomba1.tubulacao.Equals(bomba2.tubulacao))
+            if (bomba1.fluido.Equals(bomba2.fluido) && bomba1.tubulacaoDescarga.Equals(bomba2.tubulacaoDescarga))
             {
                 this.fluido = bomba1.fluido;
-                this.tubulacao = bomba1.tubulacao;
+                this.tubulacaoDescarga = bomba1.tubulacaoDescarga;
                 this.BombaEquivalente(new Bomba[] { bomba1, bomba2 }, tipo);
             }
             else
             {
                 throw new Exception("As bombas precisam ter o mesmo objeto Fluido e Tubulacao para serem usadas em associacao");
             }
+        }
+
+        protected Bomba(double[] equacaoCurva, Tubulacao tubulacao, double rendimento = 1.0)
+        {
+            this.equacaoCurva = equacaoCurva;
+            this.fluido = null;
+            this.tubulacaoDescarga = tubulacao;
+            this.rendimento = rendimento;
         }
 
         #endregion
@@ -132,15 +147,15 @@ namespace SimulOP
         /// Equação de Bernoulli, da forma Delta(H)_{bomba} - H_{f} - Delta(Z) = 0
         /// </summary>
         /// <returns> O valor da Equação de bernoulli [m]. </returns>
-        public double Bernoulli(double vazao)
+        public virtual double Bernoulli(double vazao)
         {
-            return this.CalcAlturaBomba(vazao) - Tubulacao.CalculaPerdaCarga(Fluido, vazao) - Tubulacao.Elevacao;
+            return this.CalcAlturaBomba(vazao) - TubulacaoDescarga.CalculaPerdaCarga(Fluido.Material, vazao) - TubulacaoDescarga.Elevacao;
         }
 
         /// <summary>
         /// Atualiza o valor da vazão [m^3/s] e da altura [m] da bomba utilizando a equação de Bernoulli.
         /// </summary>
-        public void CalculaVazao()
+        public virtual void CalculaVazao()
         {
             double vazao;
 
@@ -148,10 +163,10 @@ namespace SimulOP
 
             this.vazao = vazao;
             this.alturaManometrica = CalcAlturaBomba(vazao);
-            this.Tubulacao.CalculaPerdaCarga(Fluido, this.Vazao);
+            this.TubulacaoDescarga.CalculaPerdaCarga(Fluido.Material, this.Vazao);
         }
 
-        public (double[] plotX, double[] plotYBomba, double[] plotYTubo) PreparaPlot (int nMax = 40)
+        public virtual (List<double> plotX, List<double> plotYBomba, List<double> plotYTubo) PreparaPlot (int nMax = 40)
         {
             List<double> listX = new List<double>();
             List<double> listYBomba = new List<double>();
@@ -166,10 +181,10 @@ namespace SimulOP
                 vazao = (i + 1) * (this.vazao / (nMax / 2));
 
                 h = this.CalcAlturaBomba(vazao);
-                hf = this.tubulacao.CalculaPerdaCarga(this.fluido, vazao) + this.tubulacao.Elevacao;
+                hf = this.tubulacaoDescarga.CalculaPerdaCarga(this.fluido.Material, vazao) + this.tubulacaoDescarga.Elevacao;
                 if (h > 0)
                 {
-                    listX.Add(vazao);
+                    listX.Add(Math.Round(vazao * 3600,2));
                     listYBomba.Add(h);
                     listYtubo.Add(hf);
                 }
@@ -178,19 +193,7 @@ namespace SimulOP
                     break;
                 }
             }
-
-            double[] plotX = new double[listX.Count];
-            double[] plotYBomba = new double[listX.Count];
-            double[] plotYTubo = new double[listX.Count];
-
-            for (int i = 0; i < listX.Count; i++)
-            {
-                plotX[i] = Math.Round(listX[i] * 3600, 2); // m^3/h
-                plotYBomba[i] = listYBomba[i];
-                plotYTubo[i] = listYtubo[i];
-            }
-
-            return (plotX, plotYBomba, plotYTubo);
+            return (listX, listYBomba, listYtubo);
         }
 
         /// <summary>
@@ -198,9 +201,15 @@ namespace SimulOP
         /// </summary>
         /// <param name="vazao">Vazão de liquido que passa na bomba [m^3/s]</param>
         /// <returns></returns>
-        public double CalculaPotencia(double vazao)
+        public virtual double CalculaPotencia(double vazao)
         {
-            throw new System.NotImplementedException("Calculo de Potência ainda não definido");
+            this.potencia = fluido.Material.Densidade * g * vazao * alturaManometrica / rendimento;
+            return this.Potencia;
+        }
+
+        public virtual void CalculaAlturaManoRequerida(double vazao)
+        {
+            alturaManometrica = tubulacaoDescarga.CalculaPerdaCarga(Fluido.Material, vazao) + tubulacaoDescarga.Elevacao;
         }
     }
 }
