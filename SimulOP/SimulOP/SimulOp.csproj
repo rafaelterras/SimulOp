@@ -63,6 +63,12 @@
     <Compile Include="EquipamentosOPIII\Cristalizador.cs" />
     <Compile Include="EquipamentosOPIII\DestiBatelada.cs" />
     <Compile Include="EquipamentosOPIII\DestiContinuo.cs" />
+    <Compile Include="Forms\FomrsBombeamentoCompleto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FomrsBombeamentoCompleto.Designer.cs">
+      <DependentUpon>FomrsBombeamentoCompleto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormsColunaMcCabeThiele.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\FomrsBombeamentoCompleto.resx">
+      <DependentUpon>FomrsBombeamentoCompleto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormsAutoBomba.resx">
       <DependentUpon>FormsAutoBomba.cs</DependentUpon>
     </EmbeddedResource>
@@ -182,6 +191,8 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\TubBomba.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

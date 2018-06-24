@@ -51,5 +51,12 @@ namespace SimulOP.Forms
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
         }
+
+        private void exercícioResolvidoV2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.FomrsBombeamentoCompleto newMDIChild = new Forms.FomrsBombeamentoCompleto();
+            newMDIChild.MdiParent = this;
+            newMDIChild.Show();
+        }
     }
 }

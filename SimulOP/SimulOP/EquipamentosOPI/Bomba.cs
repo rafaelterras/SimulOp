@@ -207,9 +207,10 @@ namespace SimulOP
             return this.Potencia;
         }
 
-        public virtual void CalculaAlturaManoRequerida(double vazao)
+        public virtual double CalculaAlturaManoRequerida(double vazao)
         {
             alturaManometrica = tubulacaoDescarga.CalculaPerdaCarga(Fluido.Material, vazao) + tubulacaoDescarga.Elevacao;
+            return alturaManometrica;
         }
     }
 }

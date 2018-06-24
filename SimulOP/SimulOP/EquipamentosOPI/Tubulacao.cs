@@ -16,7 +16,7 @@ namespace SimulOP
         private double rugosidadeRelativa;
         private double fatorAtrito;
         private double elevacao;
-        private List<ISingularidade> listaSingulariedades;
+        private List<ISingularidade> listaSingulariedades = new List<ISingularidade>();
         private double perdaCarga;
         private string metodoFatrito;
 
@@ -28,7 +28,14 @@ namespace SimulOP
         /// <summary>
         /// Comprimento equivalente das Singularidades da tubulação [m]
         /// </summary>
-        public double ComprimentoEquivalente { get => comprimentoEquivalente; }
+        public double ComprimentoEquivalente
+        {
+            get
+            {
+                CalculaComprimentoEquiSing();
+                return comprimentoEquivalente;
+            }
+        }
 
         /// <summary>
         /// Diametro da tubulação [m]
@@ -51,7 +58,7 @@ namespace SimulOP
         public double RugosidadeRelativa { get => rugosidadeRelativa; set => rugosidadeRelativa = value; }
 
         /// <summary>
-        /// Fator de atrito da tubulação, depende das condições do escoamento, [m]
+        /// Fator de atrito (Fanning) da tubulação, depende das condições do escoamento, [m]
         /// </summary>
         public double FatorAtrito { get => fatorAtrito; set => fatorAtrito = value; }
 
@@ -154,22 +161,20 @@ namespace SimulOP
                     fA1 = Math.Pow(8 / Re, 12);
                     fA2 = 1 / Math.Pow(A + B, 3.0 / 2.0);
 
-                    fA = 2 * Math.Pow(fA1 + fA2, 1.0 / 12.0);
+                    fA = 2 * Math.Pow(fA1 + fA2, 1.0 / 12.0); // fator de fanning
                     break;
                 case "haaland":
                     Re = CalculaReynolds(material, vazao);
-                    A = Math.Pow(this.RugosidadeRelativa / 3.7, 1.11);
+                    A = Math.Pow(this.RugosidadeRelativa / (3.7*diametro), 1.11);
                     B = 6.9 / Re;
 
                     invRaizFA = -3.6 * Math.Log10(A + B);
-                    fA = 1 / Math.Pow(invRaizFA, 2);
+                    fA = 1 / Math.Pow(invRaizFA, 2); // fator de fanning
                     break;
                 default:
                     throw new Exception("Especifique o método.");
             }
-
             return fA;
-
         }
 
         /// <summary>
@@ -182,11 +187,11 @@ namespace SimulOP
         {
             double fAtrito = CalculaFAtrito(material, vazao);
             double comprimetoTotal = this.Comprimento + this.ComprimentoEquivalente;
-            double hf1 = (32 / Math.Pow(Math.PI, 2));
-            double hf2 = fAtrito * comprimetoTotal * Math.Pow(vazao, 2) / (Math.Pow(this.Diametro, 5.0) * g);
 
-            this.PerdaCarga = hf1 * hf2;
+            double vMedia = vazao / (Math.PI * Math.Pow(diametro / 2, 2));
 
+            perdaCarga = 4 * fAtrito * (comprimetoTotal / diametro) * (Math.Pow(vMedia, 2) / (2 * g));
+         
             return this.PerdaCarga;
         }
 

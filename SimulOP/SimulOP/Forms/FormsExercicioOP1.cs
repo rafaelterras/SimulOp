@@ -52,7 +52,7 @@ namespace SimulOP.Forms
             label51.Text = Convert.ToString(numericUpDown8.Value);
             label55.Text = Convert.ToString(Math.Round(1000 * agua.ConvertePressaoEmM(agua.PresaoVapor), 2) / 1000);
             label53.Text = Convert.ToString(Math.Round(100 * tubulacaoSuccao.CalculaPerdaCarga(agua.Material, vazao)) / 100);
-            label57.Text = Convert.ToString(Math.Round(100 * bombaCompleta.npshDisponivel()) / 100);
+            label57.Text = Convert.ToString(Math.Round(100 * bombaCompleta.NPSHDisponivel()) / 100);
             label60.Text = Convert.ToString(bombaCompleta.NPSHRequerido);
             if (Convert.ToDouble(label57.Text) > Convert.ToDouble(label60.Text))
             {
