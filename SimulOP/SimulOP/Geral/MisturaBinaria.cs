@@ -102,6 +102,12 @@ namespace SimulOP
             this.composicaoLiq[0] = xLK;
             this.composicaoLiq[1] = 1 - xLK;
 
+            double somaPresaoParcial(double T) => xLK * fluidoLK.PVapor(T) + (1 - xLK) * fluidoHK.PVapor(T) - this.pressao;
+
+            double temp = Equipamentos.AchaRaizBrenet(somaPresaoParcial, 100, 500, nInte: 300);
+
+            this.Temperatura = temp;
+
             // Calcula e atualiza o coeficiente de volatividade relativa
             this.alpha = fluidoLK.PresaoVapor / fluidoHK.PresaoVapor;
             
@@ -119,6 +125,12 @@ namespace SimulOP
         /// <returns>yLK: Composisão do LK na fase vapor</returns>
         public double CalculaVap(double xLK)
         {
+            double somaPresaoParcial(double T) => xLK * fluidoLK.PVapor(T) + (1 - xLK) * fluidoHK.PVapor(T) - this.pressao;
+
+            double temp = Equipamentos.AchaRaizBrenet(somaPresaoParcial, 100, 500, nInte: 300);
+
+            this.Temperatura = temp;
+
             // Calcula e atualiza o coeficiente de volatividade relativa
             this.alpha = fluidoLK.PresaoVapor / fluidoHK.PresaoVapor;
 

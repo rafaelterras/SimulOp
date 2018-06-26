@@ -45,8 +45,8 @@ namespace SimulOP.Forms
         private int trbXdInt;
         private double nudXbDbl;
         private int trbXbInt;
-        private double nudTemperaturaDinDbl;
-        private int trbTemperaturaDinInt;
+        private double nudPressaoDinDbl;
+        private int trbPressaoDinInt;
 
         public FormsColunaMcCabeThiele()
         {
@@ -71,8 +71,8 @@ namespace SimulOP.Forms
                 trbXd.Scroll += trbXd_Scroll;
                 nudXb.ValueChanged += nudXb_ValueChanged;
                 trbXb.Scroll += trbXb_Scroll;
-                nudTemperaturaDin.ValueChanged += nudTemperaturaDin_ValueChanged;
-                trbTemperaturaDin.Scroll += trbTemperaturaDin_Scroll;
+                nudPressaoDin.ValueChanged += nudPressaoDin_ValueChanged;
+                trbPressaoDin.Scroll += trbPressaoDin_Scroll;
                 nudCondicaoEntradaDin.ValueChanged += nudCondicaoEntradaDin_ValueChanged;
                 cmbCondicaoEntradaDin.SelectedIndexChanged += cmbCondicaoEntradaDin_SelectedIndexChanged;
                 trbCondicaoEntradaDin.Scroll += trbCondicaoEntradaDin_Scroll;
@@ -88,8 +88,8 @@ namespace SimulOP.Forms
                 trbXd.Scroll -= trbXd_Scroll;
                 nudXb.ValueChanged -= nudXb_ValueChanged;
                 trbXb.Scroll -= trbXb_Scroll;
-                nudTemperaturaDin.ValueChanged -= nudTemperaturaDin_ValueChanged;
-                trbTemperaturaDin.Scroll -= trbTemperaturaDin_Scroll;
+                nudPressaoDin.ValueChanged -= nudPressaoDin_ValueChanged;
+                trbPressaoDin.Scroll -= trbPressaoDin_Scroll;
                 nudCondicaoEntradaDin.ValueChanged -= nudCondicaoEntradaDin_ValueChanged;
                 cmbCondicaoEntradaDin.SelectedIndexChanged -= cmbCondicaoEntradaDin_SelectedIndexChanged;
                 trbCondicaoEntradaDin.Scroll -= trbCondicaoEntradaDin_Scroll;
@@ -238,11 +238,9 @@ namespace SimulOP.Forms
                     nudRefluxoDin.Value = Convert.ToDecimal(nudRefluxoDbl);
                     nudXd.Value = Convert.ToDecimal(nudXdDbl);
                     nudXb.Value = Convert.ToDecimal(nudXbDbl);
-                    nudTemperaturaDin.Value = Convert.ToDecimal(nudTemperaturaDbl - 273.15);
+                    nudPressaoDin.Value = Convert.ToDecimal(nudPressaoDbl / 1e5);
 
                     VerificaConvergencia();
-
-                    //EventosInputs(true);
 
                     txbConvergencia.Visible = true;
                     gubVariaveis.Visible = true;
@@ -378,10 +376,10 @@ namespace SimulOP.Forms
                     AtualizaLinhasOP();
                     AtualizaPratos();
                     break;
-                case "nudTemperaturaDin": // Mudança na temperatura
-                    nudTemperaturaDinDbl = x + 273.15; // Temperatura em K
-                    trbTemperaturaDinInt = trbInt;
-                    ColunaMcCabeThiele.MisturaBinaria.Temperatura = nudTemperaturaDinDbl;
+                case "nudPressaoDin": // Mudança na temperatura
+                    nudPressaoDinDbl = x * 1e5;
+                    trbPressaoDinInt = trbInt;
+                    ColunaMcCabeThiele.MisturaBinaria.Pressao = nudPressaoDinDbl;
                     AtualizaEquilibrio();
                     AtualizaLinhasOP();
                     AtualizaLinhaQ();
@@ -555,20 +553,20 @@ namespace SimulOP.Forms
         }
         #endregion
 
-        #region Temperatura
-        private void nudTemperaturaDin_ValueChanged(object sender, EventArgs e)
+        #region Pressão
+        private void nudPressaoDin_ValueChanged(object sender, EventArgs e)
         {
-            AtualizaParDin(nudTemperaturaDin, trbTemperaturaDin, Convert.ToDouble(nudTemperaturaDin.Value));
+            AtualizaParDin(nudPressaoDin, trbPressaoDin, Convert.ToDouble(nudPressaoDin.Value));
 
         }
 
-        private void trbTemperaturaDin_Scroll(object sender, EventArgs e)
+        private void trbPressaoDin_Scroll(object sender, EventArgs e)
         {
-            double x = Convert.ToDouble(nudTemperaturaDin.Minimum) +
-                (Convert.ToDouble(nudTemperaturaDin.Maximum) - Convert.ToDouble(nudTemperaturaDin.Minimum))
-                * Convert.ToDouble(trbTemperaturaDin.Value) / Convert.ToDouble(trbTemperaturaDin.Maximum);
+            double x = Convert.ToDouble(nudPressaoDin.Minimum) +
+                (Convert.ToDouble(nudPressaoDin.Maximum) - Convert.ToDouble(nudPressaoDin.Minimum))
+                * Convert.ToDouble(trbPressaoDin.Value) / Convert.ToDouble(trbPressaoDin.Maximum);
 
-            AtualizaParDin(nudTemperaturaDin, trbTemperaturaDin, x);
+            AtualizaParDin(nudPressaoDin, trbPressaoDin, x);
         }
         #endregion
 

@@ -62,8 +62,8 @@
             this.trbFracaoEntradaLKDin = new System.Windows.Forms.TrackBar();
             this.nudFracaoEntradaLKDin = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
-            this.trbTemperaturaDin = new System.Windows.Forms.TrackBar();
-            this.nudTemperaturaDin = new System.Windows.Forms.NumericUpDown();
+            this.trbPressaoDin = new System.Windows.Forms.TrackBar();
+            this.nudPressaoDin = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.trbXb = new System.Windows.Forms.TrackBar();
             this.nudXb = new System.Windows.Forms.NumericUpDown();
@@ -94,8 +94,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudCondicaoEntradaDin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbFracaoEntradaLKDin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudFracaoEntradaLKDin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trbTemperaturaDin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudTemperaturaDin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trbPressaoDin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPressaoDin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbXb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudXb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbXd)).BeginInit();
@@ -447,8 +447,8 @@
             this.gubVariaveis.Controls.Add(this.trbFracaoEntradaLKDin);
             this.gubVariaveis.Controls.Add(this.nudFracaoEntradaLKDin);
             this.gubVariaveis.Controls.Add(this.label12);
-            this.gubVariaveis.Controls.Add(this.trbTemperaturaDin);
-            this.gubVariaveis.Controls.Add(this.nudTemperaturaDin);
+            this.gubVariaveis.Controls.Add(this.trbPressaoDin);
+            this.gubVariaveis.Controls.Add(this.nudPressaoDin);
             this.gubVariaveis.Controls.Add(this.label7);
             this.gubVariaveis.Controls.Add(this.trbXb);
             this.gubVariaveis.Controls.Add(this.nudXb);
@@ -609,38 +609,38 @@
             this.label12.TabIndex = 18;
             this.label12.Text = "Fração do LK na entrada:";
             // 
-            // trbTemperaturaDin
+            // trbPressaoDin
             // 
-            this.trbTemperaturaDin.Location = new System.Drawing.Point(9, 325);
-            this.trbTemperaturaDin.Maximum = 50;
-            this.trbTemperaturaDin.Name = "trbTemperaturaDin";
-            this.trbTemperaturaDin.Size = new System.Drawing.Size(188, 45);
-            this.trbTemperaturaDin.TabIndex = 14;
-            this.trbTemperaturaDin.Scroll += new System.EventHandler(this.trbTemperaturaDin_Scroll);
+            this.trbPressaoDin.Location = new System.Drawing.Point(9, 325);
+            this.trbPressaoDin.Maximum = 50;
+            this.trbPressaoDin.Name = "trbPressaoDin";
+            this.trbPressaoDin.Size = new System.Drawing.Size(188, 45);
+            this.trbPressaoDin.TabIndex = 14;
+            this.trbPressaoDin.Scroll += new System.EventHandler(this.trbPressaoDin_Scroll);
             // 
-            // nudTemperaturaDin
+            // nudPressaoDin
             // 
-            this.nudTemperaturaDin.DecimalPlaces = 1;
-            this.nudTemperaturaDin.Location = new System.Drawing.Point(147, 307);
-            this.nudTemperaturaDin.Maximum = new decimal(new int[] {
-            200,
+            this.nudPressaoDin.DecimalPlaces = 1;
+            this.nudPressaoDin.Location = new System.Drawing.Point(147, 307);
+            this.nudPressaoDin.Maximum = new decimal(new int[] {
+            5,
             0,
             0,
             0});
-            this.nudTemperaturaDin.Minimum = new decimal(new int[] {
-            50,
+            this.nudPressaoDin.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            65536});
+            this.nudPressaoDin.Name = "nudPressaoDin";
+            this.nudPressaoDin.Size = new System.Drawing.Size(50, 20);
+            this.nudPressaoDin.TabIndex = 8;
+            this.nudPressaoDin.Value = new decimal(new int[] {
+            1,
             0,
             0,
             0});
-            this.nudTemperaturaDin.Name = "nudTemperaturaDin";
-            this.nudTemperaturaDin.Size = new System.Drawing.Size(50, 20);
-            this.nudTemperaturaDin.TabIndex = 8;
-            this.nudTemperaturaDin.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.nudTemperaturaDin.ValueChanged += new System.EventHandler(this.nudTemperaturaDin_ValueChanged);
+            this.nudPressaoDin.ValueChanged += new System.EventHandler(this.nudPressaoDin_ValueChanged);
             // 
             // label7
             // 
@@ -648,9 +648,9 @@
             this.label7.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.label7.Location = new System.Drawing.Point(6, 309);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(70, 13);
+            this.label7.Size = new System.Drawing.Size(72, 13);
             this.label7.TabIndex = 15;
-            this.label7.Text = "Temperatura:";
+            this.label7.Text = "Pressão (bar):";
             // 
             // trbXb
             // 
@@ -907,8 +907,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudCondicaoEntradaDin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbFracaoEntradaLKDin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudFracaoEntradaLKDin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trbTemperaturaDin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudTemperaturaDin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trbPressaoDin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPressaoDin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbXb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudXb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbXd)).EndInit();
@@ -942,8 +942,8 @@
         private System.Windows.Forms.TrackBar trbXb;
         private System.Windows.Forms.NumericUpDown nudXb;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TrackBar trbTemperaturaDin;
-        private System.Windows.Forms.NumericUpDown nudTemperaturaDin;
+        private System.Windows.Forms.TrackBar trbPressaoDin;
+        private System.Windows.Forms.NumericUpDown nudPressaoDin;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown nudRefluxo;
         private System.Windows.Forms.Label label11;

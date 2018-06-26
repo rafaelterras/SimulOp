@@ -33,7 +33,7 @@ namespace SimulOP
         /// <param name="nInte">O número máximo de iterações. </param>
         /// <returns> x tal que f(x) = 0. </returns>
         /// </summary>
-        public double AchaRaizBrenet(Func<double, double> fx, double limiteInf, double limitSup, double precisao = 1e-08, int nInte = 100)
+        public static double AchaRaizBrenet(Func<double, double> fx, double limiteInf, double limitSup, double precisao = 1e-08, int nInte = 100)
         {
             return FindRoots.OfFunction(fx, limiteInf, limitSup, precisao, nInte);
         }
