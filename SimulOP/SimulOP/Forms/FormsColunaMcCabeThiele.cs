@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
+using SimulOP.Properties;
+
 namespace SimulOP.Forms
 {
     public partial class FormsColunaMcCabeThiele : Form
@@ -12,7 +14,9 @@ namespace SimulOP.Forms
         private MisturaBinaria mistura;
         private ColunaMcCabeThiele ColunaMcCabeThiele;
         private bool erroConvergencia = false;
-
+        
+        private Form formAberto;
+                
         // Listas para plots
         private List<double> eqX = new List<double>();
         private List<double> eqY = new List<double>();
@@ -51,11 +55,6 @@ namespace SimulOP.Forms
         public FormsColunaMcCabeThiele()
         {
             InitializeComponent();
-        }
-
-        private void FormsColunaMcCabeThiele_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void EventosInputs(bool ativar)
@@ -137,9 +136,6 @@ namespace SimulOP.Forms
         {
             linhaQX.Clear();
             linhaQY.Clear();
-            //chart.Series[1].Points.Clear();
-
-            //(linhaQX, linhaQY) = ColunaMcCabeThiele.PlotCurvaQ(20);
         }
 
         private void VerificaConvergencia()
@@ -257,77 +253,6 @@ namespace SimulOP.Forms
                 }
             }
         }
-
-        #region === Input Inicial ===
-
-        /// <summary>
-        /// Altera o numero da variavel q da entrada conforme a combo box
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void cmbCondicaoEntrada_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cmbCondicaoEntradaTxt = cmbCondicaoEntrada.Text;
-
-            switch (cmbCondicaoEntradaTxt.ToLower())
-            {
-                case "líquido sub-resfriado":
-                    nudRazaoQDbl = 1.25;
-                    break;
-                case "líquido saturado":
-                    nudRazaoQDbl = 1.0;
-                    break;
-                case "parcialmente vaporizado":
-                    nudRazaoQDbl = 0.5;
-                    break;
-                case "vapor saturado":
-                    nudRazaoQDbl = 0;
-                    break;
-                case "vapor super aquecido":
-                    nudRazaoQDbl = -0.25;
-                    break;
-                default:
-                    throw new Exception($"Condição do líquido de entrada não estabelecida, o valor [{cmbCondicaoEntradaTxt}] não era esperado!");
-            }
-            nudRazaoQ.Value = Convert.ToDecimal(nudRazaoQDbl);
-        }
-
-        /// <summary>
-        /// Altera a texto da combobox conforme o numero da varial q de entrada
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void nudRazaoQ_ValueChanged(object sender, EventArgs e)
-        {
-            nudRazaoQDbl = Convert.ToDouble(nudRazaoQ.Value);
-
-            if (nudRazaoQDbl > 1.0)
-            {
-                cmbCondicaoEntradaTxt = "Líquido sub-resfriado";
-            }
-            else if (nudRazaoQDbl == 1.0)
-            {
-                cmbCondicaoEntradaTxt = "Líquido saturado";
-            }
-            else if (nudRazaoQDbl > 0.0 && nudRazaoQDbl < 1.0)
-            {
-                cmbCondicaoEntradaTxt = "Parcialmente vaporizado";
-            }
-            else if (nudRazaoQDbl == 0.0)
-            {
-                cmbCondicaoEntradaTxt = "Vapor saturado";
-            }
-            else if (nudRazaoQDbl < 0.0)
-            {
-                cmbCondicaoEntradaTxt = "Vapor super aquecido";
-            }
-
-            cmbCondicaoEntrada.Text = cmbCondicaoEntradaTxt;
-        }
-
-
-
-        #endregion
 
         #region === Variaveis Dinamicas ===
 
@@ -557,7 +482,6 @@ namespace SimulOP.Forms
         private void nudPressaoDin_ValueChanged(object sender, EventArgs e)
         {
             AtualizaParDin(nudPressaoDin, trbPressaoDin, Convert.ToDouble(nudPressaoDin.Value));
-
         }
 
         private void trbPressaoDin_Scroll(object sender, EventArgs e)
@@ -571,5 +495,19 @@ namespace SimulOP.Forms
         #endregion
 
         #endregion
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            formAberto = Application.OpenForms["FormsPopOut"];
+
+            if (formAberto != null)
+            {
+                formAberto.Close();
+            }
+
+            FormsPopOut popOut = new FormsPopOut(TextoAjuda.ResourceManager.GetString("ajudaTeste"));
+
+            popOut.Show();
+        }
     }
 }

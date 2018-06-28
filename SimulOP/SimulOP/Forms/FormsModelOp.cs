@@ -22,7 +22,7 @@ namespace SimulOP.Forms
             FluidoOPI agua = new FluidoOPI(Convert.ToDouble(numericUpDown1.Value) * 1000, Convert.ToDouble(numericUpDown8.Value) / 1000);
 
             Tubulacao tubo1 = new Tubulacao(Convert.ToDouble(numericUpDown4.Value) / 100, 
-                Convert.ToDouble(numericUpDown3.Value), Convert.ToDouble(numericUpDown9.Value) / 1000000, 
+                Convert.ToDouble(numericUpDown3.Value), new MaterialTubulacao(Convert.ToDouble(numericUpDown9.Value) / 1000000), 
                 Convert.ToDouble(numericUpDown5.Value));
 
             label25.Visible = true;

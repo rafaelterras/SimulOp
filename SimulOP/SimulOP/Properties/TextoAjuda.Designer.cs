@@ -22,14 +22,14 @@ namespace SimulOP.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class TextoAjuda {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal TextoAjuda() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace SimulOP.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SimulOP.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SimulOP.Properties.TextoAjuda", typeof(TextoAjuda).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,22 +61,11 @@ namespace SimulOP.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor laoreet libero, fermentum mollis metus cursus sit amet. Nam volutpat velit vitae odio commodo ultrices. Cras in pharetra eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer efficitur accumsan dui, vitae iaculis neque hendrerit non. Fusce aliquam blandit lorem, eget consectetur sapien. Vestibulum dapibus mollis diam sed dictum. Quisque et egestas massa. Proin congue, quam ac tristique blan [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static System.Drawing.Bitmap info {
+        internal static string ajudaTeste {
             get {
-                object obj = ResourceManager.GetObject("info", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap TubBomba {
-            get {
-                object obj = ResourceManager.GetObject("TubBomba", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("ajudaTeste", resourceCulture);
             }
         }
     }

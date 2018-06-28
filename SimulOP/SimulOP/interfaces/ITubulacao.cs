@@ -1,4 +1,6 @@
-﻿namespace SimulOP
+﻿using System.Collections.Generic;
+
+namespace SimulOP
 {
     public interface ITubulacao
     {
@@ -20,12 +22,7 @@
         /// <summary>
         /// Tipo de material
         /// </summary>
-        string Material { get; set; }
-
-        /// <summary>
-        /// Rugosidede do material
-        /// </summary>
-        double Rugosidade { get; set; }
+        MaterialTubulacao Material { get; set; }
 
         /// <summary>
         /// Rugosidade relativa do mateira
@@ -35,23 +32,16 @@
         /// <summary>
         /// Fator de atrido na condição de escoamento
         /// </summary>
-        double FatorAtrito { get; set; }
+        double FatorAtrito { get; }
 
         /// <summary>
         /// Lista de singulariedades na tubulação
         /// </summary>
-        /// 
-        ///List<Singularidade> ListaSingulariedades { get; set; }
+        List<ISingularidade> ListaSingularidades { get; }
         
         /// <summary>
         /// Elevação da tubulação
         /// </summary>
-        /// 
         double Elevacao { get; set; }
-        
-        /// <summary>
-        /// Calcula a vazão com base na equação da bomba e da tubulação
-        /// </summary>
-        double CalculaVazao();
     }
 }

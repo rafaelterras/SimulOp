@@ -25,17 +25,17 @@ namespace SimulOP.Forms
             FluidoIdealOPIII agua = new FluidoIdealOPIII(new MaterialFluidoOPIII("NA", Convert.ToDouble(numericUpDown9.Value), Convert.ToDouble(numericUpDown10.Value), new double[3] { 4.6543, 1435.264, -64.848 }) , Convert.ToDouble(numericUpDown7.Value) + 273.15);
 
             Tubulacao tubulacaoSuccao = new Tubulacao(Convert.ToDouble(numericUpDown4.Value) / 100,
-                Convert.ToDouble(numericUpDown6.Value), Convert.ToDouble(numericUpDown3.Value) / 1000,
+                Convert.ToDouble(numericUpDown6.Value), new MaterialTubulacao(Convert.ToDouble(numericUpDown3.Value) / 1000),
                 Convert.ToDouble(numericUpDown8.Value), "haaland");
 
             Tubulacao tubulacaoRecalque = new Tubulacao(Convert.ToDouble(numericUpDown4.Value) / 100, 
-                Convert.ToDouble(numericUpDown5.Value), Convert.ToDouble(numericUpDown3.Value) / 1000, 
+                Convert.ToDouble(numericUpDown5.Value), new MaterialTubulacao(Convert.ToDouble(numericUpDown3.Value) / 1000), 
                 Convert.ToDouble(numericUpDown2.Value) - Convert.ToDouble(numericUpDown8.Value), "haaland");
 
             label24.Text = Convert.ToString(tubulacaoSuccao.Comprimento + tubulacaoRecalque.Comprimento);
 
             Tubulacao tubulacaoCompleta = new Tubulacao(Convert.ToDouble(numericUpDown4.Value) / 100,
-                Convert.ToDouble(label24.Text), Convert.ToDouble(numericUpDown3.Value) / 1000,
+                Convert.ToDouble(label24.Text), new MaterialTubulacao(Convert.ToDouble(numericUpDown3.Value) / 1000),
                 Convert.ToDouble(numericUpDown2.Value), "haaland");
 
             BombaCompleta bombaCompleta = new BombaCompleta(new double[] { 0.00, 0.00, 0.00, 0.00 }, agua, tubulacaoSuccao, 

@@ -34,13 +34,14 @@ namespace SimulOP
             FluidoOPI agua = new FluidoOPI(InicializadorObjetos.MaterialFluidoOPI("água"));
 
             // Cria a tubulação tubo1 usando o constructor
-            Tubulacao tubo1 = new Tubulacao(0.05, 10, 4.572E-5, 20);
+            Tubulacao tubo1 = new Tubulacao(0.05, 10, new MaterialTubulacao(4.572E-5), 20);
 
             // Cira as singularidades usando o constructor
             Singularidade s1 = new Singularidade(1, "Cotovelo");
             Singularidade s2 = new Singularidade(2, "Cotovelo");
 
-            tubo1.ListaSingulariedades = new List<ISingularidade> { s1, s2 };
+            tubo1.AdicionaSingularidade(s1);
+            tubo1.AdicionaSingularidade(s2);
 
             Bomba bomba1 = new Bomba(new double[] { 0, -2096928, 2649.96, 26 }, agua, tubo1);
 
@@ -85,13 +86,13 @@ namespace SimulOP
             FluidoOPI agua = new FluidoOPI(1000, 8.90E-4);
 
             // Cria a tubulação tubo1 usando o constructor
-            Tubulacao tubo1 = new Tubulacao(0.05, 10, 4.572E-5, 20);
+            Tubulacao tubo1 = new Tubulacao(0.05, 10, new MaterialTubulacao(4.572E-5), 20);
 
             // Cira as singularidades usando o constructor
             Singularidade s1 = new Singularidade(1, "Cotovelo");
             Singularidade s2 = new Singularidade(2, "Cotovelo");
 
-            tubo1.ListaSingulariedades = new List<ISingularidade> { s1, s2 };
+            tubo1.AdicionaSingularidade(new List<ISingularidade> { s1, s2 });
 
             Bomba bomba1 = new Bomba(new double[] { 0, EqBomba, 2649.96, 26 }, agua, tubo1);
 

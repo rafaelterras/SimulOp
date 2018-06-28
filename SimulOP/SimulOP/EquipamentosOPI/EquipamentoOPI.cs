@@ -5,8 +5,26 @@ using System.Text;
 
 namespace SimulOP
 {
-    abstract class EquipamentoOPI : Equipamentos
+    public abstract class EquipamentoOPI : Equipamentos
     {
+        public enum SchNum
+        {
+            Sch20 = 0,
+            Sch40 = 1,
+            Sch80 = 2,
+            Sch100 = 3,
+        }
+        
+        public enum DiamPol
+        {
+            pol1 = 0,
+            pol1_5 = 1,
+            pol2 = 2,
+            pol4 = 3,
+            pol10 = 4,
+            pol20 = 5,
+        }
+
         /// <summary>
         /// Calcula o número de Reyolds
         /// </summary>

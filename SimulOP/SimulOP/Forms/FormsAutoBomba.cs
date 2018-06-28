@@ -31,13 +31,14 @@ namespace SimulOP.Forms
             FluidoOPI agua = new FluidoOPI(densidade, viscosidade);
 
             // Cria a tubulação tubo1 usando o constructor
-            Tubulacao tubo1 = new Tubulacao(diametro, comprimento, rugosidade, elevacao);
+            Tubulacao tubo1 = new Tubulacao(diametro, comprimento, new MaterialTubulacao(rugosidade), elevacao);
 
             // Cria as singularidades usando o constructor
             Singularidade s1 = new Singularidade(1, "Cotovelo");
             Singularidade s2 = new Singularidade(2, "Cotovelo");
 
-            tubo1.ListaSingulariedades = new List<ISingularidade> { s1, s2 };
+            tubo1.AdicionaSingularidade(s1);
+            tubo1.AdicionaSingularidade(s2);
 
             Bomba bomba1 = new Bomba(new double[] { AeqBomba, BeqBomba, CeqBomba, DeqBomba }, agua, tubo1);
 

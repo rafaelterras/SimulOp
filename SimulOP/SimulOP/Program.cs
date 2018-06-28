@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace SimulOP
 {
@@ -14,11 +15,10 @@ namespace SimulOP
         /// </summary>
         [STAThread]
         static void Main()
-        {
+        {          
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Forms.FormsMaster());
-                      
         }
      }
 }
