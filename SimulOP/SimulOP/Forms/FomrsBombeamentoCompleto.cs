@@ -509,7 +509,7 @@ namespace SimulOP.Forms
             if (box.Text != "---")
             {
                 nudTubDesRugosidadeDbl = MaterialParaRugosidade(box.Text);
-                nudTubDesRugosidade.Value = Convert.ToDecimal(nudTubDesRugosidadeDbl * 100.0);
+                nudTubDesRugosidade.Value = Convert.ToDecimal(nudTubDesRugosidadeDbl * 1000.0);
             }
             EventosInputs(true);
         }
@@ -687,31 +687,43 @@ namespace SimulOP.Forms
         private void nudTubSucElevacao_ValueChanged(object sender, EventArgs e)
         {
             nudTubSucElevacaoDbl = Convert.ToDouble(nudTubSucElevacao.Value);
-            tubulacaoSuccao.Elevacao = nudTubSucElevacaoDbl;
-            AtualizaHBomba();
-            AtualizaNPSHDisp();
+            if (tubulacaoSuccao != null)
+            {
+                tubulacaoSuccao.Elevacao = nudTubSucElevacaoDbl;
+                AtualizaHBomba();
+                AtualizaNPSHDisp();
+            }
         }
 
         private void nudTubSucComprimento_ValueChanged(object sender, EventArgs e)
         {
             nudTubSucComprimentoDbl = Convert.ToDouble(nudTubSucComprimento.Value);
-            tubulacaoSuccao.Comprimento = nudTubSucComprimentoDbl;
-            AtualizaHBomba();
-            AtualizaNPSHDisp();
+            if (tubulacaoSuccao != null)
+            {
+                tubulacaoSuccao.Comprimento = nudTubSucComprimentoDbl;
+                AtualizaHBomba();
+                AtualizaNPSHDisp();
+            }
         }
 
         private void nudTubDesComprimento_ValueChanged(object sender, EventArgs e)
         {
             nudTubDesComprimentoDbl = Convert.ToDouble(nudTubDesComprimento.Value);
-            tubulacaoDescarga.Comprimento = nudTubDesComprimentoDbl;
-            AtualizaHBomba();
+            if (tubulacaoDescarga != null)
+            {
+                tubulacaoDescarga.Comprimento = nudTubDesComprimentoDbl;
+                AtualizaHBomba();
+            }
         }
 
         private void nudTubDesElevacao_ValueChanged(object sender, EventArgs e)
         {
             nudTubDesElevacaoDbl = Convert.ToDouble(nudTubDesElevacao.Value);
-            tubulacaoDescarga.Elevacao = nudTubDesElevacaoDbl;
-            AtualizaHBomba();
+            if (tubulacaoDescarga != null)
+            {
+                tubulacaoDescarga.Elevacao = nudTubDesElevacaoDbl;
+                AtualizaHBomba();
+            }
         }
         #endregion
 

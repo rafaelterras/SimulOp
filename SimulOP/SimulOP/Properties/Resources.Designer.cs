@@ -63,6 +63,16 @@ namespace SimulOP.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BombeamentoCompletov2 {
+            get {
+                object obj = ResourceManager.GetObject("BombeamentoCompletov2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap info {
             get {
                 object obj = ResourceManager.GetObject("info", resourceCulture);
@@ -73,9 +83,9 @@ namespace SimulOP.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap TubBomba {
+        internal static System.Drawing.Bitmap outline_info_black_18dp {
             get {
-                object obj = ResourceManager.GetObject("TubBomba", resourceCulture);
+                object obj = ResourceManager.GetObject("outline_info_black_18dp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

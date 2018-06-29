@@ -220,5 +220,14 @@
   <ItemGroup>
     <None Include="Resources\info.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ajuda.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\outline_info_black_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BombeamentoCompletov2.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -28,15 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnCalcular = new System.Windows.Forms.Button();
             this.gubTubDes = new System.Windows.Forms.GroupBox();
             this.nudTubDesCompSing = new System.Windows.Forms.NumericUpDown();
@@ -68,6 +67,8 @@
             this.cmbTubSucMaterial = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.gubFluido = new System.Windows.Forms.GroupBox();
+            this.txbFluidoViscosidade = new System.Windows.Forms.TextBox();
+            this.txbFluidoDensidade = new System.Windows.Forms.TextBox();
             this.nudFluidoPressao = new System.Windows.Forms.NumericUpDown();
             this.label18 = new System.Windows.Forms.Label();
             this.nudFluidoTemperatura = new System.Windows.Forms.NumericUpDown();
@@ -92,25 +93,23 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabInput = new System.Windows.Forms.TabPage();
             this.tabDinamica = new System.Windows.Forms.TabPage();
+            this.gubDesDin = new System.Windows.Forms.GroupBox();
+            this.nudAberturaValvulaDes = new System.Windows.Forms.NumericUpDown();
+            this.label21 = new System.Windows.Forms.Label();
+            this.trbAberturaValvulaDes = new System.Windows.Forms.TrackBar();
+            this.gubSucDin = new System.Windows.Forms.GroupBox();
             this.trbFluidoPressaoDin = new System.Windows.Forms.TrackBar();
             this.label23 = new System.Windows.Forms.Label();
             this.nudFluidoPressaoDin = new System.Windows.Forms.NumericUpDown();
-            this.trbFluidoTemperaturaDin = new System.Windows.Forms.TrackBar();
-            this.label22 = new System.Windows.Forms.Label();
-            this.nudFluidoTemperaturaDin = new System.Windows.Forms.NumericUpDown();
-            this.trbAberturaValvulaDes = new System.Windows.Forms.TrackBar();
-            this.label21 = new System.Windows.Forms.Label();
-            this.nudAberturaValvulaDes = new System.Windows.Forms.NumericUpDown();
-            this.trbAberturaValvulaSuc = new System.Windows.Forms.TrackBar();
-            this.label20 = new System.Windows.Forms.Label();
             this.nudAberturaValvulaSuc = new System.Windows.Forms.NumericUpDown();
-            this.txbFluidoDensidade = new System.Windows.Forms.TextBox();
-            this.txbFluidoViscosidade = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.trbAberturaValvulaSuc = new System.Windows.Forms.TrackBar();
             this.gubFluidoDin = new System.Windows.Forms.GroupBox();
-            this.gubSucDin = new System.Windows.Forms.GroupBox();
-            this.gubDesDin = new System.Windows.Forms.GroupBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.trbFluidoTemperaturaDin = new System.Windows.Forms.TrackBar();
+            this.nudFluidoTemperaturaDin = new System.Windows.Forms.NumericUpDown();
             this.picAjudaFluido = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gubTubDes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTubDesCompSing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTubDesDiametroInt)).BeginInit();
@@ -134,29 +133,20 @@
             this.tabControl.SuspendLayout();
             this.tabInput.SuspendLayout();
             this.tabDinamica.SuspendLayout();
+            this.gubDesDin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAberturaValvulaDes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trbAberturaValvulaDes)).BeginInit();
+            this.gubSucDin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trbFluidoPressaoDin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudFluidoPressaoDin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAberturaValvulaSuc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trbAberturaValvulaSuc)).BeginInit();
+            this.gubFluidoDin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trbFluidoTemperaturaDin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudFluidoTemperaturaDin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trbAberturaValvulaDes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAberturaValvulaDes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trbAberturaValvulaSuc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAberturaValvulaSuc)).BeginInit();
-            this.gubFluidoDin.SuspendLayout();
-            this.gubSucDin.SuspendLayout();
-            this.gubDesDin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAjudaFluido)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::SimulOP.Properties.Resources.TubBomba;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(662, 257);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // btnCalcular
             // 
@@ -602,6 +592,24 @@
             this.gubFluido.TabStop = false;
             this.gubFluido.Text = "Fluido";
             // 
+            // txbFluidoViscosidade
+            // 
+            this.txbFluidoViscosidade.Location = new System.Drawing.Point(120, 71);
+            this.txbFluidoViscosidade.Name = "txbFluidoViscosidade";
+            this.txbFluidoViscosidade.ReadOnly = true;
+            this.txbFluidoViscosidade.Size = new System.Drawing.Size(44, 20);
+            this.txbFluidoViscosidade.TabIndex = 10;
+            this.txbFluidoViscosidade.Text = "0,89";
+            // 
+            // txbFluidoDensidade
+            // 
+            this.txbFluidoDensidade.Location = new System.Drawing.Point(120, 45);
+            this.txbFluidoDensidade.Name = "txbFluidoDensidade";
+            this.txbFluidoDensidade.ReadOnly = true;
+            this.txbFluidoDensidade.Size = new System.Drawing.Size(44, 20);
+            this.txbFluidoDensidade.TabIndex = 9;
+            this.txbFluidoDensidade.Text = "1000";
+            // 
             // nudFluidoPressao
             // 
             this.nudFluidoPressao.DecimalPlaces = 1;
@@ -700,39 +708,39 @@
             // 
             // chartPerdaCarga
             // 
-            chartArea1.AxisX.Interval = 0.5D;
-            chartArea1.AxisX.MajorGrid.Enabled = false;
-            chartArea1.AxisX.MajorGrid.Interval = 0.1D;
-            chartArea1.AxisX.Maximum = 2D;
-            chartArea1.AxisX.Minimum = 0D;
-            chartArea1.AxisX.MinorGrid.Enabled = true;
-            chartArea1.AxisX.MinorGrid.Interval = 0.5D;
-            chartArea1.AxisX.MinorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea1.AxisX.Title = "Vazão (m^3/s)";
-            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDotDot;
-            chartArea1.AxisY.Title = "Altura Requerida (m)";
-            chartArea1.Name = "ChartArea1";
-            this.chartPerdaCarga.ChartAreas.Add(chartArea1);
-            legend1.Enabled = false;
-            legend1.Name = "Legend1";
-            this.chartPerdaCarga.Legends.Add(legend1);
+            chartArea3.AxisX.Interval = 0.5D;
+            chartArea3.AxisX.MajorGrid.Enabled = false;
+            chartArea3.AxisX.MajorGrid.Interval = 0.1D;
+            chartArea3.AxisX.Maximum = 2D;
+            chartArea3.AxisX.Minimum = 0D;
+            chartArea3.AxisX.MinorGrid.Enabled = true;
+            chartArea3.AxisX.MinorGrid.Interval = 0.5D;
+            chartArea3.AxisX.MinorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea3.AxisX.Title = "Vazão (m^3/s)";
+            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea3.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDotDot;
+            chartArea3.AxisY.Title = "Altura Requerida (m)";
+            chartArea3.Name = "ChartArea1";
+            this.chartPerdaCarga.ChartAreas.Add(chartArea3);
+            legend3.Enabled = false;
+            legend3.Name = "Legend1";
+            this.chartPerdaCarga.Legends.Add(legend3);
             this.chartPerdaCarga.Location = new System.Drawing.Point(12, 275);
             this.chartPerdaCarga.Name = "chartPerdaCarga";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.IsVisibleInLegend = false;
-            series1.Legend = "Legend1";
-            series1.Name = "AlturaBomba";
-            series2.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            series2.BorderWidth = 2;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Color = System.Drawing.Color.DimGray;
-            series2.Legend = "Legend1";
-            series2.Name = "LinhaVazao";
-            this.chartPerdaCarga.Series.Add(series1);
-            this.chartPerdaCarga.Series.Add(series2);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series5.IsVisibleInLegend = false;
+            series5.Legend = "Legend1";
+            series5.Name = "AlturaBomba";
+            series6.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series6.BorderWidth = 2;
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.Color = System.Drawing.Color.DimGray;
+            series6.Legend = "Legend1";
+            series6.Name = "LinhaVazao";
+            this.chartPerdaCarga.Series.Add(series5);
+            this.chartPerdaCarga.Series.Add(series6);
             this.chartPerdaCarga.Size = new System.Drawing.Size(322, 220);
             this.chartPerdaCarga.TabIndex = 2;
             this.chartPerdaCarga.Text = "chartPerdaCarga";
@@ -740,7 +748,7 @@
             // nudTubDesComprimento
             // 
             this.nudTubDesComprimento.DecimalPlaces = 1;
-            this.nudTubDesComprimento.Location = new System.Drawing.Point(354, 114);
+            this.nudTubDesComprimento.Location = new System.Drawing.Point(417, 21);
             this.nudTubDesComprimento.Maximum = new decimal(new int[] {
             5000,
             0,
@@ -764,7 +772,7 @@
             // nudTubSucComprimento
             // 
             this.nudTubSucComprimento.DecimalPlaces = 1;
-            this.nudTubSucComprimento.Location = new System.Drawing.Point(124, 105);
+            this.nudTubSucComprimento.Location = new System.Drawing.Point(239, 115);
             this.nudTubSucComprimento.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -776,7 +784,7 @@
             0,
             0});
             this.nudTubSucComprimento.Name = "nudTubSucComprimento";
-            this.nudTubSucComprimento.Size = new System.Drawing.Size(46, 20);
+            this.nudTubSucComprimento.Size = new System.Drawing.Size(53, 20);
             this.nudTubSucComprimento.TabIndex = 4;
             this.nudTubSucComprimento.Value = new decimal(new int[] {
             10,
@@ -788,7 +796,7 @@
             // nudTubSucElevacao
             // 
             this.nudTubSucElevacao.DecimalPlaces = 1;
-            this.nudTubSucElevacao.Location = new System.Drawing.Point(41, 164);
+            this.nudTubSucElevacao.Location = new System.Drawing.Point(261, 185);
             this.nudTubSucElevacao.Maximum = new decimal(new int[] {
             20,
             0,
@@ -811,7 +819,7 @@
             // 
             // nudTubDesElevacao
             // 
-            this.nudTubDesElevacao.Location = new System.Drawing.Point(614, 72);
+            this.nudTubDesElevacao.Location = new System.Drawing.Point(426, 96);
             this.nudTubDesElevacao.Maximum = new decimal(new int[] {
             20,
             0,
@@ -929,37 +937,37 @@
             // 
             // chartNPSHDisp
             // 
-            chartArea2.AxisX.Interval = 0.5D;
-            chartArea2.AxisX.MajorGrid.Interval = 0.5D;
-            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea2.AxisX.MajorTickMark.Interval = 0D;
-            chartArea2.AxisX.Maximum = 2D;
-            chartArea2.AxisX.Minimum = 0D;
-            chartArea2.AxisX.Title = "Vazão (m^3/s)";
-            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea2.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDot;
-            chartArea2.AxisY.Title = "NPSH Disponível (m)";
-            chartArea2.Name = "ChartArea1";
-            this.chartNPSHDisp.ChartAreas.Add(chartArea2);
-            legend2.Enabled = false;
-            legend2.Name = "Legend1";
-            this.chartNPSHDisp.Legends.Add(legend2);
+            chartArea4.AxisX.Interval = 0.5D;
+            chartArea4.AxisX.MajorGrid.Interval = 0.5D;
+            chartArea4.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea4.AxisX.MajorTickMark.Interval = 0D;
+            chartArea4.AxisX.Maximum = 2D;
+            chartArea4.AxisX.Minimum = 0D;
+            chartArea4.AxisX.Title = "Vazão (m^3/s)";
+            chartArea4.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea4.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDot;
+            chartArea4.AxisY.Title = "NPSH Disponível (m)";
+            chartArea4.Name = "ChartArea1";
+            this.chartNPSHDisp.ChartAreas.Add(chartArea4);
+            legend4.Enabled = false;
+            legend4.Name = "Legend1";
+            this.chartNPSHDisp.Legends.Add(legend4);
             this.chartNPSHDisp.Location = new System.Drawing.Point(340, 275);
             this.chartNPSHDisp.Name = "chartNPSHDisp";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.IsVisibleInLegend = false;
-            series3.Legend = "Legend1";
-            series3.Name = "NPSHDisp";
-            series4.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            series4.BorderWidth = 2;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Color = System.Drawing.Color.DimGray;
-            series4.Legend = "Legend1";
-            series4.Name = "LinhaVazao";
-            this.chartNPSHDisp.Series.Add(series3);
-            this.chartNPSHDisp.Series.Add(series4);
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series7.IsVisibleInLegend = false;
+            series7.Legend = "Legend1";
+            series7.Name = "NPSHDisp";
+            series8.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series8.BorderWidth = 2;
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series8.Color = System.Drawing.Color.DimGray;
+            series8.Legend = "Legend1";
+            series8.Name = "LinhaVazao";
+            this.chartNPSHDisp.Series.Add(series7);
+            this.chartNPSHDisp.Series.Add(series8);
             this.chartNPSHDisp.Size = new System.Drawing.Size(322, 220);
             this.chartNPSHDisp.TabIndex = 8;
             this.chartNPSHDisp.Text = "chart1";
@@ -1000,6 +1008,83 @@
             this.tabDinamica.Size = new System.Drawing.Size(303, 567);
             this.tabDinamica.TabIndex = 1;
             this.tabDinamica.Text = "Variaveis";
+            // 
+            // gubDesDin
+            // 
+            this.gubDesDin.Controls.Add(this.nudAberturaValvulaDes);
+            this.gubDesDin.Controls.Add(this.label21);
+            this.gubDesDin.Controls.Add(this.trbAberturaValvulaDes);
+            this.gubDesDin.Location = new System.Drawing.Point(6, 327);
+            this.gubDesDin.Name = "gubDesDin";
+            this.gubDesDin.Size = new System.Drawing.Size(291, 103);
+            this.gubDesDin.TabIndex = 17;
+            this.gubDesDin.TabStop = false;
+            this.gubDesDin.Text = "Descarga";
+            this.gubDesDin.Visible = false;
+            // 
+            // nudAberturaValvulaDes
+            // 
+            this.nudAberturaValvulaDes.DecimalPlaces = 2;
+            this.nudAberturaValvulaDes.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nudAberturaValvulaDes.Location = new System.Drawing.Point(242, 19);
+            this.nudAberturaValvulaDes.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudAberturaValvulaDes.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nudAberturaValvulaDes.Name = "nudAberturaValvulaDes";
+            this.nudAberturaValvulaDes.Size = new System.Drawing.Size(43, 20);
+            this.nudAberturaValvulaDes.TabIndex = 6;
+            this.nudAberturaValvulaDes.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nudAberturaValvulaDes.ValueChanged += new System.EventHandler(this.nudAberturaValvulaDes_ValueChanged);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(11, 21);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(167, 13);
+            this.label21.TabIndex = 7;
+            this.label21.Text = "Abertura da Valvula na Descarga:";
+            // 
+            // trbAberturaValvulaDes
+            // 
+            this.trbAberturaValvulaDes.LargeChange = 1;
+            this.trbAberturaValvulaDes.Location = new System.Drawing.Point(14, 45);
+            this.trbAberturaValvulaDes.Maximum = 50;
+            this.trbAberturaValvulaDes.Name = "trbAberturaValvulaDes";
+            this.trbAberturaValvulaDes.Size = new System.Drawing.Size(271, 45);
+            this.trbAberturaValvulaDes.TabIndex = 8;
+            this.trbAberturaValvulaDes.Scroll += new System.EventHandler(this.trbAberturaValvulaDes_Scroll);
+            // 
+            // gubSucDin
+            // 
+            this.gubSucDin.Controls.Add(this.trbFluidoPressaoDin);
+            this.gubSucDin.Controls.Add(this.label23);
+            this.gubSucDin.Controls.Add(this.nudFluidoPressaoDin);
+            this.gubSucDin.Controls.Add(this.nudAberturaValvulaSuc);
+            this.gubSucDin.Controls.Add(this.label20);
+            this.gubSucDin.Controls.Add(this.trbAberturaValvulaSuc);
+            this.gubSucDin.Location = new System.Drawing.Point(6, 165);
+            this.gubSucDin.Name = "gubSucDin";
+            this.gubSucDin.Size = new System.Drawing.Size(291, 156);
+            this.gubSucDin.TabIndex = 16;
+            this.gubSucDin.TabStop = false;
+            this.gubSucDin.Text = "Sucção";
+            this.gubSucDin.Visible = false;
             // 
             // trbFluidoPressaoDin
             // 
@@ -1049,116 +1134,6 @@
             65536});
             this.nudFluidoPressaoDin.ValueChanged += new System.EventHandler(this.nudFluidoPressaoDin_ValueChanged);
             // 
-            // trbFluidoTemperaturaDin
-            // 
-            this.trbFluidoTemperaturaDin.LargeChange = 1;
-            this.trbFluidoTemperaturaDin.Location = new System.Drawing.Point(6, 105);
-            this.trbFluidoTemperaturaDin.Maximum = 50;
-            this.trbFluidoTemperaturaDin.Name = "trbFluidoTemperaturaDin";
-            this.trbFluidoTemperaturaDin.Size = new System.Drawing.Size(279, 45);
-            this.trbFluidoTemperaturaDin.TabIndex = 11;
-            this.trbFluidoTemperaturaDin.Scroll += new System.EventHandler(this.trbFluidoTemperaturaDin_Scroll);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(6, 81);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(132, 13);
-            this.label22.TabIndex = 10;
-            this.label22.Text = "Temperatura do Fluido (C):";
-            // 
-            // nudFluidoTemperaturaDin
-            // 
-            this.nudFluidoTemperaturaDin.DecimalPlaces = 1;
-            this.nudFluidoTemperaturaDin.Location = new System.Drawing.Point(242, 79);
-            this.nudFluidoTemperaturaDin.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            0});
-            this.nudFluidoTemperaturaDin.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.nudFluidoTemperaturaDin.Name = "nudFluidoTemperaturaDin";
-            this.nudFluidoTemperaturaDin.Size = new System.Drawing.Size(43, 20);
-            this.nudFluidoTemperaturaDin.TabIndex = 9;
-            this.nudFluidoTemperaturaDin.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.nudFluidoTemperaturaDin.ValueChanged += new System.EventHandler(this.nudFluidoTemperaturaDin_ValueChanged);
-            // 
-            // trbAberturaValvulaDes
-            // 
-            this.trbAberturaValvulaDes.LargeChange = 1;
-            this.trbAberturaValvulaDes.Location = new System.Drawing.Point(14, 45);
-            this.trbAberturaValvulaDes.Maximum = 50;
-            this.trbAberturaValvulaDes.Name = "trbAberturaValvulaDes";
-            this.trbAberturaValvulaDes.Size = new System.Drawing.Size(271, 45);
-            this.trbAberturaValvulaDes.TabIndex = 8;
-            this.trbAberturaValvulaDes.Scroll += new System.EventHandler(this.trbAberturaValvulaDes_Scroll);
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(11, 21);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(167, 13);
-            this.label21.TabIndex = 7;
-            this.label21.Text = "Abertura da Valvula na Descarga:";
-            // 
-            // nudAberturaValvulaDes
-            // 
-            this.nudAberturaValvulaDes.DecimalPlaces = 2;
-            this.nudAberturaValvulaDes.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.nudAberturaValvulaDes.Location = new System.Drawing.Point(242, 19);
-            this.nudAberturaValvulaDes.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudAberturaValvulaDes.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.nudAberturaValvulaDes.Name = "nudAberturaValvulaDes";
-            this.nudAberturaValvulaDes.Size = new System.Drawing.Size(43, 20);
-            this.nudAberturaValvulaDes.TabIndex = 6;
-            this.nudAberturaValvulaDes.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.nudAberturaValvulaDes.ValueChanged += new System.EventHandler(this.nudAberturaValvulaDes_ValueChanged);
-            // 
-            // trbAberturaValvulaSuc
-            // 
-            this.trbAberturaValvulaSuc.LargeChange = 1;
-            this.trbAberturaValvulaSuc.Location = new System.Drawing.Point(6, 45);
-            this.trbAberturaValvulaSuc.Maximum = 50;
-            this.trbAberturaValvulaSuc.Name = "trbAberturaValvulaSuc";
-            this.trbAberturaValvulaSuc.Size = new System.Drawing.Size(279, 45);
-            this.trbAberturaValvulaSuc.TabIndex = 5;
-            this.trbAberturaValvulaSuc.Scroll += new System.EventHandler(this.trbAberturaValvulaSuc_Scroll);
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(6, 21);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(158, 13);
-            this.label20.TabIndex = 4;
-            this.label20.Text = "Abertura da Valvula na Sucção:";
-            // 
             // nudAberturaValvulaSuc
             // 
             this.nudAberturaValvulaSuc.DecimalPlaces = 2;
@@ -1188,23 +1163,24 @@
             65536});
             this.nudAberturaValvulaSuc.ValueChanged += new System.EventHandler(this.nudAberturaValvulaSuc_ValueChanged);
             // 
-            // txbFluidoDensidade
+            // label20
             // 
-            this.txbFluidoDensidade.Location = new System.Drawing.Point(120, 45);
-            this.txbFluidoDensidade.Name = "txbFluidoDensidade";
-            this.txbFluidoDensidade.ReadOnly = true;
-            this.txbFluidoDensidade.Size = new System.Drawing.Size(44, 20);
-            this.txbFluidoDensidade.TabIndex = 9;
-            this.txbFluidoDensidade.Text = "1000";
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(6, 21);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(158, 13);
+            this.label20.TabIndex = 4;
+            this.label20.Text = "Abertura da Valvula na Sucção:";
             // 
-            // txbFluidoViscosidade
+            // trbAberturaValvulaSuc
             // 
-            this.txbFluidoViscosidade.Location = new System.Drawing.Point(120, 71);
-            this.txbFluidoViscosidade.Name = "txbFluidoViscosidade";
-            this.txbFluidoViscosidade.ReadOnly = true;
-            this.txbFluidoViscosidade.Size = new System.Drawing.Size(44, 20);
-            this.txbFluidoViscosidade.TabIndex = 10;
-            this.txbFluidoViscosidade.Text = "0,89";
+            this.trbAberturaValvulaSuc.LargeChange = 1;
+            this.trbAberturaValvulaSuc.Location = new System.Drawing.Point(6, 45);
+            this.trbAberturaValvulaSuc.Maximum = 50;
+            this.trbAberturaValvulaSuc.Name = "trbAberturaValvulaSuc";
+            this.trbAberturaValvulaSuc.Size = new System.Drawing.Size(279, 45);
+            this.trbAberturaValvulaSuc.TabIndex = 5;
+            this.trbAberturaValvulaSuc.Scroll += new System.EventHandler(this.trbAberturaValvulaSuc_Scroll);
             // 
             // gubFluidoDin
             // 
@@ -1222,46 +1198,70 @@
             this.gubFluidoDin.Text = "Fluido";
             this.gubFluidoDin.Visible = false;
             // 
-            // gubSucDin
+            // label22
             // 
-            this.gubSucDin.Controls.Add(this.trbFluidoPressaoDin);
-            this.gubSucDin.Controls.Add(this.label23);
-            this.gubSucDin.Controls.Add(this.nudFluidoPressaoDin);
-            this.gubSucDin.Controls.Add(this.nudAberturaValvulaSuc);
-            this.gubSucDin.Controls.Add(this.label20);
-            this.gubSucDin.Controls.Add(this.trbAberturaValvulaSuc);
-            this.gubSucDin.Location = new System.Drawing.Point(6, 165);
-            this.gubSucDin.Name = "gubSucDin";
-            this.gubSucDin.Size = new System.Drawing.Size(291, 156);
-            this.gubSucDin.TabIndex = 16;
-            this.gubSucDin.TabStop = false;
-            this.gubSucDin.Text = "Sucção";
-            this.gubSucDin.Visible = false;
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(6, 81);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(132, 13);
+            this.label22.TabIndex = 10;
+            this.label22.Text = "Temperatura do Fluido (C):";
             // 
-            // gubDesDin
+            // trbFluidoTemperaturaDin
             // 
-            this.gubDesDin.Controls.Add(this.nudAberturaValvulaDes);
-            this.gubDesDin.Controls.Add(this.label21);
-            this.gubDesDin.Controls.Add(this.trbAberturaValvulaDes);
-            this.gubDesDin.Location = new System.Drawing.Point(6, 327);
-            this.gubDesDin.Name = "gubDesDin";
-            this.gubDesDin.Size = new System.Drawing.Size(291, 103);
-            this.gubDesDin.TabIndex = 17;
-            this.gubDesDin.TabStop = false;
-            this.gubDesDin.Text = "Descarga";
-            this.gubDesDin.Visible = false;
+            this.trbFluidoTemperaturaDin.LargeChange = 1;
+            this.trbFluidoTemperaturaDin.Location = new System.Drawing.Point(6, 105);
+            this.trbFluidoTemperaturaDin.Maximum = 50;
+            this.trbFluidoTemperaturaDin.Name = "trbFluidoTemperaturaDin";
+            this.trbFluidoTemperaturaDin.Size = new System.Drawing.Size(279, 45);
+            this.trbFluidoTemperaturaDin.TabIndex = 11;
+            this.trbFluidoTemperaturaDin.Scroll += new System.EventHandler(this.trbFluidoTemperaturaDin_Scroll);
+            // 
+            // nudFluidoTemperaturaDin
+            // 
+            this.nudFluidoTemperaturaDin.DecimalPlaces = 1;
+            this.nudFluidoTemperaturaDin.Location = new System.Drawing.Point(242, 79);
+            this.nudFluidoTemperaturaDin.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.nudFluidoTemperaturaDin.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudFluidoTemperaturaDin.Name = "nudFluidoTemperaturaDin";
+            this.nudFluidoTemperaturaDin.Size = new System.Drawing.Size(43, 20);
+            this.nudFluidoTemperaturaDin.TabIndex = 9;
+            this.nudFluidoTemperaturaDin.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudFluidoTemperaturaDin.ValueChanged += new System.EventHandler(this.nudFluidoTemperaturaDin_ValueChanged);
             // 
             // picAjudaFluido
             // 
             this.picAjudaFluido.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picAjudaFluido.Image = global::SimulOP.Properties.Resources.info;
-            this.picAjudaFluido.Location = new System.Drawing.Point(163, 22);
+            this.picAjudaFluido.Location = new System.Drawing.Point(163, 20);
             this.picAjudaFluido.Name = "picAjudaFluido";
             this.picAjudaFluido.Size = new System.Drawing.Size(18, 18);
             this.picAjudaFluido.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picAjudaFluido.TabIndex = 11;
             this.picAjudaFluido.TabStop = false;
             this.picAjudaFluido.Click += new System.EventHandler(this.picAjudaFluido_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SimulOP.Properties.Resources.BombeamentoCompletov2;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(662, 257);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // FomrsBombeamentoCompleto
             // 
@@ -1278,8 +1278,7 @@
             this.Controls.Add(this.chartPerdaCarga);
             this.Controls.Add(this.pictureBox1);
             this.Name = "FomrsBombeamentoCompleto";
-            this.Text = "FomrsBombeamentoCompleto";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Text = "Bombeamento completo";
             this.gubTubDes.ResumeLayout(false);
             this.gubTubDes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTubDesCompSing)).EndInit();
@@ -1307,21 +1306,22 @@
             this.tabControl.ResumeLayout(false);
             this.tabInput.ResumeLayout(false);
             this.tabDinamica.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.trbFluidoPressaoDin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudFluidoPressaoDin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trbFluidoTemperaturaDin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudFluidoTemperaturaDin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trbAberturaValvulaDes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAberturaValvulaDes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trbAberturaValvulaSuc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAberturaValvulaSuc)).EndInit();
-            this.gubFluidoDin.ResumeLayout(false);
-            this.gubFluidoDin.PerformLayout();
-            this.gubSucDin.ResumeLayout(false);
-            this.gubSucDin.PerformLayout();
             this.gubDesDin.ResumeLayout(false);
             this.gubDesDin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAberturaValvulaDes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trbAberturaValvulaDes)).EndInit();
+            this.gubSucDin.ResumeLayout(false);
+            this.gubSucDin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trbFluidoPressaoDin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFluidoPressaoDin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAberturaValvulaSuc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trbAberturaValvulaSuc)).EndInit();
+            this.gubFluidoDin.ResumeLayout(false);
+            this.gubFluidoDin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trbFluidoTemperaturaDin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFluidoTemperaturaDin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAjudaFluido)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -61,6 +61,15 @@ namespace SimulOP.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string ajudaBombeamentoFluido {
+            get {
+                return ResourceManager.GetString("ajudaBombeamentoFluido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor laoreet libero, fermentum mollis metus cursus sit amet. Nam volutpat velit vitae odio commodo ultrices. Cras in pharetra eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer efficitur accumsan dui, vitae iaculis neque hendrerit non. Fusce aliquam blandit lorem, eget consectetur sapien. Vestibulum dapibus mollis diam sed dictum. Quisque et egestas massa. Proin congue, quam ac tristique blan [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ajudaTeste {

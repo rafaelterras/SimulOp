@@ -69,10 +69,11 @@
             this.ClientSize = new System.Drawing.Size(351, 284);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txbAjuda);
+            this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(586, 483);
             this.MinimumSize = new System.Drawing.Size(367, 323);
             this.Name = "FormsPopOut";
-            this.Text = "FormsPopOut";
+            this.Text = "Indormações adicionais";
             this.ResumeLayout(false);
             this.PerformLayout();
 
