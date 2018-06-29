@@ -63,6 +63,12 @@
     <Compile Include="EquipamentosOPIII\Cristalizador.cs" />
     <Compile Include="EquipamentosOPIII\DestiBatelada.cs" />
     <Compile Include="EquipamentosOPIII\DestiContinuo.cs" />
+    <Compile Include="Forms\FomrsBombeamentoCompleto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FomrsBombeamentoCompleto.Designer.cs">
+      <DependentUpon>FomrsBombeamentoCompleto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormsColunaMcCabeThiele.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,12 @@
     </Compile>
     <Compile Include="Forms\FormsMaster.Designer.cs">
       <DependentUpon>FormsMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsPopOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsPopOut.Designer.cs">
+      <DependentUpon>FormsPopOut.cs</DependentUpon>
     </Compile>
     <Compile Include="Geral\Equipamentos.cs" />
     <Compile Include="EquipamentosOPII\Evaporador.cs" />
@@ -115,6 +127,7 @@
     <Compile Include="Geral\Material.cs" />
     <Compile Include="Geral\MaterialFluidoOPI.cs" />
     <Compile Include="Geral\MaterialFluidoOPIII.cs" />
+    <Compile Include="Geral\MaterialTubulacao.cs" />
     <Compile Include="Geral\MisturaBinaria.cs" />
     <Compile Include="Interfaces\IBomba.cs" />
     <Compile Include="Interfaces\IDestilacao.cs" />
@@ -148,14 +161,23 @@
     <Compile Include="EquipamentosOPI\Tubulacao.cs" />
     <Compile Include="EquipamentosOPI\Valvula.cs" />
     <Compile Include="EquipamentosOPI\Ventilador.cs" />
+    <Compile Include="Properties\TextoAjuda.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TextoAjuda.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram3.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\FomrsBombeamentoCompleto.resx">
+      <DependentUpon>FomrsBombeamentoCompleto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormsAutoBomba.resx">
       <DependentUpon>FormsAutoBomba.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,11 +199,35 @@
     <EmbeddedResource Include="Forms\FormsModelOp.resx">
       <DependentUpon>FormsModelOp.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsPopOut.resx">
+      <DependentUpon>FormsPopOut.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\TextoAjuda.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TextoAjuda.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\TubBomba.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_info_black_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ajuda.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\outline_info_black_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BombeamentoCompletov2.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

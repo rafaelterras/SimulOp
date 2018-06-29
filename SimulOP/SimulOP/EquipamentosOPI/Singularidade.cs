@@ -7,8 +7,8 @@ namespace SimulOP
 {
     class Singularidade : EquipamentoOPI, ISingularidade
     {
-        private double comprimentoEqv;
-        private string tipo;
+        protected double comprimentoEqv;
+        protected string tipo;
 
         /// <summary>
         /// Comprimento equivalente da singulariedade [m]

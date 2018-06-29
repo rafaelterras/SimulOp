@@ -11,7 +11,7 @@ namespace SimulOP
         private MaterialFluidoOPIII material;
         private double temperatura;
         private double presaoVapor;
-        
+
         public double Temperatura { get => temperatura; set => temperatura = value; }
         public double PresaoVapor
         {
@@ -38,6 +38,13 @@ namespace SimulOP
             double Pvap = Math.Pow(10.0, material.CoefAntoine[0] - (material.CoefAntoine[1] / (material.CoefAntoine[2] + this.temperatura)));
 
             this.presaoVapor = Pvap * 1e5;
+        }
+
+        public double PVapor(double T)
+        {
+            double Pvap = Math.Pow(10.0, material.CoefAntoine[0] - (material.CoefAntoine[1] / (material.CoefAntoine[2] + T)));
+
+            return Pvap * 1e5;
         }
 
         public double ConvertePressaoEmM(double pressao)

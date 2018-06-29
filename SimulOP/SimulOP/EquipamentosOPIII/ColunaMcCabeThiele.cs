@@ -223,6 +223,7 @@ namespace SimulOP
             for (double cLK = 0; cLK <= 1.01; cLK = cLK + 1.0 / div)
             {
                 PlotX.Add(cLK);
+
                 misturaBinaria.CalculaVapRaoult(cLK);
                 PlotY.Add(misturaBinaria.ComposicaoVap[0]);
             }

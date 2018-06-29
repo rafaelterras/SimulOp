@@ -11,16 +11,16 @@ namespace SimulOP
         #region Inicialização das variaveis e do Constructor
         private Tubulacao tubulacaoSuccao;
         private FluidoIdealOPIII fluido;
-        private double pressaoAtm;
+        private double pressaoSuccao;
         private double nPSHRequerido;
-
-
+        
         /// <summary>
         /// A tubulação de qual o fluido entra na bomba
         /// </summary>
         public Tubulacao TubulacaoSuccao { get => tubulacaoSuccao; set => tubulacaoSuccao = value; }
         public FluidoIdealOPIII Fluido { get => fluido; }
         public double NPSHRequerido { get => nPSHRequerido; set => nPSHRequerido = value; }
+        public double PressaoSuccao { get => pressaoSuccao; set => pressaoSuccao = value; }
 
         /// <summary>
         /// 
@@ -29,11 +29,12 @@ namespace SimulOP
         /// <param name="fluido"></param>
         /// <param name="tubulacaoSuccao"></param>
         /// <param name="tubulacaoRecalque"></param>
-        public BombaCompleta(double[] equacaoCurva, FluidoIdealOPIII fluido, Tubulacao tubulacaoSuccao, Tubulacao tubulacaoDiscarga, double pressaoAtm, double nPSHr, double rendimento = 1.0) : base(equacaoCurva, tubulacaoDiscarga, rendimento)
+        public BombaCompleta(double[] equacaoCurva, FluidoIdealOPIII fluido, Tubulacao tubulacaoSuccao, Tubulacao tubulacaoDiscarga, double pressaoAtm, double nPSHr, double rendimento = 1.0) 
+            : base(equacaoCurva, tubulacaoDiscarga, rendimento)
         {
             this.fluido = fluido;
             this.TubulacaoSuccao = tubulacaoSuccao;
-            this.pressaoAtm = pressaoAtm;
+            this.pressaoSuccao = pressaoAtm;
             this.nPSHRequerido = nPSHr;
         }
         #endregion
@@ -41,7 +42,7 @@ namespace SimulOP
         public override double Bernoulli(double vazao)
         {
             return this.CalcAlturaBomba(vazao) - tubulacaoDescarga.CalculaPerdaCarga(Fluido.Material, vazao) - tubulacaoSuccao.CalculaPerdaCarga(fluido.Material, vazao)
-                - tubulacaoDescarga.Elevacao - tubulacaoSuccao.Elevacao;
+                + tubulacaoDescarga.Elevacao - tubulacaoSuccao.Elevacao +  fluido.ConvertePressaoEmM(pressaoSuccao - 1e5);
         }
 
         public override void CalculaVazao()
@@ -56,7 +57,50 @@ namespace SimulOP
             this.tubulacaoSuccao.CalculaPerdaCarga(Fluido.Material, this.Vazao);
         }
 
-        public override (List<double> plotX, List<double> plotYBomba, List<double> plotYTubo) PreparaPlot(int nMax = 40)
+        public (List<double> plotX, List<double> plotY) PlotAlturaBomba(double vMin, double vMax, int div = 50)
+        {
+            List<double> listX = new List<double>();
+            List<double> listYtubo = new List<double>();
+
+            double hf; // Equacao da tubulacao [m]
+            double vazao;
+
+            for (int i = 0; i <= div; i++)
+            {
+                vazao = vMin + i * (vMax - vMin) / div;
+
+               hf = TubulacaoSuccao.CalculaPerdaCarga(Fluido.Material, vazao) - TubulacaoSuccao.Elevacao +
+                tubulacaoDescarga.CalculaPerdaCarga(Fluido.Material, vazao) + tubulacaoDescarga.Elevacao
+                + fluido.ConvertePressaoEmM(1e5 - pressaoSuccao);
+
+                listX.Add(vazao);
+                listYtubo.Add(hf);
+            }
+            return (listX, listYtubo);
+        }
+
+        public (List<double> plotX, List<double> plotY) PlotNPSHDisponivel(double vMin, double vMax, int div = 50)
+        {
+            List<double> listX = new List<double>();
+            List<double> listY = new List<double>();
+
+            double vazao;
+            double NPSHDisp;
+
+            for (int i = 0; i <= div; i++)
+            {
+                vazao = vMin + i * (vMax - vMin) / div;
+
+                NPSHDisp = NPSHDisponivel(vazao);
+
+                listX.Add(vazao);
+                listY.Add(NPSHDisp);
+            }
+
+            return (listX, listY);
+        }
+
+        public override (List<double> plotX, List<double> plotYBomba, List<double> plotYTubo) PreparaPlot(int div = 40)
         {
             List<double> listX = new List<double>();
             List<double> listYBomba = new List<double>();
@@ -66,13 +110,14 @@ namespace SimulOP
             double hf; // Equacao da tubulacao [m]
             double vazao;
 
-            for (int i = 0; i < nMax; i++)
+            for (int i = 0; i < div; i++)
             {
-                vazao = (i + 1) * (this.vazao / (nMax / 2));
+                vazao = (i + 1) * (this.vazao / (div / 2));
 
-                h = this.CalcAlturaBomba(vazao);
-                hf = this.tubulacaoDescarga.CalculaPerdaCarga(this.Fluido.Material, vazao) + this.tubulacaoSuccao.CalculaPerdaCarga(this.Fluido.Material,vazao)
-                    + this.tubulacaoDescarga.Elevacao + this.tubulacaoSuccao.Elevacao;
+                h = CalcAlturaBomba(vazao);
+                hf = TubulacaoSuccao.CalculaPerdaCarga(Fluido.Material, vazao) - TubulacaoSuccao.Elevacao +
+                    tubulacaoDescarga.CalculaPerdaCarga(Fluido.Material, vazao) + tubulacaoDescarga.Elevacao
+                    + fluido.ConvertePressaoEmM(1e5 - pressaoSuccao);
                 if (h > 0)
                 {
                     listX.Add(Math.Round(vazao * 3600, 2));
@@ -87,10 +132,12 @@ namespace SimulOP
             return (listX, listYBomba, listYtubo);
         }
 
-        public override void CalculaAlturaManoRequerida(double vazao)
+        public override double CalculaAlturaManoRequerida(double vazao)
         {
-            alturaManometrica = TubulacaoSuccao.CalculaPerdaCarga(Fluido.Material, vazao) + TubulacaoSuccao.Elevacao +
-               tubulacaoDescarga.CalculaPerdaCarga(Fluido.Material, vazao) + tubulacaoDescarga.Elevacao;
+            alturaManometrica = TubulacaoSuccao.CalculaPerdaCarga(Fluido.Material, vazao) - TubulacaoSuccao.Elevacao +
+                    tubulacaoDescarga.CalculaPerdaCarga(Fluido.Material, vazao) + tubulacaoDescarga.Elevacao
+                    + fluido.ConvertePressaoEmM(1e5 - pressaoSuccao);
+            return alturaManometrica;
         }
 
         public override double CalculaPotencia(double vazao)
@@ -102,23 +149,35 @@ namespace SimulOP
         /// <summary>
         /// Calcula o NPSH disponível de uma bomba.
         /// </summary>
-        /// <param name="pressaoVapor"></param>
         /// <returns></returns>
-        public double npshDisponivel()
+        public double NPSHDisponivel()
         {
-            double pA;
-            double pZ;
-            double pV;
-            double pF;
+            double pSuccao;
+            double diferenciaAltura;
+            double pVap;
+            double perdaCarga;
 
-            pA = pressaoAtm / (Fluido.Material.Densidade * g);
-            pZ = tubulacaoSuccao.Elevacao;
-            pV = this.fluido.PresaoVapor / (Fluido.Material.Densidade * g);
-            pF = tubulacaoSuccao.CalculaPerdaCarga(Fluido.Material, Vazao);
+            pSuccao = fluido.ConvertePressaoEmM(pressaoSuccao);
+            diferenciaAltura = tubulacaoSuccao.Elevacao;
+            pVap = this.fluido.PresaoVapor / (Fluido.Material.Densidade * g);
+            perdaCarga = tubulacaoSuccao.CalculaPerdaCarga(Fluido.Material, Vazao);
 
-            Console.WriteLine($"Pvap = {pV}");
+            return pSuccao - pVap - perdaCarga + diferenciaAltura;
+        }
 
-            return (pA + pZ - pV - pF);
+        public double NPSHDisponivel(double vazao)
+        {
+            double pSuccao;
+            double diferenciaAltura;
+            double pVap;
+            double perdaCarga;
+
+            pSuccao = fluido.ConvertePressaoEmM(pressaoSuccao);
+            diferenciaAltura = tubulacaoSuccao.Elevacao;
+            pVap = this.fluido.PresaoVapor / (Fluido.Material.Densidade * g);
+            perdaCarga = tubulacaoSuccao.CalculaPerdaCarga(Fluido.Material, vazao);
+
+            return pSuccao - pVap - perdaCarga + diferenciaAltura;
         }
     }
 }

@@ -144,6 +144,7 @@
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -1876,5 +1877,6 @@
         private System.Windows.Forms.Label label78;
         private System.Windows.Forms.Label label80;
         private System.Windows.Forms.Label label81;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

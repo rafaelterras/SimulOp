@@ -5,18 +5,17 @@ using System.Text;
 
 namespace SimulOP
 {
-    class Tubulacao : EquipamentoOPI, ITubulacao
+    public class Tubulacao : EquipamentoOPI, ITubulacao
     {
         #region Inicialização das variaveis e do Constructor
         private double comprimento;
         private double comprimentoEquivalente;
         private double diametro;
-        private string material;
-        private double rugosidade;
+        private MaterialTubulacao material;
         private double rugosidadeRelativa;
         private double fatorAtrito;
         private double elevacao;
-        private List<ISingularidade> listaSingulariedades;
+        private List<ISingularidade> listaSingularidades = new List<ISingularidade>();
         private double perdaCarga;
         private string metodoFatrito;
 
@@ -28,30 +27,48 @@ namespace SimulOP
         /// <summary>
         /// Comprimento equivalente das Singularidades da tubulação [m]
         /// </summary>
-        public double ComprimentoEquivalente { get => comprimentoEquivalente; }
+        public double ComprimentoEquivalente
+        {
+            get
+            {
+                CalculaComprimentoEquiSing();
+                return comprimentoEquivalente;
+            }
+        }
 
         /// <summary>
         /// Diametro da tubulação [m]
         /// </summary>
-        public double Diametro { get => diametro; set => diametro = value; }
+        public double Diametro
+        {
+            get { return diametro; }
+            set
+            {
+                if (value > 0)
+                {
+                    diametro = value;
+                    this.rugosidadeRelativa = material.Rugosidade / diametro;
+                }
+                else
+                {
+                    throw new Exception($"Diametro do {this.ToString()} < 0!!");
+                }
+            }
+        }
+
 
         /// <summary>
         /// Material que a tubulação é feita
         /// </summary>
-        public string Material { get => material; set => material = value; }
-
-        /// <summary>
-        /// Rugosidade da tubulação [m]
-        /// </summary>
-        public double Rugosidade { get => rugosidade; set => rugosidade = value; }
-        
+        public MaterialTubulacao Material { get => material; set => material = value; }
+       
         /// <summary>
         /// Rugosidade relativa da tubulação
         /// </summary>
         public double RugosidadeRelativa { get => rugosidadeRelativa; set => rugosidadeRelativa = value; }
 
         /// <summary>
-        /// Fator de atrito da tubulação, depende das condições do escoamento, [m]
+        /// Fator de atrito (Fanning) da tubulação, depende das condições do escoamento, [m]
         /// </summary>
         public double FatorAtrito { get => fatorAtrito; set => fatorAtrito = value; }
 
@@ -63,20 +80,12 @@ namespace SimulOP
         /// <summary>
         /// Lista de singularidades que estão na tubulação
         /// </summary>
-        internal List<ISingularidade> ListaSingulariedades
-        {
-            get => listaSingulariedades;
-            set
-            {
-                listaSingulariedades = value;
-                this.CalculaComprimentoEquiSing();
-            }
-        }
+        public List<ISingularidade> ListaSingularidades { get => listaSingularidades; }
 
         /// <summary>
         /// Perda de carga da tubulação, depende das condições do escoamento, [m]
         /// </summary>
-        public double PerdaCarga { get => perdaCarga; set => perdaCarga = value; }
+        public double PerdaCarga { get => perdaCarga; }
 
         ///<summary>
         /// Especifica o método utilizado para calcular o fator de atrito.
@@ -90,13 +99,13 @@ namespace SimulOP
         /// <param name="comprimento">Comprimento da tubulação [m]</param>
         /// <param name="rugosidade">Rugosidade da tubulação [m]</param>
         /// <param name="elevacao">Diferença de altura entre o começo e o fim da tubulação [m]</param>
-        public Tubulacao(double diametro, double comprimento, double rugosidade, double elevacao, string metodoFatrito = "fanning")
+        public Tubulacao(double diametro, double comprimento, MaterialTubulacao material, double elevacao, string metodoFatrito = "fanning")
         {
-            this.diametro = diametro;
+            this.material = material;
+            this.Diametro = diametro;
             this.comprimento = comprimento;
-            this.rugosidade = rugosidade;
             this.elevacao = elevacao;
-            this.rugosidadeRelativa = rugosidade / diametro;
+            this.rugosidadeRelativa = material.Rugosidade / diametro;
             this.metodoFatrito = metodoFatrito;
         }
         #endregion
@@ -107,9 +116,23 @@ namespace SimulOP
         /// <param name="sin">Singularidade a ser adicionada</param>
         public void AdicionaSingularidade(ISingularidade sin)
         {
-            this.listaSingulariedades.Add(sin);
+            this.listaSingularidades.Add(sin);
+            CalculaComprimentoEquiSing();
         }
-        
+
+        /// <summary>
+        /// Adiciona uma lista de singularidade na lista de lingularidades da tubulação
+        /// </summary>
+        /// <param name="singularidades">Lista de singularidade a ser adicionada</param>
+        public void AdicionaSingularidade(List<ISingularidade> singularidades)
+        {
+            foreach (ISingularidade sin in singularidades)
+            {
+                listaSingularidades.Add(sin);
+            }
+            CalculaComprimentoEquiSing();
+        }
+
         /// <summary>
         /// Calcula o número de Reyolds
         /// </summary>
@@ -124,6 +147,7 @@ namespace SimulOP
 
             return re;
         }
+
         /// <summary>
         /// Calcula o fator de atrito de acordo com a correlação de Fanning.
         /// </summary>
@@ -154,22 +178,20 @@ namespace SimulOP
                     fA1 = Math.Pow(8 / Re, 12);
                     fA2 = 1 / Math.Pow(A + B, 3.0 / 2.0);
 
-                    fA = 2 * Math.Pow(fA1 + fA2, 1.0 / 12.0);
+                    fA = 2 * Math.Pow(fA1 + fA2, 1.0 / 12.0); // fator de fanning
                     break;
                 case "haaland":
                     Re = CalculaReynolds(material, vazao);
-                    A = Math.Pow(this.RugosidadeRelativa / 3.7, 1.11);
+                    A = Math.Pow(this.RugosidadeRelativa / (3.7*diametro), 1.11);
                     B = 6.9 / Re;
 
                     invRaizFA = -3.6 * Math.Log10(A + B);
-                    fA = 1 / Math.Pow(invRaizFA, 2);
+                    fA = 1 / Math.Pow(invRaizFA, 2); // fator de fanning
                     break;
                 default:
                     throw new Exception("Especifique o método.");
             }
-
             return fA;
-
         }
 
         /// <summary>
@@ -182,34 +204,28 @@ namespace SimulOP
         {
             double fAtrito = CalculaFAtrito(material, vazao);
             double comprimetoTotal = this.Comprimento + this.ComprimentoEquivalente;
-            double hf1 = (32 / Math.Pow(Math.PI, 2));
-            double hf2 = fAtrito * comprimetoTotal * Math.Pow(vazao, 2) / (Math.Pow(this.Diametro, 5.0) * g);
 
-            this.PerdaCarga = hf1 * hf2;
+            double vMedia = vazao / (Math.PI * Math.Pow(diametro / 2, 2));
 
-            return this.PerdaCarga;
+            perdaCarga = 4 * fAtrito * (comprimetoTotal / diametro) * (Math.Pow(vMedia, 2) / (2 * g));
+         
+            return perdaCarga;
         }
 
         /// <summary>
         /// Cálcula o comprimento equivalente das singularidades
         /// </summary>
         /// <returns> O comprimento equivalente das singularidades [m]. </returns>
-        public void CalculaComprimentoEquiSing()
+        private void CalculaComprimentoEquiSing()
         {
             double comprEq = 0;
 
-            foreach(ISingularidade sin in this.ListaSingulariedades)
+            foreach(ISingularidade sin in this.listaSingularidades)
             {
                 comprEq = comprEq + sin.ComprimentoEqv;
             }
 
             this.comprimentoEquivalente = comprEq;
-
-        }
-        
-        public double CalculaVazao()
-        {
-            throw new NotImplementedException();
         }
     }
 }

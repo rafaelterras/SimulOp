@@ -5,6 +5,7 @@
     /// </summary>
     public static class InicializadorObjetos
     {
+
         #region Definições dos Materiais
         /// <summary>
         /// Retorna um objeto Material para ser usado junto com os fluidos de OPI
@@ -32,7 +33,7 @@
                     break;
                 default:
                     return null;
-            }            
+            }
             return new MaterialFluidoOPI(material, densidade, viscosidade);
         }
 
@@ -65,17 +66,170 @@
                     viscosidade = 5.60E-4;
                     break;
                 case "naftaleno":
-                    coefAntoine = new double[3] { 4.27117, 1831.571 , -61.329 };
+                    coefAntoine = new double[3] { 4.27117, 1831.571, -61.329 };
                     densidade = 862.1;
                     viscosidade = 5.60E-4;
                     break;
                 default:
                     return null;
             }
-            return new MaterialFluidoOPIII(material, densidade, viscosidade, coefAntoine);            
+            return new MaterialFluidoOPIII(material, densidade, viscosidade, coefAntoine);
+        }
+
+        public static MaterialTubulacao MaterialTubulacao(string material)
+        {
+            double rugosidade; // em cm
+
+            switch (material.ToLower())
+            {
+                case "aço carbono":
+                    rugosidade = 0.00547;
+                    break;
+                case "pvc":
+                    rugosidade = 0.006;
+                    break;
+                case "cobre":
+                    rugosidade = 0.0002;
+                    break;
+                case "aço inoxidável":
+                    rugosidade = 0.0002;
+                    break;
+                case "concreto":
+                    rugosidade = 0.2;
+                    break;
+                default:
+                    rugosidade = 0.00547;
+                    break;
+            }
+
+            return new MaterialTubulacao(rugosidade * 100.0, material);
         }
         #endregion
 
+        #region Definição da Tubulação
 
+        public static Tubulacao Tubulacao(string material, EquipamentoOPI.DiamPol diamPol, EquipamentoOPI.SchNum schNum, double comprimento, double elevacao, string metodoFAtrito = "fanning")
+        {
+            double diametroInt;
+            MaterialTubulacao materialTubulacao = MaterialTubulacao(material);
+
+            diametroInt = SchParaDiametro(diamPol, schNum);
+
+            return new Tubulacao(diametroInt, comprimento, materialTubulacao, elevacao, metodoFAtrito);
+        }
+
+        public static double SchParaDiametro(EquipamentoOPI.DiamPol diamPol, EquipamentoOPI.SchNum schNum)
+        {
+            double diametroInt = 0;
+
+            switch (diamPol)
+            {
+                case EquipamentoOPI.DiamPol.pol1:
+                    switch (schNum)
+                    {
+                        case EquipamentoOPI.SchNum.Sch20:
+                            diametroInt = 1.097;
+                            break;
+                        case EquipamentoOPI.SchNum.Sch40:
+                            diametroInt = 1.049;
+                            break;
+                        case EquipamentoOPI.SchNum.Sch80:
+                            diametroInt = 0.957;
+                            break;
+                        case EquipamentoOPI.SchNum.Sch100:
+                            diametroInt = 0.815;
+                            break;
+                    }
+                    break;
+                case EquipamentoOPI.DiamPol.pol1_5:
+                    switch (schNum)
+                    {
+                        case EquipamentoOPI.SchNum.Sch20:
+                            diametroInt = 1.682;
+                            break;
+                        case EquipamentoOPI.SchNum.Sch40:
+                            diametroInt = 1.610;
+                            break;
+                        case EquipamentoOPI.SchNum.Sch80:
+                            diametroInt = 1.500;
+                            break;
+                        case EquipamentoOPI.SchNum.Sch100:
+                            diametroInt = 1.338;
+                            break;
+                    }
+                    break;
+                case EquipamentoOPI.DiamPol.pol2:
+                    switch (schNum)
+                    {
+                        case EquipamentoOPI.SchNum.Sch20:
+                            diametroInt = 2.157;
+                            break;
+                        case EquipamentoOPI.SchNum.Sch40:
+                            diametroInt = 2.067;
+                            break;
+                        case EquipamentoOPI.SchNum.Sch80:
+                            diametroInt = 1.939;
+                            break;
+                        case EquipamentoOPI.SchNum.Sch100:
+                            diametroInt = 1.687;
+                            break;
+                    }
+                    break;
+                case EquipamentoOPI.DiamPol.pol4:
+                    switch (schNum)
+                    {
+                        case EquipamentoOPI.SchNum.Sch20:
+                            diametroInt = 4.260;
+                            break;
+                        case EquipamentoOPI.SchNum.Sch40:
+                            diametroInt = 4.062;
+                            break;
+                        case EquipamentoOPI.SchNum.Sch80:
+                            diametroInt = 3.826;
+                            break;
+                        case EquipamentoOPI.SchNum.Sch100:
+                            diametroInt = 3.624;
+                            break;
+                    }
+                    break;
+                case EquipamentoOPI.DiamPol.pol10:
+                    switch (schNum)
+                    {
+                        case EquipamentoOPI.SchNum.Sch20:
+                            diametroInt = 10.250;
+                            break;
+                        case EquipamentoOPI.SchNum.Sch40:
+                            diametroInt = 10.020;
+                            break;
+                        case EquipamentoOPI.SchNum.Sch80:
+                            diametroInt = 9.562;
+                            break;
+                        case EquipamentoOPI.SchNum.Sch100:
+                            diametroInt = 9.312;
+                            break;
+                    }
+                    break;
+                case EquipamentoOPI.DiamPol.pol20:
+                    switch (schNum)
+                    {
+                        case EquipamentoOPI.SchNum.Sch20:
+                            diametroInt = 19.250;
+                            break;
+                        case EquipamentoOPI.SchNum.Sch40:
+                            diametroInt = 18.812;
+                            break;
+                        case EquipamentoOPI.SchNum.Sch80:
+                            diametroInt = 17.938;
+                            break;
+                        case EquipamentoOPI.SchNum.Sch100:
+                            diametroInt = 17.438;
+                            break;
+                    }
+                    break;
+            }
+
+            return diametroInt * 0.0254; // Converte de polegadas para metros
+        }
+        #endregion
     }
 }

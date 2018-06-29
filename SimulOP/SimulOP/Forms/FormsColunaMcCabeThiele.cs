@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
+using SimulOP.Properties;
+
 namespace SimulOP.Forms
 {
     public partial class FormsColunaMcCabeThiele : Form
@@ -12,7 +14,9 @@ namespace SimulOP.Forms
         private MisturaBinaria mistura;
         private ColunaMcCabeThiele ColunaMcCabeThiele;
         private bool erroConvergencia = false;
-
+        
+        private Form formAberto;
+                
         // Listas para plots
         private List<double> eqX = new List<double>();
         private List<double> eqY = new List<double>();
@@ -45,17 +49,12 @@ namespace SimulOP.Forms
         private int trbXdInt;
         private double nudXbDbl;
         private int trbXbInt;
-        private double nudTemperaturaDinDbl;
-        private int trbTemperaturaDinInt;
+        private double nudPressaoDinDbl;
+        private int trbPressaoDinInt;
 
         public FormsColunaMcCabeThiele()
         {
             InitializeComponent();
-        }
-
-        private void FormsColunaMcCabeThiele_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void EventosInputs(bool ativar)
@@ -71,8 +70,8 @@ namespace SimulOP.Forms
                 trbXd.Scroll += trbXd_Scroll;
                 nudXb.ValueChanged += nudXb_ValueChanged;
                 trbXb.Scroll += trbXb_Scroll;
-                nudTemperaturaDin.ValueChanged += nudTemperaturaDin_ValueChanged;
-                trbTemperaturaDin.Scroll += trbTemperaturaDin_Scroll;
+                nudPressaoDin.ValueChanged += nudPressaoDin_ValueChanged;
+                trbPressaoDin.Scroll += trbPressaoDin_Scroll;
                 nudCondicaoEntradaDin.ValueChanged += nudCondicaoEntradaDin_ValueChanged;
                 cmbCondicaoEntradaDin.SelectedIndexChanged += cmbCondicaoEntradaDin_SelectedIndexChanged;
                 trbCondicaoEntradaDin.Scroll += trbCondicaoEntradaDin_Scroll;
@@ -88,8 +87,8 @@ namespace SimulOP.Forms
                 trbXd.Scroll -= trbXd_Scroll;
                 nudXb.ValueChanged -= nudXb_ValueChanged;
                 trbXb.Scroll -= trbXb_Scroll;
-                nudTemperaturaDin.ValueChanged -= nudTemperaturaDin_ValueChanged;
-                trbTemperaturaDin.Scroll -= trbTemperaturaDin_Scroll;
+                nudPressaoDin.ValueChanged -= nudPressaoDin_ValueChanged;
+                trbPressaoDin.Scroll -= trbPressaoDin_Scroll;
                 nudCondicaoEntradaDin.ValueChanged -= nudCondicaoEntradaDin_ValueChanged;
                 cmbCondicaoEntradaDin.SelectedIndexChanged -= cmbCondicaoEntradaDin_SelectedIndexChanged;
                 trbCondicaoEntradaDin.Scroll -= trbCondicaoEntradaDin_Scroll;
@@ -137,9 +136,6 @@ namespace SimulOP.Forms
         {
             linhaQX.Clear();
             linhaQY.Clear();
-            //chart.Series[1].Points.Clear();
-
-            //(linhaQX, linhaQY) = ColunaMcCabeThiele.PlotCurvaQ(20);
         }
 
         private void VerificaConvergencia()
@@ -238,11 +234,9 @@ namespace SimulOP.Forms
                     nudRefluxoDin.Value = Convert.ToDecimal(nudRefluxoDbl);
                     nudXd.Value = Convert.ToDecimal(nudXdDbl);
                     nudXb.Value = Convert.ToDecimal(nudXbDbl);
-                    nudTemperaturaDin.Value = Convert.ToDecimal(nudTemperaturaDbl - 273.15);
+                    nudPressaoDin.Value = Convert.ToDecimal(nudPressaoDbl / 1e5);
 
                     VerificaConvergencia();
-
-                    //EventosInputs(true);
 
                     txbConvergencia.Visible = true;
                     gubVariaveis.Visible = true;
@@ -259,77 +253,6 @@ namespace SimulOP.Forms
                 }
             }
         }
-
-        #region === Input Inicial ===
-
-        /// <summary>
-        /// Altera o numero da variavel q da entrada conforme a combo box
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void cmbCondicaoEntrada_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cmbCondicaoEntradaTxt = cmbCondicaoEntrada.Text;
-
-            switch (cmbCondicaoEntradaTxt.ToLower())
-            {
-                case "líquido sub-resfriado":
-                    nudRazaoQDbl = 1.25;
-                    break;
-                case "líquido saturado":
-                    nudRazaoQDbl = 1.0;
-                    break;
-                case "parcialmente vaporizado":
-                    nudRazaoQDbl = 0.5;
-                    break;
-                case "vapor saturado":
-                    nudRazaoQDbl = 0;
-                    break;
-                case "vapor super aquecido":
-                    nudRazaoQDbl = -0.25;
-                    break;
-                default:
-                    throw new Exception($"Condição do líquido de entrada não estabelecida, o valor [{cmbCondicaoEntradaTxt}] não era esperado!");
-            }
-            nudRazaoQ.Value = Convert.ToDecimal(nudRazaoQDbl);
-        }
-
-        /// <summary>
-        /// Altera a texto da combobox conforme o numero da varial q de entrada
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void nudRazaoQ_ValueChanged(object sender, EventArgs e)
-        {
-            nudRazaoQDbl = Convert.ToDouble(nudRazaoQ.Value);
-
-            if (nudRazaoQDbl > 1.0)
-            {
-                cmbCondicaoEntradaTxt = "Líquido sub-resfriado";
-            }
-            else if (nudRazaoQDbl == 1.0)
-            {
-                cmbCondicaoEntradaTxt = "Líquido saturado";
-            }
-            else if (nudRazaoQDbl > 0.0 && nudRazaoQDbl < 1.0)
-            {
-                cmbCondicaoEntradaTxt = "Parcialmente vaporizado";
-            }
-            else if (nudRazaoQDbl == 0.0)
-            {
-                cmbCondicaoEntradaTxt = "Vapor saturado";
-            }
-            else if (nudRazaoQDbl < 0.0)
-            {
-                cmbCondicaoEntradaTxt = "Vapor super aquecido";
-            }
-
-            cmbCondicaoEntrada.Text = cmbCondicaoEntradaTxt;
-        }
-
-
-
-        #endregion
 
         #region === Variaveis Dinamicas ===
 
@@ -378,10 +301,10 @@ namespace SimulOP.Forms
                     AtualizaLinhasOP();
                     AtualizaPratos();
                     break;
-                case "nudTemperaturaDin": // Mudança na temperatura
-                    nudTemperaturaDinDbl = x + 273.15; // Temperatura em K
-                    trbTemperaturaDinInt = trbInt;
-                    ColunaMcCabeThiele.MisturaBinaria.Temperatura = nudTemperaturaDinDbl;
+                case "nudPressaoDin": // Mudança na temperatura
+                    nudPressaoDinDbl = x * 1e5;
+                    trbPressaoDinInt = trbInt;
+                    ColunaMcCabeThiele.MisturaBinaria.Pressao = nudPressaoDinDbl;
                     AtualizaEquilibrio();
                     AtualizaLinhasOP();
                     AtualizaLinhaQ();
@@ -555,23 +478,36 @@ namespace SimulOP.Forms
         }
         #endregion
 
-        #region Temperatura
-        private void nudTemperaturaDin_ValueChanged(object sender, EventArgs e)
+        #region Pressão
+        private void nudPressaoDin_ValueChanged(object sender, EventArgs e)
         {
-            AtualizaParDin(nudTemperaturaDin, trbTemperaturaDin, Convert.ToDouble(nudTemperaturaDin.Value));
-
+            AtualizaParDin(nudPressaoDin, trbPressaoDin, Convert.ToDouble(nudPressaoDin.Value));
         }
 
-        private void trbTemperaturaDin_Scroll(object sender, EventArgs e)
+        private void trbPressaoDin_Scroll(object sender, EventArgs e)
         {
-            double x = Convert.ToDouble(nudTemperaturaDin.Minimum) +
-                (Convert.ToDouble(nudTemperaturaDin.Maximum) - Convert.ToDouble(nudTemperaturaDin.Minimum))
-                * Convert.ToDouble(trbTemperaturaDin.Value) / Convert.ToDouble(trbTemperaturaDin.Maximum);
+            double x = Convert.ToDouble(nudPressaoDin.Minimum) +
+                (Convert.ToDouble(nudPressaoDin.Maximum) - Convert.ToDouble(nudPressaoDin.Minimum))
+                * Convert.ToDouble(trbPressaoDin.Value) / Convert.ToDouble(trbPressaoDin.Maximum);
 
-            AtualizaParDin(nudTemperaturaDin, trbTemperaturaDin, x);
+            AtualizaParDin(nudPressaoDin, trbPressaoDin, x);
         }
         #endregion
 
         #endregion
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            formAberto = Application.OpenForms["FormsPopOut"];
+
+            if (formAberto != null)
+            {
+                formAberto.Close();
+            }
+
+            FormsPopOut popOut = new FormsPopOut(TextoAjuda.ResourceManager.GetString("ajudaTeste"));
+
+            popOut.Show();
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace SimulOP
 {
-    interface IMaterialFluidoOPI
+    public interface IMaterialFluidoOPI
     {
         double Densidade { get; }
         double Viscosidade { get; }
