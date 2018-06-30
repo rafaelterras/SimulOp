@@ -77,7 +77,7 @@ namespace SimulOP
         /// <param name="feedZF">Fração molar do LK na entrada da coluna</param>
         /// <param name="refluxRatio">Taxa de refluxo molar de operação da coluna</param>
         /// <param name="condicaoEntrada">Condição do fluido de entrada (líquido/vapor saturado, líquido sub-resfriado, vapor super aquecido e parcialmente vaporizado)</param>
-        public ColunaMcCabeThiele(MisturaBinaria misturaBinaria, double targetXD, double targetXB, double feedZF, double refluxRatio, string condicaoEntrada)
+        public ColunaMcCabeThiele(MisturaBinaria misturaBinaria, double targetXD, double targetXB, double feedZF, double refluxRatio, CondicaoMistura condicaoEntrada)
         {
             this.misturaBinaria = misturaBinaria ?? throw new ArgumentNullException(nameof(misturaBinaria));
             this.targetXD = targetXD;
@@ -94,27 +94,25 @@ namespace SimulOP
         /// Altera o valor q da entrada do fluido, representando o estado de aquecimento/resfriamento do líquido
         /// </summary>
         /// <param name="condicao">Condição do fluido de entrada (líquido/vapor saturado, líquido sub-resfriado, vapor super aquecido e parcialmente vaporizado)</param>
-        public void CondicaoEntrada(string condicao)
+        public void CondicaoEntrada(CondicaoMistura condicao)
         {
-            switch (condicao.ToLower())
+            switch (condicao)
             {
-                case "líquido sub-resfriado":
+                case CondicaoMistura.Líquido_sub_resfriado:
                     this.feedConditionQ = 1.25;
                     break;
-                case "líquido saturado":
+                case CondicaoMistura.Líquido_saturado:
                     this.feedConditionQ = 1.0;
                     break;
-                case "parcialmente vaporizado":
+                case CondicaoMistura.Parcialmente_vaporizado:
                     this.feedConditionQ = 0.5;
                     break;
-                case "vapor saturado":
+                case CondicaoMistura.Vapor_saturado:
                     this.feedConditionQ = 0;
                     break;
-                case "vapor super aquecido":
+                case CondicaoMistura.Vapor_super_aquecido:
                     this.feedConditionQ = -0.25;
                     break;
-                default:
-                    throw new Exception($"Condição do líquido de entrada não estabelecida, o valor [{condicao}] não era esperado!");
             }
         }
 

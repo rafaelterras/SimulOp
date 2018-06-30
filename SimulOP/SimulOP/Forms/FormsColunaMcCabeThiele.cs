@@ -159,18 +159,19 @@ namespace SimulOP.Forms
             }
             else
             {
-                for (int i = 1; i < pratosX.Count - 2; i = i + 2)
-                {
+                double dis = Math.Abs(ColunaMcCabeThiele.PontoP[0] - pratosX[1]);
+                localPratoIdeal = "1";
 
-                    if (ColunaMcCabeThiele.PontoP[0] <= pratosX[i] && ColunaMcCabeThiele.PontoP[0] > pratosX[i + 2])
+                for (int i = 3; i < pratosX.Count - 2; i = i + 2)
+                {
+                    if (Math.Abs(ColunaMcCabeThiele.PontoP[0] - pratosX[i]) < dis)
                     {
-                        erroConvergencia = false;
-                        localPratoIdeal = $"entre {(i + 1) / 2} e {(i + 3) / 2}";
-                        break;
+                        dis = Math.Abs(ColunaMcCabeThiele.PontoP[0] - pratosX[i]);
+                        localPratoIdeal = $"{(i + 1) / 2}";
                     }
                     else
                     {
-                        erroConvergencia = true;
+                        break;
                     }
                 }
             }
@@ -197,7 +198,7 @@ namespace SimulOP.Forms
         {
             cmbFluidoLKTxt = cmbFluidoLK.Text;
             cmbFluidoHKTxt = cmbFluidoHK.Text;
-            cmbCondicaoEntradaTxt = "Vapor saturado";
+            cmbCondicaoEntradaTxt = "Líquido saturado";
             nudRazaoQDbl = 0.0;
             nudFracaoEntradaLKDbl = 0.5;
             nudRefluxoDbl = 2.0;
