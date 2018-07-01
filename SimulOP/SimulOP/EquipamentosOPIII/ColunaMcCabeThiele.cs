@@ -192,7 +192,16 @@ namespace SimulOP
 
             if (this.feedConditionQ != 1) // Condição para o líquido de entrada não saturado
             {
-                pontoP[0] = AchaRaizBrenet(RaizP, 0.0, 1.0);
+
+                try
+                {
+                    pontoP[0] = AchaRaizBrenet(RaizP, 0.0, 1.0);
+                }
+                catch (Exception)
+                {
+                    throw new Exception("Erro de Convergencia");
+                }
+
                 pontoP[1] = LinhaQ(pontoP[0]);
 
                 this.pontoP = pontoP;
@@ -240,6 +249,7 @@ namespace SimulOP
 
             double xLK = this.targetXD; // Concentração do LK na fase líquida
             double yLK; // Concentração do LK na fase vapor
+            double eq;
 
             this.CalculaPontoP();
 
@@ -260,8 +270,16 @@ namespace SimulOP
 
                 // Delegate para calculo da Equacao [EqVap(x) - xV = 0]
                 double LinhaOPEq(double x) => misturaBinaria.CalculaVap(x) - yLK;
-                double eq = AchaRaizBrenet(LinhaOPEq, 0, 1);
 
+                try
+                {
+                    eq = AchaRaizBrenet(LinhaOPEq, -1.0, 1.0);
+                }
+                catch (Exception)
+                {
+                    throw new Exception("Erro de Convergencia");
+                }
+                
                 // Ponto na curva de equilivrio
                 PlotY.Add(yLK);
                 PlotX.Add(eq);
@@ -310,35 +328,34 @@ namespace SimulOP
         /// <returns>Duas lista com os valores de X e Y, respectivamente, com os pontos para serem plotados</returns>
         public (List<double> PlotX, List<double> PlotY) PlotCurvaQ(int div)
         {
-            List<double> PlotX = new List<double>();
-            List<double> PlotY = new List<double>();
-
-            if (this.pontoP == null)
-            {
-                CalculaPontoP();
-            }
-
-            double LinhaQEQ(double x) => LinhaQ(x) - misturaBinaria.CalculaVap(x);
-            double cruzaQEQ = AchaRaizBrenet(LinhaQEQ, 0.0, 1.0);
-            
-            for (double xLK = 0; xLK <= 1.01; xLK = xLK + 1.0 / div)
-            {
-                if (xLK < this.pontoP[0] && (xLK + 1.0 / div) > this.pontoP[0])
-                {
-                    PlotX.Add(this.pontoP[0]);
-                    PlotY.Add(this.pontoP[1]);
-                }
-                else
-                {
-                    PlotX.Add(xLK);
-                    PlotY.Add(CurvaOP(xLK));
-                }
-            }
-
-
             throw new NotImplementedException();
+            
+            //List<double> PlotX = new List<double>();
+            //List<double> PlotY = new List<double>();
 
-            return (PlotX, PlotY);
+            //if (this.pontoP == null)
+            //{
+            //    CalculaPontoP();
+            //}
+
+            //double LinhaQEQ(double x) => LinhaQ(x) - misturaBinaria.CalculaVap(x);
+            //double cruzaQEQ = AchaRaizBrenet(LinhaQEQ, 0.0, 1.0);
+
+            //for (double xLK = 0; xLK <= 1.01; xLK = xLK + 1.0 / div)
+            //{
+            //    if (xLK < this.pontoP[0] && (xLK + 1.0 / div) > this.pontoP[0])
+            //    {
+            //        PlotX.Add(this.pontoP[0]);
+            //        PlotY.Add(this.pontoP[1]);
+            //    }
+            //    else
+            //    {
+            //        PlotX.Add(xLK);
+            //        PlotY.Add(CurvaOP(xLK));
+            //    }
+            //}
+
+            //return (PlotX, PlotY);
         }
         #endregion
     }

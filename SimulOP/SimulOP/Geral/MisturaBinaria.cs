@@ -103,8 +103,16 @@ namespace SimulOP
             this.composicaoLiq[1] = 1 - xLK;
 
             double somaPresaoParcial(double T) => xLK * fluidoLK.PVapor(T) + (1 - xLK) * fluidoHK.PVapor(T) - this.pressao;
+            double temp;
 
-            double temp = Equipamentos.AchaRaizBrenet(somaPresaoParcial, 100, 500, nInte: 300);
+            try
+            {
+                temp = Equipamentos.AchaRaizBrenet(somaPresaoParcial, 100, 500, nInte: 300);
+            }
+            catch (Exception)
+            {                
+                throw new Exception("Erro de convergencia");
+            }
 
             this.Temperatura = temp;
 
@@ -127,7 +135,16 @@ namespace SimulOP
         {
             double somaPresaoParcial(double T) => xLK * fluidoLK.PVapor(T) + (1 - xLK) * fluidoHK.PVapor(T) - this.pressao;
 
-            double temp = Equipamentos.AchaRaizBrenet(somaPresaoParcial, 100, 500, nInte: 300);
+            double temp;
+
+            try
+            {
+                temp = Equipamentos.AchaRaizBrenet(somaPresaoParcial, 100.0, 500.0, nInte: 300);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erro de convergencia");
+            }
 
             this.Temperatura = temp;
 

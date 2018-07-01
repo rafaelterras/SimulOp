@@ -32,7 +32,14 @@ namespace SimulOP
         /// </summary>
         public static double AchaRaizBrenet(Func<double, double> fx, double limiteInf, double limitSup, double precisao = 1e-08, int nInte = 100)
         {
-            return FindRoots.OfFunction(fx, limiteInf, limitSup, precisao, nInte);
+            try
+            {
+                return FindRoots.OfFunction(fx, limiteInf, limitSup, precisao, nInte);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erro ao convergir");
+            }
         }
     }
 }

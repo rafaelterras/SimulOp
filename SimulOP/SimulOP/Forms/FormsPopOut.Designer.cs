@@ -38,6 +38,7 @@
             this.txbAjuda.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbAjuda.BackColor = System.Drawing.Color.White;
             this.txbAjuda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txbAjuda.CausesValidation = false;
             this.txbAjuda.Font = new System.Drawing.Font("Lucida Console", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -53,8 +54,8 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.AutoSize = true;
-            this.btnOK.Location = new System.Drawing.Point(268, 258);
+            this.btnOK.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnOK.Location = new System.Drawing.Point(272, 258);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(71, 23);
             this.btnOK.TabIndex = 0;
@@ -66,6 +67,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(351, 284);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txbAjuda);

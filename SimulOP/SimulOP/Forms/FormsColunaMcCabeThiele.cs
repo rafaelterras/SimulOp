@@ -114,7 +114,15 @@ namespace SimulOP.Forms
             pratosY.Clear();
             chart.Series["Pratos"].Points.Clear();
 
-            (pratosX, pratosY) = ColunaMcCabeThiele.PlotPratos();
+            try
+            {
+                (pratosX, pratosY) = ColunaMcCabeThiele.PlotPratos();
+            }
+            catch (Exception)
+            {
+                erroConvergencia = true;
+                VerificaConvergencia();
+            }
 
             chart.Series["Pratos"].Points.DataBindXY(pratosX, pratosY);
         }
@@ -134,47 +142,13 @@ namespace SimulOP.Forms
 
         private void AtualizaLinhaQ()
         {
-            linhaQX.Clear();
-            linhaQY.Clear();
+            //linhaQX.Clear();
+            //linhaQY.Clear();
         }
 
         private void VerificaConvergencia()
         {
             string localPratoIdeal = "-";
-            
-            // Equilibrio
-            if (ColunaMcCabeThiele.PontoP[1] > ColunaMcCabeThiele.MisturaBinaria.CalculaVap(ColunaMcCabeThiele.PontoP[0]))
-            {
-                erroConvergencia = true;
-            }
-            else
-            {
-                erroConvergencia = false;
-            }
-
-            // Pratos
-            if (erroConvergencia || pratosX.Count == 100)
-            {
-                erroConvergencia = true;
-            }
-            else
-            {
-                double dis = Math.Abs(ColunaMcCabeThiele.PontoP[0] - pratosX[1]);
-                localPratoIdeal = "1";
-
-                for (int i = 3; i < pratosX.Count - 2; i = i + 2)
-                {
-                    if (Math.Abs(ColunaMcCabeThiele.PontoP[0] - pratosX[i]) < dis)
-                    {
-                        dis = Math.Abs(ColunaMcCabeThiele.PontoP[0] - pratosX[i]);
-                        localPratoIdeal = $"{(i + 1) / 2}";
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
 
             if (erroConvergencia)
             {
@@ -183,14 +157,74 @@ namespace SimulOP.Forms
 
                 txbNPratos.Text = "-";
                 txbPratoIdeal.Text = "-";
+
+                erroConvergencia = false;
             }
             else
             {
-                txbConvergencia.Text = "OK";
-                txbConvergencia.ForeColor = System.Drawing.Color.Green;
+                // Equilibrio
+                double pVapPontoP;
 
-                txbNPratos.Text = ((pratosX.Count - 1) / 2).ToString();
-                txbPratoIdeal.Text = localPratoIdeal;
+                try
+                {
+                    pVapPontoP = ColunaMcCabeThiele.MisturaBinaria.CalculaVap(ColunaMcCabeThiele.PontoP[0]);
+                }
+                catch (Exception)
+                {
+                    erroConvergencia = true;
+                    VerificaConvergencia();
+                    return;
+                }
+
+                if (ColunaMcCabeThiele.PontoP[1] > pVapPontoP)
+                {
+                    erroConvergencia = true;
+                }
+                else
+                {
+                    erroConvergencia = false;
+                }
+
+                // Pratos
+                if (erroConvergencia || pratosX.Count == 100)
+                {
+                    erroConvergencia = true;
+                }
+                else
+                {
+                    double dis = Math.Abs(ColunaMcCabeThiele.PontoP[0] - pratosX[1]);
+                    localPratoIdeal = "1";
+
+                    for (int i = 3; i < pratosX.Count - 2; i = i + 2)
+                    {
+                        if (Math.Abs(ColunaMcCabeThiele.PontoP[0] - pratosX[i]) < dis)
+                        {
+                            dis = Math.Abs(ColunaMcCabeThiele.PontoP[0] - pratosX[i]);
+                            localPratoIdeal = $"{(i + 1) / 2}";
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+
+                if (erroConvergencia)
+                {
+                    txbConvergencia.Text = "Erro de convergência!";
+                    txbConvergencia.ForeColor = System.Drawing.Color.Maroon;
+
+                    txbNPratos.Text = "-";
+                    txbPratoIdeal.Text = "-";
+                }
+                else
+                {
+                    txbConvergencia.Text = "OK";
+                    txbConvergencia.ForeColor = System.Drawing.Color.Green;
+
+                    txbNPratos.Text = ((pratosX.Count - 1) / 2).ToString();
+                    txbPratoIdeal.Text = localPratoIdeal;
+                }
             }
         }
  
@@ -207,7 +241,7 @@ namespace SimulOP.Forms
             nudTemperaturaDbl = 50 + 273.15; // Temperatura tem que ser usada em Kelvin
             nudPressaoDbl = 1E5;
 
-            if (cmbFluidoLKTxt != "" && cmbFluidoHKTxt != "" && cmbFluidoLKTxt != cmbFluidoHKTxt)
+            if ((cmbFluidoLKTxt != "" && cmbFluidoHKTxt != "") && cmbFluidoLKTxt != cmbFluidoHKTxt)
             {
                 //EventosInputs(false);
                 
@@ -240,18 +274,34 @@ namespace SimulOP.Forms
                     VerificaConvergencia();
 
                     txbConvergencia.Visible = true;
+                    labMudanca.Visible = true;
                     gubVariaveis.Visible = true;
                     gubResultados.Visible = true;
-                    chart.Visible = true;
+                    gubGrafico.Visible = true;
+                    labResultados.Visible = true;
                 }
                 else
                 {
+                    txbConvergencia.Visible = true;
                     txbConvergencia.Text = "Fluido HK é mais volátil";
                     txbConvergencia.ForeColor = System.Drawing.Color.Maroon;
-                    chart.Visible = false;
+                    labMudanca.Visible = false;
+                    gubGrafico.Visible = false;
                     gubVariaveis.Visible = false;
                     gubResultados.Visible = false;
+                    labResultados.Visible = false;
                 }
+            }
+            else
+            {
+                txbConvergencia.Visible = true;
+                txbConvergencia.Text = "Fluidos idêndicos!";
+                txbConvergencia.ForeColor = System.Drawing.Color.Maroon;
+                labMudanca.Visible = false;
+                gubGrafico.Visible = false;
+                gubVariaveis.Visible = false;
+                gubResultados.Visible = false;
+                labResultados.Visible = false;
             }
         }
 
