@@ -1,13 +1,8 @@
-﻿using SimulOP.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using SimulOP.Properties;
 
 namespace SimulOP.Forms
 {
@@ -239,6 +234,10 @@ namespace SimulOP.Forms
                 gubFluidoDin.Visible = true;
                 gubSucDin.Visible = true;
                 gubDesDin.Visible = true;
+                chartPerdaCarga.Visible = true;
+                chartNPSHDisp.Visible = true;
+                gubResultados.Visible = true;
+                labResultados.Visible = true;
 
                 tabControl.SelectedIndex = 1;
             }

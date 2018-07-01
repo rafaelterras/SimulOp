@@ -18,7 +18,7 @@ namespace SimulOP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms.FormsColunaMcCabeThiele());
+            Application.Run(new Forms.FormsMaster());
         }
      }
 }

@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series37 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series38 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series39 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series40 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.gubVariaveis = new System.Windows.Forms.GroupBox();
             this.nudRefluxoDin = new System.Windows.Forms.NumericUpDown();
@@ -67,12 +67,12 @@
             this.txbConvergencia = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.cmbFluidoLK = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbFluidoHK = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnInputInicial = new System.Windows.Forms.Button();
             this.gubInputInicial = new System.Windows.Forms.GroupBox();
+            this.btnInputInicial = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbFluidoHK = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbFluidoLK = new System.Windows.Forms.ComboBox();
             this.labMudanca = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.labResultados = new System.Windows.Forms.Label();
@@ -100,59 +100,59 @@
             // 
             // chart
             // 
-            chartArea10.AxisX.Interval = 0.1D;
-            chartArea10.AxisX.MajorGrid.Enabled = false;
-            chartArea10.AxisX.Maximum = 1D;
-            chartArea10.AxisX.Minimum = 0D;
-            chartArea10.AxisX.MinorGrid.Enabled = true;
-            chartArea10.AxisX.MinorGrid.Interval = 0.1D;
-            chartArea10.AxisX.MinorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea10.AxisX.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea10.AxisX.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea10.AxisY.Interval = 0.1D;
-            chartArea10.AxisY.MajorGrid.Enabled = false;
-            chartArea10.AxisY.Maximum = 1D;
-            chartArea10.AxisY.Minimum = 0D;
-            chartArea10.AxisY.MinorGrid.Enabled = true;
-            chartArea10.AxisY.MinorGrid.Interval = 0.1D;
-            chartArea10.AxisY.MinorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea10.AxisY.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea10.AxisY.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea10.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea10);
-            legend10.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend10.IsTextAutoFit = false;
-            legend10.Name = "Legend1";
-            this.chart.Legends.Add(legend10);
+            chartArea1.AxisX.Interval = 0.1D;
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisX.Maximum = 1D;
+            chartArea1.AxisX.Minimum = 0D;
+            chartArea1.AxisX.MinorGrid.Enabled = true;
+            chartArea1.AxisX.MinorGrid.Interval = 0.1D;
+            chartArea1.AxisX.MinorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea1.AxisX.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY.Interval = 0.1D;
+            chartArea1.AxisY.MajorGrid.Enabled = false;
+            chartArea1.AxisY.Maximum = 1D;
+            chartArea1.AxisY.Minimum = 0D;
+            chartArea1.AxisY.MinorGrid.Enabled = true;
+            chartArea1.AxisY.MinorGrid.Interval = 0.1D;
+            chartArea1.AxisY.MinorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea1.AxisY.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
+            legend1.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend1.IsTextAutoFit = false;
+            legend1.Name = "Legend1";
+            this.chart.Legends.Add(legend1);
             this.chart.Location = new System.Drawing.Point(3, 19);
             this.chart.Name = "chart";
-            series37.ChartArea = "ChartArea1";
-            series37.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series37.Legend = "Legend1";
-            series37.Name = "Equilibrio";
-            series38.BorderWidth = 2;
-            series38.ChartArea = "ChartArea1";
-            series38.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series38.Color = System.Drawing.Color.Black;
-            series38.IsVisibleInLegend = false;
-            series38.Legend = "Legend1";
-            series38.Name = "Pratos";
-            series39.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            series39.ChartArea = "ChartArea1";
-            series39.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series39.Color = System.Drawing.Color.Gray;
-            series39.Legend = "Legend1";
-            series39.Name = "LinhaOP";
-            series40.ChartArea = "ChartArea1";
-            series40.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series40.Color = System.Drawing.Color.Tomato;
-            series40.Legend = "Legend1";
-            series40.Name = "PontoQ";
-            series40.YValuesPerPoint = 2;
-            this.chart.Series.Add(series37);
-            this.chart.Series.Add(series38);
-            this.chart.Series.Add(series39);
-            this.chart.Series.Add(series40);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Equilibrio";
+            series2.BorderWidth = 2;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Color = System.Drawing.Color.Black;
+            series2.IsVisibleInLegend = false;
+            series2.Legend = "Legend1";
+            series2.Name = "Pratos";
+            series3.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Color = System.Drawing.Color.Gray;
+            series3.Legend = "Legend1";
+            series3.Name = "LinhaOP";
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series4.Color = System.Drawing.Color.Tomato;
+            series4.Legend = "Legend1";
+            series4.Name = "PontoQ";
+            series4.YValuesPerPoint = 2;
+            this.chart.Series.Add(series1);
+            this.chart.Series.Add(series2);
+            this.chart.Series.Add(series3);
+            this.chart.Series.Add(series4);
             this.chart.Size = new System.Drawing.Size(614, 408);
             this.chart.TabIndex = 0;
             this.chart.Text = "chart";
@@ -535,6 +535,7 @@
             // 
             // txbAlpha
             // 
+            this.txbAlpha.BackColor = System.Drawing.SystemColors.Control;
             this.txbAlpha.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbAlpha.Location = new System.Drawing.Point(175, 17);
             this.txbAlpha.Name = "txbAlpha";
@@ -556,6 +557,7 @@
             // 
             // txbPratoIdeal
             // 
+            this.txbPratoIdeal.BackColor = System.Drawing.SystemColors.Control;
             this.txbPratoIdeal.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbPratoIdeal.Location = new System.Drawing.Point(175, 69);
             this.txbPratoIdeal.Name = "txbPratoIdeal";
@@ -577,6 +579,7 @@
             // 
             // txbNPratos
             // 
+            this.txbNPratos.BackColor = System.Drawing.SystemColors.Control;
             this.txbNPratos.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbNPratos.Location = new System.Drawing.Point(175, 43);
             this.txbNPratos.Name = "txbNPratos";
@@ -660,67 +663,8 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(252, 600);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(252, 604);
             this.tableLayoutPanel1.TabIndex = 27;
-            // 
-            // cmbFluidoLK
-            // 
-            this.cmbFluidoLK.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbFluidoLK.FormattingEnabled = true;
-            this.cmbFluidoLK.Items.AddRange(new object[] {
-            "Benzeno",
-            "Tolueno",
-            "Naftaleno"});
-            this.cmbFluidoLK.Location = new System.Drawing.Point(119, 20);
-            this.cmbFluidoLK.Name = "cmbFluidoLK";
-            this.cmbFluidoLK.Size = new System.Drawing.Size(121, 19);
-            this.cmbFluidoLK.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label1.Location = new System.Drawing.Point(6, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 11);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Fluido LK";
-            // 
-            // cmbFluidoHK
-            // 
-            this.cmbFluidoHK.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbFluidoHK.FormattingEnabled = true;
-            this.cmbFluidoHK.Items.AddRange(new object[] {
-            "Benzeno",
-            "Tolueno",
-            "Naftaleno"});
-            this.cmbFluidoHK.Location = new System.Drawing.Point(119, 47);
-            this.cmbFluidoHK.Name = "cmbFluidoHK";
-            this.cmbFluidoHK.Size = new System.Drawing.Size(121, 19);
-            this.cmbFluidoHK.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label2.Location = new System.Drawing.Point(6, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 11);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Fluido HK";
-            // 
-            // btnInputInicial
-            // 
-            this.btnInputInicial.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInputInicial.Location = new System.Drawing.Point(181, 74);
-            this.btnInputInicial.Name = "btnInputInicial";
-            this.btnInputInicial.Size = new System.Drawing.Size(59, 23);
-            this.btnInputInicial.TabIndex = 2;
-            this.btnInputInicial.Text = "OK";
-            this.btnInputInicial.UseVisualStyleBackColor = true;
-            this.btnInputInicial.Click += new System.EventHandler(this.btnInputInicial_Click);
             // 
             // gubInputInicial
             // 
@@ -736,6 +680,65 @@
             this.gubInputInicial.TabIndex = 3;
             this.gubInputInicial.TabStop = false;
             this.gubInputInicial.Text = "Fluidos";
+            // 
+            // btnInputInicial
+            // 
+            this.btnInputInicial.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInputInicial.Location = new System.Drawing.Point(181, 74);
+            this.btnInputInicial.Name = "btnInputInicial";
+            this.btnInputInicial.Size = new System.Drawing.Size(59, 23);
+            this.btnInputInicial.TabIndex = 2;
+            this.btnInputInicial.Text = "OK";
+            this.btnInputInicial.UseVisualStyleBackColor = true;
+            this.btnInputInicial.Click += new System.EventHandler(this.btnInputInicial_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label2.Location = new System.Drawing.Point(6, 49);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 11);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Fluido HK";
+            // 
+            // cmbFluidoHK
+            // 
+            this.cmbFluidoHK.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbFluidoHK.FormattingEnabled = true;
+            this.cmbFluidoHK.Items.AddRange(new object[] {
+            "Benzeno",
+            "Tolueno",
+            "Naftaleno"});
+            this.cmbFluidoHK.Location = new System.Drawing.Point(119, 47);
+            this.cmbFluidoHK.Name = "cmbFluidoHK";
+            this.cmbFluidoHK.Size = new System.Drawing.Size(121, 19);
+            this.cmbFluidoHK.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label1.Location = new System.Drawing.Point(6, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 11);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Fluido LK";
+            // 
+            // cmbFluidoLK
+            // 
+            this.cmbFluidoLK.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbFluidoLK.FormattingEnabled = true;
+            this.cmbFluidoLK.Items.AddRange(new object[] {
+            "Benzeno",
+            "Tolueno",
+            "Naftaleno"});
+            this.cmbFluidoLK.Location = new System.Drawing.Point(119, 20);
+            this.cmbFluidoLK.Name = "cmbFluidoLK";
+            this.cmbFluidoLK.Size = new System.Drawing.Size(121, 19);
+            this.cmbFluidoLK.TabIndex = 0;
             // 
             // labMudanca
             // 
@@ -759,18 +762,18 @@
             this.tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableLayoutPanel2.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.labResultados, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.gubGrafico, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.gubResultados, 0, 2);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(253, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(252, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(629, 600);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(629, 604);
             this.tableLayoutPanel2.TabIndex = 28;
             // 
             // labResultados
@@ -793,7 +796,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(882, 600);
+            this.ClientSize = new System.Drawing.Size(885, 604);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormsColunaMcCabeThiele";
