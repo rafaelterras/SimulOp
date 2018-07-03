@@ -752,7 +752,7 @@
             this.labMudanca.Padding = new System.Windows.Forms.Padding(2, 5, 0, 0);
             this.labMudanca.Size = new System.Drawing.Size(246, 32);
             this.labMudanca.TabIndex = 27;
-            this.labMudanca.Text = "Mudança";
+            this.labMudanca.Text = "Especificações";
             this.labMudanca.Visible = false;
             // 
             // tableLayoutPanel2
