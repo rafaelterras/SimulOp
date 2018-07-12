@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>SiOP3.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MathNet.Numerics, Version=4.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MathNet.Numerics.4.3.0\lib\net461\MathNet.Numerics.dll</HintPath>
@@ -228,6 +231,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BombeamentoCompletov2.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icons\SiOP3.ico" />
+    <Content Include="SiOP3.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
