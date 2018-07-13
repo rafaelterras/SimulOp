@@ -22,6 +22,9 @@ namespace SimulOP.Forms
             Forms.FormsInício newMDIChild = new Forms.FormsInício();
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
+            // Necessário para que o ícone apareça normalmente.
+            ActivateMdiChild(null);
+            ActivateMdiChild(newMDIChild);
         }
 
         private void simplesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -29,6 +32,9 @@ namespace SimulOP.Forms
             Forms.FormsModelOp newMDIChild = new Forms.FormsModelOp();
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
+            // Necessário para que o ícone apareça normalmente.
+            ActivateMdiChild(null);
+            ActivateMdiChild(newMDIChild);
         }
 
         private void comSingularidadeEBombaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -36,6 +42,9 @@ namespace SimulOP.Forms
             Forms.FormsAutoBomba newMDIChild = new Forms.FormsAutoBomba();
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
+            // Necessário para que o ícone apareça normalmente.
+            ActivateMdiChild(null);
+            ActivateMdiChild(newMDIChild);
         }
 
         private void exercicioResolvidoOP1ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -43,13 +52,9 @@ namespace SimulOP.Forms
             Forms.FormsExercicioOP1 newMDIChild = new Forms.FormsExercicioOP1();
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
-        }
-
-        private void contínuaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Forms.FormsColunaMcCabeThiele newMDIChild = new Forms.FormsColunaMcCabeThiele();
-            newMDIChild.MdiParent = this;
-            newMDIChild.Show();
+            // Necessário para que o ícone apareça normalmente.
+            ActivateMdiChild(null);
+            ActivateMdiChild(newMDIChild);
         }
 
         private void exercícioResolvidoV2ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -57,6 +62,19 @@ namespace SimulOP.Forms
             Forms.FomrsBombeamentoCompleto newMDIChild = new Forms.FomrsBombeamentoCompleto();
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
+            // Necessário para que o ícone apareça normalmente.
+            ActivateMdiChild(null);
+            ActivateMdiChild(newMDIChild);
+        }
+
+        private void métodoMcCabeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.FormsColunaMcCabeThiele newMDIChild = new Forms.FormsColunaMcCabeThiele();
+            newMDIChild.MdiParent = this;
+            newMDIChild.Show();
+            // Necessário para que o ícone apareça normalmente.
+            ActivateMdiChild(null);
+            ActivateMdiChild(newMDIChild);
         }
 
         private void duploTuboToolStripMenuItem_Click(object sender, EventArgs e)

@@ -5,13 +5,32 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1DD11FB9-4C1B-42A0-BB85-A500310F218F}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>SimulOP</RootNamespace>
     <AssemblyName>SimulOP</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <SupportUrl>https://github.com/rafaelterras/SimulOp</SupportUrl>
+    <ErrorReportUrl>https://github.com/rafaelterras/SimulOp/issues</ErrorReportUrl>
+    <TargetCulture>pt-BR</TargetCulture>
+    <PublisherName>SimulOP inc.</PublisherName>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>0.5.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +50,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>SiOP3.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MathNet.Numerics, Version=4.3.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -93,12 +118,6 @@
     <Compile Include="Forms\FormsPopOut.Designer.cs">
       <DependentUpon>FormsPopOut.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormsTrocadorOleoAPI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormsTrocadorOleoAPI.Designer.cs">
-      <DependentUpon>FormsTrocadorOleoAPI.cs</DependentUpon>
-    </Compile>
     <Compile Include="Geral\Equipamentos.cs" />
     <Compile Include="EquipamentosOPII\Evaporador.cs" />
     <Compile Include="EquipamentosOPI\Filtros.cs" />
@@ -129,20 +148,16 @@
     <Compile Include="Forms\FormsModelOp.Designer.cs">
       <DependentUpon>FormsModelOp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Geral\FluidoOPII.cs" />
     <Compile Include="Geral\InicializadorObjetos.cs" />
     <Compile Include="Geral\Material.cs" />
     <Compile Include="Geral\MaterialFluidoOPI.cs" />
-    <Compile Include="Geral\MaterialFluidoOPII.cs" />
     <Compile Include="Geral\MaterialFluidoOPIII.cs" />
     <Compile Include="Geral\MaterialTubulacao.cs" />
     <Compile Include="Geral\MisturaBinaria.cs" />
-    <Compile Include="Geral\MaterialOleoAPI.cs" />
     <Compile Include="Interfaces\IBomba.cs" />
     <Compile Include="Interfaces\IDestilacao.cs" />
     <Compile Include="Interfaces\IFluidoBomba.cs" />
     <Compile Include="Interfaces\IMaterialFluidoOPI.cs" />
-    <Compile Include="Interfaces\IMaterialFluidoOPII.cs" />
     <Compile Include="Interfaces\ISingularidade.cs" />
     <Compile Include="Interfaces\ITrocadorDeCalor.cs" />
     <Compile Include="Interfaces\ITubulacao.cs" />
@@ -212,9 +227,6 @@
     <EmbeddedResource Include="Forms\FormsPopOut.resx">
       <DependentUpon>FormsPopOut.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormsTrocadorOleoAPI.resx">
-      <DependentUpon>FormsTrocadorOleoAPI.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -243,19 +255,20 @@
     <None Include="Resources\BombeamentoCompletov2.PNG" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Esquematização Trocador.png" />
+    <Content Include="Icons\SiOP3.ico" />
+    <Content Include="SiOP3.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Gráfico de temperaturas.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Esquematização Trocador1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Gráfico de temperaturas1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Equações Trocador.PNG" />
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

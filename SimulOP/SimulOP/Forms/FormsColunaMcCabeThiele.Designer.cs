@@ -34,6 +34,7 @@
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormsColunaMcCabeThiele));
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.gubVariaveis = new System.Windows.Forms.GroupBox();
             this.nudRefluxoDin = new System.Windows.Forms.NumericUpDown();
@@ -752,7 +753,7 @@
             this.labMudanca.Padding = new System.Windows.Forms.Padding(2, 5, 0, 0);
             this.labMudanca.Size = new System.Drawing.Size(246, 32);
             this.labMudanca.TabIndex = 27;
-            this.labMudanca.Text = "Mudança";
+            this.labMudanca.Text = "Especificações";
             this.labMudanca.Visible = false;
             // 
             // tableLayoutPanel2
@@ -799,8 +800,9 @@
             this.ClientSize = new System.Drawing.Size(885, 604);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormsColunaMcCabeThiele";
-            this.Text = "FormsColunaMcCabeThiele";
+            this.Text = "Método de Mc Cabe-Thiele";
             ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.gubVariaveis.ResumeLayout(false);
             this.gubVariaveis.PerformLayout();
