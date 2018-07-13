@@ -37,6 +37,7 @@
             this.comBombaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comSingularidadeEBombaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exercícioResolvidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exercícioResolvidoV2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filtrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compressoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operaçõesUnitáriasIIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,7 +61,6 @@
             this.contínuosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cSTRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pFRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exercícioResolvidoV2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,7 +105,7 @@
             this.exercícioResolvidoToolStripMenuItem,
             this.exercícioResolvidoV2ToolStripMenuItem});
             this.tubulaçõesToolStripMenuItem.Name = "tubulaçõesToolStripMenuItem";
-            this.tubulaçõesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tubulaçõesToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.tubulaçõesToolStripMenuItem.Text = "Tubulações";
             // 
             // simplesToolStripMenuItem
@@ -141,16 +141,23 @@
             this.exercícioResolvidoToolStripMenuItem.Text = "Exercício resolvido";
             this.exercícioResolvidoToolStripMenuItem.Click += new System.EventHandler(this.exercicioResolvidoOP1ToolStripMenuItem_Click);
             // 
+            // exercícioResolvidoV2ToolStripMenuItem
+            // 
+            this.exercícioResolvidoV2ToolStripMenuItem.Name = "exercícioResolvidoV2ToolStripMenuItem";
+            this.exercícioResolvidoV2ToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.exercícioResolvidoV2ToolStripMenuItem.Text = "Exercício resolvido v2";
+            this.exercícioResolvidoV2ToolStripMenuItem.Click += new System.EventHandler(this.exercícioResolvidoV2ToolStripMenuItem_Click);
+            // 
             // filtrosToolStripMenuItem
             // 
             this.filtrosToolStripMenuItem.Name = "filtrosToolStripMenuItem";
-            this.filtrosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.filtrosToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.filtrosToolStripMenuItem.Text = "Filtros";
             // 
             // compressoresToolStripMenuItem
             // 
             this.compressoresToolStripMenuItem.Name = "compressoresToolStripMenuItem";
-            this.compressoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.compressoresToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.compressoresToolStripMenuItem.Text = "Compressores";
             // 
             // operaçõesUnitáriasIIToolStripMenuItem
@@ -178,26 +185,27 @@
             // simplesToolStripMenuItem1
             // 
             this.simplesToolStripMenuItem1.Name = "simplesToolStripMenuItem1";
-            this.simplesToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
+            this.simplesToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.simplesToolStripMenuItem1.Text = "Simples";
             // 
             // cascoETubosToolStripMenuItem
             // 
             this.cascoETubosToolStripMenuItem.Name = "cascoETubosToolStripMenuItem";
-            this.cascoETubosToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.cascoETubosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cascoETubosToolStripMenuItem.Text = "Casco e tubos";
             // 
             // placasToolStripMenuItem
             // 
             this.placasToolStripMenuItem.Name = "placasToolStripMenuItem";
-            this.placasToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.placasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.placasToolStripMenuItem.Text = "Placas";
             // 
             // duploTuboToolStripMenuItem
             // 
             this.duploTuboToolStripMenuItem.Name = "duploTuboToolStripMenuItem";
-            this.duploTuboToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.duploTuboToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.duploTuboToolStripMenuItem.Text = "Duplo tubo";
+            this.duploTuboToolStripMenuItem.Click += new System.EventHandler(this.duploTuboToolStripMenuItem_Click);
             // 
             // evaporadoresToolStripMenuItem
             // 
@@ -303,13 +311,6 @@
             this.pFRToolStripMenuItem.Name = "pFRToolStripMenuItem";
             this.pFRToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
             this.pFRToolStripMenuItem.Text = "PFR";
-            // 
-            // exercícioResolvidoV2ToolStripMenuItem
-            // 
-            this.exercícioResolvidoV2ToolStripMenuItem.Name = "exercícioResolvidoV2ToolStripMenuItem";
-            this.exercícioResolvidoV2ToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
-            this.exercícioResolvidoV2ToolStripMenuItem.Text = "Exercício resolvido v2";
-            this.exercícioResolvidoV2ToolStripMenuItem.Click += new System.EventHandler(this.exercícioResolvidoV2ToolStripMenuItem_Click);
             // 
             // FormsMaster
             // 

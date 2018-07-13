@@ -93,6 +93,12 @@
     <Compile Include="Forms\FormsPopOut.Designer.cs">
       <DependentUpon>FormsPopOut.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormsTrocadorOleoAPI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsTrocadorOleoAPI.Designer.cs">
+      <DependentUpon>FormsTrocadorOleoAPI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geral\Equipamentos.cs" />
     <Compile Include="EquipamentosOPII\Evaporador.cs" />
     <Compile Include="EquipamentosOPI\Filtros.cs" />
@@ -123,16 +129,20 @@
     <Compile Include="Forms\FormsModelOp.Designer.cs">
       <DependentUpon>FormsModelOp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Geral\FluidoOPII.cs" />
     <Compile Include="Geral\InicializadorObjetos.cs" />
     <Compile Include="Geral\Material.cs" />
     <Compile Include="Geral\MaterialFluidoOPI.cs" />
+    <Compile Include="Geral\MaterialFluidoOPII.cs" />
     <Compile Include="Geral\MaterialFluidoOPIII.cs" />
     <Compile Include="Geral\MaterialTubulacao.cs" />
     <Compile Include="Geral\MisturaBinaria.cs" />
+    <Compile Include="Geral\MaterialOleoAPI.cs" />
     <Compile Include="Interfaces\IBomba.cs" />
     <Compile Include="Interfaces\IDestilacao.cs" />
     <Compile Include="Interfaces\IFluidoBomba.cs" />
     <Compile Include="Interfaces\IMaterialFluidoOPI.cs" />
+    <Compile Include="Interfaces\IMaterialFluidoOPII.cs" />
     <Compile Include="Interfaces\ISingularidade.cs" />
     <Compile Include="Interfaces\ITrocadorDeCalor.cs" />
     <Compile Include="Interfaces\ITubulacao.cs" />
@@ -202,6 +212,9 @@
     <EmbeddedResource Include="Forms\FormsPopOut.resx">
       <DependentUpon>FormsPopOut.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsTrocadorOleoAPI.resx">
+      <DependentUpon>FormsTrocadorOleoAPI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -228,6 +241,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BombeamentoCompletov2.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Esquematização Trocador.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gráfico de temperaturas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Esquematização Trocador1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gráfico de temperaturas1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Equações Trocador.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

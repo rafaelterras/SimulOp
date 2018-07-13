@@ -58,5 +58,12 @@ namespace SimulOP.Forms
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
         }
+
+        private void duploTuboToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.FormsTrocadorOleoAPI newMDIChild = new Forms.FormsTrocadorOleoAPI();
+            newMDIChild.MdiParent = this;
+            newMDIChild.Show();
+        }
     }
 }
