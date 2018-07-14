@@ -57,7 +57,7 @@
             this.trbCondicaoEntradaDin = new System.Windows.Forms.TrackBar();
             this.trbRefluxoDin = new System.Windows.Forms.TrackBar();
             this.gubResultados = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picAjudaResultados = new System.Windows.Forms.PictureBox();
             this.txbAlpha = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txbPratoIdeal = new System.Windows.Forms.TextBox();
@@ -77,6 +77,8 @@
             this.labMudanca = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.labResultados = new System.Windows.Forms.Label();
+            this.picAjudaFluido = new System.Windows.Forms.PictureBox();
+            this.picAjudaCondEntrada = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.gubVariaveis.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudRefluxoDin)).BeginInit();
@@ -92,11 +94,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.trbCondicaoEntradaDin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbRefluxoDin)).BeginInit();
             this.gubResultados.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAjudaResultados)).BeginInit();
             this.gubGrafico.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.gubInputInicial.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAjudaFluido)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAjudaCondEntrada)).BeginInit();
             this.SuspendLayout();
             // 
             // chart
@@ -160,6 +164,7 @@
             // 
             // gubVariaveis
             // 
+            this.gubVariaveis.Controls.Add(this.picAjudaCondEntrada);
             this.gubVariaveis.Controls.Add(this.nudRefluxoDin);
             this.gubVariaveis.Controls.Add(this.label14);
             this.gubVariaveis.Controls.Add(this.cmbCondicaoEntradaDin);
@@ -238,7 +243,7 @@
             "Parcialmente vaporizado",
             "Vapor saturado",
             "Vapor super aquecido"});
-            this.cmbCondicaoEntradaDin.Location = new System.Drawing.Point(29, 95);
+            this.cmbCondicaoEntradaDin.Location = new System.Drawing.Point(9, 95);
             this.cmbCondicaoEntradaDin.Name = "cmbCondicaoEntradaDin";
             this.cmbCondicaoEntradaDin.Size = new System.Drawing.Size(192, 19);
             this.cmbCondicaoEntradaDin.TabIndex = 17;
@@ -507,7 +512,7 @@
             // 
             // gubResultados
             // 
-            this.gubResultados.Controls.Add(this.pictureBox1);
+            this.gubResultados.Controls.Add(this.picAjudaResultados);
             this.gubResultados.Controls.Add(this.txbAlpha);
             this.gubResultados.Controls.Add(this.label17);
             this.gubResultados.Controls.Add(this.txbPratoIdeal);
@@ -522,17 +527,17 @@
             this.gubResultados.TabStop = false;
             this.gubResultados.Visible = false;
             // 
-            // pictureBox1
+            // picAjudaResultados
             // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = global::SimulOP.Properties.Resources.info;
-            this.pictureBox1.Location = new System.Drawing.Point(231, 17);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(18, 18);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 25;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.picAjudaResultados.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picAjudaResultados.Image = global::SimulOP.Properties.Resources.info;
+            this.picAjudaResultados.Location = new System.Drawing.Point(231, 17);
+            this.picAjudaResultados.Name = "picAjudaResultados";
+            this.picAjudaResultados.Size = new System.Drawing.Size(18, 18);
+            this.picAjudaResultados.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picAjudaResultados.TabIndex = 25;
+            this.picAjudaResultados.TabStop = false;
+            this.picAjudaResultados.Click += new System.EventHandler(this.picAjudaResultados_Click);
             // 
             // txbAlpha
             // 
@@ -669,6 +674,7 @@
             // 
             // gubInputInicial
             // 
+            this.gubInputInicial.Controls.Add(this.picAjudaFluido);
             this.gubInputInicial.Controls.Add(this.btnInputInicial);
             this.gubInputInicial.Controls.Add(this.label2);
             this.gubInputInicial.Controls.Add(this.cmbFluidoHK);
@@ -792,6 +798,30 @@
             this.labResultados.Text = "Resultados";
             this.labResultados.Visible = false;
             // 
+            // picAjudaFluido
+            // 
+            this.picAjudaFluido.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picAjudaFluido.Image = global::SimulOP.Properties.Resources.info;
+            this.picAjudaFluido.Location = new System.Drawing.Point(80, 20);
+            this.picAjudaFluido.Name = "picAjudaFluido";
+            this.picAjudaFluido.Size = new System.Drawing.Size(18, 18);
+            this.picAjudaFluido.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picAjudaFluido.TabIndex = 26;
+            this.picAjudaFluido.TabStop = false;
+            this.picAjudaFluido.Click += new System.EventHandler(this.picAjudaFluido_Click);
+            // 
+            // picAjudaCondEntrada
+            // 
+            this.picAjudaCondEntrada.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picAjudaCondEntrada.Image = global::SimulOP.Properties.Resources.info;
+            this.picAjudaCondEntrada.Location = new System.Drawing.Point(207, 95);
+            this.picAjudaCondEntrada.Name = "picAjudaCondEntrada";
+            this.picAjudaCondEntrada.Size = new System.Drawing.Size(18, 18);
+            this.picAjudaCondEntrada.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picAjudaCondEntrada.TabIndex = 27;
+            this.picAjudaCondEntrada.TabStop = false;
+            this.picAjudaCondEntrada.Click += new System.EventHandler(this.picAjudaCondEntrada_Click);
+            // 
             // FormsColunaMcCabeThiele
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -820,7 +850,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trbRefluxoDin)).EndInit();
             this.gubResultados.ResumeLayout(false);
             this.gubResultados.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAjudaResultados)).EndInit();
             this.gubGrafico.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -828,6 +858,8 @@
             this.gubInputInicial.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAjudaFluido)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAjudaCondEntrada)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -865,7 +897,7 @@
         private System.Windows.Forms.TextBox txbAlpha;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txbConvergencia;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picAjudaResultados;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.GroupBox gubInputInicial;
@@ -877,5 +909,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label labMudanca;
         private System.Windows.Forms.Label labResultados;
+        private System.Windows.Forms.PictureBox picAjudaCondEntrada;
+        private System.Windows.Forms.PictureBox picAjudaFluido;
     }
 }

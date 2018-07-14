@@ -34,8 +34,8 @@
             this.tubulaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.simplesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comSingularidadeEBombaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exercícioResolvidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exercícioResolvidoV2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exercícioResolvidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filtrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compressoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operaçõesUnitáriasIIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,6 +51,7 @@
             this.colunasDeAbsorçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.membranasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cristalizadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.métodoMcCabeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.torresDeDestilaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bateladaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contínuaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,7 +59,6 @@
             this.bateladaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pFRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cSTRToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.métodoMcCabeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,19 +110,19 @@
             this.comSingularidadeEBombaToolStripMenuItem.Text = "Bombeamento Simples";
             this.comSingularidadeEBombaToolStripMenuItem.Click += new System.EventHandler(this.comSingularidadeEBombaToolStripMenuItem_Click);
             // 
-            // exercícioResolvidoToolStripMenuItem
-            // 
-            this.exercícioResolvidoToolStripMenuItem.Name = "exercícioResolvidoToolStripMenuItem";
-            this.exercícioResolvidoToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-            this.exercícioResolvidoToolStripMenuItem.Text = "Exercício resolvido";
-            this.exercícioResolvidoToolStripMenuItem.Click += new System.EventHandler(this.exercicioResolvidoOP1ToolStripMenuItem_Click);
-            // 
             // exercícioResolvidoV2ToolStripMenuItem
             // 
             this.exercícioResolvidoV2ToolStripMenuItem.Name = "exercícioResolvidoV2ToolStripMenuItem";
             this.exercícioResolvidoV2ToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.exercícioResolvidoV2ToolStripMenuItem.Text = "Bombeamento Completo";
             this.exercícioResolvidoV2ToolStripMenuItem.Click += new System.EventHandler(this.exercícioResolvidoV2ToolStripMenuItem_Click);
+            // 
+            // exercícioResolvidoToolStripMenuItem
+            // 
+            this.exercícioResolvidoToolStripMenuItem.Name = "exercícioResolvidoToolStripMenuItem";
+            this.exercícioResolvidoToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.exercícioResolvidoToolStripMenuItem.Text = "Exercício resolvido";
+            this.exercícioResolvidoToolStripMenuItem.Click += new System.EventHandler(this.exercicioResolvidoOP1ToolStripMenuItem_Click);
             // 
             // filtrosToolStripMenuItem
             // 
@@ -154,27 +154,29 @@
             this.trocadoresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.simplesToolStripMenuItem1,
             this.cascoETubosToolStripMenuItem,
-            this.placasToolStripMenuItem,
-            this.duploTuboToolStripMenuItem});
-            this.trocadoresToolStripMenuItem.Enabled = false;
+            this.duploTuboToolStripMenuItem,
+            this.placasToolStripMenuItem});
             this.trocadoresToolStripMenuItem.Name = "trocadoresToolStripMenuItem";
             this.trocadoresToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.trocadoresToolStripMenuItem.Text = "Trocadores";
             // 
             // simplesToolStripMenuItem1
             // 
+            this.simplesToolStripMenuItem1.Enabled = false;
             this.simplesToolStripMenuItem1.Name = "simplesToolStripMenuItem1";
             this.simplesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.simplesToolStripMenuItem1.Text = "Simples";
             // 
             // cascoETubosToolStripMenuItem
             // 
+            this.cascoETubosToolStripMenuItem.Enabled = false;
             this.cascoETubosToolStripMenuItem.Name = "cascoETubosToolStripMenuItem";
             this.cascoETubosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cascoETubosToolStripMenuItem.Text = "Casco e tubos";
             // 
             // placasToolStripMenuItem
             // 
+            this.placasToolStripMenuItem.Enabled = false;
             this.placasToolStripMenuItem.Name = "placasToolStripMenuItem";
             this.placasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.placasToolStripMenuItem.Text = "Placas";
@@ -184,6 +186,7 @@
             this.duploTuboToolStripMenuItem.Name = "duploTuboToolStripMenuItem";
             this.duploTuboToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.duploTuboToolStripMenuItem.Text = "Duplo tubo";
+            this.duploTuboToolStripMenuItem.Click += new System.EventHandler(this.duploTuboToolStripMenuItem_Click_1);
             // 
             // evaporadoresToolStripMenuItem
             // 
@@ -239,6 +242,13 @@
             this.cristalizadoresToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.cristalizadoresToolStripMenuItem.Text = "Cristalizadores";
             // 
+            // métodoMcCabeToolStripMenuItem
+            // 
+            this.métodoMcCabeToolStripMenuItem.Name = "métodoMcCabeToolStripMenuItem";
+            this.métodoMcCabeToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.métodoMcCabeToolStripMenuItem.Text = "Método McCabe–Thiele";
+            this.métodoMcCabeToolStripMenuItem.Click += new System.EventHandler(this.métodoMcCabeToolStripMenuItem_Click);
+            // 
             // torresDeDestilaçãoToolStripMenuItem
             // 
             this.torresDeDestilaçãoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -252,13 +262,13 @@
             // bateladaToolStripMenuItem
             // 
             this.bateladaToolStripMenuItem.Name = "bateladaToolStripMenuItem";
-            this.bateladaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bateladaToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.bateladaToolStripMenuItem.Text = "Batelada";
             // 
             // contínuaToolStripMenuItem
             // 
             this.contínuaToolStripMenuItem.Name = "contínuaToolStripMenuItem";
-            this.contínuaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.contínuaToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.contínuaToolStripMenuItem.Text = "Contínua";
             // 
             // reatoresToolStripMenuItem
@@ -275,29 +285,22 @@
             // 
             this.bateladaToolStripMenuItem1.Enabled = false;
             this.bateladaToolStripMenuItem1.Name = "bateladaToolStripMenuItem1";
-            this.bateladaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.bateladaToolStripMenuItem1.Size = new System.Drawing.Size(119, 22);
             this.bateladaToolStripMenuItem1.Text = "Batelada";
             // 
             // pFRToolStripMenuItem
             // 
             this.pFRToolStripMenuItem.Enabled = false;
             this.pFRToolStripMenuItem.Name = "pFRToolStripMenuItem";
-            this.pFRToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pFRToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.pFRToolStripMenuItem.Text = "PFR";
             // 
             // cSTRToolStripMenuItem1
             // 
             this.cSTRToolStripMenuItem1.Enabled = false;
             this.cSTRToolStripMenuItem1.Name = "cSTRToolStripMenuItem1";
-            this.cSTRToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.cSTRToolStripMenuItem1.Size = new System.Drawing.Size(119, 22);
             this.cSTRToolStripMenuItem1.Text = "CSTR";
-            // 
-            // métodoMcCabeToolStripMenuItem
-            // 
-            this.métodoMcCabeToolStripMenuItem.Name = "métodoMcCabeToolStripMenuItem";
-            this.métodoMcCabeToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-            this.métodoMcCabeToolStripMenuItem.Text = "Método McCabe–Thiele";
-            this.métodoMcCabeToolStripMenuItem.Click += new System.EventHandler(this.métodoMcCabeToolStripMenuItem_Click);
             // 
             // FormsMaster
             // 

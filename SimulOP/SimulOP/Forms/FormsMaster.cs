@@ -77,11 +77,14 @@ namespace SimulOP.Forms
             ActivateMdiChild(newMDIChild);
         }
 
-        private void duploTuboToolStripMenuItem_Click(object sender, EventArgs e)
+        private void duploTuboToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             Forms.FormsTrocadorOleoAPI newMDIChild = new Forms.FormsTrocadorOleoAPI();
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
+            // Necessário para que o ícone apareça normalmente.
+            ActivateMdiChild(null);
+            ActivateMdiChild(newMDIChild);
         }
     }
 }

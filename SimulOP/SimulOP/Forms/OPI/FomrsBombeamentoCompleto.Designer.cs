@@ -116,6 +116,9 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label26 = new System.Windows.Forms.Label();
+            this.picAjudaTubulacao = new System.Windows.Forms.PictureBox();
+            this.picAjudaNPSH = new System.Windows.Forms.PictureBox();
+            this.picAjudaSucsao = new System.Windows.Forms.PictureBox();
             this.gubTubDes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTubDesCompSing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTubDesDiametroInt)).BeginInit();
@@ -155,6 +158,9 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAjudaTubulacao)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAjudaNPSH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAjudaSucsao)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCalcular
@@ -371,6 +377,7 @@
             // 
             // gubTubSuc
             // 
+            this.gubTubSuc.Controls.Add(this.picAjudaTubulacao);
             this.gubTubSuc.Controls.Add(this.nudTubSucCompSing);
             this.gubTubSuc.Controls.Add(this.label4);
             this.gubTubSuc.Controls.Add(this.btnTubSucCopia);
@@ -867,6 +874,7 @@
             // gubResultados
             // 
             this.gubResultados.BackColor = System.Drawing.Color.White;
+            this.gubResultados.Controls.Add(this.picAjudaNPSH);
             this.gubResultados.Controls.Add(this.txbResultadoNPSHDisp);
             this.gubResultados.Controls.Add(this.txbResultadoAlturaBomba);
             this.gubResultados.Controls.Add(this.label25);
@@ -1105,6 +1113,7 @@
             // 
             // gubSucDin
             // 
+            this.gubSucDin.Controls.Add(this.picAjudaSucsao);
             this.gubSucDin.Controls.Add(this.trbFluidoPressaoDin);
             this.gubSucDin.Controls.Add(this.label23);
             this.gubSucDin.Controls.Add(this.nudFluidoPressaoDin);
@@ -1357,6 +1366,42 @@
             this.label26.TabIndex = 29;
             this.label26.Text = "Entrada";
             // 
+            // picAjudaTubulacao
+            // 
+            this.picAjudaTubulacao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picAjudaTubulacao.Image = global::SimulOP.Properties.Resources.info;
+            this.picAjudaTubulacao.Location = new System.Drawing.Point(324, 55);
+            this.picAjudaTubulacao.Name = "picAjudaTubulacao";
+            this.picAjudaTubulacao.Size = new System.Drawing.Size(18, 18);
+            this.picAjudaTubulacao.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picAjudaTubulacao.TabIndex = 12;
+            this.picAjudaTubulacao.TabStop = false;
+            this.picAjudaTubulacao.Click += new System.EventHandler(this.picAjudaTubulacao_Click);
+            // 
+            // picAjudaNPSH
+            // 
+            this.picAjudaNPSH.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picAjudaNPSH.Image = global::SimulOP.Properties.Resources.info;
+            this.picAjudaNPSH.Location = new System.Drawing.Point(533, 17);
+            this.picAjudaNPSH.Name = "picAjudaNPSH";
+            this.picAjudaNPSH.Size = new System.Drawing.Size(18, 18);
+            this.picAjudaNPSH.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picAjudaNPSH.TabIndex = 18;
+            this.picAjudaNPSH.TabStop = false;
+            this.picAjudaNPSH.Click += new System.EventHandler(this.picAjudaNPSH_Click);
+            // 
+            // picAjudaSucsao
+            // 
+            this.picAjudaSucsao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picAjudaSucsao.Image = global::SimulOP.Properties.Resources.info;
+            this.picAjudaSucsao.Location = new System.Drawing.Point(227, 19);
+            this.picAjudaSucsao.Name = "picAjudaSucsao";
+            this.picAjudaSucsao.Size = new System.Drawing.Size(18, 18);
+            this.picAjudaSucsao.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picAjudaSucsao.TabIndex = 19;
+            this.picAjudaSucsao.TabStop = false;
+            this.picAjudaSucsao.Click += new System.EventHandler(this.picAjudaSucsao_Click);
+            // 
             // FomrsBombeamentoCompleto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1421,6 +1466,9 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAjudaTubulacao)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAjudaNPSH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAjudaSucsao)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1506,5 +1554,8 @@
         private System.Windows.Forms.Label labResultados;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.PictureBox picAjudaTubulacao;
+        private System.Windows.Forms.PictureBox picAjudaNPSH;
+        private System.Windows.Forms.PictureBox picAjudaSucsao;
     }
 }

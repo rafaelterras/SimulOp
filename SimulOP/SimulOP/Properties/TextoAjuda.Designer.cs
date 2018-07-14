@@ -61,11 +61,46 @@ namespace SimulOP.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Para os fluidos é considerando que a densidade e viscosidades se mantêm constantes independente da temperatura, já que não afetam muito os cálculos, e para o cálculo da pressão de vapor é utilizado a equação de Antoine..
         /// </summary>
         internal static string ajudaBombeamentoFluido {
             get {
                 return ResourceManager.GetString("ajudaBombeamentoFluido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O NPSH disponível é uma medida da diferença entre a pressão do líquido e a pressão de vapor na entrada da bomba. 
+        ///
+        ///Ele sempre deve ser maior que o NPSH requerido, um valor indicado pelo fabricante que representa o NPSH mínimo para garantir que não haja cavitação (formação de vapor dentro da bomba)..
+        /// </summary>
+        internal static string ajudaBombeamentoNPSH {
+            get {
+                return ResourceManager.GetString("ajudaBombeamentoNPSH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apenas a tubulação de sucção afeta o valor do NPSH disponível, e que fatores como temperatura e pressão de sucção afetam muito o NPSH.
+        ///
+        ///Sendo desejado trabalhar com a menor perda de carga possível na tubulação de sucção, especialmente se o bombeamento é de um líquido em alta temperatura e/ou baixas pressões..
+        /// </summary>
+        internal static string ajudaBombeamentoSucsao {
+            get {
+                return ResourceManager.GetString("ajudaBombeamentoSucsao", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Schedule é uma identificação da grossura da parede dos tubos de aço carbono e inox
+        ///
+        ///O diâmetro em polegadas é o diâmetro nominal, diferente do diâmetro interno efetivo, e devido ao grande volume que está sendo bombeado diâmetros pequenos geram uma perda de carga muito grande.
+        ///
+        ///Para do fator de atrito foi utilizado a equação de Fanning..
+        /// </summary>
+        internal static string ajudaBombeamentoTubulacao {
+            get {
+                return ResourceManager.GetString("ajudaBombeamentoTubulacao", resourceCulture);
             }
         }
         

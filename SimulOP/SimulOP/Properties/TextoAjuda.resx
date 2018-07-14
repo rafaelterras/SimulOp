@@ -118,7 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ajudaBombeamentoFluido" xml:space="preserve">
-    <value />
+    <value>Para os fluidos é considerando que a densidade e viscosidades se mantêm constantes independente da temperatura, já que não afetam muito os cálculos, e para o cálculo da pressão de vapor é utilizado a equação de Antoine.</value>
+  </data>
+  <data name="ajudaBombeamentoNPSH" xml:space="preserve">
+    <value>O NPSH disponível é uma medida da diferença entre a pressão do líquido e a pressão de vapor na entrada da bomba. 
+
+Ele sempre deve ser maior que o NPSH requerido, um valor indicado pelo fabricante que representa o NPSH mínimo para garantir que não haja cavitação (formação de vapor dentro da bomba).</value>
+  </data>
+  <data name="ajudaBombeamentoSucsao" xml:space="preserve">
+    <value>Apenas a tubulação de sucção afeta o valor do NPSH disponível, e que fatores como temperatura e pressão de sucção afetam muito o NPSH.
+
+Sendo desejado trabalhar com a menor perda de carga possível na tubulação de sucção, especialmente se o bombeamento é de um líquido em alta temperatura e/ou baixas pressões.</value>
+  </data>
+  <data name="ajudaBombeamentoTubulacao" xml:space="preserve">
+    <value>Schedule é uma identificação da grossura da parede dos tubos de aço carbono e inox
+
+O diâmetro em polegadas é o diâmetro nominal, diferente do diâmetro interno efetivo, e devido ao grande volume que está sendo bombeado diâmetros pequenos geram uma perda de carga muito grande.
+
+Para do fator de atrito foi utilizado a equação de Fanning.</value>
   </data>
   <data name="ajudaTeste" xml:space="preserve">
     <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor laoreet libero, fermentum mollis metus cursus sit amet. Nam volutpat velit vitae odio commodo ultrices. Cras in pharetra eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer efficitur accumsan dui, vitae iaculis neque hendrerit non. Fusce aliquam blandit lorem, eget consectetur sapien. Vestibulum dapibus mollis diam sed dictum. Quisque et egestas massa. Proin congue, quam ac tristique blandit, nulla quam consectetur nibh, vel auctor ante leo sed erat. Donec lacinia orci nec pharetra congue. Quisque vitae ex diam. Sed blandit tincidunt pharetra.

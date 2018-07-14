@@ -547,7 +547,9 @@ namespace SimulOP.Forms
 
         #endregion
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        #region Ajuda
+
+        private void MostrarPopOut(string ajuda)
         {
             formAberto = Application.OpenForms["FormsPopOut"];
 
@@ -556,9 +558,26 @@ namespace SimulOP.Forms
                 formAberto.Close();
             }
 
-            FormsPopOut popOut = new FormsPopOut(TextoAjuda.ResourceManager.GetString("ajudaTeste"));
+            FormsPopOut popOut = new FormsPopOut(TextoAjuda.ResourceManager.GetString(ajuda));
 
             popOut.Show();
         }
+
+        private void picAjudaResultados_Click(object sender, EventArgs e)
+        {
+            MostrarPopOut("ajudaColuna");
+        }
+
+        private void picAjudaFluido_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picAjudaCondEntrada_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
     }
 }

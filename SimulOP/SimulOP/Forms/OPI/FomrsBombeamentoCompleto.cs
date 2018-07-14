@@ -730,7 +730,7 @@ namespace SimulOP.Forms
 
         #region Ajuda
 
-        private void picAjudaFluido_Click(object sender, EventArgs e)
+        private void MostrarPopOut(string ajuda)
         {
             formAberto = Application.OpenForms["FormsPopOut"];
 
@@ -739,9 +739,29 @@ namespace SimulOP.Forms
                 formAberto.Close();
             }
 
-            FormsPopOut popOut = new FormsPopOut(TextoAjuda.ResourceManager.GetString("ajudaTeste"));
+            FormsPopOut popOut = new FormsPopOut(TextoAjuda.ResourceManager.GetString(ajuda));
 
             popOut.Show();
+        }
+
+        private void picAjudaFluido_Click(object sender, EventArgs e)
+        {
+            MostrarPopOut("ajudaBombeamentoFluido");
+        }
+
+        private void picAjudaTubulacao_Click(object sender, EventArgs e)
+        {
+            MostrarPopOut("ajudaBombeamentoTubulacao");
+        }
+
+        private void picAjudaNPSH_Click(object sender, EventArgs e)
+        {
+            MostrarPopOut("ajudaBombeamentoNPSH");
+        }
+
+        private void picAjudaSucsao_Click(object sender, EventArgs e)
+        {
+            MostrarPopOut("ajudaBombeamentoSucsao");
         }
 
         #endregion

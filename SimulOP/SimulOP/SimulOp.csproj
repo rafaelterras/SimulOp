@@ -88,22 +88,22 @@
     <Compile Include="EquipamentosOPIII\Cristalizador.cs" />
     <Compile Include="EquipamentosOPIII\DestiBatelada.cs" />
     <Compile Include="EquipamentosOPIII\DestiContinuo.cs" />
-    <Compile Include="Forms\FomrsBombeamentoCompleto.cs">
+    <Compile Include="Forms\OPI\FomrsBombeamentoCompleto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FomrsBombeamentoCompleto.Designer.cs">
+    <Compile Include="Forms\OPI\FomrsBombeamentoCompleto.Designer.cs">
       <DependentUpon>FomrsBombeamentoCompleto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormsColunaMcCabeThiele.cs">
+    <Compile Include="Forms\OPIII\FormsColunaMcCabeThiele.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormsColunaMcCabeThiele.Designer.cs">
+    <Compile Include="Forms\OPIII\FormsColunaMcCabeThiele.Designer.cs">
       <DependentUpon>FormsColunaMcCabeThiele.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormsExercicioOP1.cs">
+    <Compile Include="Forms\OPI\FormsExercicioOP1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormsExercicioOP1.designer.cs">
+    <Compile Include="Forms\OPI\FormsExercicioOP1.designer.cs">
       <DependentUpon>FormsExercicioOP1.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormsMaster.cs">
@@ -118,22 +118,28 @@
     <Compile Include="Forms\FormsPopOut.Designer.cs">
       <DependentUpon>FormsPopOut.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\OPII\FormsTrocadorOleoAPI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OPII\FormsTrocadorOleoAPI.Designer.cs">
+      <DependentUpon>FormsTrocadorOleoAPI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geral\Equipamentos.cs" />
     <Compile Include="EquipamentosOPII\Evaporador.cs" />
     <Compile Include="EquipamentosOPI\Filtros.cs" />
     <Compile Include="EquipamentosOPIII\Flash.cs" />
     <Compile Include="Geral\FluidoIdealOPIII.cs" />
     <Compile Include="Geral\FluidoOPI.cs" />
-    <Compile Include="Forms\FormsAutoBomba.cs">
+    <Compile Include="Forms\OPI\FormsAutoBomba.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormsAutoBomba.Designer.cs">
+    <Compile Include="Forms\OPI\FormsAutoBomba.Designer.cs">
       <DependentUpon>FormsAutoBomba.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormsPlotBomba.cs">
+    <Compile Include="Forms\OPI\FormsPlotBomba.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormsPlotBomba.Designer.cs">
+    <Compile Include="Forms\OPI\FormsPlotBomba.Designer.cs">
       <DependentUpon>FormsPlotBomba.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormsInício.cs">
@@ -142,22 +148,26 @@
     <Compile Include="Forms\FormsInício.Designer.cs">
       <DependentUpon>FormsInício.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormsModelOp.cs">
+    <Compile Include="Forms\OPI\FormsModelOp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormsModelOp.Designer.cs">
+    <Compile Include="Forms\OPI\FormsModelOp.Designer.cs">
       <DependentUpon>FormsModelOp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Geral\FluidoOPII.cs" />
     <Compile Include="Geral\InicializadorObjetos.cs" />
     <Compile Include="Geral\Material.cs" />
     <Compile Include="Geral\MaterialFluidoOPI.cs" />
+    <Compile Include="Geral\MaterialFluidoOPII.cs" />
     <Compile Include="Geral\MaterialFluidoOPIII.cs" />
+    <Compile Include="Geral\MaterialOleoAPI.cs" />
     <Compile Include="Geral\MaterialTubulacao.cs" />
     <Compile Include="Geral\MisturaBinaria.cs" />
     <Compile Include="Interfaces\IBomba.cs" />
     <Compile Include="Interfaces\IDestilacao.cs" />
     <Compile Include="Interfaces\IFluidoBomba.cs" />
     <Compile Include="Interfaces\IMaterialFluidoOPI.cs" />
+    <Compile Include="Interfaces\IMaterialFluidoOPII.cs" />
     <Compile Include="Interfaces\ISingularidade.cs" />
     <Compile Include="Interfaces\ITrocadorDeCalor.cs" />
     <Compile Include="Interfaces\ITubulacao.cs" />
@@ -194,38 +204,38 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
-    <None Include="ClassDiagram3.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\FomrsBombeamentoCompleto.resx">
+    <EmbeddedResource Include="Forms\OPI\FomrsBombeamentoCompleto.resx">
       <DependentUpon>FomrsBombeamentoCompleto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormsAutoBomba.resx">
+    <EmbeddedResource Include="Forms\OPI\FormsAutoBomba.resx">
       <DependentUpon>FormsAutoBomba.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormsColunaMcCabeThiele.resx">
+    <EmbeddedResource Include="Forms\OPIII\FormsColunaMcCabeThiele.resx">
       <DependentUpon>FormsColunaMcCabeThiele.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormsExercicioOP1.resx">
+    <EmbeddedResource Include="Forms\OPI\FormsExercicioOP1.resx">
       <DependentUpon>FormsExercicioOP1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormsMaster.resx">
       <DependentUpon>FormsMaster.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormsPlotBomba.resx">
+    <EmbeddedResource Include="Forms\OPI\FormsPlotBomba.resx">
       <DependentUpon>FormsPlotBomba.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormsInício.resx">
       <DependentUpon>FormsInício.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormsModelOp.resx">
+    <EmbeddedResource Include="Forms\OPI\FormsModelOp.resx">
       <DependentUpon>FormsModelOp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormsPopOut.resx">
       <DependentUpon>FormsPopOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OPII\FormsTrocadorOleoAPI.resx">
+      <DependentUpon>FormsTrocadorOleoAPI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
