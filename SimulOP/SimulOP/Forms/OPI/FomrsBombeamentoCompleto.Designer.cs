@@ -53,6 +53,7 @@
             this.cmbTubDesMaterial = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.gubTubSuc = new System.Windows.Forms.GroupBox();
+            this.picAjudaTubulacao = new System.Windows.Forms.PictureBox();
             this.nudTubSucCompSing = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.btnTubSucCopia = new System.Windows.Forms.Button();
@@ -84,6 +85,7 @@
             this.nudTubSucElevacao = new System.Windows.Forms.NumericUpDown();
             this.nudTubDesElevacao = new System.Windows.Forms.NumericUpDown();
             this.gubResultados = new System.Windows.Forms.GroupBox();
+            this.picAjudaNPSH = new System.Windows.Forms.PictureBox();
             this.txbResultadoNPSHDisp = new System.Windows.Forms.TextBox();
             this.txbResultadoAlturaBomba = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
@@ -100,6 +102,7 @@
             this.label21 = new System.Windows.Forms.Label();
             this.trbAberturaValvulaDes = new System.Windows.Forms.TrackBar();
             this.gubSucDin = new System.Windows.Forms.GroupBox();
+            this.picAjudaSucsao = new System.Windows.Forms.PictureBox();
             this.trbFluidoPressaoDin = new System.Windows.Forms.TrackBar();
             this.label23 = new System.Windows.Forms.Label();
             this.nudFluidoPressaoDin = new System.Windows.Forms.NumericUpDown();
@@ -116,14 +119,12 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label26 = new System.Windows.Forms.Label();
-            this.picAjudaTubulacao = new System.Windows.Forms.PictureBox();
-            this.picAjudaNPSH = new System.Windows.Forms.PictureBox();
-            this.picAjudaSucsao = new System.Windows.Forms.PictureBox();
             this.gubTubDes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTubDesCompSing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTubDesDiametroInt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTubDesRugosidade)).BeginInit();
             this.gubTubSuc.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAjudaTubulacao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTubSucCompSing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTubSucDiametroInt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTubSucRugosidade)).BeginInit();
@@ -137,6 +138,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudTubSucElevacao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTubDesElevacao)).BeginInit();
             this.gubResultados.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAjudaNPSH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbVazaoDesejada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudVazaoDesejada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartNPSHDisp)).BeginInit();
@@ -147,6 +149,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudAberturaValvulaDes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbAberturaValvulaDes)).BeginInit();
             this.gubSucDin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAjudaSucsao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbFluidoPressaoDin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudFluidoPressaoDin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAberturaValvulaSuc)).BeginInit();
@@ -158,9 +161,6 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picAjudaTubulacao)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picAjudaNPSH)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picAjudaSucsao)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCalcular
@@ -398,6 +398,18 @@
             this.gubTubSuc.TabIndex = 1;
             this.gubTubSuc.TabStop = false;
             this.gubTubSuc.Text = "Tubulação de Sucção";
+            // 
+            // picAjudaTubulacao
+            // 
+            this.picAjudaTubulacao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picAjudaTubulacao.Image = global::SimulOP.Properties.Resources.info;
+            this.picAjudaTubulacao.Location = new System.Drawing.Point(324, 55);
+            this.picAjudaTubulacao.Name = "picAjudaTubulacao";
+            this.picAjudaTubulacao.Size = new System.Drawing.Size(18, 18);
+            this.picAjudaTubulacao.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picAjudaTubulacao.TabIndex = 12;
+            this.picAjudaTubulacao.TabStop = false;
+            this.picAjudaTubulacao.Click += new System.EventHandler(this.picAjudaTubulacao_Click);
             // 
             // nudTubSucCompSing
             // 
@@ -886,6 +898,18 @@
             this.gubResultados.TabStop = false;
             this.gubResultados.Visible = false;
             // 
+            // picAjudaNPSH
+            // 
+            this.picAjudaNPSH.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picAjudaNPSH.Image = global::SimulOP.Properties.Resources.info;
+            this.picAjudaNPSH.Location = new System.Drawing.Point(533, 17);
+            this.picAjudaNPSH.Name = "picAjudaNPSH";
+            this.picAjudaNPSH.Size = new System.Drawing.Size(18, 18);
+            this.picAjudaNPSH.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picAjudaNPSH.TabIndex = 18;
+            this.picAjudaNPSH.TabStop = false;
+            this.picAjudaNPSH.Click += new System.EventHandler(this.picAjudaNPSH_Click);
+            // 
             // txbResultadoNPSHDisp
             // 
             this.txbResultadoNPSHDisp.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1048,7 +1072,7 @@
             this.tabDinamica.Padding = new System.Windows.Forms.Padding(3);
             this.tabDinamica.Size = new System.Drawing.Size(362, 542);
             this.tabDinamica.TabIndex = 1;
-            this.tabDinamica.Text = "Variaveis";
+            this.tabDinamica.Text = "Variáveis";
             // 
             // gubDesDin
             // 
@@ -1127,6 +1151,18 @@
             this.gubSucDin.TabStop = false;
             this.gubSucDin.Text = "Sucção";
             this.gubSucDin.Visible = false;
+            // 
+            // picAjudaSucsao
+            // 
+            this.picAjudaSucsao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picAjudaSucsao.Image = global::SimulOP.Properties.Resources.info;
+            this.picAjudaSucsao.Location = new System.Drawing.Point(227, 19);
+            this.picAjudaSucsao.Name = "picAjudaSucsao";
+            this.picAjudaSucsao.Size = new System.Drawing.Size(18, 18);
+            this.picAjudaSucsao.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picAjudaSucsao.TabIndex = 19;
+            this.picAjudaSucsao.TabStop = false;
+            this.picAjudaSucsao.Click += new System.EventHandler(this.picAjudaSucsao_Click);
             // 
             // trbFluidoPressaoDin
             // 
@@ -1366,42 +1402,6 @@
             this.label26.TabIndex = 29;
             this.label26.Text = "Entrada";
             // 
-            // picAjudaTubulacao
-            // 
-            this.picAjudaTubulacao.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picAjudaTubulacao.Image = global::SimulOP.Properties.Resources.info;
-            this.picAjudaTubulacao.Location = new System.Drawing.Point(324, 55);
-            this.picAjudaTubulacao.Name = "picAjudaTubulacao";
-            this.picAjudaTubulacao.Size = new System.Drawing.Size(18, 18);
-            this.picAjudaTubulacao.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picAjudaTubulacao.TabIndex = 12;
-            this.picAjudaTubulacao.TabStop = false;
-            this.picAjudaTubulacao.Click += new System.EventHandler(this.picAjudaTubulacao_Click);
-            // 
-            // picAjudaNPSH
-            // 
-            this.picAjudaNPSH.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picAjudaNPSH.Image = global::SimulOP.Properties.Resources.info;
-            this.picAjudaNPSH.Location = new System.Drawing.Point(533, 17);
-            this.picAjudaNPSH.Name = "picAjudaNPSH";
-            this.picAjudaNPSH.Size = new System.Drawing.Size(18, 18);
-            this.picAjudaNPSH.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picAjudaNPSH.TabIndex = 18;
-            this.picAjudaNPSH.TabStop = false;
-            this.picAjudaNPSH.Click += new System.EventHandler(this.picAjudaNPSH_Click);
-            // 
-            // picAjudaSucsao
-            // 
-            this.picAjudaSucsao.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picAjudaSucsao.Image = global::SimulOP.Properties.Resources.info;
-            this.picAjudaSucsao.Location = new System.Drawing.Point(227, 19);
-            this.picAjudaSucsao.Name = "picAjudaSucsao";
-            this.picAjudaSucsao.Size = new System.Drawing.Size(18, 18);
-            this.picAjudaSucsao.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picAjudaSucsao.TabIndex = 19;
-            this.picAjudaSucsao.TabStop = false;
-            this.picAjudaSucsao.Click += new System.EventHandler(this.picAjudaSucsao_Click);
-            // 
             // FomrsBombeamentoCompleto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1425,6 +1425,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudTubDesRugosidade)).EndInit();
             this.gubTubSuc.ResumeLayout(false);
             this.gubTubSuc.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAjudaTubulacao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTubSucCompSing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTubSucDiametroInt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTubSucRugosidade)).EndInit();
@@ -1440,6 +1441,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudTubDesElevacao)).EndInit();
             this.gubResultados.ResumeLayout(false);
             this.gubResultados.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAjudaNPSH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbVazaoDesejada)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudVazaoDesejada)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartNPSHDisp)).EndInit();
@@ -1452,6 +1454,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trbAberturaValvulaDes)).EndInit();
             this.gubSucDin.ResumeLayout(false);
             this.gubSucDin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAjudaSucsao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbFluidoPressaoDin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudFluidoPressaoDin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAberturaValvulaSuc)).EndInit();
@@ -1466,9 +1469,6 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picAjudaTubulacao)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picAjudaNPSH)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picAjudaSucsao)).EndInit();
             this.ResumeLayout(false);
 
         }
