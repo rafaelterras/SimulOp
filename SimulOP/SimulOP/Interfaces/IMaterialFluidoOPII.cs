@@ -13,5 +13,7 @@ namespace SimulOP
         double Densidade { get; }
         double CalorEspecifico { get; }
         double CondutividadeTermica { get; }
+
+        IMaterialFluidoOPII Clone();
     }
 }

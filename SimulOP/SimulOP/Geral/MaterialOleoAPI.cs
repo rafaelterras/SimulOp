@@ -70,5 +70,10 @@ namespace SimulOP
 
             this.viscosidade = visc;
         }
+
+        public IMaterialFluidoOPII Clone()
+        {
+            return new MaterialOleoAPI(this.grauAPI, this.temperatura);
+        }
     }
 }

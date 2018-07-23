@@ -24,5 +24,9 @@ namespace SimulOP
             this.condutividadeTermica = condutividadeTermica;
         }
 
+        public IMaterialFluidoOPII Clone()
+        {
+            return new MaterialFluidoOPII(this.Componente, this.densidade, this.viscosidade, this.temperatura,this.calorEspecifico,this.condutividadeTermica);
+        }
     }
 }

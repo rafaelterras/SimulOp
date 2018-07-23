@@ -20,5 +20,11 @@ namespace SimulOP
             this.temperatura = temperatura;
         }
 
+        public FluidoOPII Clone()
+        {
+            IMaterialFluidoOPII temp = material.Clone();
+            return new FluidoOPII(temp,this.temperatura);
+        }
+
     }
 }

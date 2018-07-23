@@ -5,7 +5,12 @@ using System.Text;
 
 namespace SimulOP
 {
-    abstract class EquipamentoOPII : Equipamentos
+    public abstract class EquipamentoOPII : Equipamentos
     {
+        public enum ConfgCorrentes
+        {
+            CoCorrente = 0,
+            ContraCorrente = 1,
+        }
     }
 }
