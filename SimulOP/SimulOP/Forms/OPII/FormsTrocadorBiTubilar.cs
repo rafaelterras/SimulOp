@@ -13,12 +13,18 @@ namespace SimulOP.Forms
     public partial class FormsTrocadorBiTubilar : Form
     {
         // Objetos para o cálculo do trocador
-        TrocadorDuploTubo trocador;
+        private TrocadorDuploTubo trocador;
+        private Tubulacao tubulacaoAnular;
+        private Tubulacao tubulacaoExterna;
+        private FluidoOPII fluidoQente;
+        private MaterialFluidoOPII materialFluidoQente;
+        private FluidoOPII fluidoFrio;
+        private MaterialFluidoOPII materialFluidoFrio;
 
 
 
 
-
+        private Form formAberto;
 
         string[] txbFigFluidoAnularTxt;
         string[] txbFigFluidoExternoTxt;
