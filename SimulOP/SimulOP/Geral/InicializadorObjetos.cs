@@ -83,7 +83,7 @@
         /// <returns>MaterialFluidoOPII correspondente ao material.</returns>
         public static MaterialFluidoOPII MaterialFluidoOPII(string material, double temperatura)
         {
-            throw new System.NotImplementedException();
+            throw new System.NotImplementedException(); // TODO: Implementar esse inicializador
         }
 
         #endregion
@@ -93,30 +93,37 @@
         public static MaterialTubulacao MaterialTubulacao(string material)
         {
             double rugosidade; // em cm
+            double condutividade; // TODO: VERIFICAR UNIDADE
 
             switch (material.ToLower())
             {
                 case "aço carbono":
                     rugosidade = 0.00547;
+                    condutividade = 0;
                     break;
                 case "pvc":
                     rugosidade = 0.006;
+                    condutividade = 0;
                     break;
                 case "cobre":
                     rugosidade = 0.0002;
+                    condutividade = 0;
                     break;
                 case "aço inoxidável":
                     rugosidade = 0.0002;
+                    condutividade = 0;
                     break;
                 case "concreto":
                     rugosidade = 0.2;
+                    condutividade = 0;
                     break;
                 default:
                     rugosidade = 0.00547;
+                    condutividade = 0;
                     break;
             }
 
-            return new MaterialTubulacao(rugosidade * 100.0, material);
+            return new MaterialTubulacao(rugosidade * 100.0, condutividade, material);
         }
         
         public static Tubulacao Tubulacao(string material, EquipamentoOPI.DiamPol diamPol, EquipamentoOPI.SchNum schNum, double comprimento, double elevacao, string metodoFAtrito = "fanning")

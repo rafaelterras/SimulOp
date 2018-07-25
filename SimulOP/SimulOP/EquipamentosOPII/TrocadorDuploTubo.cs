@@ -210,7 +210,7 @@ namespace SimulOP
 
         private double CalculaAreaDeTroca()
         {
-            double area = tubulacaoInterna.Diametro * Math.PI * this.comprimento; // [VERIFICAR UNIDADES!!]
+            double area = tubulacaoInterna.Diametro * Math.PI * this.comprimento; // TODO: [VERIFICAR UNIDADES!!]
 
             this.areaTroca = area;
 
@@ -220,14 +220,13 @@ namespace SimulOP
         private double CalculaCoefGlobal()
         {
             double hAnular = CalculaCoefConvec(tubulacaoAnular, materialBulckAnular, vazaoAnular);
-            double hExterno = CalculaCoefConvec(tubulacaoInterna, materialBulckInterno, vazaoInterna);
+            double hInterno = CalculaCoefConvec(tubulacaoInterna, materialBulckInterno, vazaoInterna);
 
             double hTotal = 0;
 
+            // 1/ hT = Sum(1/h)
 
-
-            throw new NotImplementedException();
-
+            hTotal = 1 / ((1 / hAnular) + (1 / hInterno) + (1 / fatorIncrustacao) + tubulacaoAnular.ResistenciaTermica * areaTroca); // [VERIFICAR !!!]  
 
             this.coefTrocaTermGlobal = hTotal;
 
@@ -253,12 +252,13 @@ namespace SimulOP
             }
 
 
-            throw new NotImplementedException();
+            throw new NotImplementedException(); // TODO: Implementar o calculo do coeficiente de convec.
         }
 
         private double CalculaCalorTrans()
         {
-            double calorTrns = areaTroca * coefTrocaTermGlobal * LMTD(); // Q = A * U * dTln [VERIFICAR UNIDADES!!]
+            double calorTrns = areaTroca * coefTrocaTermGlobal * LMTD(); // Q = A * U * dTln 
+            // TODO: [VERIFICAR UNIDADES!!]
 
             this.calorTransferido = calorTrns;
 
@@ -300,15 +300,15 @@ namespace SimulOP
                 tSaida = tempEntrada + (this.calorTransferido / (vazao * materialBulck.CalorEspecifico));
             }
 
-            return tSaida; // [VERIFICAR UNIDADES!!]
+            return tSaida; // TODO: [VERIFICAR UNIDADES!!]
         }
 
         private double CalculaPerdaCarga(TubulacaoDuploTubo tubo, double vazao)
         {
 
+     
 
-
-            throw new NotImplementedException();
+            throw new NotImplementedException(); // TODO: Implementar o cálculo de perda de carga
         }
         #endregion
 
@@ -318,9 +318,14 @@ namespace SimulOP
         /// </summary>
         public void TrocaPosicaoFluidos()
         {
-            FluidoOPII temp = fluidoInternoEnt.Clone();
+            FluidoOPII fluidoTemp = fluidoInternoEnt.Clone();
+            double vazaoTemp = vazaoInterna;
+
             fluidoInternoEnt = fluidoAnularEnt;
-            fluidoAnularEnt = temp;
+            vazaoInterna = vazaoAnular;
+
+            fluidoAnularEnt = fluidoTemp;
+            vazaoAnular = vazaoTemp;
 
             if (fluidoAnularEnt.Temperatura > fluidoInternoEnt.Temperatura)
             {
@@ -350,7 +355,7 @@ namespace SimulOP
             List<double> PlotYAnular = new List<double>();
             List<double> PlotYInterno = new List<double>();
 
-            throw new NotImplementedException();
+            throw new NotImplementedException(); // TODO: Implementar as funções de plot.
         }
 
         /// <summary>

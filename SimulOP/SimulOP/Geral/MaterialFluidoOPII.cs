@@ -30,7 +30,7 @@ namespace SimulOP
             this.temperatura = temperatura;
             this.calorEspecifico = calorEspecifico;
             this.condutividadeTermica = condutividadeTermica;
-            throw new Exception("Material Fluido OPII ainda não implementado");
+            throw new Exception("Material Fluido OPII ainda não implementado"); // TODO: Verificar como calcular as propriedades
         }
 
         public void AtualizaPropriedades()

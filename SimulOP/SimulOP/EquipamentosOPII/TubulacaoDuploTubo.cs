@@ -8,23 +8,46 @@ namespace SimulOP
 {
     public class TubulacaoDuploTubo : Tubulacao
     {
-        private EquipamentoOPII.TipoTubo tipoTubo;
-
+        protected double especura;
+        protected double diametroExterno;
+        protected double resistenciaTermica;
+        protected EquipamentoOPII.TipoTubo tipoTubo;
+        
         public EquipamentoOPII.TipoTubo TipoTubo { get => tipoTubo; set => tipoTubo = value; }
+        public double DiametroExterno { get => diametroExterno; set => diametroExterno = value; }
+        public double Especura { get => especura; set => especura = value; }
+        public double ResistenciaTermica
+        {
+            get
+            {
+                CalculaResistencia();
+                return resistenciaTermica;
+            }
+        }
 
         /// <summary>
         /// Constructor da tubulação do trocador duplo tubo
         /// </summary>
-        /// <param name="diametro">Diametro equivalente da tubulação.</param>
+        /// <param name="diametroExterno">Diametro equivalente da tubulação.</param>
         /// <param name="comprimento">Comprimento do tubo.</param>
         /// <param name="material">Material do tubo.</param>
         /// <param name="tipoTubo">Tipo do tubo, se é anular ou interno.</param>
-        public TubulacaoDuploTubo(double diametro, double comprimento, MaterialTubulacao material, EquipamentoOPII.TipoTubo tipoTubo) 
-            : base(diametro, comprimento, material, 0, "")
+        public TubulacaoDuploTubo(double diametroExterno, double especura, double comprimento, MaterialTubulacao material, EquipamentoOPII.TipoTubo tipoTubo) 
+            : base(diametroExterno - especura, comprimento, material, 0, "")
         {
+            this.especura = (especura >= 0) ? especura : throw new ArgumentException(nameof(especura));
+            this.diametroExterno = (diametroExterno > 0) ? diametroExterno : throw new ArgumentException(nameof(diametroExterno));
             this.tipoTubo = tipoTubo;
         }
         
+        private void CalculaResistencia()
+        {
+            double R = (this.diametroExterno * Math.PI * this.comprimento) / (material.Condutividade * this.especura);
+
+            this.resistenciaTermica = R;
+        } 
+
+
         public override double CalcReynolds(double densidade, double viscosidade, double vazao, double diametro)
         {
             throw new NotImplementedException();
@@ -38,7 +61,7 @@ namespace SimulOP
         /// <returns>O fator de atrito.</returns>
         public double CalculaFAtrito(IMaterialFluidoOPII material, double vazao)
         {
-           throw new NotImplementedException();
+           throw new NotImplementedException(); 
         }
 
         /// <summary>
@@ -49,7 +72,7 @@ namespace SimulOP
         /// <returns>A perda de carga.</returns>
         public double CalculaPerdaCarga(IMaterialFluidoOPII material, double vazao)
         {
-            throw new NotImplementedException();
-        }
+            throw new NotImplementedException(); // TODO: Implementar as funções de perda de carga
+        }           
     }
 }

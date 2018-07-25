@@ -46,6 +46,48 @@ namespace SimulOP.Forms
             txbFigFluidoInternoTxt = txbFigFluidoInterno.Lines;
         }
 
+        /// <summary>
+        /// Inscreve ou desinscreve os eventos das variaveis dinâmicas de acordo com o parametro.
+        /// </summary>
+        /// <param name="ativar">Se True inscreve os eventos, e False desinscreve os eventos.</param>
+        private void EventosInputs(bool ativar)
+        {
+            if (ativar)
+            {
+                nudVarFluidoInternoVazao.ValueChanged += nudVarFluidoInternoVazao_ValueChanged;
+                trbVarFluidoInternoVazao.Scroll += trbVarFluidoInternoVazao_Scroll;
+                nudVarFluidoInternoTemp.ValueChanged += nudVarFluidoInternoTemp_ValueChanged;
+                trbVarFluidoInternoTemp.Scroll += trbVarFluidoInternoTemp_Scroll;
+                nudVarFluidoAnularVazao.ValueChanged += nudVarFluidoAnularVazao_ValueChanged;
+                trbVarFluidoAnularVazao.Scroll += trbVarFluidoAnularVazao_Scroll;
+                nudVarFluidoAnularTemp.ValueChanged += nudVarFluidoAnularTemp_ValueChanged;
+                trbVarFluidoAnularTemp.Scroll += trbVarFluidoAnularTemp_Scroll;
+                nudVarTrocadorComprimento.ValueChanged += nudVarTrocadorComprimento_ValueChanged;
+                trbVarTrocadorComprimento.Scroll += trbVarTrocadorComprimento_Scroll;
+                nudVarTrocadorDiamAnular.ValueChanged += nudVarTrocadorDiamAnular_ValueChanged;
+                trbVarTrocadorDiamAnular.Scroll += trbVarTrocadorDiamAnular_Scroll;
+                nudVarTrocadorDiamInterno.ValueChanged += nudVarTrocadorDiamExterno_ValueChanged;
+                trbVarTrocadorDiamInterno.Scroll += trbVarTrocadorDiamExterno_Scroll;
+            }
+            else
+            {
+                nudVarFluidoInternoVazao.ValueChanged -= nudVarFluidoInternoVazao_ValueChanged;
+                trbVarFluidoInternoVazao.Scroll -= trbVarFluidoInternoVazao_Scroll;
+                nudVarFluidoInternoTemp.ValueChanged -= nudVarFluidoInternoTemp_ValueChanged;
+                trbVarFluidoInternoTemp.Scroll -= trbVarFluidoInternoTemp_Scroll;
+                nudVarFluidoAnularVazao.ValueChanged -= nudVarFluidoAnularVazao_ValueChanged;
+                trbVarFluidoAnularVazao.Scroll -= trbVarFluidoAnularVazao_Scroll;
+                nudVarFluidoAnularTemp.ValueChanged -= nudVarFluidoAnularTemp_ValueChanged;
+                trbVarFluidoAnularTemp.Scroll -= trbVarFluidoAnularTemp_Scroll;
+                nudVarTrocadorComprimento.ValueChanged -= nudVarTrocadorComprimento_ValueChanged;
+                trbVarTrocadorComprimento.Scroll -= trbVarTrocadorComprimento_Scroll;
+                nudVarTrocadorDiamAnular.ValueChanged -= nudVarTrocadorDiamAnular_ValueChanged;
+                trbVarTrocadorDiamAnular.Scroll -= trbVarTrocadorDiamAnular_Scroll;
+                nudVarTrocadorDiamInterno.ValueChanged -= nudVarTrocadorDiamExterno_ValueChanged;
+                trbVarTrocadorDiamInterno.Scroll -= trbVarTrocadorDiamExterno_Scroll;
+            }
+        }
+
         private void btnTrocaFluidos_Click(object sender, EventArgs e)
         {
             string temp;
@@ -113,14 +155,15 @@ namespace SimulOP.Forms
             string tubulacaoMaterialNome = cmbTrocadorMaterial.Text;
             double tubulacaoComprimento = Convert.ToDouble(nudTrocadorComprimento);
             MaterialTubulacao materialTubulacao = InicializadorObjetos.MaterialTubulacao(tubulacaoMaterialNome);
+            const double especura = 0; // TODO: Definir espeçura
 
             // Tubulação Anular
             double tubAnularDiam = Convert.ToDouble(nudTrocadorDiametroAnular);
-            tubulacaoAnular = new TubulacaoDuploTubo(tubAnularDiam, tubulacaoComprimento, materialTubulacao, EquipamentoOPII.TipoTubo.anular);
+            tubulacaoAnular = new TubulacaoDuploTubo(tubAnularDiam, especura, tubulacaoComprimento, materialTubulacao, EquipamentoOPII.TipoTubo.anular);
 
             // Tubulação Interna
             double tubInternaDiam = Convert.ToDouble(nudTrocadorDiametroInterno.Value);
-            tubulacaoInterna = new TubulacaoDuploTubo(tubInternaDiam, tubulacaoComprimento, materialTubulacao, EquipamentoOPII.TipoTubo.interno);
+            tubulacaoInterna = new TubulacaoDuploTubo(tubInternaDiam, especura, tubulacaoComprimento, materialTubulacao, EquipamentoOPII.TipoTubo.interno);
 
             // Trocador
             double fatorIncrustacao = Convert.ToDouble(nudTrocadorFatorEncrustacao.Value);
@@ -131,48 +174,27 @@ namespace SimulOP.Forms
             chartTemperatura.Series["temperatura"].Points.DataBindXY(new double[] { 0, 0.5, 1 }, new double[] { 0, 50, 80 });
         }
 
-        /// <summary>
-        /// Inscreve ou desinscreve os eventos das variaveis dinâmicas de acordo com o parametro.
-        /// </summary>
-        /// <param name="ativar">Se True inscreve os eventos, e False desinscreve os eventos.</param>
-        private void EventosInputs(bool ativar)
+        private void AtualizaForms()
         {
-            if (ativar)
-            {
-                nudVarFluidoInternoVazao.ValueChanged   += nudVarFluidoInternoVazao_ValueChanged;
-                trbVarFluidoInternoVazao.Scroll         += trbVarFluidoInternoVazao_Scroll;
-                nudVarFluidoInternoTemp.ValueChanged    += nudVarFluidoInternoTemp_ValueChanged;
-                trbVarFluidoInternoTemp.Scroll          += trbVarFluidoInternoTemp_Scroll;
-                nudVarFluidoAnularVazao.ValueChanged    += nudVarFluidoAnularVazao_ValueChanged;
-                trbVarFluidoAnularVazao.Scroll          += trbVarFluidoAnularVazao_Scroll;
-                nudVarFluidoAnularTemp.ValueChanged     += nudVarFluidoAnularTemp_ValueChanged;
-                trbVarFluidoAnularTemp.Scroll           += trbVarFluidoAnularTemp_Scroll;
-                nudVarTrocadorComprimento.ValueChanged  += nudVarTrocadorComprimento_ValueChanged;
-                trbVarTrocadorComprimento.Scroll        += trbVarTrocadorComprimento_Scroll;
-                nudVarTrocadorDiamAnular.ValueChanged   += nudVarTrocadorDiamAnular_ValueChanged;
-                trbVarTrocadorDiamAnular.Scroll         += trbVarTrocadorDiamAnular_Scroll;
-                nudVarTrocadorDiamInterno.ValueChanged  += nudVarTrocadorDiamExterno_ValueChanged;
-                trbVarTrocadorDiamInterno.Scroll        += trbVarTrocadorDiamExterno_Scroll;
-            }
-            else
-            {
-                nudVarFluidoInternoVazao.ValueChanged   -= nudVarFluidoInternoVazao_ValueChanged;
-                trbVarFluidoInternoVazao.Scroll         -= trbVarFluidoInternoVazao_Scroll;
-                nudVarFluidoInternoTemp.ValueChanged    -= nudVarFluidoInternoTemp_ValueChanged;
-                trbVarFluidoInternoTemp.Scroll          -= trbVarFluidoInternoTemp_Scroll;
-                nudVarFluidoAnularVazao.ValueChanged    -= nudVarFluidoAnularVazao_ValueChanged;
-                trbVarFluidoAnularVazao.Scroll          -= trbVarFluidoAnularVazao_Scroll;
-                nudVarFluidoAnularTemp.ValueChanged     -= nudVarFluidoAnularTemp_ValueChanged;
-                trbVarFluidoAnularTemp.Scroll           -= trbVarFluidoAnularTemp_Scroll;
-                nudVarTrocadorComprimento.ValueChanged  -= nudVarTrocadorComprimento_ValueChanged;
-                trbVarTrocadorComprimento.Scroll        -= trbVarTrocadorComprimento_Scroll;
-                nudVarTrocadorDiamAnular.ValueChanged   -= nudVarTrocadorDiamAnular_ValueChanged;
-                trbVarTrocadorDiamAnular.Scroll         -= trbVarTrocadorDiamAnular_Scroll;
-                nudVarTrocadorDiamInterno.ValueChanged  -= nudVarTrocadorDiamExterno_ValueChanged;
-                trbVarTrocadorDiamInterno.Scroll        -= trbVarTrocadorDiamExterno_Scroll;
-            }
+            AtualizaPlotPerdaCarga();
+            AtulizaPlotTemperatura();
+            AtualizaResultados();
         }
 
+        private void AtualizaPlotPerdaCarga()
+        {
+            // TODO: Função para atualizar plot da perda de carga.
+        }
+
+        private void AtulizaPlotTemperatura()
+        {
+            // TODO: Função para atualizar plot da temperatura.
+        }
+
+        private void AtualizaResultados()
+        {
+            // TODO: Função para atualizar os resultados.
+        }
 
         #region Input Inicial
 
@@ -231,7 +253,7 @@ namespace SimulOP.Forms
                 / (Convert.ToDouble(nud.Maximum) - Convert.ToDouble(nud.Minimum)));
             trb.Value = trbInt;
 
-            switch (nud.Name)
+            switch (nud.Name) // TODO: implementar as variações
             {
                 case "nudVarFluidoInternoVazao":
                     nudVarFluidoInternoVazaoDbl = x;
@@ -470,6 +492,9 @@ namespace SimulOP.Forms
 
             popOut.Show();
         }
+
+        // TODO: Implementar o sistema de ajuda.
+
         #endregion
     }
 }
