@@ -7,6 +7,8 @@ namespace SimulOP
 {
     public abstract class EquipamentoOPII : Equipamentos
     {
+        public const double densidadeAguaSImperial = 62.42796529; //[lb/ft^3]
+
         public enum ConfgCorrentes
         {
             coCorrente = 0,

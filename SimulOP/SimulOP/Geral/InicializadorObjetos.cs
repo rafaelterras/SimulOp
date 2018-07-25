@@ -5,13 +5,12 @@
     /// </summary>
     public static class InicializadorObjetos
     {
-
         #region Definições dos Materiais
         /// <summary>
-        /// Retorna um objeto Material para ser usado junto com os fluidos de OPI
+        /// Retorna um objeto Material para ser usado junto com os fluidos de OPI.
         /// </summary>
-        /// <param name="material">O nome do moterial (Ex. "água", "benzeno", "tolueno"...)</param>
-        /// <returns>MaterialFluidoOPI correspondente ao material, com densidade e viscosidade</returns>
+        /// <param name="material">O nome do moterial (Ex. "água", "benzeno", "tolueno"...).</param>
+        /// <returns>MaterialFluidoOPI correspondente ao material, com densidade e viscosidade.</returns>
         public static MaterialFluidoOPI MaterialFluidoOPI(string material)
         {
             double densidade;
@@ -40,8 +39,8 @@
         /// <summary>
         /// Retorna um objeto Material para ser usado junto com os fluidos de OPIII
         /// </summary>
-        /// <param name="material">O nome do moterial (Ex. "água", "benzeno", "tolueno"...)</param>
-        /// <returns>MaterialFluidoOPIII correspondente ao material, com o coeficiente de Antoine</returns>
+        /// <param name="material">O nome do moterial (Ex. "água", "benzeno", "tolueno"...).</param>
+        /// <returns>MaterialFluidoOPIII correspondente ao material, com o coeficiente de Antoine.</returns>
         public static MaterialFluidoOPIII MaterialFluidoOPIII(string material)
         {
             double[] coefAntoine;
@@ -76,10 +75,20 @@
             return new MaterialFluidoOPIII(material, densidade, viscosidade, coefAntoine);
         }
 
+        /// <summary>
+        /// Retorna um objeto Material para ser usado junto com os fluidos de OPII.
+        /// </summary>
+        /// <param name="material">O nome do moterial (Ex. "água", "benzeno", "tolueno"...).</param>
+        /// <param name="temperatura">A temperatura do material.</param>
+        /// <returns>MaterialFluidoOPII correspondente ao material.</returns>
         public static MaterialFluidoOPII MaterialFluidoOPII(string material, double temperatura)
         {
             throw new System.NotImplementedException();
         }
+
+        #endregion
+
+        #region Definição da Tubulação
 
         public static MaterialTubulacao MaterialTubulacao(string material)
         {
@@ -109,10 +118,7 @@
 
             return new MaterialTubulacao(rugosidade * 100.0, material);
         }
-        #endregion
-
-        #region Definição da Tubulação
-
+        
         public static Tubulacao Tubulacao(string material, EquipamentoOPI.DiamPol diamPol, EquipamentoOPI.SchNum schNum, double comprimento, double elevacao, string metodoFAtrito = "fanning")
         {
             double diametroInt;

@@ -8,41 +8,43 @@ namespace SimulOP
 {
     public class MaterialOleoAPI : IMaterialFluidoOPII
     {
-        public const double densidadeAguaSImperial = 62.42796529;
-
         private double grauAPI;
         private double temperatura;
-        private double densidade;
+        private double densidade; //[lb/ft^3]
         private double viscosidade;
-        
-        public double GrauAPI{ get => grauAPI; }
-        public double Temperatura { get => temperatura; set => temperatura = value; }
-        public double Densidade
+        private double calorEspecifico;
+        private double condutividadeTermica;
+
+
+        public double GrauAPI { get => grauAPI; }
+        public double Temperatura
         {
-            get
+            get => temperatura;
+            set
             {
-                AtualizaDensidade();
-                return densidade;
-            }
-        }
-        public double Viscosidade
-        {
-            get
-            {
-                AtualizaViscosidade();
-                return viscosidade;
+                this.temperatura = value;
+                AtualizaPropriedades();
             }
         }
 
-        public double CalorEspecifico => throw new NotImplementedException();
-
-        public double CondutividadeTermica => throw new NotImplementedException();
+        public double Densidade { get => densidade; } //[lb/ft^3]
+        public double Viscosidade { get => viscosidade; }
+        public double CalorEspecifico { get => calorEspecifico; }
+        public double CondutividadeTermica { get => condutividadeTermica; }
 
         public MaterialOleoAPI(double grauAPI, double temperatura)
         {
             this.grauAPI = grauAPI;
+            this.temperatura = temperatura;
+            AtualizaPropriedades();
+        }
+
+        public void AtualizaPropriedades()
+        {
             AtualizaDensidade();
             AtualizaViscosidade();
+            AtualizaCalorEspecifico();
+            AtualizaCondutividadeTermica();
         }
 
         private void AtualizaDensidade()
@@ -50,7 +52,7 @@ namespace SimulOP
             double dens;
 
             dens = 141.5 / (grauAPI + 131.5);
-            dens = dens * densidadeAguaSImperial;
+            dens = dens * EquipamentoOPII.densidadeAguaSImperial;
 
             this.densidade = dens;
         }
@@ -69,6 +71,16 @@ namespace SimulOP
             visc = primeiroTermo * segundoTermo;
 
             this.viscosidade = visc;
+        }
+
+        private void AtualizaCalorEspecifico()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AtualizaCondutividadeTermica()
+        {
+            throw new NotImplementedException();
         }
 
         public IMaterialFluidoOPII Clone()

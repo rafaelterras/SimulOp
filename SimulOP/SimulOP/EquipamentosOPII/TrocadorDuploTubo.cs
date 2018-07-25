@@ -9,12 +9,16 @@ namespace SimulOP
     {
         private TubulacaoDuploTubo tubulacaoAnular;
         private FluidoOPII fluidoAnularEnt;
+        private IMaterialFluidoOPII materialBulckAnular;
+        private double tBulckAnular;
         private double vazaoAnular;
         private double perdaDePressaoAnular;
         private FluidoTroca anular;
         
         private TubulacaoDuploTubo tubulacaoInterna;
         private FluidoOPII fluidoInternoEnt;
+        private IMaterialFluidoOPII materialBulckInterno;
+        private double tBulckInterno;
         private double vazaoInterna;
         private double perdaDePressaoExterno;
         private FluidoTroca interno;
@@ -23,11 +27,14 @@ namespace SimulOP
         private FluidoOPII fluidoInternoSai;
 
         private double comprimento;
+        private double fatorIncrustacao;
 
         private double areaTroca;
         private double coefTrocaTermGlobal;
-        private double colorTransferido;
+        private double calorTransferido;
         private ConfgCorrentes configuracao;
+
+        private const double criterioConvergencia = 1e-4; // Critério de convergencia do trocador
 
         public TubulacaoDuploTubo TubulacaoAnular { get => tubulacaoAnular; set => tubulacaoAnular = value; }
         public FluidoOPII FluidoAnularEnt { get => fluidoAnularEnt; set => fluidoAnularEnt = value; }
@@ -54,6 +61,7 @@ namespace SimulOP
                 tubulacaoInterna.Comprimento = comprimento;
             }
         }
+        public double FatorIncrustacao { get => fatorIncrustacao; set => fatorIncrustacao = value; }
 
         public double AreaTroca
         {
@@ -71,12 +79,12 @@ namespace SimulOP
                 return coefTrocaTermGlobal;
             }
         }
-        public double ColorTransferido
+        public double CalorTransferido
         {
             get
             {
                 CalculaCalorTrans();
-                return colorTransferido;
+                return calorTransferido;
             }
         }
 
@@ -94,7 +102,8 @@ namespace SimulOP
         /// <param name="comprimento">Comprimento do trocador</param>
         /// <param name="confgCorrentes">Configuração das correntes.</param>
         public TrocadorDuploTubo(FluidoOPII fluidoAnularEnt, double vazaoAnular, FluidoOPII fluidoInternoEnt, double vazaoInterno, 
-            TubulacaoDuploTubo tubulacaoAnular, TubulacaoDuploTubo tubulacaoInterna, double comprimento, ConfgCorrentes confgCorrentes = ConfgCorrentes.contraCorrente)
+            TubulacaoDuploTubo tubulacaoAnular, TubulacaoDuploTubo tubulacaoInterna, double comprimento, double fatorIncrustacao, 
+            ConfgCorrentes confgCorrentes = ConfgCorrentes.contraCorrente)
         {
             this.fluidoAnularEnt = fluidoAnularEnt ?? throw new ArgumentNullException(nameof(fluidoAnularEnt));
             this.vazaoAnular = (vazaoAnular > 0.0) ? vazaoAnular : throw new ArgumentException(nameof(vazaoAnular));
@@ -103,7 +112,9 @@ namespace SimulOP
             this.tubulacaoAnular = tubulacaoAnular ?? throw new ArgumentNullException(nameof(tubulacaoAnular));
             this.tubulacaoInterna = tubulacaoInterna ?? throw new ArgumentNullException(nameof(tubulacaoInterna));
             Comprimento = (comprimento > 0.0) ? comprimento : throw new ArgumentException(nameof(comprimento));
-            this.configuracao = confgCorrentes;
+
+            this.fatorIncrustacao = fatorIncrustacao;
+            this.configuracao = (confgCorrentes == ConfgCorrentes.contraCorrente) ? confgCorrentes : throw new NotImplementedException("Configuração co-corrente não implementada");
 
             if (fluidoAnularEnt.Temperatura > fluidoInternoEnt.Temperatura)
             {
@@ -116,55 +127,192 @@ namespace SimulOP
                 interno = FluidoTroca.quente;
             }
 
-            if (confgCorrentes == ConfgCorrentes.coCorrente) throw new NotImplementedException(); // Configuração co-corrente não implementada
+            materialBulckAnular = fluidoInternoEnt.Material.Clone();
+            materialBulckInterno = fluidoInternoEnt.Material.Clone();
         }
 
+        #region Métodos para Cálculo
         /// <summary>
         /// Função principal do trocador que calcula a troca termica e gera os fluidos de saida.
         /// </summary>
         public void CalculaTroca()
         {
-            AtualizaCoefGlobal();
+            // 1. Calcula a área de troca do trocador
+            CalculaAreaDeTroca();
 
-            CalculaPerdaCarga(tubulacaoAnular);
-            CalculaPerdaCarga(tubulacaoInterna);
+            // 2. Calculo iterativo do coeficiente global de troca
+            // 2.1. Assumir uma temperatura de saida dos fluidos
+            double tAnularSaiEstimado;
+            double tInternoSaiEstimado;
 
-            throw new NotImplementedException();
-        }
+            if (anular == FluidoTroca.quente)
+            {
+                tAnularSaiEstimado = fluidoInternoEnt.Temperatura * 1.1;
+                tInternoSaiEstimado = fluidoAnularEnt.Temperatura * 0.9;
+            }
+            else
+            {
+                tAnularSaiEstimado = fluidoInternoEnt.Temperatura * 0.9;
+                tInternoSaiEstimado = fluidoAnularEnt.Temperatura * 1.1;
+            }
 
-        private double CalculaPerdaCarga(TubulacaoDuploTubo tubo)
-        {
-            throw new NotImplementedException();
-        }
-        
-        private void AtualizaCoefGlobal()
-        {
-            double hAnular = CalculaCoefConvec(tubulacaoAnular);
-            double hExterno = CalculaCoefConvec(tubulacaoInterna);
-            
-            throw new NotImplementedException();
-        }
+            // 2.2 Estimativa do tBulck
+            tBulckAnular = (fluidoAnularEnt.Temperatura + tAnularSaiEstimado) / 2;
+            tBulckInterno = (fluidoInternoEnt.Temperatura + tInternoSaiEstimado) / 2;
 
-        private double CalculaCoefConvec(TubulacaoDuploTubo tubo)
-        {
-            throw new NotImplementedException();
+            // Criação dos fluidos de saida com temperaturas estimadas.
+            fluidoAnularSai = new FluidoOPII(fluidoAnularEnt.Material.Clone(), tAnularSaiEstimado);
+            fluidoInternoSai = new FluidoOPII(fluidoInternoEnt.Material.Clone(), tInternoSaiEstimado);
+
+            bool convergencia = false;
+            int count = 0;
+
+            // 2.3 Loop para convergencia da temperatura
+            do
+            {
+                // Atualiza os materiais com a temperatura bulck estimada.
+                materialBulckAnular.Temperatura = tBulckAnular;
+                materialBulckInterno.Temperatura = tBulckInterno;
+
+                CalculaCoefGlobal(); // Atualiza os coeficientes de troca termica.
+                
+                CalculaCalorTrans(); // Calcula o calor transferido entre os fluidos.
+
+                // 2.3.1. Cálculo da nova temperatura estimada de saida e dos tBulcks.
+                tAnularSaiEstimado = TemperaturaSaida(materialBulckAnular, anular, vazaoAnular, fluidoAnularEnt.Temperatura);
+                tInternoSaiEstimado = TemperaturaSaida(materialBulckInterno, interno, vazaoInterna, fluidoInternoEnt.Temperatura);
+
+                double tBulckAnularEstimado = (tAnularSaiEstimado + fluidoAnularEnt.Temperatura) / 2;
+                double tBulckInternoEstimado = (tInternoSaiEstimado + FluidoInternoEnt.Temperatura) / 2;
+
+                // Critério de convergencia (erro < 1e-4)
+                if (Math.Abs(tBulckAnularEstimado - tBulckAnular) < criterioConvergencia && Math.Abs(tBulckInternoEstimado - tBulckInterno) < criterioConvergencia)
+                {
+                    convergencia = true;
+                }
+                
+                tBulckAnular = tBulckAnularEstimado;
+                tBulckInterno = tBulckInternoEstimado;
+
+                fluidoAnularSai.Temperatura = tAnularSaiEstimado;
+                fluidoInternoSai.Temperatura = tInternoSaiEstimado;
+
+                count++;
+                
+            } while (convergencia);
+
+            Console.WriteLine($"Número de iterações: {count}");
+
+            // 3. Calculo da perda de carga
+            CalculaPerdaCarga(tubulacaoAnular, vazaoAnular);
+            CalculaPerdaCarga(tubulacaoInterna, vazaoInterna);
         }
 
         private double CalculaAreaDeTroca()
         {
-            throw new NotImplementedException();
+            double area = tubulacaoInterna.Diametro * Math.PI * this.comprimento; // [VERIFICAR UNIDADES!!]
+
+            this.areaTroca = area;
+
+            return area;
         }
-        
-        private void CalculaCoefGlobal()
+
+        private double CalculaCoefGlobal()
         {
+            double hAnular = CalculaCoefConvec(tubulacaoAnular, materialBulckAnular, vazaoAnular);
+            double hExterno = CalculaCoefConvec(tubulacaoInterna, materialBulckInterno, vazaoInterna);
+
+            double hTotal = 0;
+
+
+
+            throw new NotImplementedException();
+
+
+            this.coefTrocaTermGlobal = hTotal;
+
+            return hTotal;
+        }
+
+        private double CalculaCoefConvec(TubulacaoDuploTubo tubo, IMaterialFluidoOPII materialBulck, double vazao)
+        {
+            double Ap; // Área do tubo
+            double Gp; // Vazão mássica
+            double mu; // Cp * 2.42 [Q Q É CP!!!] [lb/(ft*h)] viscosidade dinâmica
+            double Re; // Número de Reynolds
+            double Jh; // número do gráfico, [verificar se é possivel calcular com outra correlação de Nu e Pr]
+
+
+            if (tubo.TipoTubo == TipoTubo.interno)
+            {
+                 
+            }
+            else
+            {
+
+            }
+
+
             throw new NotImplementedException();
         }
 
-        private void CalculaCalorTrans()
+        private double CalculaCalorTrans()
         {
-            throw new NotImplementedException();
+            double calorTrns = areaTroca * coefTrocaTermGlobal * LMTD(); // Q = A * U * dTln [VERIFICAR UNIDADES!!]
+
+            this.calorTransferido = calorTrns;
+
+            return calorTrns;
         }
 
+        private double LMTD()
+        {
+            double dT1 = 0;
+            double dT2 = 0;
+
+            // Para Anular = quente e Interno = frio
+            if (anular == FluidoTroca.quente)
+            {
+                dT2 = fluidoAnularEnt.Temperatura - fluidoInternoSai.Temperatura;
+                dT1 = fluidoAnularSai.Temperatura - fluidoInternoEnt.Temperatura;
+            }
+            else if (interno == FluidoTroca.quente)
+            {
+                dT2 = fluidoInternoEnt.Temperatura - fluidoAnularSai.Temperatura;
+                dT1 = fluidoInternoSai.Temperatura - fluidoAnularEnt.Temperatura;
+            }
+
+            return (dT2 - dT1) / (Math.Log(dT2 / dT1));
+        }
+
+        private double TemperaturaSaida(IMaterialFluidoOPII materialBulck, FluidoTroca fluidoTroca, double vazao, double tempEntrada)
+        {
+            double tSaida;
+
+            // Q = V * Cp * (Tent - Tsai)
+
+            if (fluidoTroca == FluidoTroca.quente) // Tsai = Tent - Q / (V * Cp)
+            {
+                tSaida = tempEntrada - (this.calorTransferido / (vazao * materialBulck.CalorEspecifico));
+            }
+            else // Tsai = Tent + Q / (V * Cp)
+            {
+                tSaida = tempEntrada + (this.calorTransferido / (vazao * materialBulck.CalorEspecifico));
+            }
+
+            return tSaida; // [VERIFICAR UNIDADES!!]
+        }
+
+        private double CalculaPerdaCarga(TubulacaoDuploTubo tubo, double vazao)
+        {
+
+
+
+            throw new NotImplementedException();
+        }
+        #endregion
+
+        #region Métodos Auxiliares
         /// <summary>
         /// Troca de posição os fluidos, o fluido anular passa para a ser o interno e o interno passa a ser o anular. E re-calcula os parametros.
         /// </summary>
@@ -221,5 +369,6 @@ namespace SimulOP
 
             throw new NotImplementedException();
         }
+        #endregion
     }
 }

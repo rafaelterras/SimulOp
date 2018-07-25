@@ -729,7 +729,6 @@ namespace SimulOP.Forms
         #endregion
 
         #region Ajuda
-
         private void MostrarPopOut(string ajuda)
         {
             formAberto = Application.OpenForms["FormsPopOut"];

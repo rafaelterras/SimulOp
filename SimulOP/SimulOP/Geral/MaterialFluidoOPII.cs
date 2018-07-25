@@ -12,7 +12,15 @@ namespace SimulOP
         protected double calorEspecifico;
         protected double condutividadeTermica;
 
-        public double Temperatura { get => temperatura; set => temperatura = value; }
+        public double Temperatura
+        {
+            get => temperatura;
+            set
+            {
+                temperatura = value;
+                AtualizaPropriedades();
+            }
+        }
         public double CalorEspecifico { get => calorEspecifico; }
         public double CondutividadeTermica { get => condutividadeTermica; }
 
@@ -23,6 +31,34 @@ namespace SimulOP
             this.calorEspecifico = calorEspecifico;
             this.condutividadeTermica = condutividadeTermica;
             throw new Exception("Material Fluido OPII ainda não implementado");
+        }
+
+        public void AtualizaPropriedades()
+        {
+            AtualizaDensidade();
+            AtualizaViscosidade();
+            AtualizaCalorEspecifico();
+            AtualizaCondutividadeTermica();
+        }
+
+        private void AtualizaDensidade()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AtualizaViscosidade()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AtualizaCalorEspecifico()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AtualizaCondutividadeTermica()
+        {
+            throw new NotImplementedException();
         }
 
         public IMaterialFluidoOPII Clone()

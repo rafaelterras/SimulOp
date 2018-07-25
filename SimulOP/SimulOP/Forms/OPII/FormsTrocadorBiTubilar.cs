@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
+
+using SimulOP.Properties;
 
 namespace SimulOP.Forms
 {
@@ -17,12 +14,13 @@ namespace SimulOP.Forms
 
         private TubulacaoDuploTubo tubulacaoAnular;
         private IMaterialFluidoOPII materialFluidoAnular;
-        private FluidoOPII fluidoAnular;
+        private FluidoOPII fluidoAnularEnt;
+        private FluidoOPII fluidoAnularSai;
 
         private TubulacaoDuploTubo tubulacaoInterna;
         private IMaterialFluidoOPII materialFluidoInterno;
-        private FluidoOPII fluidoInterno;
-
+        private FluidoOPII fluidoInternoEnt;
+        private FluidoOPII fluidoInternoSai;
 
         // Inputs que podem ser variadas
         private double nudVarFluidoInternoVazaoDbl;
@@ -80,7 +78,7 @@ namespace SimulOP.Forms
             // Fluido Anular
             string fluidoAnularNome = cmbFluidoAnular.Text;
             double fluidoAnularAPI = Convert.ToDouble(nudFluidoAnularAPI.Value);
-            double fluidoAnularTemp = Convert.ToDouble(nudFluidoAnularTempEnt);
+            double fluidoAnularTemp = Convert.ToDouble(nudFluidoAnularTempEnt.Value);
             double fluidoAnularVazao = Convert.ToDouble(nudFluidoAnularVazao.Value);
 
             if (fluidoAnularNome == "Óleo (ºAPI)")
@@ -92,12 +90,12 @@ namespace SimulOP.Forms
                 materialFluidoAnular = InicializadorObjetos.MaterialFluidoOPII(fluidoAnularNome, fluidoAnularTemp);
             }
 
-            fluidoAnular = new FluidoOPII(materialFluidoAnular, fluidoAnularTemp);
+            fluidoAnularEnt = new FluidoOPII(materialFluidoAnular, fluidoAnularTemp);
 
             // Fluido Interno
             string fluidoInternoNome = cmbFluidoInterno.Text;
             double fluidoInternoAPI = Convert.ToDouble(nudFluidoInternoAPI.Value);
-            double fluidoInternoTemp = Convert.ToDouble(nudFluidoInternoTempEnt);
+            double fluidoInternoTemp = Convert.ToDouble(nudFluidoInternoTempEnt.Value);
             double fluidoInternoVazao = Convert.ToDouble(nudFluidoInternoVazao.Value);
 
             if (fluidoInternoNome == "Óleo (ºAPI)")
@@ -109,7 +107,7 @@ namespace SimulOP.Forms
                 materialFluidoInterno = InicializadorObjetos.MaterialFluidoOPII(fluidoInternoNome, fluidoInternoTemp);
             }
 
-            fluidoInterno = new FluidoOPII(materialFluidoInterno, fluidoInternoTemp);
+            fluidoInternoEnt = new FluidoOPII(materialFluidoInterno, fluidoInternoTemp);
 
             // Tubulações
             string tubulacaoMaterialNome = cmbTrocadorMaterial.Text;
@@ -125,8 +123,9 @@ namespace SimulOP.Forms
             tubulacaoInterna = new TubulacaoDuploTubo(tubInternaDiam, tubulacaoComprimento, materialTubulacao, EquipamentoOPII.TipoTubo.interno);
 
             // Trocador
-            trocador = new TrocadorDuploTubo(fluidoAnular, fluidoAnularVazao, fluidoInterno, fluidoInternoVazao,
-                tubulacaoAnular, tubulacaoInterna, tubulacaoComprimento);
+            double fatorIncrustacao = Convert.ToDouble(nudTrocadorFatorEncrustacao.Value);
+            trocador = new TrocadorDuploTubo(fluidoAnularEnt, fluidoAnularVazao, fluidoInternoEnt, fluidoInternoVazao,
+                tubulacaoAnular, tubulacaoInterna, tubulacaoComprimento, fatorIncrustacao);
 
             chartPerdaCarga.Series["fluidoFrio"].Points.DataBindXY(new double[] { 0, 0.5, 1 }, new double[] { 0, 50, 80 });
             chartTemperatura.Series["temperatura"].Points.DataBindXY(new double[] { 0, 0.5, 1 }, new double[] { 0, 50, 80 });
@@ -204,6 +203,7 @@ namespace SimulOP.Forms
         private void cmbTrocadorMaterial_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             Random random = new Random();
+
             txbTrocadorRugosidade.Text = random.NextDouble().ToString();
             txbTrocadorK.Text = random.NextDouble().ToString();
         }
@@ -229,7 +229,7 @@ namespace SimulOP.Forms
             // Track Bar
             int trbInt = Convert.ToInt32((Convert.ToDouble(trb.Maximum - trb.Minimum)) * (Convert.ToDouble(nud.Value) - Convert.ToDouble(nud.Minimum))
                 / (Convert.ToDouble(nud.Maximum) - Convert.ToDouble(nud.Minimum)));
-            trb.Value = trbInt;         
+            trb.Value = trbInt;
 
             switch (nud.Name)
             {
@@ -454,6 +454,22 @@ namespace SimulOP.Forms
             AtualizaParDin(nud, trb, x);
         }
 
+        #endregion
+
+        #region Ajuda
+        private void MostrarPopOut(string ajuda)
+        {
+            formAberto = Application.OpenForms["FormsPopOut"];
+
+            if (formAberto != null)
+            {
+                formAberto.Close();
+            }
+
+            FormsPopOut popOut = new FormsPopOut(TextoAjuda.ResourceManager.GetString(ajuda));
+
+            popOut.Show();
+        }
         #endregion
     }
 }
