@@ -9,8 +9,20 @@ namespace SimulOP
     {
         public enum ConfgCorrentes
         {
-            CoCorrente = 0,
-            ContraCorrente = 1,
+            coCorrente = 0,
+            contraCorrente = 1,
+        }
+
+        public enum TipoTubo
+        {
+            anular = 0,
+            interno = 1,
+        }
+
+        public enum FluidoTroca
+        {
+            quente = 0,
+            frio = 1,
         }
     }
 }

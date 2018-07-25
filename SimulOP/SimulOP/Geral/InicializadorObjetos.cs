@@ -76,6 +76,11 @@
             return new MaterialFluidoOPIII(material, densidade, viscosidade, coefAntoine);
         }
 
+        public static MaterialFluidoOPII MaterialFluidoOPII(string material, double temperatura)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public static MaterialTubulacao MaterialTubulacao(string material)
         {
             double rugosidade; // em cm

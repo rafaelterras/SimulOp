@@ -12,7 +12,15 @@ namespace SimulOP
         private double temperatura;
 
         public IMaterialFluidoOPII Material { get => material; }
-        public double Temperatura { get => temperatura; }
+        public double Temperatura
+        {
+            get => temperatura;
+            set
+            {
+                temperatura = value;
+                material.Temperatura = value;
+            }
+        }
 
         public FluidoOPII(IMaterialFluidoOPII material, double temperatura)
         {

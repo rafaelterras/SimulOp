@@ -22,6 +22,7 @@ namespace SimulOP
             this.temperatura = temperatura;
             this.calorEspecifico = calorEspecifico;
             this.condutividadeTermica = condutividadeTermica;
+            throw new Exception("Material Fluido OPII ainda não implementado");
         }
 
         public IMaterialFluidoOPII Clone()

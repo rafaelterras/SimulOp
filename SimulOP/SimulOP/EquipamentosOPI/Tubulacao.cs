@@ -8,16 +8,16 @@ namespace SimulOP
     public class Tubulacao : EquipamentoOPI, ITubulacao
     {
         #region Inicialização das variaveis e do Constructor
-        private double comprimento;
-        private double comprimentoEquivalente;
-        private double diametro;
-        private MaterialTubulacao material;
-        private double rugosidadeRelativa;
-        private double fatorAtrito;
-        private double elevacao;
-        private List<ISingularidade> listaSingularidades = new List<ISingularidade>();
-        private double perdaCarga;
-        private string metodoFatrito;
+        protected double comprimento;
+        protected double comprimentoEquivalente;
+        protected double diametro;
+        protected MaterialTubulacao material;
+        protected double rugosidadeRelativa;
+        protected double fatorAtrito;
+        protected double elevacao;
+        protected List<ISingularidade> listaSingularidades = new List<ISingularidade>();
+        protected double perdaCarga;
+        protected string metodoFatrito;
 
         /// <summary>
         /// Comprimento da tubulação [m]
@@ -154,7 +154,7 @@ namespace SimulOP
         /// <param name="material">O Fluido que está na tubulação. </param>
         /// <param name="vazao">A vazão do fluido [m^3/s]. </param>
         /// <returns> O fator de atrito [adm]. </returns>
-        public double CalculaFAtrito(IMaterialFluidoOPI material, double vazao)
+        public virtual double CalculaFAtrito(IMaterialFluidoOPI material, double vazao)
         {
             double Re;
             double A1;
@@ -200,7 +200,7 @@ namespace SimulOP
         /// <param name="material">O Fluido que está na tubulação. </param>
         /// <param name="vazao">A vazão do fluido [m^3/s]. </param>
         /// <returns> A perda de carga [m]. </returns>
-        public double CalculaPerdaCarga(IMaterialFluidoOPI material, double vazao)
+        public virtual double CalculaPerdaCarga(IMaterialFluidoOPI material, double vazao)
         {
             double fAtrito = CalculaFAtrito(material, vazao);
             double comprimetoTotal = this.Comprimento + this.ComprimentoEquivalente;

@@ -14,64 +14,140 @@ namespace SimulOP.Forms
     {
         // Objetos para o cálculo do trocador
         private TrocadorDuploTubo trocador;
-        private Tubulacao tubulacaoAnular;
-        private Tubulacao tubulacaoExterna;
-        private FluidoOPII fluidoQente;
-        private MaterialFluidoOPII materialFluidoQente;
-        private FluidoOPII fluidoFrio;
-        private MaterialFluidoOPII materialFluidoFrio;
+
+        private TubulacaoDuploTubo tubulacaoAnular;
+        private IMaterialFluidoOPII materialFluidoAnular;
+        private FluidoOPII fluidoAnular;
+
+        private TubulacaoDuploTubo tubulacaoInterna;
+        private IMaterialFluidoOPII materialFluidoInterno;
+        private FluidoOPII fluidoInterno;
 
 
-
-
+        // Inputs que podem ser variadas
+        private double nudVarFluidoInternoVazaoDbl;
+        private double nudVarFluidoInternoTempDbl;
+        private double nudVarFluidoAnularVazaoDbl;
+        private double nudVarFluidoAnularTempDbl;
+        private double nudVarTrocadorComprimentoDbl;
+        private double nudVarTrocadorDiamAnularDbl;
+        private double nudVarTrocadorDiamInternoDbl;
+        
+        // Forms de ajuda
         private Form formAberto;
 
+        // Text box
         string[] txbFigFluidoAnularTxt;
-        string[] txbFigFluidoExternoTxt;
+        string[] txbFigFluidoInternoTxt;
         
         public FormsTrocadorBiTubilar()
         {
             InitializeComponent();
 
             txbFigFluidoAnularTxt = txbFigFluidoAnular.Lines;
-            txbFigFluidoExternoTxt = txbFigFluidoExterno.Lines;
+            txbFigFluidoInternoTxt = txbFigFluidoInterno.Lines;
         }
 
         private void btnTrocaFluidos_Click(object sender, EventArgs e)
         {
             string temp;
 
-            for (int i = 1; i < txbFigFluidoAnularTxt.Length; i++)
+            for (int i = 1; i < 3; i++)
             {
                 temp = txbFigFluidoAnularTxt[i];
-                txbFigFluidoAnularTxt[i] = txbFigFluidoExternoTxt[i];
-                txbFigFluidoExternoTxt[i] = temp;
+                txbFigFluidoAnularTxt[i] = txbFigFluidoInternoTxt[i];
+                txbFigFluidoInternoTxt[i] = temp;
             }
 
             txbFigFluidoAnular.Lines = txbFigFluidoAnularTxt;
-            txbFigFluidoExterno.Lines = txbFigFluidoExternoTxt;
+            txbFigFluidoInterno.Lines = txbFigFluidoInternoTxt;
 
+            double tempTemp = nudVarFluidoInternoTempDbl;
+            double tmpVaz = nudVarFluidoInternoVazaoDbl;
+
+            nudVarFluidoInternoTemp.Value = Convert.ToDecimal(nudVarFluidoAnularTempDbl);
+            nudVarFluidoInternoVazao.Value = Convert.ToDecimal(nudVarFluidoAnularVazaoDbl);
+            nudVarFluidoAnularTemp.Value = Convert.ToDecimal(tempTemp);
+            nudVarFluidoAnularVazao.Value = Convert.ToDecimal(tmpVaz);
+            
             // TODO: Atualizar os resultados
+
+            EventosInputs(true);
         }
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
+            // Fluido Anular
+            string fluidoAnularNome = cmbFluidoAnular.Text;
+            double fluidoAnularAPI = Convert.ToDouble(nudFluidoAnularAPI.Value);
+            double fluidoAnularTemp = Convert.ToDouble(nudFluidoAnularTempEnt);
+            double fluidoAnularVazao = Convert.ToDouble(nudFluidoAnularVazao.Value);
+
+            if (fluidoAnularNome == "Óleo (ºAPI)")
+            {
+                materialFluidoAnular = new MaterialOleoAPI(fluidoAnularAPI, fluidoAnularTemp);
+            }
+            else
+            {
+                materialFluidoAnular = InicializadorObjetos.MaterialFluidoOPII(fluidoAnularNome, fluidoAnularTemp);
+            }
+
+            fluidoAnular = new FluidoOPII(materialFluidoAnular, fluidoAnularTemp);
+
+            // Fluido Interno
+            string fluidoInternoNome = cmbFluidoInterno.Text;
+            double fluidoInternoAPI = Convert.ToDouble(nudFluidoInternoAPI.Value);
+            double fluidoInternoTemp = Convert.ToDouble(nudFluidoInternoTempEnt);
+            double fluidoInternoVazao = Convert.ToDouble(nudFluidoInternoVazao.Value);
+
+            if (fluidoInternoNome == "Óleo (ºAPI)")
+            {
+                materialFluidoInterno = new MaterialOleoAPI(fluidoInternoAPI, fluidoInternoTemp);
+            }
+            else
+            {
+                materialFluidoInterno = InicializadorObjetos.MaterialFluidoOPII(fluidoInternoNome, fluidoInternoTemp);
+            }
+
+            fluidoInterno = new FluidoOPII(materialFluidoInterno, fluidoInternoTemp);
+
+            // Tubulações
+            string tubulacaoMaterialNome = cmbTrocadorMaterial.Text;
+            double tubulacaoComprimento = Convert.ToDouble(nudTrocadorComprimento);
+            MaterialTubulacao materialTubulacao = InicializadorObjetos.MaterialTubulacao(tubulacaoMaterialNome);
+
+            // Tubulação Anular
+            double tubAnularDiam = Convert.ToDouble(nudTrocadorDiametroAnular);
+            tubulacaoAnular = new TubulacaoDuploTubo(tubAnularDiam, tubulacaoComprimento, materialTubulacao, EquipamentoOPII.TipoTubo.anular);
+
+            // Tubulação Interna
+            double tubInternaDiam = Convert.ToDouble(nudTrocadorDiametroInterno.Value);
+            tubulacaoInterna = new TubulacaoDuploTubo(tubInternaDiam, tubulacaoComprimento, materialTubulacao, EquipamentoOPII.TipoTubo.interno);
+
+            // Trocador
+            trocador = new TrocadorDuploTubo(fluidoAnular, fluidoAnularVazao, fluidoInterno, fluidoInternoVazao,
+                tubulacaoAnular, tubulacaoInterna, tubulacaoComprimento);
+
             chartPerdaCarga.Series["fluidoFrio"].Points.DataBindXY(new double[] { 0, 0.5, 1 }, new double[] { 0, 50, 80 });
             chartTemperatura.Series["temperatura"].Points.DataBindXY(new double[] { 0, 0.5, 1 }, new double[] { 0, 50, 80 });
         }
 
+        /// <summary>
+        /// Inscreve ou desinscreve os eventos das variaveis dinâmicas de acordo com o parametro.
+        /// </summary>
+        /// <param name="ativar">Se True inscreve os eventos, e False desinscreve os eventos.</param>
         private void EventosInputs(bool ativar)
         {
             if (ativar)
             {
-                nudVarFluidoFrioVazao.ValueChanged      += nudVarFluidoFrioVazao_ValueChanged;
-                trbVarFluidoFrioVazao.Scroll            += trbVarFluidoFrioVazao_Scroll;
-                nudVarFluidoFrioTemp.ValueChanged       += nudVarFluidoFrioTemp_ValueChanged;
-                trbVarFluidoFrioTemp.Scroll             += trbVarFluidoFrioTemp_Scroll;
-                nudVarFluidoQuenteVazao.ValueChanged    += nudVarFluidoQuenteVazao_ValueChanged;
-                trbVarFluidoQuenteVazao.Scroll          += trbVarFluidoQuenteVazao_Scroll;
-                nudVarFluidoQuenteTemp.ValueChanged     += nudVarFluidoQuenteTemp_ValueChanged;
-                trbVarFluidoQuenteTemp.Scroll           += trbVarFluidoQuenteTemp_Scroll;
+                nudVarFluidoInternoVazao.ValueChanged   += nudVarFluidoInternoVazao_ValueChanged;
+                trbVarFluidoInternoVazao.Scroll         += trbVarFluidoInternoVazao_Scroll;
+                nudVarFluidoInternoTemp.ValueChanged    += nudVarFluidoInternoTemp_ValueChanged;
+                trbVarFluidoInternoTemp.Scroll          += trbVarFluidoInternoTemp_Scroll;
+                nudVarFluidoAnularVazao.ValueChanged    += nudVarFluidoAnularVazao_ValueChanged;
+                trbVarFluidoAnularVazao.Scroll          += trbVarFluidoAnularVazao_Scroll;
+                nudVarFluidoAnularTemp.ValueChanged     += nudVarFluidoAnularTemp_ValueChanged;
+                trbVarFluidoAnularTemp.Scroll           += trbVarFluidoAnularTemp_Scroll;
                 nudVarTrocadorComprimento.ValueChanged  += nudVarTrocadorComprimento_ValueChanged;
                 trbVarTrocadorComprimento.Scroll        += trbVarTrocadorComprimento_Scroll;
                 nudVarTrocadorDiamAnular.ValueChanged   += nudVarTrocadorDiamAnular_ValueChanged;
@@ -81,14 +157,14 @@ namespace SimulOP.Forms
             }
             else
             {
-                nudVarFluidoFrioVazao.ValueChanged      -= nudVarFluidoFrioVazao_ValueChanged;
-                trbVarFluidoFrioVazao.Scroll            -= trbVarFluidoFrioVazao_Scroll;
-                nudVarFluidoFrioTemp.ValueChanged       -= nudVarFluidoFrioTemp_ValueChanged;
-                trbVarFluidoFrioTemp.Scroll             -= trbVarFluidoFrioTemp_Scroll;
-                nudVarFluidoQuenteVazao.ValueChanged    -= nudVarFluidoQuenteVazao_ValueChanged;
-                trbVarFluidoQuenteVazao.Scroll          -= trbVarFluidoQuenteVazao_Scroll;
-                nudVarFluidoQuenteTemp.ValueChanged     -= nudVarFluidoQuenteTemp_ValueChanged;
-                trbVarFluidoQuenteTemp.Scroll           -= trbVarFluidoQuenteTemp_Scroll;
+                nudVarFluidoInternoVazao.ValueChanged   -= nudVarFluidoInternoVazao_ValueChanged;
+                trbVarFluidoInternoVazao.Scroll         -= trbVarFluidoInternoVazao_Scroll;
+                nudVarFluidoInternoTemp.ValueChanged    -= nudVarFluidoInternoTemp_ValueChanged;
+                trbVarFluidoInternoTemp.Scroll          -= trbVarFluidoInternoTemp_Scroll;
+                nudVarFluidoAnularVazao.ValueChanged    -= nudVarFluidoAnularVazao_ValueChanged;
+                trbVarFluidoAnularVazao.Scroll          -= trbVarFluidoAnularVazao_Scroll;
+                nudVarFluidoAnularTemp.ValueChanged     -= nudVarFluidoAnularTemp_ValueChanged;
+                trbVarFluidoAnularTemp.Scroll           -= trbVarFluidoAnularTemp_Scroll;
                 nudVarTrocadorComprimento.ValueChanged  -= nudVarTrocadorComprimento_ValueChanged;
                 trbVarTrocadorComprimento.Scroll        -= trbVarTrocadorComprimento_Scroll;
                 nudVarTrocadorDiamAnular.ValueChanged   -= nudVarTrocadorDiamAnular_ValueChanged;
@@ -98,8 +174,50 @@ namespace SimulOP.Forms
             }
         }
 
+
+        #region Input Inicial
+
+        private void cmbFluidoAnular_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbFluidoAnular.Text == "Óleo (ºAPI)")
+            {
+                nudFluidoAnularAPI.Enabled = true;
+            }
+            else
+            {
+                nudFluidoAnularAPI.Enabled = false;
+            }
+        }
+
+        private void cmbFluidoInterno_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbFluidoInterno.Text == "Óleo (ºAPI)")
+            {
+                nudFluidoInternoAPI.Enabled = true;
+            }
+            else
+            {
+                nudFluidoInternoAPI.Enabled = false;
+            }
+        }
+
+        private void cmbTrocadorMaterial_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            Random random = new Random();
+            txbTrocadorRugosidade.Text = random.NextDouble().ToString();
+            txbTrocadorK.Text = random.NextDouble().ToString();
+        }
+
+        #endregion
+
         #region Variaveis Dinamicas
 
+        /// <summary>
+        /// Atualiza o par de NumecricUpDown e TrackBar para o mesmo valor.
+        /// </summary>
+        /// <param name="nud">O NumericUpDown.</param>
+        /// <param name="trb">A TrackBar.</param>
+        /// <param name="x">O valor para ser atualizado.</param>
         private void AtualizaParDin(NumericUpDown nud, TrackBar trb, double x)
         {
             // Desincreve dos eventos para evitar chamar as funcoes mais de uma vez
@@ -111,51 +229,66 @@ namespace SimulOP.Forms
             // Track Bar
             int trbInt = Convert.ToInt32((Convert.ToDouble(trb.Maximum - trb.Minimum)) * (Convert.ToDouble(nud.Value) - Convert.ToDouble(nud.Minimum))
                 / (Convert.ToDouble(nud.Maximum) - Convert.ToDouble(nud.Minimum)));
-            trb.Value = trbInt;
+            trb.Value = trbInt;         
 
             switch (nud.Name)
             {
-                case "nudVarFluidoFrioVazao":
-
+                case "nudVarFluidoInternoVazao":
+                    nudVarFluidoInternoVazaoDbl = x;
+                    txbFigFluidoInternoTxt[4] = $"Vazão = {Math.Round(x,1)} ft3/min";
+                    txbFigFluidoInterno.Lines = txbFigFluidoInternoTxt;
                     break;
-                case "nudVarFluidoFrioTemp":
-
+                case "nudVarFluidoInternoTemp":
+                    nudVarFluidoInternoTempDbl = x;
+                    txbFigFluidoInternoTxt[3] = $"T ent = {Math.Round(x, 1)} ºF";
+                    txbFigFluidoInterno.Lines = txbFigFluidoInternoTxt;
                     break;
-                case "nudVarFluidoQuenteVazao":
-
+                case "nudVarFluidoAnularVazao":
+                    nudVarFluidoAnularVazaoDbl = x;
+                    txbFigFluidoAnularTxt[4] = $"Vazão = {Math.Round(x, 1)} ft3/min";
+                    txbFigFluidoAnular.Lines = txbFigFluidoAnularTxt;
                     break;
-                case "nudVarFluidoQuenteTemp":
-
+                case "nudVarFluidoAnularTemp":
+                    nudVarFluidoAnularTempDbl = x;
+                    txbFigFluidoAnularTxt[3] = $"T ent = {Math.Round(x, 1)} ºF";
+                    txbFigFluidoAnular.Lines = txbFigFluidoAnularTxt;
                     break;
                 case "nudVarTrocadorComprimento":
                     nudTrocadorComprimento.Value = Convert.ToDecimal(x);
+                    nudVarTrocadorComprimentoDbl = x;
                     break;
                 case "nudVarTrocadorDiamAnular":
                     nudTrocadorDiametroAnular.Value = Convert.ToDecimal(x);
+                    nudVarTrocadorDiamAnularDbl = x;
                     break;
                 case "nudVarTrocadorDiamInterno":
                     nudTrocadorDiametroInterno.Value = Convert.ToDecimal(x);
+                    nudVarTrocadorDiamInternoDbl = x;
                     break;
                 default:
-                    break;
+                    throw new Exception($"- {nud.Name} - Não era esperado!");
             }
-
             // Re-inscreve-se aos eventos
             EventosInputs(true);
         }
 
+        /// <summary>
+        /// Retorna o par do NumericUpDown.
+        /// </summary>
+        /// <param name="nud">O NumericUpDown.</param>
+        /// <returns>A TrackBar pareada com o NumericUpDown.</returns>
         private TrackBar ParTrb(NumericUpDown nud)
         {
             switch (nud.Name)
             {
-                case "nudVarFluidoFrioVazao":
-                    return trbVarFluidoFrioVazao;
-                case "nudVarFluidoFrioTemp":
-                    return trbVarFluidoFrioTemp;
-                case "nudVarFluidoQuenteVazao":
-                    return trbVarFluidoQuenteVazao;
-                case "nudVarFluidoQuenteTemp":
-                    return trbVarFluidoQuenteTemp;
+                case "nudVarFluidoInternoVazao":
+                    return trbVarFluidoInternoVazao;
+                case "nudVarFluidoInternoTemp":
+                    return trbVarFluidoInternoTemp;
+                case "nudVarFluidoAnularVazao":
+                    return trbVarFluidoAnularVazao;
+                case "nudVarFluidoAnularTemp":
+                    return trbVarFluidoAnularTemp;
                 case "nudVarTrocadorComprimento":
                     return trbVarTrocadorComprimento;
                 case "nudVarTrocadorDiamAnular":
@@ -167,18 +300,23 @@ namespace SimulOP.Forms
             }
         }
 
+        /// <summary>
+        /// Retorna o par da TrackBar.
+        /// </summary>
+        /// <param name="trb">A TrackBar.</param>
+        /// <returns>O NumericUpDown pareado com a TrackBar.</returns>
         private NumericUpDown ParNud(TrackBar trb)
         {
             switch (trb.Name)
             {
-                case "trbVarFluidoFrioVazao":
-                    return nudVarFluidoFrioVazao;
-                case "trbVarFluidoFrioTemp":
-                    return nudVarFluidoFrioTemp;
-                case "trbVarFluidoQuenteVazao":
-                    return nudVarFluidoQuenteVazao;
-                case "trbVarFluidoQuenteTemp":
-                    return nudVarFluidoQuenteTemp;
+                case "trbVarFluidoInternoVazao":
+                    return nudVarFluidoInternoVazao;
+                case "trbVarFluidoInternoTemp":
+                    return nudVarFluidoInternoTemp;
+                case "trbVarFluidoAnularVazao":
+                    return nudVarFluidoAnularVazao;
+                case "trbVarFluidoAnularTemp":
+                    return nudVarFluidoAnularTemp;
                 case "trbVarTrocadorComprimento":
                     return nudVarTrocadorComprimento;
                 case "trbVarTrocadorDiamAnular":
@@ -190,13 +328,13 @@ namespace SimulOP.Forms
             }
         }
 
-        private void nudVarFluidoFrioVazao_ValueChanged(object sender, EventArgs e)
+        private void nudVarFluidoInternoVazao_ValueChanged(object sender, EventArgs e)
         {
             NumericUpDown nud = (NumericUpDown)sender;
             AtualizaParDin(nud, ParTrb(nud), Convert.ToDouble(nud.Value));
         }
 
-        private void trbVarFluidoFrioVazao_Scroll(object sender, EventArgs e)
+        private void trbVarFluidoInternoVazao_Scroll(object sender, EventArgs e)
         {
             TrackBar trb = (TrackBar)sender;
             NumericUpDown nud = ParNud(trb);
@@ -208,13 +346,13 @@ namespace SimulOP.Forms
             AtualizaParDin(nud, trb, x);
         }
 
-        private void nudVarFluidoFrioTemp_ValueChanged(object sender, EventArgs e)
+        private void nudVarFluidoInternoTemp_ValueChanged(object sender, EventArgs e)
         {
             NumericUpDown nud = (NumericUpDown)sender;
             AtualizaParDin(nud, ParTrb(nud), Convert.ToDouble(nud.Value));
         }
 
-        private void trbVarFluidoFrioTemp_Scroll(object sender, EventArgs e)
+        private void trbVarFluidoInternoTemp_Scroll(object sender, EventArgs e)
         {
             TrackBar trb = (TrackBar)sender;
             NumericUpDown nud = ParNud(trb);
@@ -226,13 +364,13 @@ namespace SimulOP.Forms
             AtualizaParDin(nud, trb, x);
         }
 
-        private void nudVarFluidoQuenteVazao_ValueChanged(object sender, EventArgs e)
+        private void nudVarFluidoAnularVazao_ValueChanged(object sender, EventArgs e)
         {
             NumericUpDown nud = (NumericUpDown)sender;
             AtualizaParDin(nud, ParTrb(nud), Convert.ToDouble(nud.Value));
         }
 
-        private void trbVarFluidoQuenteVazao_Scroll(object sender, EventArgs e)
+        private void trbVarFluidoAnularVazao_Scroll(object sender, EventArgs e)
         {
             TrackBar trb = (TrackBar)sender;
             NumericUpDown nud = ParNud(trb);
@@ -244,13 +382,13 @@ namespace SimulOP.Forms
             AtualizaParDin(nud, trb, x);
         }
 
-        private void nudVarFluidoQuenteTemp_ValueChanged(object sender, EventArgs e)
+        private void nudVarFluidoAnularTemp_ValueChanged(object sender, EventArgs e)
         {
             NumericUpDown nud = (NumericUpDown)sender;
             AtualizaParDin(nud, ParTrb(nud), Convert.ToDouble(nud.Value));
         }
 
-        private void trbVarFluidoQuenteTemp_Scroll(object sender, EventArgs e)
+        private void trbVarFluidoAnularTemp_Scroll(object sender, EventArgs e)
         {
             TrackBar trb = (TrackBar)sender;
             NumericUpDown nud = ParNud(trb);
