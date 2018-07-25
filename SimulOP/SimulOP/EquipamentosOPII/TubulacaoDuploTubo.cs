@@ -10,20 +10,11 @@ namespace SimulOP
     {
         protected double especura;
         protected double diametroExterno;
-        protected double resistenciaTermica;
         protected EquipamentoOPII.TipoTubo tipoTubo;
         
         public EquipamentoOPII.TipoTubo TipoTubo { get => tipoTubo; set => tipoTubo = value; }
         public double DiametroExterno { get => diametroExterno; set => diametroExterno = value; }
         public double Especura { get => especura; set => especura = value; }
-        public double ResistenciaTermica
-        {
-            get
-            {
-                CalculaResistencia();
-                return resistenciaTermica;
-            }
-        }
 
         /// <summary>
         /// Constructor da tubulação do trocador duplo tubo
@@ -40,13 +31,6 @@ namespace SimulOP
             this.tipoTubo = tipoTubo;
         }
         
-        private void CalculaResistencia()
-        {
-            double R = (this.diametroExterno * Math.PI * this.comprimento) / (material.Condutividade * this.especura);
-
-            this.resistenciaTermica = R;
-        } 
-
 
         public override double CalcReynolds(double densidade, double viscosidade, double vazao, double diametro)
         {

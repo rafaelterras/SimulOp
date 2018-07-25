@@ -226,7 +226,7 @@ namespace SimulOP
 
             // 1/ hT = Sum(1/h)
 
-            hTotal = 1 / ((1 / hAnular) + (1 / hInterno) + (1 / fatorIncrustacao) + tubulacaoAnular.ResistenciaTermica * areaTroca); // [VERIFICAR !!!]  
+            hTotal = 1 / ((1 / hAnular) + (1 / hInterno) + (1 / fatorIncrustacao)); // [VERIFICAR !!!]  
 
             this.coefTrocaTermGlobal = hTotal;
 
@@ -250,8 +250,7 @@ namespace SimulOP
             {
 
             }
-
-
+            
             throw new NotImplementedException(); // TODO: Implementar o calculo do coeficiente de convec.
         }
 

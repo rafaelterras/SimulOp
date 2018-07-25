@@ -12,7 +12,7 @@ namespace SimulOP
         private double temperatura;
         private double densidade; //[lb/ft^3]
         private double viscosidade;
-        private double calorEspecifico; // TODO: Verificar o cálculo das proriedades
+        private double calorEspecifico; // TODO: Verificar o cálculo das proriedades.
         private double condutividadeTermica;
 
 
