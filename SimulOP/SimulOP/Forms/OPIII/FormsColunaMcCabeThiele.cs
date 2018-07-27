@@ -192,6 +192,12 @@ namespace SimulOP.Forms
                 }
                 else
                 {
+                    if (pratosX.Count == 0)
+                    {
+                        erroConvergencia = true;
+                        return;
+                    }
+
                     double dis = Math.Abs(ColunaMcCabeThiele.PontoP[0] - pratosX[1]);
                     localPratoIdeal = "1";
 
@@ -565,17 +571,17 @@ namespace SimulOP.Forms
 
         private void picAjudaResultados_Click(object sender, EventArgs e)
         {
-            MostrarPopOut("ajudaColuna");
+            MostrarPopOut("ajudaColunaResultados");
         }
 
         private void picAjudaFluido_Click(object sender, EventArgs e)
         {
-
+            MostrarPopOut("ajudaColunaFluido");
         }
 
         private void picAjudaCondEntrada_Click(object sender, EventArgs e)
         {
-
+            MostrarPopOut("ajudaCondicaoEntrada");
         }
 
         #endregion

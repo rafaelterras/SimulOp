@@ -273,7 +273,7 @@ namespace SimulOP
 
                 try
                 {
-                    eq = AchaRaizBrenet(LinhaOPEq, -1.0, 1.0);
+                    eq = AchaRaizBrenet(LinhaOPEq, 0, 1.0, 1E-4, 200);
                 }
                 catch (Exception)
                 {

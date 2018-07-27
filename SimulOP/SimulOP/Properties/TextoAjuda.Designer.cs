@@ -105,6 +105,38 @@ namespace SimulOP.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Para o cálculo de equilíbrio é usado a lei de Raoult para misturas ideais, usando também a equação de Antoine para estimar as pressões de vapores.
+        ///
+        ///Essa abordagem é válida apenas para misturas próximas da idealidade, para misturas mais complexas, ou quando há formação de azeótropos essa abordagem não pode ser utilizada..
+        /// </summary>
+        internal static string ajudaColunaFluido {
+            get {
+                return ResourceManager.GetString("ajudaColunaFluido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O valor de alpha dá uma ideia do quão fácil é separar a mistura, quanto maior melhor, o que pode ser visto no gráfico de equilíbrio, para valores elevados de alpha a linha de equilíbrio se distancia da linha de 45º.
+        ///
+        ///O número de pratos apresentado considera que cada prato chega no equilíbrio, que mesmo para uma mistura ideal é uma aproximação. Para determinar o número de pratos real de uma coluna é necessário verificar a eficiência do prato, que varia conforme as características mecânicas de cada prato.
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ajudaColunaResultados {
+            get {
+                return ResourceManager.GetString("ajudaColunaResultados", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Condição de entrada se refere a “qualidade” da corrente que entra na coluna, e afeta mais as linhas de operações da coluna..
+        /// </summary>
+        internal static string ajudaCondicaoEntrada {
+            get {
+                return ResourceManager.GetString("ajudaCondicaoEntrada", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor laoreet libero, fermentum mollis metus cursus sit amet. Nam volutpat velit vitae odio commodo ultrices. Cras in pharetra eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer efficitur accumsan dui, vitae iaculis neque hendrerit non. Fusce aliquam blandit lorem, eget consectetur sapien. Vestibulum dapibus mollis diam sed dictum. Quisque et egestas massa. Proin congue, quam ac tristique blan [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ajudaTeste {

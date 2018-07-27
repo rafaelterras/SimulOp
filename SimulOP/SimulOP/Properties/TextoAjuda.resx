@@ -137,6 +137,21 @@ O diâmetro em polegadas é o diâmetro nominal, diferente do diâmetro interno 
 
 Para do fator de atrito foi utilizado a equação de Fanning.</value>
   </data>
+  <data name="ajudaColunaFluido" xml:space="preserve">
+    <value>Para o cálculo de equilíbrio é usado a lei de Raoult para misturas ideais, usando também a equação de Antoine para estimar as pressões de vapores.
+
+Essa abordagem é válida apenas para misturas próximas da idealidade, para misturas mais complexas, ou quando há formação de azeótropos essa abordagem não pode ser utilizada.</value>
+  </data>
+  <data name="ajudaColunaResultados" xml:space="preserve">
+    <value>O valor de alpha dá uma ideia do quão fácil é separar a mistura, quanto maior melhor, o que pode ser visto no gráfico de equilíbrio, para valores elevados de alpha a linha de equilíbrio se distancia da linha de 45º.
+
+O número de pratos apresentado considera que cada prato chega no equilíbrio, que mesmo para uma mistura ideal é uma aproximação. Para determinar o número de pratos real de uma coluna é necessário verificar a eficiência do prato, que varia conforme as características mecânicas de cada prato.
+
+O prato de entrada ideal é o prato que a mistura deve entrar na coluna para que a separação seja a melhor possível (nas condições de projeto e de refluxo).</value>
+  </data>
+  <data name="ajudaCondicaoEntrada" xml:space="preserve">
+    <value>Condição de entrada se refere a “qualidade” da corrente que entra na coluna, e afeta mais as linhas de operações da coluna.</value>
+  </data>
   <data name="ajudaTeste" xml:space="preserve">
     <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor laoreet libero, fermentum mollis metus cursus sit amet. Nam volutpat velit vitae odio commodo ultrices. Cras in pharetra eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer efficitur accumsan dui, vitae iaculis neque hendrerit non. Fusce aliquam blandit lorem, eget consectetur sapien. Vestibulum dapibus mollis diam sed dictum. Quisque et egestas massa. Proin congue, quam ac tristique blandit, nulla quam consectetur nibh, vel auctor ante leo sed erat. Donec lacinia orci nec pharetra congue. Quisque vitae ex diam. Sed blandit tincidunt pharetra.
 

@@ -64,10 +64,15 @@
                     densidade = 862.1;
                     viscosidade = 5.60E-4;
                     break;
-                case "naftaleno":
-                    coefAntoine = new double[3] { 4.27117, 1831.571, -61.329 };
-                    densidade = 862.1;
-                    viscosidade = 5.60E-4;
+                case "hexano":
+                    coefAntoine = new double[3] { 4.00266, 1171.53, -48.784 };
+                    densidade = 655;
+                    viscosidade = 3.0E-4;
+                    break;
+                case "p-xileno":
+                    coefAntoine = new double[3] { 4.14553, 1474.403, -55.377 };
+                    densidade = 870;
+                    viscosidade = 8.12E-4;
                     break;
                 default:
                     return null;

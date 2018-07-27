@@ -18,7 +18,7 @@ namespace SimulOP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms.FormsTrocadorBiTubilar());
+            Application.Run(new Forms.FormsMaster());
         }
      }
 }
