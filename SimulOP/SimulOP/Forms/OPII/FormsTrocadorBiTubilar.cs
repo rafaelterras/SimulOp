@@ -22,6 +22,10 @@ namespace SimulOP.Forms
         private FluidoOPII fluidoInternoEnt;
         private FluidoOPII fluidoInternoSai;
 
+        // Text box
+        string[] txbFigFluidoAnularTxt;
+        string[] txbFigFluidoInternoTxt;
+
         // Inputs que podem ser variadas
         private double nudVarFluidoInternoVazaoDbl;
         private double nudVarFluidoInternoTempDbl;
@@ -30,13 +34,26 @@ namespace SimulOP.Forms
         private double nudVarTrocadorComprimentoDbl;
         private double nudVarTrocadorDiamAnularDbl;
         private double nudVarTrocadorDiamInternoDbl;
-        
-        // Forms de ajuda
-        private Form formAberto;
 
-        // Text box
-        string[] txbFigFluidoAnularTxt;
-        string[] txbFigFluidoInternoTxt;
+        // Resultados
+        private string txbResultadoPerdaCargaInternaTxt;
+        private string txbResultadoPerdaCargaAnularTxt;
+        private string txbResultadosCoefTrocaTxt;
+
+        private string txbResultadoTempFluidoInternoSaiTxt;
+        private string txbResultadoTempFluidoAnularSaiTxt;
+        private string txbResultadosCalorTrocadoTxt;
+
+        // Listas para Plot
+        private List<double> comprimentoX = new List<double>();
+        private List<double> perdaCargaInternoY = new List<double>();
+        private List<double> perdaCargaAnularY = new List<double>();
+        private List<double> temperaturaInternoY = new List<double>();
+        private List<double> temperaturaAnularY = new List<double>();
+
+        // Forms de ajuda e auxiliares
+        private Form formAberto;
+        private bool calculado = false;
         
         public FormsTrocadorBiTubilar()
         {
@@ -54,6 +71,10 @@ namespace SimulOP.Forms
         {
             if (ativar)
             {
+                nudTrocadorComprimento.ValueChanged += nudTrocadorComprimento_ValueChanged;
+                nudTrocadorDiametroAnular.ValueChanged += nudTrocadorDiametroAnular_ValueChanged;
+                nudTrocadorDiametroInterno.ValueChanged += nudTrocadorDiametroInterno_ValueChanged;
+
                 nudVarFluidoInternoVazao.ValueChanged += nudVarFluidoInternoVazao_ValueChanged;
                 trbVarFluidoInternoVazao.Scroll += trbVarFluidoInternoVazao_Scroll;
                 nudVarFluidoInternoTemp.ValueChanged += nudVarFluidoInternoTemp_ValueChanged;
@@ -71,6 +92,10 @@ namespace SimulOP.Forms
             }
             else
             {
+                nudTrocadorComprimento.ValueChanged -= nudTrocadorComprimento_ValueChanged;
+                nudTrocadorDiametroAnular.ValueChanged -= nudTrocadorDiametroAnular_ValueChanged;
+                nudTrocadorDiametroInterno.ValueChanged -= nudTrocadorDiametroInterno_ValueChanged;
+
                 nudVarFluidoInternoVazao.ValueChanged -= nudVarFluidoInternoVazao_ValueChanged;
                 trbVarFluidoInternoVazao.Scroll -= trbVarFluidoInternoVazao_Scroll;
                 nudVarFluidoInternoTemp.ValueChanged -= nudVarFluidoInternoTemp_ValueChanged;
@@ -90,6 +115,7 @@ namespace SimulOP.Forms
 
         private void btnTrocaFluidos_Click(object sender, EventArgs e)
         {
+            // Caixas de texto
             string temp;
 
             for (int i = 1; i < 3; i++)
@@ -103,20 +129,32 @@ namespace SimulOP.Forms
             txbFigFluidoInterno.Lines = txbFigFluidoInternoTxt;
 
             double tempTemp = nudVarFluidoInternoTempDbl;
+            int trbTempTemp = trbVarFluidoInternoTemp.Value;
             double tmpVaz = nudVarFluidoInternoVazaoDbl;
+            int trbVazTemp = trbVarFluidoInternoVazao.Value;
 
-            nudVarFluidoInternoTemp.Value = Convert.ToDecimal(nudVarFluidoAnularTempDbl);
-            nudVarFluidoInternoVazao.Value = Convert.ToDecimal(nudVarFluidoAnularVazaoDbl);
-            nudVarFluidoAnularTemp.Value = Convert.ToDecimal(tempTemp);
-            nudVarFluidoAnularVazao.Value = Convert.ToDecimal(tmpVaz);
-            
-            // TODO: Atualizar os resultados
+            EventosInputs(false);
+
+            nudVarFluidoInternoTemp.Value = Convert.ToDecimal(nudVarFluidoAnularTempDbl);  //  Temperatura fluido interno
+            trbVarFluidoInternoTemp.Value = trbVarFluidoAnularTemp.Value;
+
+            nudVarFluidoInternoVazao.Value = Convert.ToDecimal(nudVarFluidoAnularVazaoDbl); // Vazão fluido interno
+            trbVarFluidoInternoVazao.Value = trbVarFluidoAnularVazao.Value;
+
+            nudVarFluidoAnularTemp.Value = Convert.ToDecimal(tempTemp);                     // Temperatura fluido anular
+            trbVarFluidoAnularTemp.Value = trbTempTemp;
+
+            nudVarFluidoAnularVazao.Value = Convert.ToDecimal(tmpVaz);                      // Vazão fluido anular
+            trbVarFluidoAnularVazao.Value = trbVazTemp;
 
             EventosInputs(true);
+
+            // AtualizaForms();
         }
 
         private void btnCalcular_Click(object sender, EventArgs e)
-        {
+        {   
+            /*
             // Fluido Anular
             string fluidoAnularNome = cmbFluidoAnular.Text;
             double fluidoAnularAPI = Convert.ToDouble(nudFluidoAnularAPI.Value);
@@ -170,30 +208,98 @@ namespace SimulOP.Forms
             trocador = new TrocadorDuploTubo(fluidoAnularEnt, fluidoAnularVazao, fluidoInternoEnt, fluidoInternoVazao,
                 tubulacaoAnular, tubulacaoInterna, tubulacaoComprimento, fatorIncrustacao);
 
-            chartPerdaCarga.Series["fluidoFrio"].Points.DataBindXY(new double[] { 0, 0.5, 1 }, new double[] { 0, 50, 80 });
-            chartTemperatura.Series["temperatura"].Points.DataBindXY(new double[] { 0, 0.5, 1 }, new double[] { 0, 50, 80 });
+
+            txbFigFluidoAnular.Lines = new string[] { "Fluido Anular: ", $"[{trocador.Anular}]", $"{trocador.FluidoAnularEnt.Material.Componente}",
+                $"T ent = {trocador.FluidoAnularEnt.Temperatura} ºF", $"  Vazão = {trocador.VazaoAnular} ft3/min" };
+            txbFigFluidoInterno.Lines = new string[] { "Fluido Interno: ", $"[{trocador.Interno}]", $"{trocador.FluidoInternoEnt.Material.Componente}",
+                $"T ent = {trocador.FluidoInternoEnt.Temperatura} ºF", $"  Vazão = {trocador.VazaoInterna} ft3/min" };
+
+            txbFigFluidoAnularTxt = txbFigFluidoAnular.Lines;
+            txbFigFluidoInternoTxt = txbFigFluidoInterno.Lines;
+
+            trocador.CalculaTroca();
+            fluidoAnularSai = trocador.FluidoAnularSai;
+            fluidoInternoSai = trocador.FluidoInternoSai;
+            */
+            
+            txbFigFluidoAnular.Lines = new string[] { txbFigFluidoAnularTxt[0], txbFigFluidoAnularTxt[1], txbFigFluidoAnularTxt[2], txbFigFluidoAnularTxt[3], txbFigFluidoAnularTxt[4] };
+            txbFigFluidoInterno.Lines = new string[] { txbFigFluidoInternoTxt[0], txbFigFluidoInternoTxt[1], txbFigFluidoInternoTxt[2], txbFigFluidoInternoTxt[3], txbFigFluidoInternoTxt[4] };
+            
+            calculado = true;
+
+            // Ativa os elementos da UI.
+            txbFigFluidoAnular.Visible = true;
+            txbFigFluidoInterno.Visible = true;
+            chartPerdaCarga.Visible = true;
+            chartTemperatura.Visible = true;
+            gubResultados.Visible = true;
+            gubVarFluidoInterno.Visible = true;
+            gubVarFluidoAnular.Visible = true;
+            gubVarTrocador.Visible = true;
+            tabControl.SelectedIndex = 1;
+
+            chartPerdaCarga.Series["fluidoInterno"].Points.DataBindXY(new double[] { 0, 0.5, 1 }, new double[] { 0, 50, 80 });
+            chartTemperatura.Series["tempInterno"].Points.DataBindXY(new double[] { 0, 0.5, 1 }, new double[] { 0, 50, 80 });
         }
 
         private void AtualizaForms()
         {
-            AtualizaPlotPerdaCarga();
-            AtulizaPlotTemperatura();
-            AtualizaResultados();
+            AtualizaPlots();
+            AtualizaResultados(nudVarTrocadorComprimentoDbl);
         }
 
-        private void AtualizaPlotPerdaCarga()
+        private void AtualizaPlots()
         {
-            // TODO: Função para atualizar plot da perda de carga.
+            comprimentoX.Clear();
+            perdaCargaInternoY.Clear();
+            perdaCargaAnularY.Clear();
+            temperaturaInternoY.Clear();
+            temperaturaAnularY.Clear();
+
+            chartPerdaCarga.Series.Clear();
+            chartTemperatura.Series.Clear();
+
+            // TODO: [VERIFICAR] Função para atualizar plot da perda de carga.
+            (comprimentoX, perdaCargaInternoY, perdaCargaAnularY, temperaturaInternoY, temperaturaAnularY) = trocador.PlotResultados(2.1, 2.5, 40);
+
+            // Gráfico da perda de carga
+            chartPerdaCarga.Series["fluidoInterno"].Points.DataBindXY(comprimentoX, perdaCargaInternoY);
+            chartPerdaCarga.Series["fluidoAnular"].Points.DataBindXY(comprimentoX, perdaCargaAnularY);
+
+            // Gráfico das temperaturas
+            chartTemperatura.Series["tempInterno"].Points.DataBindXY(comprimentoX, temperaturaInternoY);
+            chartTemperatura.Series["tempAnular"].Points.DataBindXY(comprimentoX, temperaturaAnularY);
         }
 
-        private void AtulizaPlotTemperatura()
+        private void AtualizaResultados(double comprimento)
         {
-            // TODO: Função para atualizar plot da temperatura.
-        }
+            // Cálculo do trocador com o novo comprimento
+            trocador.Comprimento = comprimento;
+            trocador.CalculaTroca();
 
-        private void AtualizaResultados()
-        {
-            // TODO: Função para atualizar os resultados.
+            // Display dos resultados
+            txbResultadoPerdaCargaInternaTxt = Math.Round(trocador.TubulacaoInterna.PerdaCarga, 2).ToString();
+            txbResultadoPerdaCargaAnularTxt = Math.Round(trocador.TubulacaoAnular.PerdaCarga, 2).ToString();
+            txbResultadosCoefTrocaTxt = Math.Round(trocador.CoefTrocaTermGlobal, 2).ToString();
+
+            txbResultadoTempFluidoInternoSaiTxt = Math.Round(trocador.FluidoInternoSai.Temperatura, 2).ToString();
+            txbResultadoTempFluidoAnularSaiTxt = Math.Round(trocador.FluidoAnularSai.Temperatura, 2).ToString();
+            txbResultadosCalorTrocadoTxt = Math.Round(trocador.CalorTransferido, 0).ToString();
+
+            txbResultadoPerdaCargaInterna.Text = txbResultadoPerdaCargaInternaTxt;
+            txbResultadoPerdaCargaAnular.Text = txbResultadoPerdaCargaAnularTxt;
+            txbResultadosCoefTroca.Text = txbResultadosCoefTrocaTxt;
+
+            txbResultadoTempFluidoInternoSai.Text = txbResultadoTempFluidoInternoSaiTxt;
+            txbResultadoTempFluidoAnularSai.Text = txbResultadoTempFluidoAnularSaiTxt;
+            txbResultadosCalorTrocado.Text = txbResultadosCalorTrocadoTxt;
+
+            // Atualização da linha do comprimento nos gráficos            
+            double perdaCargaMax = Math.Max(trocador.TubulacaoAnular.PerdaCarga, trocador.TubulacaoInterna.PerdaCarga);
+            double temperaturaMax = Math.Max(trocador.FluidoAnularSai.Temperatura, trocador.FluidoInternoSai.Temperatura);
+
+            chartPerdaCarga.Series["linhaComprimento"].Points.DataBindXY(new double[] { comprimento, comprimento }, new double[] { 0, perdaCargaMax });
+            chartTemperatura.Series["linhaComprimento"].Points.DataBindXY(new double[] { comprimento, comprimento }, new double[] { 0, temperaturaMax });
         }
 
         #region Input Inicial
@@ -253,43 +359,70 @@ namespace SimulOP.Forms
                 / (Convert.ToDouble(nud.Maximum) - Convert.ToDouble(nud.Minimum)));
             trb.Value = trbInt;
 
-            switch (nud.Name) // TODO: implementar as variações
+            if (!calculado) // Retorna sem modificar se não for atualizar.
+            {
+                EventosInputs(true);
+                return;
+            }
+
+            switch (nud.Name) 
             {
                 case "nudVarFluidoInternoVazao":
                     nudVarFluidoInternoVazaoDbl = x;
                     txbFigFluidoInternoTxt[4] = $"Vazão = {Math.Round(x,1)} ft3/min";
                     txbFigFluidoInterno.Lines = txbFigFluidoInternoTxt;
+
+                    trocador.VazaoInterna = nudVarFluidoInternoVazaoDbl;    // Atualiza o trocador
+                    AtualizaForms();                                        // Atualiza o forms
                     break;
                 case "nudVarFluidoInternoTemp":
                     nudVarFluidoInternoTempDbl = x;
                     txbFigFluidoInternoTxt[3] = $"T ent = {Math.Round(x, 1)} ºF";
                     txbFigFluidoInterno.Lines = txbFigFluidoInternoTxt;
+
+                    trocador.FluidoInternoEnt.Temperatura = nudVarFluidoInternoTempDbl; // Atualiza o trocador
+                    AtualizaForms();                                                    // Atualiza o forms
                     break;
                 case "nudVarFluidoAnularVazao":
                     nudVarFluidoAnularVazaoDbl = x;
                     txbFigFluidoAnularTxt[4] = $"Vazão = {Math.Round(x, 1)} ft3/min";
                     txbFigFluidoAnular.Lines = txbFigFluidoAnularTxt;
+
+                    trocador.VazaoAnular = nudVarFluidoAnularVazaoDbl;  // Atualiza o trocador
+                    AtualizaForms();                                    // Atualiza o forms
                     break;
                 case "nudVarFluidoAnularTemp":
                     nudVarFluidoAnularTempDbl = x;
                     txbFigFluidoAnularTxt[3] = $"T ent = {Math.Round(x, 1)} ºF";
                     txbFigFluidoAnular.Lines = txbFigFluidoAnularTxt;
+
+                    trocador.FluidoAnularEnt.Temperatura = nudVarFluidoAnularTempDbl;   // Atualiza o trocador
+                    AtualizaForms();                                                    // Atualiza o forms
                     break;
                 case "nudVarTrocadorComprimento":
                     nudTrocadorComprimento.Value = Convert.ToDecimal(x);
                     nudVarTrocadorComprimentoDbl = x;
+
+                    AtualizaResultados(nudVarTrocadorComprimentoDbl);   // Atualiza o gráfico e resultados
                     break;
                 case "nudVarTrocadorDiamAnular":
                     nudTrocadorDiametroAnular.Value = Convert.ToDecimal(x);
                     nudVarTrocadorDiamAnularDbl = x;
+
+                    trocador.TubulacaoAnular.Diametro = nudVarTrocadorDiamAnularDbl;    // Atualiza o trocador
+                    AtualizaForms();                                                    // Atualiza o forms
                     break;
                 case "nudVarTrocadorDiamInterno":
                     nudTrocadorDiametroInterno.Value = Convert.ToDecimal(x);
                     nudVarTrocadorDiamInternoDbl = x;
+
+                    trocador.TubulacaoInterna.Diametro = nudVarTrocadorDiamInternoDbl;  // Atualiza o trocador
+                    AtualizaForms();                                                    // Atualiza o forms
                     break;
                 default:
                     throw new Exception($"- {nud.Name} - Não era esperado!");
             }
+
             // Re-inscreve-se aos eventos
             EventosInputs(true);
         }
@@ -347,6 +480,30 @@ namespace SimulOP.Forms
                     return nudVarTrocadorDiamInterno;
                 default:
                     return null;
+            }
+        }
+
+        private void nudTrocadorComprimento_ValueChanged(object sender, EventArgs e)
+        {
+            if (calculado)
+            {
+                AtualizaParDin(nudVarTrocadorComprimento, trbVarTrocadorComprimento, Convert.ToDouble(nudTrocadorComprimento.Value));
+            }
+        }
+
+        private void nudTrocadorDiametroAnular_ValueChanged(object sender, EventArgs e)
+        {
+            if (calculado)
+            {
+                AtualizaParDin(nudVarTrocadorDiamAnular, trbVarTrocadorDiamAnular, Convert.ToDouble(nudTrocadorDiametroAnular.Value));
+            }
+        }
+
+        private void nudTrocadorDiametroInterno_ValueChanged(object sender, EventArgs e)
+        {
+            if (calculado)
+            {
+                AtualizaParDin(nudVarTrocadorDiamInterno, trbVarTrocadorDiamInterno, Convert.ToDouble(nudTrocadorDiametroInterno.Value));
             }
         }
 

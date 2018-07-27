@@ -8,6 +8,7 @@ namespace SimulOP
 {
     public interface IMaterialFluidoOPII
     {
+        string Componente { get; }
         double Temperatura { get; set; }
         double Viscosidade { get; }
         double Densidade { get; }

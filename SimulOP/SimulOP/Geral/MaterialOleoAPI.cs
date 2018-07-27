@@ -8,6 +8,7 @@ namespace SimulOP
 {
     public class MaterialOleoAPI : IMaterialFluidoOPII
     {
+        private string componente;
         private double grauAPI;
         private double temperatura;
         private double densidade; //[lb/ft^3]
@@ -15,6 +16,7 @@ namespace SimulOP
         private double calorEspecifico; // TODO: Verificar o cálculo das proriedades.
         private double condutividadeTermica;
 
+        public string Componente { get; }
 
         public double GrauAPI { get => grauAPI; }
         public double Temperatura
@@ -32,10 +34,12 @@ namespace SimulOP
         public double CalorEspecifico { get => calorEspecifico; }
         public double CondutividadeTermica { get => condutividadeTermica; }
 
+
         public MaterialOleoAPI(double grauAPI, double temperatura)
         {
             this.grauAPI = grauAPI;
             this.temperatura = temperatura;
+            this.componente = $"Óleo º{grauAPI} API";
             AtualizaPropriedades();
         }
 

@@ -12,17 +12,15 @@ namespace SimulOP
         private IMaterialFluidoOPII materialBulckAnular;
         private double tBulckAnular;
         private double vazaoAnular;
-        private double perdaDePressaoAnular;
         private FluidoTroca anular;
-        
+
         private TubulacaoDuploTubo tubulacaoInterna;
         private FluidoOPII fluidoInternoEnt;
         private IMaterialFluidoOPII materialBulckInterno;
         private double tBulckInterno;
         private double vazaoInterna;
-        private double perdaDePressaoExterno;
         private FluidoTroca interno;
-        
+
         private FluidoOPII fluidoAnularSai;
         private FluidoOPII fluidoInternoSai;
 
@@ -39,15 +37,13 @@ namespace SimulOP
         public TubulacaoDuploTubo TubulacaoAnular { get => tubulacaoAnular; set => tubulacaoAnular = value; }
         public FluidoOPII FluidoAnularEnt { get => fluidoAnularEnt; set => fluidoAnularEnt = value; }
         public double VazaoAnular { get => vazaoAnular; set => vazaoAnular = value; }
-        public double PerdaDePressaoAnular { get => perdaDePressaoAnular; }
         public FluidoTroca Anular { get => anular; }
-        
+
         public TubulacaoDuploTubo TubulacaoInterna { get => tubulacaoInterna; set => tubulacaoInterna = value; }
         public FluidoOPII FluidoInternoEnt { get => fluidoInternoEnt; set => fluidoInternoEnt = value; }
         public double VazaoInterna { get => vazaoInterna; set => vazaoInterna = value; }
-        public double PerdaDePressaoExterno { get => perdaDePressaoExterno; }
         public FluidoTroca Interno { get => interno; }
-        
+
         public FluidoOPII FluidoAnularSai { get => fluidoAnularSai; }
         public FluidoOPII FluidoInternoSai { get => fluidoInternoSai; }
 
@@ -101,8 +97,8 @@ namespace SimulOP
         /// <param name="tubulacaoInterna">Tubulação da parte interna.</param>
         /// <param name="comprimento">Comprimento do trocador</param>
         /// <param name="confgCorrentes">Configuração das correntes.</param>
-        public TrocadorDuploTubo(FluidoOPII fluidoAnularEnt, double vazaoAnular, FluidoOPII fluidoInternoEnt, double vazaoInterno, 
-            TubulacaoDuploTubo tubulacaoAnular, TubulacaoDuploTubo tubulacaoInterna, double comprimento, double fatorIncrustacao, 
+        public TrocadorDuploTubo(FluidoOPII fluidoAnularEnt, double vazaoAnular, FluidoOPII fluidoInternoEnt, double vazaoInterno,
+            TubulacaoDuploTubo tubulacaoAnular, TubulacaoDuploTubo tubulacaoInterna, double comprimento, double fatorIncrustacao,
             ConfgCorrentes confgCorrentes = ConfgCorrentes.contraCorrente)
         {
             this.fluidoAnularEnt = fluidoAnularEnt ?? throw new ArgumentNullException(nameof(fluidoAnularEnt));
@@ -175,7 +171,7 @@ namespace SimulOP
                 materialBulckInterno.Temperatura = tBulckInterno;
 
                 CalculaCoefGlobal(); // Atualiza os coeficientes de troca termica.
-                
+
                 CalculaCalorTrans(); // Calcula o calor transferido entre os fluidos.
 
                 // 2.3.1. Cálculo da nova temperatura estimada de saida e dos tBulcks.
@@ -190,7 +186,7 @@ namespace SimulOP
                 {
                     convergencia = true;
                 }
-                
+
                 tBulckAnular = tBulckAnularEstimado;
                 tBulckInterno = tBulckInternoEstimado;
 
@@ -198,8 +194,10 @@ namespace SimulOP
                 fluidoInternoSai.Temperatura = tInternoSaiEstimado;
 
                 count++;
-                
-            } while (convergencia);
+
+            } while (convergencia || count == 100);
+
+            if (count == 100) throw new Exception("Erro de convergencia no trocador, n'ao convergiu em 100 iterações");
 
             Console.WriteLine($"Número de iterações: {count}");
 
@@ -341,38 +339,53 @@ namespace SimulOP
         }
 
         /// <summary>
-        /// Plot da variação das perdas de cargas dos fluidos anular e interno.
+        /// Plot da variação das perdas de cargas e temperaturas dos fluidos anular e interno.
         /// </summary>
-        /// <param name="compI">Comprimento do trocador inicial do plot.</param>
-        /// <param name="compF">Comprimento do trocador final do plot.</param>
+        /// <param name="compMin">Comprimento do trocador inicial do plot.</param>
+        /// <param name="compMax">Comprimento do trocador final do plot.</param>
         /// <param name="div">Número de divisões do plot.</param>
-        /// <returns>PlotX = Lista dos comprimentos, PlotYAnular = lista das perdas de carga do fluido anular, 
-        /// PlotYInterno = lista das perdas de carga do fluido interno.</returns>
-        public (List<double> PlotX, List<double> PlotYAnular, List<double> PlotYInterno) PlotPerdaCarga(double compI, double compF ,int div)
+        /// <returns>plotX = Lista dos comprimentos, plotPerdaCargaAnularY = lista das perdas de carga do fluido anular, 
+        /// plotPerdaCargaInternoY = lista das perdas de carga do fluido interno, plotTempAnularY = lista das temperaturas de saida do fluido anular,
+        /// plotTempInternoY = lista das temperaturas de saida do fluido interno.</returns>
+        public (List<double> plotX, List<double> plotPerdaCargaAnularY, List<double> plotPerdaCargaInternoY, 
+            List<double> plotTempAnularY, List<double> plotTempInternoY) PlotResultados(double compMin, double compMax, int div)
         {
-            List<double> PlotX = new List<double>();
-            List<double> PlotYAnular = new List<double>();
-            List<double> PlotYInterno = new List<double>();
+            List<double> plotX = new List<double>();
+            List<double> plotPerdaCargaAnularY = new List<double>();
+            List<double> plotPerdaCargaInternoY = new List<double>();
+            List<double> plotTempAnularY = new List<double>();
+            List<double> plotTempInternoY = new List<double>();
 
-            throw new NotImplementedException(); // TODO: Implementar as funções de plot.
+            double comprimento;
+            double perdaCargaAnular;
+            double perdaCargaInterno;
+            double tempAnular;
+            double tempInterno;
+
+            for (int i = 0; i <= div; i++)
+            {
+                comprimento = compMin + i * (compMax - compMin) / div;
+
+                Comprimento = comprimento;
+                CalculaTroca();
+
+                perdaCargaAnular = this.tubulacaoAnular.PerdaCarga;
+                perdaCargaInterno = this.tubulacaoInterna.PerdaCarga;
+                tempAnular = this.fluidoAnularSai.Temperatura;
+                tempInterno = this.fluidoInternoSai.Temperatura;
+
+                plotX.Add(comprimento);
+                plotPerdaCargaAnularY.Add(perdaCargaAnular);
+                plotPerdaCargaInternoY.Add(perdaCargaInterno);
+                plotTempAnularY.Add(tempAnular);
+                plotTempInternoY.Add(tempInterno);
+            }
+
+            return (plotX, plotPerdaCargaAnularY, plotPerdaCargaInternoY, plotTempAnularY, plotTempInternoY);
+
+            // TODO: [VERIFICAR] As unidades usadas.
         }
 
-        /// <summary>
-        /// Plot da variação das temperaturas de saida dos fluidos anular e interno.
-        /// </summary>
-        /// <param name="compI">Comprimento do trocador inicial do plot.</param>
-        /// <param name="compF">Comprimento do trocador final do plot.</param>
-        /// <param name="div">Número de divisões do plot.</param>
-        /// <returns>PlotX = Lista dos comprimentos, PlotYAnular = lista das temperaturas do fluido anular, 
-        /// PlotYInterno = lista das temperaturas do fluido interno.</returns>
-        public (List<double> PlotX, List<double> PlotYAnular, List<double> PlotYInterno) PlotTemperatura(double compI, double compF, int div)
-        {
-            List<double> PlotX = new List<double>();
-            List<double> PlotYAnular = new List<double>();
-            List<double> PlotYInterno = new List<double>();
-
-            throw new NotImplementedException();
-        }
         #endregion
     }
 }

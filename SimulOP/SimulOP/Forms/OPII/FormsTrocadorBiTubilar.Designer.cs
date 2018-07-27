@@ -29,13 +29,16 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.ComboBox cmbTrocadorFuidoInterno;
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormsTrocadorBiTubilar));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -70,7 +73,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbFluidoAnular = new System.Windows.Forms.ComboBox();
             this.tabPageVariaveis = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gubVarFluidoAnular = new System.Windows.Forms.GroupBox();
             this.nudVarFluidoAnularTemp = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.trbVarFluidoAnularVazao = new System.Windows.Forms.TrackBar();
@@ -89,7 +92,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.btnVarTrocaFluidos = new System.Windows.Forms.Button();
-            this.gubVarFluidoFrio = new System.Windows.Forms.GroupBox();
+            this.gubVarFluidoInterno = new System.Windows.Forms.GroupBox();
             this.trbVarFluidoInternoVazao = new System.Windows.Forms.TrackBar();
             this.nudVarFluidoInternoVazao = new System.Windows.Forms.NumericUpDown();
             this.label17 = new System.Windows.Forms.Label();
@@ -113,11 +116,11 @@
             this.label27 = new System.Windows.Forms.Label();
             this.txbResultadosCoefTroca = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.txbResultadoTempFluidoQenteSai = new System.Windows.Forms.TextBox();
+            this.txbResultadoTempFluidoInternoSai = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.txbResultadoPerdaCargaExterna = new System.Windows.Forms.TextBox();
+            this.txbResultadoPerdaCargaAnular = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.txbResultadoTempFluidoFrioSai = new System.Windows.Forms.TextBox();
+            this.txbResultadoTempFluidoAnularSai = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.txbResultadoPerdaCargaInterna = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -137,7 +140,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudFluidoAnularAPI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudFluidoAnularTempEnt)).BeginInit();
             this.tabPageVariaveis.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gubVarFluidoAnular.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudVarFluidoAnularTemp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbVarFluidoAnularVazao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudVarFluidoAnularVazao)).BeginInit();
@@ -149,7 +152,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudVarTrocadorDiamAnular)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbVarTrocadorComprimento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudVarTrocadorComprimento)).BeginInit();
-            this.gubVarFluidoFrio.SuspendLayout();
+            this.gubVarFluidoInterno.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trbVarFluidoInternoVazao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudVarFluidoInternoVazao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbVarFluidoInternoTemp)).BeginInit();
@@ -518,9 +521,9 @@
             // 
             // tabPageVariaveis
             // 
-            this.tabPageVariaveis.Controls.Add(this.groupBox1);
+            this.tabPageVariaveis.Controls.Add(this.gubVarFluidoAnular);
             this.tabPageVariaveis.Controls.Add(this.gubVarTrocador);
-            this.tabPageVariaveis.Controls.Add(this.gubVarFluidoFrio);
+            this.tabPageVariaveis.Controls.Add(this.gubVarFluidoInterno);
             this.tabPageVariaveis.Location = new System.Drawing.Point(4, 21);
             this.tabPageVariaveis.Name = "tabPageVariaveis";
             this.tabPageVariaveis.Padding = new System.Windows.Forms.Padding(3);
@@ -529,20 +532,21 @@
             this.tabPageVariaveis.Text = "Variáveis";
             this.tabPageVariaveis.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // gubVarFluidoAnular
             // 
-            this.groupBox1.Controls.Add(this.nudVarFluidoAnularTemp);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.trbVarFluidoAnularVazao);
-            this.groupBox1.Controls.Add(this.nudVarFluidoAnularVazao);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.trbVarFluidoAnularTemp);
-            this.groupBox1.Location = new System.Drawing.Point(6, 162);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(301, 150);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Fluido Anular";
+            this.gubVarFluidoAnular.Controls.Add(this.nudVarFluidoAnularTemp);
+            this.gubVarFluidoAnular.Controls.Add(this.label4);
+            this.gubVarFluidoAnular.Controls.Add(this.trbVarFluidoAnularVazao);
+            this.gubVarFluidoAnular.Controls.Add(this.nudVarFluidoAnularVazao);
+            this.gubVarFluidoAnular.Controls.Add(this.label7);
+            this.gubVarFluidoAnular.Controls.Add(this.trbVarFluidoAnularTemp);
+            this.gubVarFluidoAnular.Location = new System.Drawing.Point(6, 162);
+            this.gubVarFluidoAnular.Name = "gubVarFluidoAnular";
+            this.gubVarFluidoAnular.Size = new System.Drawing.Size(301, 150);
+            this.gubVarFluidoAnular.TabIndex = 6;
+            this.gubVarFluidoAnular.TabStop = false;
+            this.gubVarFluidoAnular.Text = "Fluido Anular";
+            this.gubVarFluidoAnular.Visible = false;
             // 
             // nudVarFluidoAnularTemp
             // 
@@ -619,6 +623,7 @@
             this.gubVarTrocador.TabIndex = 1;
             this.gubVarTrocador.TabStop = false;
             this.gubVarTrocador.Text = "Trocador";
+            this.gubVarTrocador.Visible = false;
             // 
             // trbVarTrocadorDiamInterno
             // 
@@ -736,20 +741,21 @@
             this.btnVarTrocaFluidos.UseVisualStyleBackColor = true;
             this.btnVarTrocaFluidos.Click += new System.EventHandler(this.btnTrocaFluidos_Click);
             // 
-            // gubVarFluidoFrio
+            // gubVarFluidoInterno
             // 
-            this.gubVarFluidoFrio.Controls.Add(this.trbVarFluidoInternoVazao);
-            this.gubVarFluidoFrio.Controls.Add(this.nudVarFluidoInternoVazao);
-            this.gubVarFluidoFrio.Controls.Add(this.label17);
-            this.gubVarFluidoFrio.Controls.Add(this.trbVarFluidoInternoTemp);
-            this.gubVarFluidoFrio.Controls.Add(this.nudVarFluidoInternoTemp);
-            this.gubVarFluidoFrio.Controls.Add(this.label1);
-            this.gubVarFluidoFrio.Location = new System.Drawing.Point(6, 6);
-            this.gubVarFluidoFrio.Name = "gubVarFluidoFrio";
-            this.gubVarFluidoFrio.Size = new System.Drawing.Size(301, 150);
-            this.gubVarFluidoFrio.TabIndex = 0;
-            this.gubVarFluidoFrio.TabStop = false;
-            this.gubVarFluidoFrio.Text = "Fluido Interno";
+            this.gubVarFluidoInterno.Controls.Add(this.trbVarFluidoInternoVazao);
+            this.gubVarFluidoInterno.Controls.Add(this.nudVarFluidoInternoVazao);
+            this.gubVarFluidoInterno.Controls.Add(this.label17);
+            this.gubVarFluidoInterno.Controls.Add(this.trbVarFluidoInternoTemp);
+            this.gubVarFluidoInterno.Controls.Add(this.nudVarFluidoInternoTemp);
+            this.gubVarFluidoInterno.Controls.Add(this.label1);
+            this.gubVarFluidoInterno.Location = new System.Drawing.Point(6, 6);
+            this.gubVarFluidoInterno.Name = "gubVarFluidoInterno";
+            this.gubVarFluidoInterno.Size = new System.Drawing.Size(301, 150);
+            this.gubVarFluidoInterno.TabIndex = 0;
+            this.gubVarFluidoInterno.TabStop = false;
+            this.gubVarFluidoInterno.Text = "Fluido Interno";
+            this.gubVarFluidoInterno.Visible = false;
             // 
             // trbVarFluidoInternoVazao
             // 
@@ -857,70 +863,91 @@
             // 
             // chartTemperatura
             // 
-            chartArea1.AxisX.Interval = 0.5D;
-            chartArea1.AxisX.MajorGrid.Interval = 0.5D;
-            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea1.AxisX.MajorTickMark.Interval = 0D;
-            chartArea1.AxisX.Maximum = 2D;
-            chartArea1.AxisX.Minimum = 0D;
-            chartArea1.AxisX.Title = "Comprimento do trocador (???)";
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDot;
-            chartArea1.AxisY.Title = "Temperatura saida (F)";
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.Name = "ChartArea1";
-            this.chartTemperatura.ChartAreas.Add(chartArea1);
-            legend1.Enabled = false;
-            legend1.Name = "Legend1";
-            this.chartTemperatura.Legends.Add(legend1);
+            chartArea3.AxisX.Interval = 0.5D;
+            chartArea3.AxisX.MajorGrid.Interval = 0.5D;
+            chartArea3.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea3.AxisX.MajorTickMark.Interval = 0D;
+            chartArea3.AxisX.Maximum = 2D;
+            chartArea3.AxisX.Minimum = 0D;
+            chartArea3.AxisX.Title = "Comprimento do trocador (???)";
+            chartArea3.AxisX.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea3.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDot;
+            chartArea3.AxisY.Title = "Temperatura saida (F)";
+            chartArea3.AxisY.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.Name = "ChartArea1";
+            this.chartTemperatura.ChartAreas.Add(chartArea3);
+            legend3.Enabled = false;
+            legend3.Name = "Legend1";
+            this.chartTemperatura.Legends.Add(legend3);
             this.chartTemperatura.Location = new System.Drawing.Point(337, 3);
             this.chartTemperatura.Name = "chartTemperatura";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "temperatura";
-            this.chartTemperatura.Series.Add(series1);
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series7.Legend = "Legend1";
+            series7.Name = "tempInterno";
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series8.Legend = "Legend1";
+            series8.Name = "tempAnular";
+            series9.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series9.Color = System.Drawing.Color.Silver;
+            series9.Legend = "Legend1";
+            series9.Name = "linhaComprimento";
+            this.chartTemperatura.Series.Add(series7);
+            this.chartTemperatura.Series.Add(series8);
+            this.chartTemperatura.Series.Add(series9);
             this.chartTemperatura.Size = new System.Drawing.Size(329, 220);
             this.chartTemperatura.TabIndex = 9;
             this.chartTemperatura.Text = "Temperatura";
+            this.chartTemperatura.Visible = false;
             // 
             // chartPerdaCarga
             // 
-            chartArea2.AxisX.Interval = 0.5D;
-            chartArea2.AxisX.MajorGrid.Enabled = false;
-            chartArea2.AxisX.MajorGrid.Interval = 0.1D;
-            chartArea2.AxisX.Maximum = 2D;
-            chartArea2.AxisX.Minimum = 0D;
-            chartArea2.AxisX.MinorGrid.Enabled = true;
-            chartArea2.AxisX.MinorGrid.Interval = 0.5D;
-            chartArea2.AxisX.MinorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea2.AxisX.Title = "Comprimento do trocador (???)";
-            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea2.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDotDot;
-            chartArea2.AxisY.Title = "Perda de carga (Psi)";
-            chartArea2.AxisY.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea2.Name = "ChartArea1";
-            this.chartPerdaCarga.ChartAreas.Add(chartArea2);
-            legend2.Enabled = false;
-            legend2.Name = "Legend1";
-            this.chartPerdaCarga.Legends.Add(legend2);
+            chartArea4.AxisX.Interval = 0.5D;
+            chartArea4.AxisX.MajorGrid.Enabled = false;
+            chartArea4.AxisX.MajorGrid.Interval = 0.1D;
+            chartArea4.AxisX.Maximum = 2D;
+            chartArea4.AxisX.Minimum = 0D;
+            chartArea4.AxisX.MinorGrid.Enabled = true;
+            chartArea4.AxisX.MinorGrid.Interval = 0.5D;
+            chartArea4.AxisX.MinorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea4.AxisX.Title = "Comprimento do trocador (???)";
+            chartArea4.AxisX.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea4.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea4.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDotDot;
+            chartArea4.AxisY.Title = "Perda de carga (Psi)";
+            chartArea4.AxisY.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea4.Name = "ChartArea1";
+            this.chartPerdaCarga.ChartAreas.Add(chartArea4);
+            legend4.Enabled = false;
+            legend4.Name = "Legend1";
+            this.chartPerdaCarga.Legends.Add(legend4);
             this.chartPerdaCarga.Location = new System.Drawing.Point(3, 3);
             this.chartPerdaCarga.Name = "chartPerdaCarga";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.Name = "fluidoFrio";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Legend = "Legend1";
-            series3.Name = "fluidoQuente";
-            this.chartPerdaCarga.Series.Add(series2);
-            this.chartPerdaCarga.Series.Add(series3);
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series10.Legend = "Legend1";
+            series10.Name = "fluidoInterno";
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series11.Legend = "Legend1";
+            series11.Name = "fluidoAnular";
+            series12.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series12.Color = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series12.Legend = "Legend1";
+            series12.Name = "linhaComprimento";
+            this.chartPerdaCarga.Series.Add(series10);
+            this.chartPerdaCarga.Series.Add(series11);
+            this.chartPerdaCarga.Series.Add(series12);
             this.chartPerdaCarga.Size = new System.Drawing.Size(328, 220);
             this.chartPerdaCarga.TabIndex = 3;
             this.chartPerdaCarga.Text = "Perda de carga";
+            this.chartPerdaCarga.Visible = false;
             // 
             // gubFigura
             // 
@@ -946,6 +973,7 @@
             this.txbFigFluidoInterno.Size = new System.Drawing.Size(170, 70);
             this.txbFigFluidoInterno.TabIndex = 6;
             this.txbFigFluidoInterno.Text = "Fluido interno:\n[frio]\nÁgua\nT ent = 30 ºF\nVazão = 50 ft3/min";
+            this.txbFigFluidoInterno.Visible = false;
             // 
             // txbFigFluidoAnular
             // 
@@ -957,6 +985,7 @@
             this.txbFigFluidoAnular.Size = new System.Drawing.Size(170, 70);
             this.txbFigFluidoAnular.TabIndex = 5;
             this.txbFigFluidoAnular.Text = "Fluido anular:\n[Qente]\nÓleo º35 API\nT ent = 100 ºF\nVazão = 100 ft3/min";
+            this.txbFigFluidoAnular.Visible = false;
             // 
             // nudTrocadorComprimento
             // 
@@ -964,6 +993,7 @@
             this.nudTrocadorComprimento.Name = "nudTrocadorComprimento";
             this.nudTrocadorComprimento.Size = new System.Drawing.Size(51, 18);
             this.nudTrocadorComprimento.TabIndex = 4;
+            this.nudTrocadorComprimento.ValueChanged += new System.EventHandler(this.nudTrocadorComprimento_ValueChanged);
             // 
             // nudTrocadorDiametroAnular
             // 
@@ -971,6 +1001,7 @@
             this.nudTrocadorDiametroAnular.Name = "nudTrocadorDiametroAnular";
             this.nudTrocadorDiametroAnular.Size = new System.Drawing.Size(51, 18);
             this.nudTrocadorDiametroAnular.TabIndex = 3;
+            this.nudTrocadorDiametroAnular.ValueChanged += new System.EventHandler(this.nudTrocadorDiametroAnular_ValueChanged);
             // 
             // nudTrocadorDiametroInterno
             // 
@@ -978,6 +1009,7 @@
             this.nudTrocadorDiametroInterno.Name = "nudTrocadorDiametroInterno";
             this.nudTrocadorDiametroInterno.Size = new System.Drawing.Size(51, 18);
             this.nudTrocadorDiametroInterno.TabIndex = 1;
+            this.nudTrocadorDiametroInterno.ValueChanged += new System.EventHandler(this.nudTrocadorDiametroInterno_ValueChanged);
             // 
             // pictureBox1
             // 
@@ -996,11 +1028,11 @@
             this.gubResultados.Controls.Add(this.label27);
             this.gubResultados.Controls.Add(this.txbResultadosCoefTroca);
             this.gubResultados.Controls.Add(this.label26);
-            this.gubResultados.Controls.Add(this.txbResultadoTempFluidoQenteSai);
+            this.gubResultados.Controls.Add(this.txbResultadoTempFluidoInternoSai);
             this.gubResultados.Controls.Add(this.label22);
-            this.gubResultados.Controls.Add(this.txbResultadoPerdaCargaExterna);
+            this.gubResultados.Controls.Add(this.txbResultadoPerdaCargaAnular);
             this.gubResultados.Controls.Add(this.label21);
-            this.gubResultados.Controls.Add(this.txbResultadoTempFluidoFrioSai);
+            this.gubResultados.Controls.Add(this.txbResultadoTempFluidoAnularSai);
             this.gubResultados.Controls.Add(this.label20);
             this.gubResultados.Controls.Add(this.txbResultadoPerdaCargaInterna);
             this.gubResultados.Controls.Add(this.label19);
@@ -1010,10 +1042,11 @@
             this.gubResultados.TabIndex = 5;
             this.gubResultados.TabStop = false;
             this.gubResultados.Text = "Resultados";
+            this.gubResultados.Visible = false;
             // 
             // txbResultadosCalorTrocado
             // 
-            this.txbResultadosCalorTrocado.Location = new System.Drawing.Point(586, 65);
+            this.txbResultadosCalorTrocado.Location = new System.Drawing.Point(593, 65);
             this.txbResultadosCalorTrocado.Name = "txbResultadosCalorTrocado";
             this.txbResultadosCalorTrocado.ReadOnly = true;
             this.txbResultadosCalorTrocado.Size = new System.Drawing.Size(56, 18);
@@ -1045,56 +1078,56 @@
             this.label26.TabIndex = 18;
             this.label26.Text = "Coeficiente global de troca:";
             // 
-            // txbResultadoTempFluidoQenteSai
+            // txbResultadoTempFluidoInternoSai
             // 
-            this.txbResultadoTempFluidoQenteSai.Location = new System.Drawing.Point(586, 13);
-            this.txbResultadoTempFluidoQenteSai.Name = "txbResultadoTempFluidoQenteSai";
-            this.txbResultadoTempFluidoQenteSai.ReadOnly = true;
-            this.txbResultadoTempFluidoQenteSai.Size = new System.Drawing.Size(56, 18);
-            this.txbResultadoTempFluidoQenteSai.TabIndex = 17;
+            this.txbResultadoTempFluidoInternoSai.Location = new System.Drawing.Point(593, 13);
+            this.txbResultadoTempFluidoInternoSai.Name = "txbResultadoTempFluidoInternoSai";
+            this.txbResultadoTempFluidoInternoSai.ReadOnly = true;
+            this.txbResultadoTempFluidoInternoSai.Size = new System.Drawing.Size(56, 18);
+            this.txbResultadoTempFluidoInternoSai.TabIndex = 17;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(330, 16);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(250, 11);
+            this.label22.Size = new System.Drawing.Size(257, 11);
             this.label22.TabIndex = 16;
-            this.label22.Text = "Temperatura fluido quente na saida:";
+            this.label22.Text = "Temperatura fluido interno na saida:";
             // 
-            // txbResultadoPerdaCargaExterna
+            // txbResultadoPerdaCargaAnular
             // 
-            this.txbResultadoPerdaCargaExterna.Location = new System.Drawing.Point(213, 41);
-            this.txbResultadoPerdaCargaExterna.Name = "txbResultadoPerdaCargaExterna";
-            this.txbResultadoPerdaCargaExterna.ReadOnly = true;
-            this.txbResultadoPerdaCargaExterna.Size = new System.Drawing.Size(56, 18);
-            this.txbResultadoPerdaCargaExterna.TabIndex = 15;
+            this.txbResultadoPerdaCargaAnular.Location = new System.Drawing.Point(213, 41);
+            this.txbResultadoPerdaCargaAnular.Name = "txbResultadoPerdaCargaAnular";
+            this.txbResultadoPerdaCargaAnular.ReadOnly = true;
+            this.txbResultadoPerdaCargaAnular.Size = new System.Drawing.Size(56, 18);
+            this.txbResultadoPerdaCargaAnular.TabIndex = 15;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(6, 44);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(166, 11);
+            this.label21.Size = new System.Drawing.Size(159, 11);
             this.label21.TabIndex = 14;
-            this.label21.Text = "Perda de carga externa:";
+            this.label21.Text = "Perda de carga anular:";
             // 
-            // txbResultadoTempFluidoFrioSai
+            // txbResultadoTempFluidoAnularSai
             // 
-            this.txbResultadoTempFluidoFrioSai.Location = new System.Drawing.Point(586, 37);
-            this.txbResultadoTempFluidoFrioSai.Name = "txbResultadoTempFluidoFrioSai";
-            this.txbResultadoTempFluidoFrioSai.ReadOnly = true;
-            this.txbResultadoTempFluidoFrioSai.Size = new System.Drawing.Size(56, 18);
-            this.txbResultadoTempFluidoFrioSai.TabIndex = 13;
+            this.txbResultadoTempFluidoAnularSai.Location = new System.Drawing.Point(593, 37);
+            this.txbResultadoTempFluidoAnularSai.Name = "txbResultadoTempFluidoAnularSai";
+            this.txbResultadoTempFluidoAnularSai.ReadOnly = true;
+            this.txbResultadoTempFluidoAnularSai.Size = new System.Drawing.Size(56, 18);
+            this.txbResultadoTempFluidoAnularSai.TabIndex = 13;
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(330, 44);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(236, 11);
+            this.label20.Size = new System.Drawing.Size(250, 11);
             this.label20.TabIndex = 12;
-            this.label20.Text = "Temperatura fluido frio na saida:";
+            this.label20.Text = "Temperatura fluido anular na saida:";
             // 
             // txbResultadoPerdaCargaInterna
             // 
@@ -1121,8 +1154,9 @@
             this.ClientSize = new System.Drawing.Size(1014, 682);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormsTrocadorBiTubilar";
-            this.Text = "FormsTrocadorBiTubilar";
+            this.Text = "Trocador de Calor duplo Tubo";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -1143,8 +1177,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudFluidoAnularAPI)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudFluidoAnularTempEnt)).EndInit();
             this.tabPageVariaveis.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gubVarFluidoAnular.ResumeLayout(false);
+            this.gubVarFluidoAnular.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudVarFluidoAnularTemp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbVarFluidoAnularVazao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudVarFluidoAnularVazao)).EndInit();
@@ -1157,8 +1191,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudVarTrocadorDiamAnular)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbVarTrocadorComprimento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudVarTrocadorComprimento)).EndInit();
-            this.gubVarFluidoFrio.ResumeLayout(false);
-            this.gubVarFluidoFrio.PerformLayout();
+            this.gubVarFluidoInterno.ResumeLayout(false);
+            this.gubVarFluidoInterno.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trbVarFluidoInternoVazao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudVarFluidoInternoVazao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbVarFluidoInternoTemp)).EndInit();
@@ -1215,7 +1249,7 @@
         private System.Windows.Forms.NumericUpDown nudFluidoInternoTempEnt;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox gubVarTrocador;
-        private System.Windows.Forms.GroupBox gubVarFluidoFrio;
+        private System.Windows.Forms.GroupBox gubVarFluidoInterno;
         private System.Windows.Forms.NumericUpDown nudVarFluidoInternoVazao;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
@@ -1227,11 +1261,11 @@
         private System.Windows.Forms.GroupBox gubFigura;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox gubResultados;
-        private System.Windows.Forms.TextBox txbResultadoTempFluidoQenteSai;
+        private System.Windows.Forms.TextBox txbResultadoTempFluidoInternoSai;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox txbResultadoPerdaCargaExterna;
+        private System.Windows.Forms.TextBox txbResultadoPerdaCargaAnular;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox txbResultadoTempFluidoFrioSai;
+        private System.Windows.Forms.TextBox txbResultadoTempFluidoAnularSai;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txbResultadoPerdaCargaInterna;
         private System.Windows.Forms.Label label19;
@@ -1240,7 +1274,7 @@
         private System.Windows.Forms.RichTextBox txbFigFluidoInterno;
         private System.Windows.Forms.Button btnVarTrocaFluidos;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gubVarFluidoAnular;
         private System.Windows.Forms.TrackBar trbVarFluidoAnularTemp;
         private System.Windows.Forms.NumericUpDown nudVarFluidoAnularTemp;
         private System.Windows.Forms.Label label4;
