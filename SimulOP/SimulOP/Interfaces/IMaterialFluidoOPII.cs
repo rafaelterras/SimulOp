@@ -11,8 +11,8 @@ namespace SimulOP
         double Temperatura { get; set; }
         double Viscosidade { get; }
         double Densidade { get; }
-        double CalorEspecifico { get; }
-        double CondutividadeTermica { get; }
+        double[] CoefCorrelCalorEspecifico { get; }
+        double[] CoefCorrelCondutividadeTermica { get; }
 
         IMaterialFluidoOPII Clone();
     }

@@ -83,7 +83,43 @@
         /// <returns>MaterialFluidoOPII correspondente ao material.</returns>
         public static MaterialFluidoOPII MaterialFluidoOPII(string material, double temperatura)
         {
-            throw new System.NotImplementedException(); // TODO: Implementar esse inicializador
+            double[] coefCorrelDensidade;
+            double[] coefCorrelViscosidade;
+            double[] coefCorrelCalorEspecifico;
+            double[] coefCorrelCondutividadeTermica;
+
+            switch (material.ToLower())
+            {
+                case "água":
+                    coefCorrelDensidade = new double[4] { 0.3471, 0.274, 647.13, 0.28571 };
+                    coefCorrelViscosidade = new double[4] { -10.2158, 1792.5, 0.01773, -0.000012631 };
+                    coefCorrelCalorEspecifico = new double[4] { 92.053, -0.039953, -0.00021103, 0.00000053469 };
+                    coefCorrelCondutividadeTermica = new double[3] { -0.2758, 0.004612, -0.0000055391 };
+                    break;
+                case "benzeno":
+                    coefCorrelDensidade = new double[4] { 0.3009, 0.2677, 562.16, 0.2818 };
+                    coefCorrelViscosidade = new double[4] { -7.4005, 1181.5, 0.014888, -0.000013713 };
+                    coefCorrelCalorEspecifico = new double[4] { -31.662, 1.3043, -0.0036078, 0.0000038243 };
+                    coefCorrelCondutividadeTermica = new double[3] { -1.6846, 1.052, 562.16 };
+                    break;
+                case "tolueno":
+                    coefCorrelDensidade = new double[4] { 0.29999, 0.27108, 591.79, 0.29889 };
+                    coefCorrelViscosidade = new double[4] { -5.1649, 810.68, 0.010454, -0.000010488 };
+                    coefCorrelCalorEspecifico = new double[4] { 83.703, 0.51666, -0.001491, 0.0000019725 };
+                    coefCorrelCondutividadeTermica = new double[3] { -1.6735, 0.9773, 591.79 };
+                    break;
+                case "naftaleno":
+                    coefCorrelDensidade = new double[4] { 0.30619, 0.25037, 748.35, 0.273 };
+                    coefCorrelViscosidade = new double[4] { -10.3716, 1857, 0.01932, -0.000014012 };
+                    coefCorrelCalorEspecifico = new double[4] { -30.842, 1.5362, -0.0032492, 0.0000026568 };
+                    coefCorrelCondutividadeTermica = new double[3] { -1.0304, 0.186, 748.35 };
+                    break;
+                default:
+                    return null;
+            }
+
+            return new MaterialFluidoOPII(material, temperatura, coefCorrelDensidade, coefCorrelViscosidade, 
+                coefCorrelCalorEspecifico, coefCorrelCondutividadeTermica);
         }
         #endregion
 
