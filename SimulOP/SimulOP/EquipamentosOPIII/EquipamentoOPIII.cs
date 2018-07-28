@@ -1,12 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace SimulOP
 {
+    /// <summary>
+    /// Classe abstrata para representar equipamentos de operações unitárias III.
+    /// </summary>
     public abstract class EquipamentoOPIII : Equipamentos
     {
+        /// <summary>
+        /// Enum para a condição da mistura de entrada em uma coluna de destilação.
+        /// </summary>
         public enum CondicaoMistura
         {
             Líquido_sub_resfriado = 0,
@@ -16,6 +19,11 @@ namespace SimulOP
             Vapor_super_aquecido = 4,
         }
 
+        /// <summary>
+        /// Transforma um texto em um enum CondicaoMistura.
+        /// </summary>
+        /// <param name="condicao">Texto da condição.</param>
+        /// <returns>O enum CondicaoMistura equivalente a condicao.</returns>
         public CondicaoMistura CondicaoMisturaParaEnum(string condicao)
         {
             switch (condicao.ToLower())

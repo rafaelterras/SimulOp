@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimulOP
 {
     /// <summary>
-    /// Representa uma mistura binária de componentes puros
+    /// Classe para representar uma mistura binária de componentes puros para utilizar em operações unitárias III.
     /// </summary>
     public class MisturaBinaria
     {
@@ -21,35 +17,35 @@ namespace SimulOP
         private double temperatura;
 
         /// <summary>
-        /// Fluido puro mais volátil (Light Key)
+        /// Fluido puro mais volátil (Light Key).
         /// </summary>
         public FluidoIdealOPIII FluidoLK { get => fluidoLK; }
         /// <summary>
-        /// Fluido puro menos volátil (Heavy Key)
+        /// Fluido puro menos volátil (Heavy Key).
         /// </summary>
         public FluidoIdealOPIII FluidoHK { get => fluidoHK; }
         /// <summary>
-        /// Nomes dos componentes puros da mistura [Light Ky, Heavy Key]
+        /// Nomes dos componentes puros da mistura [Light Ky, Heavy Key].
         /// </summary>
         public string[] Componentes { get => componentes; }
         /// <summary>
-        /// Pressão da mistura [Pa]
+        /// Pressão da mistura [Pa].
         /// </summary>
         public double Pressao { get => pressao; set => pressao = value; }
         /// <summary>
-        /// Composição da fase líquida [Light Key, Heahy Key]
+        /// Composição da fase líquida [Light Key, Heahy Key].
         /// </summary>
         public double[] ComposicaoLiq { get => composicaoLiq; set => composicaoLiq = value; }
         /// <summary>
-        /// Composição da fase vapor [Light Key, Heahy Key]
+        /// Composição da fase vapor [Light Key, Heahy Key].
         /// </summary>
         public double[] ComposicaoVap { get => composicaoVap; set => composicaoVap = value; }
         /// <summary>
-        /// Coeficiente de volatividade relativa Alpha_{1,2}
+        /// Coeficiente de volatividade relativa Alpha_{1,2}.
         /// </summary>
         public double Alpha { get => alpha; }
         /// <summary>
-        /// Temperatura da mistura
+        /// Temperatura da mistura.
         /// </summary>
         public double Temperatura
         {
@@ -63,13 +59,13 @@ namespace SimulOP
         }
 
         /// <summary>
-        /// Constructor para a mistura binária
+        /// Constructor para a MisturaBinaria.
         /// </summary>
-        /// <param name="fluidoLK">Fluido puro mais volátil (Light Key)</param>
-        /// <param name="fluidoHK">Fluido puro menos volátil (Heavy Key)</param>
-        /// <param name="cLK">Concentração do Light Ky na fase líquida</param>
-        /// <param name="temperatura">Temperatura da mistura [K]</param>
-        /// <param name="pressao">Pressão da mistura [Pa]</param>
+        /// <param name="fluidoLK">Fluido puro mais volátil (Light Key).</param>
+        /// <param name="fluidoHK">Fluido puro menos volátil (Heavy Key).</param>
+        /// <param name="cLK">Concentração do Light Ky na fase líquida.</param>
+        /// <param name="temperatura">Temperatura da mistura [K].</param>
+        /// <param name="pressao">Pressão da mistura [Pa].</param>
         public MisturaBinaria(FluidoIdealOPIII fluidoLK, FluidoIdealOPIII fluidoHK, double cLK, double temperatura, double pressao)
         {
             // Fluido mais volátil
@@ -92,10 +88,10 @@ namespace SimulOP
         }
 
         /// <summary>
-        /// Calcula a concentração na fase vapor com base na concentração do Light Key na fase líquida
-        /// Assumindo a Lei de Raoult (Gás e Líquido ideais)
+        /// Calcula a concentração na fase vapor com base na concentração do Light Key na fase líquida.
+        /// Assumindo a Lei de Raoult (Gás e Líquido ideais).
         /// </summary>
-        /// <param name="xLK">Concentração do Light Key na fase Líquida</param>
+        /// <param name="xLK">Concentração do Light Key na fase Líquida.</param>
         public void CalculaVapRaoult(double xLK)
         {
             // Seta os valores das concentrações na fase Líquida
@@ -127,10 +123,10 @@ namespace SimulOP
         }
 
         /// <summary>
-        /// Calcula a composisão do fluido LK na fase vapor
+        /// Calcula a composisão do fluido LK na fase vapor.
         /// </summary>
-        /// <param name="xLK">Concentração do LK na fase líquida</param>
-        /// <returns>yLK: Composisão do LK na fase vapor</returns>
+        /// <param name="xLK">Concentração do LK na fase líquida.</param>
+        /// <returns>yLK: Composisão do LK na fase vapor.</returns>
         public double CalculaVap(double xLK)
         {
             double somaPresaoParcial(double T) => xLK * fluidoLK.PVapor(T) + (1 - xLK) * fluidoHK.PVapor(T) - this.pressao;

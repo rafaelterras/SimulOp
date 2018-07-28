@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
 
+/// <summary>
+/// Programa para auxilo do ensino de opreções unitárias.
+/// </summary>
 namespace SimulOP
 {
+    /// <summary>
+    /// Main classe do programa.
+    /// </summary>
     static class Program
     {
         /// <summary>
@@ -18,7 +19,7 @@ namespace SimulOP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms.FormsMaster());
+            Application.Run(new Forms.FormsMaster()); // Inicia o programa no FormsMaster.
         }
      }
 }

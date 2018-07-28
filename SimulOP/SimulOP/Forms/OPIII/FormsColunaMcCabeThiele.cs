@@ -6,6 +6,9 @@ using SimulOP.Properties;
 
 namespace SimulOP.Forms
 {
+    /// <summary>
+    /// Forms para o método de McCabe-Thiele.
+    /// </summary>
     public partial class FormsColunaMcCabeThiele : Form
     {
         // Objetos para cálculo da coluna
@@ -57,6 +60,10 @@ namespace SimulOP.Forms
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Inscreve ou desiscreve os eventos do forms.
+        /// </summary>
+        /// <param name="ativar">Se True ativa os eventos, se False desativa.</param>
         private void EventosInputs(bool ativar)
         {
             if (ativar)
@@ -95,6 +102,9 @@ namespace SimulOP.Forms
             }
         }
 
+        /// <summary>
+        /// Atualiza o gráfico do equilibrio líquido vapor.
+        /// </summary>
         private void AtualizaEquilibrio()
         {
             eqX.Clear();
@@ -108,6 +118,9 @@ namespace SimulOP.Forms
             txbAlpha.Text = Math.Round(ColunaMcCabeThiele.MisturaBinaria.Alpha, 2).ToString();
         }
 
+        /// <summary>
+        /// Atualiza o gráfico dos pratos e atualiza o resultado.
+        /// </summary>
         private void AtualizaPratos()
         {
             pratosX.Clear();
@@ -127,6 +140,9 @@ namespace SimulOP.Forms
             chart.Series["Pratos"].Points.DataBindXY(pratosX, pratosY);
         }
 
+        /// <summary>
+        /// Atualiza o gráfico das linhas de operações.
+        /// </summary>
         private void AtualizaLinhasOP()
         {
             linhaOPX.Clear();
@@ -140,12 +156,18 @@ namespace SimulOP.Forms
             chart.Series["PontoQ"].Points.AddXY(ColunaMcCabeThiele.PontoP[0], ColunaMcCabeThiele.PontoP[1]);
         }
 
+        /// <summary>
+        /// Atualiza o gráfico da linha q.
+        /// </summary>
         private void AtualizaLinhaQ()
         {
             //linhaQX.Clear();
             //linhaQY.Clear();
         }
 
+        /// <summary>
+        /// Verifica a convergencia da coluna e atualiza a variavél erroConvergencia.
+        /// </summary>
         private void VerificaConvergencia()
         {
             string localPratoIdeal = "-";
@@ -234,6 +256,9 @@ namespace SimulOP.Forms
             }
         }
  
+        /// <summary>
+        /// Botão para calculo inicial da coluna.
+        /// </summary>
         private void btnInputInicial_Click(object sender, EventArgs e)
         {
             cmbFluidoLKTxt = cmbFluidoLK.Text;
@@ -312,7 +337,12 @@ namespace SimulOP.Forms
         }
 
         #region === Variaveis Dinamicas ===
-
+        /// <summary>
+        /// Atualiza o par de NumecricUpDown e TrackBar para o mesmo valor.
+        /// </summary>
+        /// <param name="nud">O NumericUpDown.</param>
+        /// <param name="trb">A TrackBar.</param>
+        /// <param name="x">O valor para ser atualizado.</param>
         private void AtualizaParDin(NumericUpDown nud, TrackBar trb, double x)
         {
             // Desincreve dos eventos para evitar chamar as funcoes mais de uma vez

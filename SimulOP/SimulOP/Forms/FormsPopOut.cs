@@ -3,6 +3,9 @@ using System.Windows.Forms;
 
 namespace SimulOP.Forms
 {
+    /// <summary>
+    /// Forms Popout de ajuda.
+    /// </summary>
     public partial class FormsPopOut : Form
     {
         public FormsPopOut(string ajuda)

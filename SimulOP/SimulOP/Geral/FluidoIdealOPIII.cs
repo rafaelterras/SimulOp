@@ -1,20 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimulOP
 {
+    /// <summary>
+    /// Classe para representar fluidos ideais em operações unitérias III e quando há necessidade de se calcular a pressão de vapor de um fluido.
+    /// </summary>
     public class FluidoIdealOPIII
     {
+        #region Inicialização das variaveis e do Constructor
         private MaterialFluidoOPIII material;
-        private double temperatura;
-        private double presaoVapor;
-        private bool pVapEmMmHg = false;
-        private readonly string[] listaMateriaisEmMmHg = new string[] { "etanol" };
+        private double temperatura; // em K.
+        private double presaoVapor; // em Pa.
 
+        /// <summary>
+        /// Temperatura do fluido [K].
+        /// </summary>
         public double Temperatura { get => temperatura; set => temperatura = value; }
+        /// <summary>
+        /// Pressão de vapor na temperatura atual do fluido [Pa].
+        /// </summary>
         public double PresaoVapor
         {
             get
@@ -24,40 +29,32 @@ namespace SimulOP
             }
         }
 
+        /// <summary>
+        /// Material que guarda as propriedades físicas do fluido.
+        /// </summary>
         public MaterialFluidoOPIII Material { get => material; }
 
+        /// <summary>
+        /// Constructor do FluidoIdealOPIII
+        /// </summary>
+        /// <param name="material">Material com as propriedades físicas.</param>
+        /// <param name="temperatura">Temperatura atual do fluido.</param>
         public FluidoIdealOPIII(MaterialFluidoOPIII material, double temperatura)
         {
             this.material = material;
             this.temperatura = temperatura;
-
-            if (listaMateriaisEmMmHg.Contains(material.Componente))
-            {
-                pVapEmMmHg = true;
-            }
         }
+        #endregion
 
         /// <summary>
         /// Calculo da pressão de vapor pela equação de Antonine, para liquidos e gases ideais
         /// </summary>
         private void CalculaPvap()
         {
-            if (pVapEmMmHg)
-            {
-                // Log10(Pvap [mmHg]) = A + B/T + C*Log10(T) + D*T + E*T^2
-                double logP = material.CoefAntoine[0] + (material.CoefAntoine[1] / this.temperatura) + material.CoefAntoine[2] * Math.Log10(this.temperatura) 
-                    + material.CoefAntoine[3] * this.temperatura + material.CoefAntoine[4] * Math.Pow(this.temperatura, 2);
-                double Pvap = Math.Pow(10.0, logP);
+            // Log10(Pva [bar]) = A - B/(C+T)
+            double Pvap = Math.Pow(10.0, material.CoefAntoine[0] - (material.CoefAntoine[1] / (material.CoefAntoine[2] + this.temperatura)));
 
-                this.presaoVapor = Pvap * 133.3; // TODO [VERIFICAR] As unidades
-            }
-            else
-            {   
-                // Log10(Pva [bar]) = A - B/(C+T)
-                double Pvap = Math.Pow(10.0, material.CoefAntoine[0] - (material.CoefAntoine[1] / (material.CoefAntoine[2] + this.temperatura)));
-
-                this.presaoVapor = Pvap * 1e5;
-            }
+            this.presaoVapor = Pvap * 1e5;
         }
 
         /// <summary>
@@ -67,24 +64,17 @@ namespace SimulOP
         /// <returns>Pressão de vapor em Pa.</returns>
         public double PVapor(double T)
         {
-            if (pVapEmMmHg)
-            {
-                // Log10(Pvap [mmHg]) = A + B/T + C*Log10(T) + D*T + E*T^2
-                double logP = material.CoefAntoine[0] + (material.CoefAntoine[1] / T) + material.CoefAntoine[2] * Math.Log10(T)
-                    + material.CoefAntoine[3] * T + material.CoefAntoine[4] * Math.Pow(T, 2);
-                double Pvap = Math.Pow(10.0, logP);
+            // Log10(Pva [bar]) = A - B/(C+T)
+            double Pvap = Math.Pow(10.0, material.CoefAntoine[0] - (material.CoefAntoine[1] / (material.CoefAntoine[2] + T)));
 
-                return Pvap * 133.3; // TODO [VERIFICAR] As unidades
-            }
-            else
-            {
-                // Log10(Pva [bar]) = A - B/(C+T)
-                double Pvap = Math.Pow(10.0, material.CoefAntoine[0] - (material.CoefAntoine[1] / (material.CoefAntoine[2] + T)));
-
-                return Pvap * 1e5;
-            }
+            return Pvap * 1e5;            
         }
 
+        /// <summary>
+        /// Converte uma determinada pressão em metros de coluna do fluido.
+        /// </summary>
+        /// <param name="pressao">Pressão que se deseja converter.</param>
+        /// <returns>A pressão em metros de coluna de fluido.</returns>
         public double ConvertePressaoEmM(double pressao)
         {
             double pressaoM;

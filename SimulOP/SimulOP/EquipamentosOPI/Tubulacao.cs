@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace SimulOP
 {
+    /// <summary>
+    /// Classe para representar Tubulações.
+    /// </summary>
     public class Tubulacao : EquipamentoOPI, ITubulacao
     {
         #region Inicialização das variaveis e do Constructor
@@ -20,12 +21,11 @@ namespace SimulOP
         protected string metodoFatrito;
 
         /// <summary>
-        /// Comprimento da tubulação [m]
+        /// Comprimento da tubulação [m].
         /// </summary>
         public double Comprimento { get => comprimento; set => comprimento = value; }
-
         /// <summary>
-        /// Comprimento equivalente das Singularidades da tubulação [m]
+        /// Comprimento equivalente das Singularidades da tubulação [m].
         /// </summary>
         public double ComprimentoEquivalente
         {
@@ -35,9 +35,8 @@ namespace SimulOP
                 return comprimentoEquivalente;
             }
         }
-
         /// <summary>
-        /// Diametro da tubulação [m]
+        /// Diametro da tubulação [m].
         /// </summary>
         public double Diametro
         {
@@ -55,50 +54,42 @@ namespace SimulOP
                 }
             }
         }
-
-
         /// <summary>
-        /// Material que a tubulação é feita
+        /// Material que a tubulação é feita.
         /// </summary>
-        public MaterialTubulacao Material { get => material; set => material = value; }
-       
+        public MaterialTubulacao Material { get => material; set => material = value; }       
         /// <summary>
-        /// Rugosidade relativa da tubulação
+        /// Rugosidade relativa da tubulação.
         /// </summary>
         public double RugosidadeRelativa { get => rugosidadeRelativa; set => rugosidadeRelativa = value; }
-
         /// <summary>
-        /// Fator de atrito (Fanning) da tubulação, depende das condições do escoamento, [m]
+        /// Fator de atrito (Fanning) da tubulação, depende das condições do escoamento [m].
         /// </summary>
         public double FatorAtrito { get => fatorAtrito; set => fatorAtrito = value; }
-
         /// <summary>
-        /// Diferença de altura entre o começo e o fim da tubulação [m]
+        /// Diferença de altura entre o começo e o fim da tubulação [m].
         /// </summary>
         public double Elevacao { get => elevacao; set => elevacao = value; }
-
         /// <summary>
-        /// Lista de singularidades que estão na tubulação
+        /// Lista de singularidades que estão na tubulação.
         /// </summary>
         public List<ISingularidade> ListaSingularidades { get => listaSingularidades; }
-
         /// <summary>
-        /// Perda de carga da tubulação, depende das condições do escoamento, [m]
+        /// Perda de carga da tubulação, depende das condições do escoamento [m].
         /// </summary>
         public double PerdaCarga { get => perdaCarga; }
-
         ///<summary>
         /// Especifica o método utilizado para calcular o fator de atrito.
         /// </summary>
         public string MetodoFatrito { get => metodoFatrito; set => metodoFatrito = value; }
 
         /// <summary>
-        /// Constructor para o objeto Tubulação. Checar se é só isso que realmente é necessário/faz sentido inicializar
+        /// Constructor para o objeto Tubulação.
         /// </summary>
-        /// <param name="diametro">Diametro da tubulação [m]</param>
-        /// <param name="comprimento">Comprimento da tubulação [m]</param>
-        /// <param name="rugosidade">Rugosidade da tubulação [m]</param>
-        /// <param name="elevacao">Diferença de altura entre o começo e o fim da tubulação [m]</param>
+        /// <param name="diametro">Diametro da tubulação [m].</param>
+        /// <param name="comprimento">Comprimento da tubulação [m].</param>
+        /// <param name="rugosidade">Rugosidade da tubulação [m].</param>
+        /// <param name="elevacao">Diferença de altura entre o começo e o fim da tubulação [m].</param>
         public Tubulacao(double diametro, double comprimento, MaterialTubulacao material, double elevacao, string metodoFatrito = "fanning")
         {
             this.material = material;
@@ -111,9 +102,9 @@ namespace SimulOP
         #endregion
 
         /// <summary>
-        /// Adiciona a singularidade na lista de lingularidades da tubulação
+        /// Adiciona a singularidade na lista de lingularidades da tubulação.
         /// </summary>
-        /// <param name="sin">Singularidade a ser adicionada</param>
+        /// <param name="sin">Singularidade a ser adicionada.</param>
         public void AdicionaSingularidade(ISingularidade sin)
         {
             this.listaSingularidades.Add(sin);
@@ -121,9 +112,9 @@ namespace SimulOP
         }
 
         /// <summary>
-        /// Adiciona uma lista de singularidade na lista de lingularidades da tubulação
+        /// Adiciona uma lista de singularidade na lista de lingularidades da tubulação.
         /// </summary>
-        /// <param name="singularidades">Lista de singularidade a ser adicionada</param>
+        /// <param name="singularidades">Lista de singularidade a ser adicionada.</param>
         public void AdicionaSingularidade(List<ISingularidade> singularidades)
         {
             foreach (ISingularidade sin in singularidades)
@@ -134,11 +125,11 @@ namespace SimulOP
         }
 
         /// <summary>
-        /// Calcula o número de Reyolds
+        /// Calcula o número de Reyolds.
         /// </summary>
-        /// <param name="fluido">O Fluido que está na tubulação. </param>
-        /// <param name="vazao">A vazão do fluido [m^3/s]. </param>
-        /// <returns> O número de Rynolds [adm]. </returns>
+        /// <param name="fluido">O Fluido que está na tubulação.</param>
+        /// <param name="vazao">A vazão do fluido [m^3/s].</param>
+        /// <returns> O número de Rynolds [adm].</returns>
         public double CalculaReynolds(IMaterialFluidoOPI material, double vazao)
         {
             double re;
@@ -149,11 +140,11 @@ namespace SimulOP
         }
 
         /// <summary>
-        /// Calcula o fator de atrito de acordo com a correlação de Fanning.
+        /// Calcula o fator de atrito de acordo com o método escolhido para essa tubulação.
         /// </summary>
-        /// <param name="material">O Fluido que está na tubulação. </param>
-        /// <param name="vazao">A vazão do fluido [m^3/s]. </param>
-        /// <returns> O fator de atrito [adm]. </returns>
+        /// <param name="material">O Fluido que está na tubulação.</param>
+        /// <param name="vazao">A vazão do fluido [m^3/s].</param>
+        /// <returns> O fator de atrito [fanning].</returns>
         public virtual double CalculaFAtrito(IMaterialFluidoOPI material, double vazao)
         {
             double Re;
@@ -195,11 +186,11 @@ namespace SimulOP
         }
 
         /// <summary>
-        /// Cálcula a perda de carga da tubulação
+        /// Cálcula a perda de carga da tubulação.
         /// </summary>
-        /// <param name="material">O Fluido que está na tubulação. </param>
-        /// <param name="vazao">A vazão do fluido [m^3/s]. </param>
-        /// <returns> A perda de carga [m]. </returns>
+        /// <param name="material">O Fluido que está na tubulação.</param>
+        /// <param name="vazao">A vazão do fluido [m^3/s].</param>
+        /// <returns> A perda de carga [m].</returns>
         public virtual double CalculaPerdaCarga(IMaterialFluidoOPI material, double vazao)
         {
             double fAtrito = CalculaFAtrito(material, vazao);
@@ -213,9 +204,9 @@ namespace SimulOP
         }
 
         /// <summary>
-        /// Cálcula o comprimento equivalente das singularidades
+        /// Cálcula o comprimento equivalente das singularidades.
         /// </summary>
-        /// <returns> O comprimento equivalente das singularidades [m]. </returns>
+        /// <returns> O comprimento equivalente das singularidades [m].</returns>
         private void CalculaComprimentoEquiSing()
         {
             double comprEq = 0;

@@ -172,11 +172,9 @@
     <Compile Include="Geral\MisturaBinaria.cs" />
     <Compile Include="Interfaces\IBomba.cs" />
     <Compile Include="Interfaces\IDestilacao.cs" />
-    <Compile Include="Interfaces\IFluidoBomba.cs" />
     <Compile Include="Interfaces\IMaterialFluidoOPI.cs" />
     <Compile Include="Interfaces\IMaterialFluidoOPII.cs" />
     <Compile Include="Interfaces\ISingularidade.cs" />
-    <Compile Include="Interfaces\ITrocadorDeCalor.cs" />
     <Compile Include="Interfaces\ITubulacao.cs" />
     <Compile Include="EquipamentosOPIII\MembranaDeSeparacao.cs" />
     <Compile Include="EquipamentosOPI\EquipamentoOPI.cs" />

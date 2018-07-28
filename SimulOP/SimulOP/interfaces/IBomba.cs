@@ -1,5 +1,8 @@
 ﻿namespace SimulOP
 {
+    /// <summary>
+    /// Interface para bombas.
+    /// </summary>
     interface IBomba
     {
         /// <summary>

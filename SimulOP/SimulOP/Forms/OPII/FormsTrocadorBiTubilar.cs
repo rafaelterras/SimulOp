@@ -153,8 +153,7 @@ namespace SimulOP.Forms
         }
 
         private void btnCalcular_Click(object sender, EventArgs e)
-        {   
-            /*
+        {               
             // Fluido Anular
             string fluidoAnularNome = cmbFluidoAnular.Text;
             double fluidoAnularAPI = Convert.ToDouble(nudFluidoAnularAPI.Value);
@@ -220,7 +219,7 @@ namespace SimulOP.Forms
             trocador.CalculaTroca();
             fluidoAnularSai = trocador.FluidoAnularSai;
             fluidoInternoSai = trocador.FluidoInternoSai;
-            */
+            
             
             txbFigFluidoAnular.Lines = new string[] { txbFigFluidoAnularTxt[0], txbFigFluidoAnularTxt[1], txbFigFluidoAnularTxt[2], txbFigFluidoAnularTxt[3], txbFigFluidoAnularTxt[4] };
             txbFigFluidoInterno.Lines = new string[] { txbFigFluidoInternoTxt[0], txbFigFluidoInternoTxt[1], txbFigFluidoInternoTxt[2], txbFigFluidoInternoTxt[3], txbFigFluidoInternoTxt[4] };
