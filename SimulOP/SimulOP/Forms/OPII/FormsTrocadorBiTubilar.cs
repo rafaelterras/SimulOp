@@ -192,7 +192,7 @@ namespace SimulOP.Forms
             string tubulacaoMaterialNome = cmbTrocadorMaterial.Text;
             double tubulacaoComprimento = Convert.ToDouble(nudTrocadorComprimento);
             MaterialTubulacao materialTubulacao = InicializadorObjetos.MaterialTubulacao(tubulacaoMaterialNome);
-            const double espessura = 0; // TODO: Definir espeçura.
+            const double espessura = 0;
 
             // Tubulação Anular
             double tubAnularDiam = Convert.ToDouble(nudTrocadorDiametroAnular);

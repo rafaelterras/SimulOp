@@ -370,13 +370,13 @@ namespace SimulOP
 
             // Q = V * Cp * (Tent - Tsai)
 
-            if (fluidoTroca == FluidoTroca.quente) // Tsai = Tent - Q / (V * Cp)
+            if (fluidoTroca == FluidoTroca.quente) // Tsai = Tent - Q / (V*D * Cp)
             {
-                tSaida = tempEntrada - (this.calorTransferido / (vazao * materialBulck.CalorEspecifico));
+                tSaida = tempEntrada - (this.calorTransferido / (vazao * materialBulck.Densidade * materialBulck.CalorEspecifico));
             }
             else // Tsai = Tent + Q / (V * Cp)
             {
-                tSaida = tempEntrada + (this.calorTransferido / (vazao * materialBulck.CalorEspecifico));
+                tSaida = tempEntrada + (this.calorTransferido / (vazao * materialBulck.Densidade * materialBulck.CalorEspecifico));
             }
 
             return tSaida; // TODO: [VERIFICAR UNIDADES!!]

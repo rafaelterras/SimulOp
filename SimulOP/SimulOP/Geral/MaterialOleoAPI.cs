@@ -11,9 +11,9 @@ namespace SimulOP
         private string componente;
         private double grauAPI;
         private double temperatura;
-        private double densidade; //[lb/ft^3]
+        private double densidade;
         private double viscosidade;
-        private double calorEspecifico; // TODO: Verificar o cálculo das proriedades.
+        private double calorEspecifico;
         private double condutividadeTermica;
 
         public string Componente { get; }
@@ -29,7 +29,7 @@ namespace SimulOP
             }
         }
 
-        public double Densidade { get => densidade; } //[lb/ft^3]
+        public double Densidade { get => densidade; }
         public double Viscosidade { get => viscosidade; }
         public double CalorEspecifico { get => calorEspecifico; }
         public double CondutividadeTermica { get => condutividadeTermica; }
@@ -77,7 +77,7 @@ namespace SimulOP
             this.viscosidade = visc;
         }
 
-        private void AtualizaCalorEspecifico()
+        private void AtualizaCalorEspecifico() // TODO: Cp e K do oleo API
         {
             throw new NotImplementedException();
         }
