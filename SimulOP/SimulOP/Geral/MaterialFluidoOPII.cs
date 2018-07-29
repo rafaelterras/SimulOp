@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimulOP
 {
-    public class MaterialFluidoOPII: MaterialFluidoOPI, IMaterialFluidoOPII
+    public class MaterialFluidoOPII : MaterialFluidoOPI, IMaterialFluidoOPII
     {
         protected double temperatura;
         protected double[] coefCorrelDensidade;
@@ -29,6 +29,22 @@ namespace SimulOP
         public double[] CoefCorrelViscosidade { get => coefCorrelViscosidade; }
         public double[] CoefCorrelCalorEspecifico { get => coefCorrelCalorEspecifico; }
         public double[] CoefCorrelCondutividadeTermica { get => coefCorrelCondutividadeTermica; }
+        public double CalorEspecifico
+        {
+            get
+            {
+                AtualizaCalorEspecifico();
+                return this.calorEspecifico;                
+            }
+        }
+        public double CondutividadeTermica
+        {
+            get
+            {
+                AtualizaCondutividadeTermica();
+                return this.condutividadeTermica;
+            }
+        }
 
         public MaterialFluidoOPII(string componente, double temperatura, 
             double[] coefCorrelDensidade, double[] coefCorrelViscosidade, 

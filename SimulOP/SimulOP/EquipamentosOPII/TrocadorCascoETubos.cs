@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SimulOP
+﻿namespace SimulOP
 {
+    /// <summary>
+    /// Classe para representar trocadores de calor do tipo casco e tubos [Não implementedo].
+    /// </summary>
     internal class TrocadorCascoETubos : TrocadordeCalor
     {
     }

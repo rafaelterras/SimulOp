@@ -1,19 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimulOP
 {
+    /// <summary>
+    /// Classe para representar a tubulação que é usada em trocadores de calor bi tubular.
+    /// </summary>
     public class TubulacaoDuploTubo : Tubulacao
     {
         protected double especura;
         protected double diametroExterno;
         protected EquipamentoOPII.TipoTubo tipoTubo;
         
+        /// <summary>
+        /// Enoum TipoTubo, se a tubulação é a anular ou a interna.
+        /// </summary>
         public EquipamentoOPII.TipoTubo TipoTubo { get => tipoTubo; set => tipoTubo = value; }
+        /// <summary>
+        /// Diametro externo do tubo [m].
+        /// </summary>
         public double DiametroExterno { get => diametroExterno; set => diametroExterno = value; }
+        /// <summary>
+        /// Especura da parede [m].
+        /// </summary>
         public double Especura { get => especura; set => especura = value; }
 
         /// <summary>
@@ -32,6 +40,14 @@ namespace SimulOP
         }
         
 
+        /// <summary>
+        /// Número de Reynolds associado ao escoamento.
+        /// </summary>
+        /// <param name="densidade"></param>
+        /// <param name="viscosidade"></param>
+        /// <param name="vazao"></param>
+        /// <param name="diametro"></param>
+        /// <returns>O número de Rynolds.</returns>
         public override double CalcReynolds(double densidade, double viscosidade, double vazao, double diametro)
         {
             throw new NotImplementedException();

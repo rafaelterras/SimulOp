@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SimulOP
+﻿namespace SimulOP
 {
+    /// <summary>
+    /// Classe para representar torres de resfriamento [Não implementedo].
+    /// </summary>
     internal class TorreDeResfriamento : EquipamentoOPII
     {
     }
