@@ -390,10 +390,18 @@ namespace SimulOP
         /// <returns></returns>
         private double CalculaPerdaCarga(TubulacaoDuploTubo tubo, double vazao)
         {
+            double dp;
 
-     
+            if(tubo.TipoTubo == TipoTubo.interno)
+            {
+                dp = tubo.CalculaPerdaCarga(materialBulckInterno, vazao);
+            }
+            else
+            {
+                dp = tubo.CalculaPerdaCarga(materialBulckAnular, vazao);
+            }
 
-            throw new NotImplementedException(); // TODO: Implementar o cálculo de perda de carga
+            return dp;
         }
         #endregion
 

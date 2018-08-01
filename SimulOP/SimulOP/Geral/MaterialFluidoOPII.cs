@@ -115,7 +115,7 @@ namespace SimulOP
                         this.coefCorrelCondutividadeTermica[2] * Math.Pow(this.temperatura, 2);
                     break;
                 default:
-                    k = Math.Pow(10, this.coefCorrelCondutividadeTermica[0] + this.coefCorrelCondutividadeTermica[1] * Math.Pow(1 - this.temperatura/this.coefCorrelCondutividadeTermica[3], 2/7));
+                    k = Math.Pow(10, this.coefCorrelCondutividadeTermica[0] + this.coefCorrelCondutividadeTermica[1] * Math.Pow(1 - this.temperatura/this.coefCorrelCondutividadeTermica[2], 2/7));
                     break;
             }
             this.condutividadeTermica = k;

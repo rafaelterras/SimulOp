@@ -76,7 +76,7 @@ namespace SimulOP.Forms
 
         private void duploTuboToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            Forms.FormsTrocadorOleoAPI newMDIChild = new Forms.FormsTrocadorOleoAPI();
+            Forms.FormsTrocadorBiTubilar newMDIChild = new Forms.FormsTrocadorBiTubilar();
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
             // Necessário para que o ícone apareça normalmente.

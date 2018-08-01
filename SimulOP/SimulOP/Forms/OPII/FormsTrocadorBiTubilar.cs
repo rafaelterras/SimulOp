@@ -190,12 +190,12 @@ namespace SimulOP.Forms
 
             // Tubulações
             string tubulacaoMaterialNome = cmbTrocadorMaterial.Text;
-            double tubulacaoComprimento = Convert.ToDouble(nudTrocadorComprimento);
+            double tubulacaoComprimento = Convert.ToDouble(nudTrocadorComprimento.Value);
             MaterialTubulacao materialTubulacao = InicializadorObjetos.MaterialTubulacao(tubulacaoMaterialNome);
             const double espessura = 0;
 
             // Tubulação Anular
-            double tubAnularDiam = Convert.ToDouble(nudTrocadorDiametroAnular);
+            double tubAnularDiam = Convert.ToDouble(nudTrocadorDiametroAnular.Value);
             tubulacaoAnular = new TubulacaoDuploTubo(tubAnularDiam, espessura, tubulacaoComprimento, materialTubulacao, EquipamentoOPII.TipoTubo.anular);
 
             // Tubulação Interna

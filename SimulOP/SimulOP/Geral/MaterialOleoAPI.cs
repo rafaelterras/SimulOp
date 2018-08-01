@@ -55,7 +55,7 @@ namespace SimulOP
         {
             double dens;
 
-            // Densidade em kg/m^3 (sistema internacional de unidades)
+            // Densidade em kg/m^3
 
             dens = 141.5 / (grauAPI + 131.5);
             dens = dens * EquipamentoOPII.densidadeAguaSInternacional;
@@ -100,7 +100,6 @@ namespace SimulOP
             cp = primeiroTermo + segundoTermo + 0.352;
 
             this.calorEspecifico = cp * 4186.798188; // Conversão para J/kg K
-            throw new NotImplementedException();
         }
 
         private void AtualizaCondutividadeTermica()
