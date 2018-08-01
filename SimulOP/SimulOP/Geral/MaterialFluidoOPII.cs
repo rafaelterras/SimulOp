@@ -16,7 +16,7 @@ namespace SimulOP
         protected double[] coefCorrelCondutividadeTermica;
         protected double calorEspecifico; //[J/mol*K]
         protected double condutividadeTermica;
-
+        
         public double MM { get => mM; }
         public double Temperatura
         {
@@ -59,7 +59,6 @@ namespace SimulOP
             this.coefCorrelViscosidade = coefCorrelViscosidade;
             this.coefCorrelCalorEspecifico = coefCorrelCalorEspecifico;
             this.coefCorrelCondutividadeTermica = coefCorrelCondutividadeTermica;
-            throw new Exception("Material Fluido OPII ainda não implementado"); // TODO: Verificar como calcular as propriedades
         }
 
         public void AtualizaPropriedades()

@@ -248,7 +248,7 @@ namespace SimulOP
 
             } while (convergencia || count == 100);
 
-            if (count == 100) throw new Exception("Erro de convergencia no trocador, n'ao convergiu em 100 iterações");
+            if (count == 100) throw new Exception("Erro de convergência no trocador, não convergiu em 100 iterações");
 
             Console.WriteLine($"Número de iterações: {count}");
 
@@ -291,7 +291,7 @@ namespace SimulOP
         }
 
         /// <summary>
-        /// Cálcula o coeficiente d econvecção para o fluido em uma dada posição.
+        /// Cálcula o coeficiente de convecção para o fluido em uma dada posição.
         /// </summary>
         /// <param name="tubo">A tubulação que o fluido está escoando.</param>
         /// <param name="materialBulck">Material do fluido na temperatura Tbulck, para cálculo estimado das propriedades.</param>
@@ -299,23 +299,23 @@ namespace SimulOP
         /// <returns>O coeficiente de convecção h []</returns>
         private double CalculaCoefConvec(TubulacaoDuploTubo tubo, IMaterialFluidoOPII materialBulck, double vazao)
         {
-            double Ap; // Área do tubo
-            double Gp; // Vazão mássica
-            double mu; // Cp * 2.42 [Q Q É CP!!!] [lb/(ft*h)] viscosidade dinâmica
             double Re; // Número de Reynolds
-            double Jh; // número do gráfico, [verificar se é possivel calcular com outra correlação de Nu e Pr]
+            double Pr; // Número de Prandtl
+            double h; // Coeficiente de convecção
 
+            Re = tubo.CalcReynolds(materialBulck.Densidade, materialBulck.Viscosidade, vazao, tubo.Diametro);
+            Pr = materialBulck.CalorEspecifico * materialBulck.Viscosidade / materialBulck.CondutividadeTermica;
 
             if (tubo.TipoTubo == TipoTubo.interno)
             {
-                 
+                h = 0.0023 * (materialBulck.CondutividadeTermica / tubo.Diametro) * Math.Pow(Re, 4 / 5) * Math.Pow(Pr, 0.4);
+                return h;
             }
             else
             {
-
+                h = 0.0023 * (materialBulck.CondutividadeTermica / tubo.Diametro) * Math.Pow(Re, 4 / 5) * Math.Pow(Pr, 0.3);
+                return h;
             }
-            
-            throw new NotImplementedException(); // TODO: Implementar o calculo do coeficiente de convec e verificar as unidades.
         }
 
         /// <summary>
@@ -383,7 +383,7 @@ namespace SimulOP
         }
 
         /// <summary>
-        /// Cálcula a perda de carga dentro do trocador.
+        /// Calcula a perda de carga dentro do trocador.
         /// </summary>
         /// <param name="tubo">A tubulação para cálculo.</param>
         /// <param name="vazao">A vazão do fluido.</param>

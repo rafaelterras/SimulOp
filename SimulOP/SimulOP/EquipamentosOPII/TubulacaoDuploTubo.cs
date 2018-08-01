@@ -47,10 +47,14 @@ namespace SimulOP
         /// <param name="viscosidade"></param>
         /// <param name="vazao"></param>
         /// <param name="diametro"></param>
-        /// <returns>O número de Rynolds.</returns>
+        /// <returns>O número de Reynolds.</returns>
         public override double CalcReynolds(double densidade, double viscosidade, double vazao, double diametro)
         {
-            throw new NotImplementedException();
+            double re;
+
+            re = 4 * densidade * vazao / (Math.PI * diametro * viscosidade);
+
+            return re;
         }
 
         /// <summary>
@@ -61,7 +65,11 @@ namespace SimulOP
         /// <returns>O fator de atrito.</returns>
         public double CalculaFAtrito(IMaterialFluidoOPII material, double vazao)
         {
-           throw new NotImplementedException(); 
+            double f;
+
+            f = 0.0035 + 0.264 / Math.Pow(CalcReynolds(material.Densidade, material.Viscosidade, vazao, this.diametro), 0.42);
+
+            return f;
         }
 
         /// <summary>
@@ -72,7 +80,11 @@ namespace SimulOP
         /// <returns>A perda de carga.</returns>
         public double CalculaPerdaCarga(IMaterialFluidoOPII material, double vazao)
         {
-            throw new NotImplementedException(); // TODO: Implementar as funções de perda de carga
+            double dp;
+
+            dp = 2 * CalculaFAtrito(material, vazao) * Math.Pow(vazao, 2) * this.comprimento / this.diametro;
+
+            return dp;
         }           
     }
 }
