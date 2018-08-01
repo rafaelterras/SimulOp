@@ -9,6 +9,7 @@
         /// Densidade da água em lb/ft^3
         /// </summary>
         public const double densidadeAguaSImperial = 62.42796529; //[lb/ft^3]
+        public const double densidadeAguaSInternacional = 1000; ///[kg/m^3]
 
         /// <summary>
         /// Enum para representar as configuração contra-corrente ou co-corrente.

@@ -55,8 +55,10 @@ namespace SimulOP
         {
             double dens;
 
+            // Densidade em kg/m^3 (sistema internacional de unidades)
+
             dens = 141.5 / (grauAPI + 131.5);
-            dens = dens * EquipamentoOPII.densidadeAguaSImperial;
+            dens = dens * EquipamentoOPII.densidadeAguaSInternacional;
 
             this.densidade = dens;
         }
@@ -66,25 +68,50 @@ namespace SimulOP
             double visc;
             double primeiroTermo;
             double segundoTermo;
-            double a;
+            double expoente;
+            double tempFahrenheit;
+
+            // Viscosidade em Pa*s, temperatura em K
+
+            tempFahrenheit = 1.8 * this.temperatura - 459.67; // Conversão de temp em K para F
 
             primeiroTermo = 0.32 + (1.8 * Math.Pow(10, 7)) / Math.Pow(grauAPI, 4.53);
-            segundoTermo = 360 / (temperatura + 200);
-            a = Math.Exp(0.43 + (8.33 / grauAPI));
-            segundoTermo = Math.Pow(segundoTermo, a);
+            segundoTermo = 360 / (tempFahrenheit + 200);
+            expoente = Math.Exp(0.43 + (8.33 / grauAPI));
+            segundoTermo = Math.Pow(segundoTermo, expoente);
             visc = primeiroTermo * segundoTermo;
 
-            this.viscosidade = visc;
+            this.viscosidade = visc / 1000;
         }
 
-        private void AtualizaCalorEspecifico() // TODO: Cp e K do oleo API
+        private void AtualizaCalorEspecifico()
         {
+            double cp;
+            double primeiroTermo;
+            double tempFahrenheit;
+            double segundoTermo;
+
+            // Calor específico em J/kg K, temperatura em K
+
+            tempFahrenheit = 1.8 * this.temperatura - 459.67; // Conversão de temp em K para F
+
+            primeiroTermo = grauAPI * (-1.39 * Math.Pow(10, -6) * tempFahrenheit + 1.847 * Math.Pow(10, -3));
+            segundoTermo = 6.312 * Math.Pow(10, -4) * tempFahrenheit;
+            cp = primeiroTermo + segundoTermo + 0.352;
+
+            this.calorEspecifico = cp * 4186.798188; // Conversão para J/kg K
             throw new NotImplementedException();
         }
 
         private void AtualizaCondutividadeTermica()
         {
-            throw new NotImplementedException();
+            double k;
+
+            // Condutividade térmica em W/m K, temperatura em K
+
+            k = 0.826855 * (grauAPI + 131.5) * (0.85258 - 0.00054 * temperatura);
+
+            this.condutividadeTermica = k / 1000; // Conversão de mW/m K para W/m K
         }
 
         public IMaterialFluidoOPII Clone()
