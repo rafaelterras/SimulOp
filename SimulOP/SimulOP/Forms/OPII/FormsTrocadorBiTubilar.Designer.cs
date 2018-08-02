@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormsTrocadorBiTubilar));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -304,6 +304,7 @@
             this.cmbTrocadorMaterial.Name = "cmbTrocadorMaterial";
             this.cmbTrocadorMaterial.Size = new System.Drawing.Size(141, 19);
             this.cmbTrocadorMaterial.TabIndex = 3;
+            this.cmbTrocadorMaterial.Text = "Aço carbono";
             this.cmbTrocadorMaterial.SelectedIndexChanged += new System.EventHandler(this.cmbTrocadorMaterial_SelectedIndexChanged_1);
             // 
             // label11
@@ -349,7 +350,7 @@
             this.nudFluidoInternoTempEnt.Size = new System.Drawing.Size(56, 18);
             this.nudFluidoInternoTempEnt.TabIndex = 13;
             this.nudFluidoInternoTempEnt.Value = new decimal(new int[] {
-            10,
+            90,
             0,
             0,
             0});
@@ -384,7 +385,7 @@
             1,
             0,
             0,
-            65536});
+            0});
             // 
             // label8
             // 
@@ -422,7 +423,7 @@
             this.nudFluidoInternoAPI.Size = new System.Drawing.Size(56, 18);
             this.nudFluidoInternoAPI.TabIndex = 11;
             this.nudFluidoInternoAPI.Value = new decimal(new int[] {
-            10,
+            30,
             0,
             0,
             0});
@@ -439,6 +440,7 @@
             this.cmbFluidoInterno.Name = "cmbFluidoInterno";
             this.cmbFluidoInterno.Size = new System.Drawing.Size(168, 19);
             this.cmbFluidoInterno.TabIndex = 10;
+            this.cmbFluidoInterno.Text = "Óleo (ºAPI)";
             this.cmbFluidoInterno.SelectedIndexChanged += new System.EventHandler(this.cmbFluidoInterno_SelectedIndexChanged);
             // 
             // gubFluidoAnular
@@ -475,10 +477,10 @@
             this.nudFluidoAnularVazao.Size = new System.Drawing.Size(56, 18);
             this.nudFluidoAnularVazao.TabIndex = 9;
             this.nudFluidoAnularVazao.Value = new decimal(new int[] {
-            1,
+            3,
             0,
             0,
-            65536});
+            0});
             // 
             // label6
             // 
@@ -539,7 +541,7 @@
             this.nudFluidoAnularTempEnt.Size = new System.Drawing.Size(56, 18);
             this.nudFluidoAnularTempEnt.TabIndex = 5;
             this.nudFluidoAnularTempEnt.Value = new decimal(new int[] {
-            10,
+            20,
             0,
             0,
             0});
@@ -565,6 +567,7 @@
             this.cmbFluidoAnular.Name = "cmbFluidoAnular";
             this.cmbFluidoAnular.Size = new System.Drawing.Size(168, 19);
             this.cmbFluidoAnular.TabIndex = 0;
+            this.cmbFluidoAnular.Text = "Água";
             this.cmbFluidoAnular.SelectedIndexChanged += new System.EventHandler(this.cmbFluidoAnular_SelectedIndexChanged);
             // 
             // tabPageVariaveis
@@ -982,91 +985,95 @@
             // 
             // chartTemperatura
             // 
-            chartArea7.AxisX.Interval = 0.5D;
-            chartArea7.AxisX.MajorGrid.Interval = 0.5D;
-            chartArea7.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea7.AxisX.MajorTickMark.Interval = 0D;
-            chartArea7.AxisX.Maximum = 2D;
-            chartArea7.AxisX.Minimum = 0D;
-            chartArea7.AxisX.Title = "Comprimento do trocador (???)";
-            chartArea7.AxisX.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea7.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea7.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDot;
-            chartArea7.AxisY.Title = "Temperatura saida (F)";
-            chartArea7.AxisY.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea7.Name = "ChartArea1";
-            this.chartTemperatura.ChartAreas.Add(chartArea7);
-            legend7.Enabled = false;
-            legend7.Name = "Legend1";
-            this.chartTemperatura.Legends.Add(legend7);
+            chartArea1.AxisX.Interval = 2D;
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisX.MajorGrid.Interval = 0.5D;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea1.AxisX.MajorTickMark.Interval = 0D;
+            chartArea1.AxisX.Maximum = 20D;
+            chartArea1.AxisX.Minimum = 1D;
+            chartArea1.AxisX.Title = "Comprimento do trocador (???)";
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDot;
+            chartArea1.AxisY.Title = "Temperatura saida (F)";
+            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.Name = "ChartArea1";
+            this.chartTemperatura.ChartAreas.Add(chartArea1);
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            this.chartTemperatura.Legends.Add(legend1);
             this.chartTemperatura.Location = new System.Drawing.Point(337, 3);
             this.chartTemperatura.Name = "chartTemperatura";
-            series19.ChartArea = "ChartArea1";
-            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series19.Legend = "Legend1";
-            series19.Name = "tempInterno";
-            series20.ChartArea = "ChartArea1";
-            series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series20.Legend = "Legend1";
-            series20.Name = "tempAnular";
-            series21.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            series21.ChartArea = "ChartArea1";
-            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series21.Color = System.Drawing.Color.Silver;
-            series21.Legend = "Legend1";
-            series21.Name = "linhaComprimento";
-            this.chartTemperatura.Series.Add(series19);
-            this.chartTemperatura.Series.Add(series20);
-            this.chartTemperatura.Series.Add(series21);
+            series1.BorderWidth = 2;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "tempInterno";
+            series2.BorderWidth = 2;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.Name = "tempAnular";
+            series3.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series3.BorderWidth = 2;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Color = System.Drawing.Color.Gray;
+            series3.Legend = "Legend1";
+            series3.Name = "linhaComprimento";
+            this.chartTemperatura.Series.Add(series1);
+            this.chartTemperatura.Series.Add(series2);
+            this.chartTemperatura.Series.Add(series3);
             this.chartTemperatura.Size = new System.Drawing.Size(329, 220);
             this.chartTemperatura.TabIndex = 9;
             this.chartTemperatura.Text = "Temperatura";
-            this.chartTemperatura.Visible = false;
             // 
             // chartPerdaCarga
             // 
-            chartArea8.AxisX.Interval = 0.5D;
-            chartArea8.AxisX.MajorGrid.Enabled = false;
-            chartArea8.AxisX.MajorGrid.Interval = 0.1D;
-            chartArea8.AxisX.Maximum = 2D;
-            chartArea8.AxisX.Minimum = 0D;
-            chartArea8.AxisX.MinorGrid.Enabled = true;
-            chartArea8.AxisX.MinorGrid.Interval = 0.5D;
-            chartArea8.AxisX.MinorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea8.AxisX.Title = "Comprimento do trocador (???)";
-            chartArea8.AxisX.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea8.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea8.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDotDot;
-            chartArea8.AxisY.Title = "Perda de carga (Psi)";
-            chartArea8.AxisY.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea8.Name = "ChartArea1";
-            this.chartPerdaCarga.ChartAreas.Add(chartArea8);
-            legend8.Enabled = false;
-            legend8.Name = "Legend1";
-            this.chartPerdaCarga.Legends.Add(legend8);
+            chartArea2.AxisX.Interval = 2D;
+            chartArea2.AxisX.MajorGrid.Enabled = false;
+            chartArea2.AxisX.MajorGrid.Interval = 0.1D;
+            chartArea2.AxisX.Maximum = 20D;
+            chartArea2.AxisX.Minimum = 1D;
+            chartArea2.AxisX.MinorGrid.Interval = 0.5D;
+            chartArea2.AxisX.MinorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea2.AxisX.Title = "Comprimento do trocador (???)";
+            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea2.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDotDot;
+            chartArea2.AxisY.Title = "Perda de carga (Psi)";
+            chartArea2.AxisY.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.Name = "ChartArea1";
+            this.chartPerdaCarga.ChartAreas.Add(chartArea2);
+            legend2.Enabled = false;
+            legend2.Name = "Legend1";
+            this.chartPerdaCarga.Legends.Add(legend2);
             this.chartPerdaCarga.Location = new System.Drawing.Point(3, 3);
             this.chartPerdaCarga.Name = "chartPerdaCarga";
-            series22.ChartArea = "ChartArea1";
-            series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series22.Legend = "Legend1";
-            series22.Name = "fluidoInterno";
-            series23.ChartArea = "ChartArea1";
-            series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series23.Legend = "Legend1";
-            series23.Name = "fluidoAnular";
-            series24.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            series24.ChartArea = "ChartArea1";
-            series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series24.Color = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            series24.Legend = "Legend1";
-            series24.Name = "linhaComprimento";
-            this.chartPerdaCarga.Series.Add(series22);
-            this.chartPerdaCarga.Series.Add(series23);
-            this.chartPerdaCarga.Series.Add(series24);
+            series4.BorderWidth = 2;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.Legend = "Legend1";
+            series4.Name = "fluidoInterno";
+            series5.BorderWidth = 2;
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series5.Legend = "Legend1";
+            series5.Name = "fluidoAnular";
+            series6.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series6.BorderWidth = 2;
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.Color = System.Drawing.Color.Gray;
+            series6.Legend = "Legend1";
+            series6.Name = "linhaComprimento";
+            this.chartPerdaCarga.Series.Add(series4);
+            this.chartPerdaCarga.Series.Add(series5);
+            this.chartPerdaCarga.Series.Add(series6);
             this.chartPerdaCarga.Size = new System.Drawing.Size(328, 220);
             this.chartPerdaCarga.TabIndex = 3;
             this.chartPerdaCarga.Text = "Perda de carga";
-            this.chartPerdaCarga.Visible = false;
             // 
             // gubFigura
             // 

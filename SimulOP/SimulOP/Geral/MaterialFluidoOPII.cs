@@ -100,14 +100,14 @@ namespace SimulOP
                 this.coefCorrelCalorEspecifico[2] * Math.Pow(this.temperatura, 2) +
                 this.coefCorrelCalorEspecifico[3] * Math.Pow(this.temperatura, 3);
 
-            this.calorEspecifico = cp * (1000 / this.mM); // Cp em j/Kg k
+            this.calorEspecifico = cp * (1000.0 / this.mM); // Cp em j/Kg k
         }
 
         private void AtualizaCondutividadeTermica()
         {
             double k;
 
-            // Condutividade térmica em J/m K, temperatura em K
+            // Condutividade térmica em W/m K
             switch (this.Componente.ToLower())
             {
                 case "água":

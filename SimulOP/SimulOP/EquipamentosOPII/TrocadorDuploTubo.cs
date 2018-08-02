@@ -204,8 +204,8 @@ namespace SimulOP
             }
 
             // 2.2 Estimativa do tBulck
-            tBulckAnular = (fluidoAnularEnt.Temperatura + tAnularSaiEstimado) / 2;
-            tBulckInterno = (fluidoInternoEnt.Temperatura + tInternoSaiEstimado) / 2;
+            tBulckAnular = (fluidoAnularEnt.Temperatura + tAnularSaiEstimado) / 2.0;
+            tBulckInterno = (fluidoInternoEnt.Temperatura + tInternoSaiEstimado) / 2.0;
 
             // Criação dos fluidos de saida com temperaturas estimadas.
             fluidoAnularSai = new FluidoOPII(fluidoAnularEnt.Material.Clone(), tAnularSaiEstimado);
@@ -229,8 +229,8 @@ namespace SimulOP
                 tAnularSaiEstimado = TemperaturaSaida(materialBulckAnular, anular, vazaoAnular, fluidoAnularEnt.Temperatura);
                 tInternoSaiEstimado = TemperaturaSaida(materialBulckInterno, interno, vazaoInterna, fluidoInternoEnt.Temperatura);
 
-                double tBulckAnularEstimado = (tAnularSaiEstimado + fluidoAnularEnt.Temperatura) / 2;
-                double tBulckInternoEstimado = (tInternoSaiEstimado + FluidoInternoEnt.Temperatura) / 2;
+                double tBulckAnularEstimado = (tAnularSaiEstimado + fluidoAnularEnt.Temperatura) / 2.0;
+                double tBulckInternoEstimado = (tInternoSaiEstimado + FluidoInternoEnt.Temperatura) / 2.0;
 
                 // Critério de convergencia (erro < 1e-4)
                 if (Math.Abs(tBulckAnularEstimado - tBulckAnular) < criterioConvergencia && Math.Abs(tBulckInternoEstimado - tBulckInterno) < criterioConvergencia)
@@ -246,7 +246,7 @@ namespace SimulOP
 
                 count++;
 
-            } while (convergencia || count == 100);
+            } while (!convergencia || count > 100);
 
             if (count == 100) throw new Exception("Erro de convergência no trocador, não convergiu em 100 iterações");
 
@@ -263,7 +263,7 @@ namespace SimulOP
         /// <returns>A área de troca do trocador.</returns>
         private double CalculaAreaDeTroca()
         {
-            double area = tubulacaoInterna.Diametro * Math.PI * this.comprimento;
+            double area = tubulacaoAnular.Diametro * Math.PI * this.comprimento;
 
             this.areaTroca = area;
 
@@ -281,11 +281,18 @@ namespace SimulOP
 
             double hTotal = 0;
 
-            // 1/ hT = Sum(1/h)
+            // 1/ A*hT = Sum(1/A*h)
 
-            hTotal = 1 / ((1 / hAnular) + (1 / hInterno) + (1 / fatorIncrustacao)); // TODO: [VERIFICAR !!!]  
+            hTotal = (hInterno * hAnular) / (hInterno + hAnular);
+
+            if (this.fatorIncrustacao != 0)
+            {
+                hTotal = 1 / (1 / hTotal + this.fatorIncrustacao); // TODO: [VERIFICAR !!!]  
+            }
 
             this.coefTrocaTermGlobal = hTotal;
+
+            Console.WriteLine($"Coeficiente de troca : {hTotal}");
 
             return hTotal;
         }
@@ -306,16 +313,18 @@ namespace SimulOP
             Re = tubo.CalcReynolds(materialBulck.Densidade, materialBulck.Viscosidade, vazao, tubo.Diametro);
             Pr = materialBulck.CalorEspecifico * materialBulck.Viscosidade / materialBulck.CondutividadeTermica;
 
-            if (tubo.TipoTubo == TipoTubo.interno)
+            if ((tubo.TipoTubo == TipoTubo.interno && interno == FluidoTroca.quente) || (tubo.TipoTubo == TipoTubo.anular && anular == FluidoTroca.quente))
             {
-                h = 0.0023 * (materialBulck.CondutividadeTermica / tubo.Diametro) * Math.Pow(Re, 4 / 5) * Math.Pow(Pr, 0.4); //
-                return h;
+                h = 0.0023 * (materialBulck.CondutividadeTermica / tubo.Diametro) * Math.Pow(Re, 4.0 / 5.0) * Math.Pow(Pr, 0.4); // [h] = W/K
             }
             else
             {
-                h = 0.0023 * (materialBulck.CondutividadeTermica / tubo.Diametro) * Math.Pow(Re, 4 / 5) * Math.Pow(Pr, 0.3); //
-                return h;
+                h = 0.0023 * (materialBulck.CondutividadeTermica / tubo.Diametro) * Math.Pow(Re, 4.0 / 5.0) * Math.Pow(Pr, 0.3); // [h] = W/K
             }
+
+            if (tubo.TipoTubo == TipoTubo.interno) h = h * (tubulacaoInterna.Diametro / tubulacaoAnular.Diametro);
+
+            return h;
         }
 
         /// <summary>
@@ -340,6 +349,7 @@ namespace SimulOP
         {
             double dT1 = 0;
             double dT2 = 0;
+            double LMTD;
 
             // Para Anular = quente e Interno = frio
             if (anular == FluidoTroca.quente)
@@ -353,7 +363,9 @@ namespace SimulOP
                 dT1 = fluidoInternoSai.Temperatura - fluidoAnularEnt.Temperatura;
             }
 
-            return (dT2 - dT1) / (Math.Log(dT2 / dT1));
+            LMTD = (dT2 - dT1) / (Math.Log(dT2 / dT1));
+
+            return LMTD;
         }
 
         /// <summary>
@@ -363,7 +375,7 @@ namespace SimulOP
         /// <param name="fluidoTroca">Se o fluido é o quente ou o frio.</param>
         /// <param name="vazao">A vazão do fluido [m^3/s].</param>
         /// <param name="tempEntrada">A temperatura de entrada [K].</param>
-        /// <returns></returns>
+        /// <returns>A temperatura de saida.</returns>
         private double TemperaturaSaida(IMaterialFluidoOPII materialBulck, FluidoTroca fluidoTroca, double vazao, double tempEntrada)
         {
             double tSaida;
@@ -471,15 +483,13 @@ namespace SimulOP
                 tempInterno = this.fluidoInternoSai.Temperatura;
 
                 plotX.Add(comprimento);
-                plotPerdaCargaAnularY.Add(perdaCargaAnular);
-                plotPerdaCargaInternoY.Add(perdaCargaInterno);
-                plotTempAnularY.Add(tempAnular);
-                plotTempInternoY.Add(tempInterno);
+                plotPerdaCargaAnularY.Add(perdaCargaAnular * 1e-3); // P em KPa.
+                plotPerdaCargaInternoY.Add(perdaCargaInterno * 1e-3); // P em KPa.
+                plotTempAnularY.Add(tempAnular - 273.15); //T em C
+                plotTempInternoY.Add(tempInterno - 273.15); // T em C
             }
 
             return (plotX, plotPerdaCargaAnularY, plotPerdaCargaInternoY, plotTempAnularY, plotTempInternoY);
-
-            // TODO: [VERIFICAR] As unidades usadas.
         }
         #endregion
     }

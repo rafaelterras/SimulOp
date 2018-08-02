@@ -19,7 +19,7 @@ namespace SimulOP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms.FormsMaster()); // Inicia o programa no FormsMaster.
+            Application.Run(new Forms.FormsTrocadorBiTubilar()); // Inicia o programa no FormsMaster.
         }
      }
 }

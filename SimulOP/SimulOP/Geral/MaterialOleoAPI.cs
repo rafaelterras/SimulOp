@@ -16,7 +16,7 @@ namespace SimulOP
         private double calorEspecifico;
         private double condutividadeTermica;
 
-        public string Componente { get; }
+        public string Componente { get => componente; }
 
         public double GrauAPI { get => grauAPI; }
         public double Temperatura

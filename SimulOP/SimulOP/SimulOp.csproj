@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1DD11FB9-4C1B-42A0-BB85-A500310F218F}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>SimulOP</RootNamespace>
     <AssemblyName>SimulOP</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
