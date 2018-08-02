@@ -28,17 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ComboBox cmbTrocadorFuidoInterno;
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormsTrocadorBiTubilar));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -49,10 +48,7 @@
             this.gubTrocador = new System.Windows.Forms.GroupBox();
             this.nudTrocadorFatorEncrustacao = new System.Windows.Forms.NumericUpDown();
             this.label25 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.txbTrocadorRugosidade = new System.Windows.Forms.TextBox();
-            this.txbTrocadorK = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.cmbTrocadorMaterial = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -124,7 +120,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.txbResultadoPerdaCargaInterna = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            cmbTrocadorFuidoInterno = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -168,17 +163,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gubResultados.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // cmbTrocadorFuidoInterno
-            // 
-            cmbTrocadorFuidoInterno.FormattingEnabled = true;
-            cmbTrocadorFuidoInterno.Items.AddRange(new object[] {
-            "Quente",
-            "Frio"});
-            cmbTrocadorFuidoInterno.Location = new System.Drawing.Point(180, 69);
-            cmbTrocadorFuidoInterno.Name = "cmbTrocadorFuidoInterno";
-            cmbTrocadorFuidoInterno.Size = new System.Drawing.Size(101, 19);
-            cmbTrocadorFuidoInterno.TabIndex = 6;
             // 
             // tableLayoutPanel1
             // 
@@ -253,7 +237,7 @@
             // 
             // btnCalcular
             // 
-            this.btnCalcular.Location = new System.Drawing.Point(173, 358);
+            this.btnCalcular.Location = new System.Drawing.Point(173, 345);
             this.btnCalcular.Name = "btnCalcular";
             this.btnCalcular.Size = new System.Drawing.Size(134, 35);
             this.btnCalcular.TabIndex = 18;
@@ -265,24 +249,20 @@
             // 
             this.gubTrocador.Controls.Add(this.nudTrocadorFatorEncrustacao);
             this.gubTrocador.Controls.Add(this.label25);
-            this.gubTrocador.Controls.Add(cmbTrocadorFuidoInterno);
-            this.gubTrocador.Controls.Add(this.label14);
             this.gubTrocador.Controls.Add(this.txbTrocadorRugosidade);
-            this.gubTrocador.Controls.Add(this.txbTrocadorK);
-            this.gubTrocador.Controls.Add(this.label16);
             this.gubTrocador.Controls.Add(this.label15);
             this.gubTrocador.Controls.Add(this.cmbTrocadorMaterial);
             this.gubTrocador.Controls.Add(this.label11);
             this.gubTrocador.Location = new System.Drawing.Point(7, 232);
             this.gubTrocador.Name = "gubTrocador";
-            this.gubTrocador.Size = new System.Drawing.Size(300, 120);
+            this.gubTrocador.Size = new System.Drawing.Size(300, 107);
             this.gubTrocador.TabIndex = 2;
             this.gubTrocador.TabStop = false;
             this.gubTrocador.Text = "Trocador";
             // 
             // nudTrocadorFatorEncrustacao
             // 
-            this.nudTrocadorFatorEncrustacao.Location = new System.Drawing.Point(228, 94);
+            this.nudTrocadorFatorEncrustacao.Location = new System.Drawing.Point(228, 72);
             this.nudTrocadorFatorEncrustacao.Name = "nudTrocadorFatorEncrustacao";
             this.nudTrocadorFatorEncrustacao.Size = new System.Drawing.Size(56, 18);
             this.nudTrocadorFatorEncrustacao.TabIndex = 15;
@@ -290,45 +270,19 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(6, 96);
+            this.label25.Location = new System.Drawing.Point(6, 74);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(152, 11);
             this.label25.TabIndex = 14;
             this.label25.Text = "Fator de encrustação:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(8, 72);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(166, 11);
-            this.label14.TabIndex = 5;
-            this.label14.Text = "Fluido no tubo interno:";
             // 
             // txbTrocadorRugosidade
             // 
             this.txbTrocadorRugosidade.Location = new System.Drawing.Point(94, 45);
             this.txbTrocadorRugosidade.Name = "txbTrocadorRugosidade";
             this.txbTrocadorRugosidade.ReadOnly = true;
-            this.txbTrocadorRugosidade.Size = new System.Drawing.Size(56, 18);
+            this.txbTrocadorRugosidade.Size = new System.Drawing.Size(80, 18);
             this.txbTrocadorRugosidade.TabIndex = 13;
-            // 
-            // txbTrocadorK
-            // 
-            this.txbTrocadorK.Location = new System.Drawing.Point(235, 45);
-            this.txbTrocadorK.Name = "txbTrocadorK";
-            this.txbTrocadorK.ReadOnly = true;
-            this.txbTrocadorK.Size = new System.Drawing.Size(56, 18);
-            this.txbTrocadorK.TabIndex = 12;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(210, 48);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(19, 11);
-            this.label16.TabIndex = 6;
-            this.label16.Text = "K:";
             // 
             // label15
             // 
@@ -379,35 +333,67 @@
             // 
             // nudFluidoInternoTempEnt
             // 
+            this.nudFluidoInternoTempEnt.DecimalPlaces = 1;
             this.nudFluidoInternoTempEnt.Location = new System.Drawing.Point(228, 79);
+            this.nudFluidoInternoTempEnt.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.nudFluidoInternoTempEnt.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.nudFluidoInternoTempEnt.Name = "nudFluidoInternoTempEnt";
             this.nudFluidoInternoTempEnt.Size = new System.Drawing.Size(56, 18);
             this.nudFluidoInternoTempEnt.TabIndex = 13;
+            this.nudFluidoInternoTempEnt.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(6, 81);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(166, 11);
+            this.label10.Size = new System.Drawing.Size(201, 11);
             this.label10.TabIndex = 12;
-            this.label10.Text = "Temperatura na entrada:";
+            this.label10.Text = "Temperatura na entrada (Cº):";
             // 
             // nudFluidoInternoVazao
             // 
-            this.nudFluidoInternoVazao.Location = new System.Drawing.Point(59, 53);
+            this.nudFluidoInternoVazao.DecimalPlaces = 1;
+            this.nudFluidoInternoVazao.Location = new System.Drawing.Point(115, 53);
+            this.nudFluidoInternoVazao.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.nudFluidoInternoVazao.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.nudFluidoInternoVazao.Name = "nudFluidoInternoVazao";
             this.nudFluidoInternoVazao.Size = new System.Drawing.Size(56, 18);
             this.nudFluidoInternoVazao.TabIndex = 14;
+            this.nudFluidoInternoVazao.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(6, 55);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(47, 11);
+            this.label8.Size = new System.Drawing.Size(89, 11);
             this.label8.TabIndex = 13;
-            this.label8.Text = "Vazão:";
+            this.label8.Text = "Vazão m^3/h:";
             // 
             // label9
             // 
@@ -422,9 +408,24 @@
             // 
             this.nudFluidoInternoAPI.Enabled = false;
             this.nudFluidoInternoAPI.Location = new System.Drawing.Point(228, 29);
+            this.nudFluidoInternoAPI.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.nudFluidoInternoAPI.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.nudFluidoInternoAPI.Name = "nudFluidoInternoAPI";
             this.nudFluidoInternoAPI.Size = new System.Drawing.Size(56, 18);
             this.nudFluidoInternoAPI.TabIndex = 11;
+            this.nudFluidoInternoAPI.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // cmbFluidoInterno
             // 
@@ -458,19 +459,35 @@
             // 
             // nudFluidoAnularVazao
             // 
-            this.nudFluidoAnularVazao.Location = new System.Drawing.Point(59, 53);
+            this.nudFluidoAnularVazao.DecimalPlaces = 1;
+            this.nudFluidoAnularVazao.Location = new System.Drawing.Point(115, 53);
+            this.nudFluidoAnularVazao.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.nudFluidoAnularVazao.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.nudFluidoAnularVazao.Name = "nudFluidoAnularVazao";
             this.nudFluidoAnularVazao.Size = new System.Drawing.Size(56, 18);
             this.nudFluidoAnularVazao.TabIndex = 9;
+            this.nudFluidoAnularVazao.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(6, 55);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 11);
+            this.label6.Size = new System.Drawing.Size(103, 11);
             this.label6.TabIndex = 8;
-            this.label6.Text = "Vazão:";
+            this.label6.Text = "Vazão (m^3/h):";
             // 
             // label2
             // 
@@ -485,25 +502,56 @@
             // 
             this.nudFluidoAnularAPI.Enabled = false;
             this.nudFluidoAnularAPI.Location = new System.Drawing.Point(228, 29);
+            this.nudFluidoAnularAPI.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.nudFluidoAnularAPI.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.nudFluidoAnularAPI.Name = "nudFluidoAnularAPI";
             this.nudFluidoAnularAPI.Size = new System.Drawing.Size(56, 18);
             this.nudFluidoAnularAPI.TabIndex = 1;
+            this.nudFluidoAnularAPI.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // nudFluidoAnularTempEnt
             // 
+            this.nudFluidoAnularTempEnt.DecimalPlaces = 1;
             this.nudFluidoAnularTempEnt.Location = new System.Drawing.Point(225, 77);
+            this.nudFluidoAnularTempEnt.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.nudFluidoAnularTempEnt.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.nudFluidoAnularTempEnt.Name = "nudFluidoAnularTempEnt";
             this.nudFluidoAnularTempEnt.Size = new System.Drawing.Size(56, 18);
             this.nudFluidoAnularTempEnt.TabIndex = 5;
+            this.nudFluidoAnularTempEnt.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(8, 79);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(166, 11);
+            this.label3.Size = new System.Drawing.Size(201, 11);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Temperatura na entrada:";
+            this.label3.Text = "Temperatura na entrada (ºC):";
             // 
             // cmbFluidoAnular
             // 
@@ -550,6 +598,7 @@
             // 
             // nudVarFluidoAnularTemp
             // 
+            this.nudVarFluidoAnularTemp.DecimalPlaces = 1;
             this.nudVarFluidoAnularTemp.Location = new System.Drawing.Point(225, 17);
             this.nudVarFluidoAnularTemp.Name = "nudVarFluidoAnularTemp";
             this.nudVarFluidoAnularTemp.Size = new System.Drawing.Size(70, 18);
@@ -561,9 +610,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 19);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(166, 11);
+            this.label4.Size = new System.Drawing.Size(201, 11);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Temperatura de entrada:";
+            this.label4.Text = "Temperatura de entrada (ºC):";
             // 
             // trbVarFluidoAnularVazao
             // 
@@ -578,10 +627,26 @@
             // 
             // nudVarFluidoAnularVazao
             // 
+            this.nudVarFluidoAnularVazao.DecimalPlaces = 1;
             this.nudVarFluidoAnularVazao.Location = new System.Drawing.Point(225, 75);
+            this.nudVarFluidoAnularVazao.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.nudVarFluidoAnularVazao.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.nudVarFluidoAnularVazao.Name = "nudVarFluidoAnularVazao";
             this.nudVarFluidoAnularVazao.Size = new System.Drawing.Size(70, 18);
             this.nudVarFluidoAnularVazao.TabIndex = 1;
+            this.nudVarFluidoAnularVazao.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.nudVarFluidoAnularVazao.ValueChanged += new System.EventHandler(this.nudVarFluidoAnularVazao_ValueChanged);
             // 
             // label7
@@ -589,9 +654,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(6, 77);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(47, 11);
+            this.label7.Size = new System.Drawing.Size(103, 11);
             this.label7.TabIndex = 0;
-            this.label7.Text = "Vazão:";
+            this.label7.Text = "Vazão (m^3/h):";
             // 
             // trbVarFluidoAnularTemp
             // 
@@ -638,10 +703,26 @@
             // 
             // nudVarTrocadorDiamInterno
             // 
+            this.nudVarTrocadorDiamInterno.DecimalPlaces = 1;
             this.nudVarTrocadorDiamInterno.Location = new System.Drawing.Point(225, 167);
+            this.nudVarTrocadorDiamInterno.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudVarTrocadorDiamInterno.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.nudVarTrocadorDiamInterno.Name = "nudVarTrocadorDiamInterno";
             this.nudVarTrocadorDiamInterno.Size = new System.Drawing.Size(70, 18);
             this.nudVarTrocadorDiamInterno.TabIndex = 16;
+            this.nudVarTrocadorDiamInterno.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.nudVarTrocadorDiamInterno.ValueChanged += new System.EventHandler(this.nudVarTrocadorDiamExterno_ValueChanged);
             // 
             // label24
@@ -649,9 +730,9 @@
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(6, 169);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(124, 11);
+            this.label24.Size = new System.Drawing.Size(159, 11);
             this.label24.TabIndex = 15;
-            this.label24.Text = "Diametro interno:";
+            this.label24.Text = "Diametro interno (cm):";
             // 
             // trbVarTrocadorDiamAnular
             // 
@@ -666,10 +747,26 @@
             // 
             // nudVarTrocadorDiamAnular
             // 
+            this.nudVarTrocadorDiamAnular.DecimalPlaces = 1;
             this.nudVarTrocadorDiamAnular.Location = new System.Drawing.Point(225, 109);
+            this.nudVarTrocadorDiamAnular.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.nudVarTrocadorDiamAnular.Minimum = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
             this.nudVarTrocadorDiamAnular.Name = "nudVarTrocadorDiamAnular";
             this.nudVarTrocadorDiamAnular.Size = new System.Drawing.Size(70, 18);
             this.nudVarTrocadorDiamAnular.TabIndex = 13;
+            this.nudVarTrocadorDiamAnular.Value = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
             this.nudVarTrocadorDiamAnular.ValueChanged += new System.EventHandler(this.nudVarTrocadorDiamAnular_ValueChanged);
             // 
             // label23
@@ -677,9 +774,9 @@
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(6, 111);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(117, 11);
+            this.label23.Size = new System.Drawing.Size(152, 11);
             this.label23.TabIndex = 12;
-            this.label23.Text = "Diametro Anular:";
+            this.label23.Text = "Diametro Anular (cm):";
             // 
             // trbVarTrocadorComprimento
             // 
@@ -694,21 +791,26 @@
             // 
             // nudVarTrocadorComprimento
             // 
-            this.nudVarTrocadorComprimento.DecimalPlaces = 2;
-            this.nudVarTrocadorComprimento.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
+            this.nudVarTrocadorComprimento.DecimalPlaces = 1;
             this.nudVarTrocadorComprimento.Location = new System.Drawing.Point(225, 50);
             this.nudVarTrocadorComprimento.Maximum = new decimal(new int[] {
             20,
             0,
             0,
             0});
+            this.nudVarTrocadorComprimento.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudVarTrocadorComprimento.Name = "nudVarTrocadorComprimento";
             this.nudVarTrocadorComprimento.Size = new System.Drawing.Size(70, 18);
             this.nudVarTrocadorComprimento.TabIndex = 10;
+            this.nudVarTrocadorComprimento.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudVarTrocadorComprimento.ValueChanged += new System.EventHandler(this.nudVarTrocadorComprimento_ValueChanged);
             // 
             // label13
@@ -770,10 +872,26 @@
             // 
             // nudVarFluidoInternoVazao
             // 
+            this.nudVarFluidoInternoVazao.DecimalPlaces = 1;
             this.nudVarFluidoInternoVazao.Location = new System.Drawing.Point(225, 73);
+            this.nudVarFluidoInternoVazao.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.nudVarFluidoInternoVazao.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.nudVarFluidoInternoVazao.Name = "nudVarFluidoInternoVazao";
             this.nudVarFluidoInternoVazao.Size = new System.Drawing.Size(70, 18);
             this.nudVarFluidoInternoVazao.TabIndex = 1;
+            this.nudVarFluidoInternoVazao.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.nudVarFluidoInternoVazao.ValueChanged += new System.EventHandler(this.nudVarFluidoInternoVazao_ValueChanged);
             // 
             // label17
@@ -781,9 +899,9 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(6, 75);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(47, 11);
+            this.label17.Size = new System.Drawing.Size(103, 11);
             this.label17.TabIndex = 0;
-            this.label17.Text = "Vazão:";
+            this.label17.Text = "Vazão (m^3/h):";
             // 
             // trbVarFluidoInternoTemp
             // 
@@ -798,6 +916,7 @@
             // 
             // nudVarFluidoInternoTemp
             // 
+            this.nudVarFluidoInternoTemp.DecimalPlaces = 1;
             this.nudVarFluidoInternoTemp.Location = new System.Drawing.Point(225, 17);
             this.nudVarFluidoInternoTemp.Name = "nudVarFluidoInternoTemp";
             this.nudVarFluidoInternoTemp.Size = new System.Drawing.Size(70, 18);
@@ -809,9 +928,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 11);
+            this.label1.Size = new System.Drawing.Size(201, 11);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Temperatura de entrada:";
+            this.label1.Text = "Temperatura de entrada (ºC):";
             // 
             // tableLayoutPanel3
             // 
@@ -863,42 +982,42 @@
             // 
             // chartTemperatura
             // 
-            chartArea3.AxisX.Interval = 0.5D;
-            chartArea3.AxisX.MajorGrid.Interval = 0.5D;
-            chartArea3.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea3.AxisX.MajorTickMark.Interval = 0D;
-            chartArea3.AxisX.Maximum = 2D;
-            chartArea3.AxisX.Minimum = 0D;
-            chartArea3.AxisX.Title = "Comprimento do trocador (???)";
-            chartArea3.AxisX.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea3.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDot;
-            chartArea3.AxisY.Title = "Temperatura saida (F)";
-            chartArea3.AxisY.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.Name = "ChartArea1";
-            this.chartTemperatura.ChartAreas.Add(chartArea3);
-            legend3.Enabled = false;
-            legend3.Name = "Legend1";
-            this.chartTemperatura.Legends.Add(legend3);
+            chartArea7.AxisX.Interval = 0.5D;
+            chartArea7.AxisX.MajorGrid.Interval = 0.5D;
+            chartArea7.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea7.AxisX.MajorTickMark.Interval = 0D;
+            chartArea7.AxisX.Maximum = 2D;
+            chartArea7.AxisX.Minimum = 0D;
+            chartArea7.AxisX.Title = "Comprimento do trocador (???)";
+            chartArea7.AxisX.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea7.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea7.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDot;
+            chartArea7.AxisY.Title = "Temperatura saida (F)";
+            chartArea7.AxisY.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea7.Name = "ChartArea1";
+            this.chartTemperatura.ChartAreas.Add(chartArea7);
+            legend7.Enabled = false;
+            legend7.Name = "Legend1";
+            this.chartTemperatura.Legends.Add(legend7);
             this.chartTemperatura.Location = new System.Drawing.Point(337, 3);
             this.chartTemperatura.Name = "chartTemperatura";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series7.Legend = "Legend1";
-            series7.Name = "tempInterno";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series8.Legend = "Legend1";
-            series8.Name = "tempAnular";
-            series9.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series9.Color = System.Drawing.Color.Silver;
-            series9.Legend = "Legend1";
-            series9.Name = "linhaComprimento";
-            this.chartTemperatura.Series.Add(series7);
-            this.chartTemperatura.Series.Add(series8);
-            this.chartTemperatura.Series.Add(series9);
+            series19.ChartArea = "ChartArea1";
+            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series19.Legend = "Legend1";
+            series19.Name = "tempInterno";
+            series20.ChartArea = "ChartArea1";
+            series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series20.Legend = "Legend1";
+            series20.Name = "tempAnular";
+            series21.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series21.ChartArea = "ChartArea1";
+            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series21.Color = System.Drawing.Color.Silver;
+            series21.Legend = "Legend1";
+            series21.Name = "linhaComprimento";
+            this.chartTemperatura.Series.Add(series19);
+            this.chartTemperatura.Series.Add(series20);
+            this.chartTemperatura.Series.Add(series21);
             this.chartTemperatura.Size = new System.Drawing.Size(329, 220);
             this.chartTemperatura.TabIndex = 9;
             this.chartTemperatura.Text = "Temperatura";
@@ -906,44 +1025,44 @@
             // 
             // chartPerdaCarga
             // 
-            chartArea4.AxisX.Interval = 0.5D;
-            chartArea4.AxisX.MajorGrid.Enabled = false;
-            chartArea4.AxisX.MajorGrid.Interval = 0.1D;
-            chartArea4.AxisX.Maximum = 2D;
-            chartArea4.AxisX.Minimum = 0D;
-            chartArea4.AxisX.MinorGrid.Enabled = true;
-            chartArea4.AxisX.MinorGrid.Interval = 0.5D;
-            chartArea4.AxisX.MinorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea4.AxisX.Title = "Comprimento do trocador (???)";
-            chartArea4.AxisX.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea4.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea4.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDotDot;
-            chartArea4.AxisY.Title = "Perda de carga (Psi)";
-            chartArea4.AxisY.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea4.Name = "ChartArea1";
-            this.chartPerdaCarga.ChartAreas.Add(chartArea4);
-            legend4.Enabled = false;
-            legend4.Name = "Legend1";
-            this.chartPerdaCarga.Legends.Add(legend4);
+            chartArea8.AxisX.Interval = 0.5D;
+            chartArea8.AxisX.MajorGrid.Enabled = false;
+            chartArea8.AxisX.MajorGrid.Interval = 0.1D;
+            chartArea8.AxisX.Maximum = 2D;
+            chartArea8.AxisX.Minimum = 0D;
+            chartArea8.AxisX.MinorGrid.Enabled = true;
+            chartArea8.AxisX.MinorGrid.Interval = 0.5D;
+            chartArea8.AxisX.MinorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea8.AxisX.Title = "Comprimento do trocador (???)";
+            chartArea8.AxisX.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea8.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea8.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDotDot;
+            chartArea8.AxisY.Title = "Perda de carga (Psi)";
+            chartArea8.AxisY.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea8.Name = "ChartArea1";
+            this.chartPerdaCarga.ChartAreas.Add(chartArea8);
+            legend8.Enabled = false;
+            legend8.Name = "Legend1";
+            this.chartPerdaCarga.Legends.Add(legend8);
             this.chartPerdaCarga.Location = new System.Drawing.Point(3, 3);
             this.chartPerdaCarga.Name = "chartPerdaCarga";
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series10.Legend = "Legend1";
-            series10.Name = "fluidoInterno";
-            series11.ChartArea = "ChartArea1";
-            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series11.Legend = "Legend1";
-            series11.Name = "fluidoAnular";
-            series12.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            series12.ChartArea = "ChartArea1";
-            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series12.Color = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            series12.Legend = "Legend1";
-            series12.Name = "linhaComprimento";
-            this.chartPerdaCarga.Series.Add(series10);
-            this.chartPerdaCarga.Series.Add(series11);
-            this.chartPerdaCarga.Series.Add(series12);
+            series22.ChartArea = "ChartArea1";
+            series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series22.Legend = "Legend1";
+            series22.Name = "fluidoInterno";
+            series23.ChartArea = "ChartArea1";
+            series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series23.Legend = "Legend1";
+            series23.Name = "fluidoAnular";
+            series24.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series24.ChartArea = "ChartArea1";
+            series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series24.Color = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series24.Legend = "Legend1";
+            series24.Name = "linhaComprimento";
+            this.chartPerdaCarga.Series.Add(series22);
+            this.chartPerdaCarga.Series.Add(series23);
+            this.chartPerdaCarga.Series.Add(series24);
             this.chartPerdaCarga.Size = new System.Drawing.Size(328, 220);
             this.chartPerdaCarga.TabIndex = 3;
             this.chartPerdaCarga.Text = "Perda de carga";
@@ -989,26 +1108,74 @@
             // 
             // nudTrocadorComprimento
             // 
+            this.nudTrocadorComprimento.DecimalPlaces = 1;
             this.nudTrocadorComprimento.Location = new System.Drawing.Point(337, 249);
+            this.nudTrocadorComprimento.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.nudTrocadorComprimento.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudTrocadorComprimento.Name = "nudTrocadorComprimento";
             this.nudTrocadorComprimento.Size = new System.Drawing.Size(51, 18);
             this.nudTrocadorComprimento.TabIndex = 4;
+            this.nudTrocadorComprimento.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudTrocadorComprimento.ValueChanged += new System.EventHandler(this.nudTrocadorComprimento_ValueChanged);
             // 
             // nudTrocadorDiametroAnular
             // 
+            this.nudTrocadorDiametroAnular.DecimalPlaces = 1;
             this.nudTrocadorDiametroAnular.Location = new System.Drawing.Point(69, 158);
+            this.nudTrocadorDiametroAnular.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.nudTrocadorDiametroAnular.Minimum = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
             this.nudTrocadorDiametroAnular.Name = "nudTrocadorDiametroAnular";
             this.nudTrocadorDiametroAnular.Size = new System.Drawing.Size(51, 18);
             this.nudTrocadorDiametroAnular.TabIndex = 3;
+            this.nudTrocadorDiametroAnular.Value = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
             this.nudTrocadorDiametroAnular.ValueChanged += new System.EventHandler(this.nudTrocadorDiametroAnular_ValueChanged);
             // 
             // nudTrocadorDiametroInterno
             // 
+            this.nudTrocadorDiametroInterno.DecimalPlaces = 1;
             this.nudTrocadorDiametroInterno.Location = new System.Drawing.Point(611, 158);
+            this.nudTrocadorDiametroInterno.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudTrocadorDiametroInterno.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.nudTrocadorDiametroInterno.Name = "nudTrocadorDiametroInterno";
             this.nudTrocadorDiametroInterno.Size = new System.Drawing.Size(51, 18);
             this.nudTrocadorDiametroInterno.TabIndex = 1;
+            this.nudTrocadorDiametroInterno.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.nudTrocadorDiametroInterno.ValueChanged += new System.EventHandler(this.nudTrocadorDiametroInterno_ValueChanged);
             // 
             // pictureBox1
@@ -1238,12 +1405,9 @@
         private System.Windows.Forms.NumericUpDown nudFluidoInternoAPI;
         private System.Windows.Forms.ComboBox cmbFluidoInterno;
         private System.Windows.Forms.TextBox txbTrocadorRugosidade;
-        private System.Windows.Forms.TextBox txbTrocadorK;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox cmbTrocadorMaterial;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.NumericUpDown nudTrocadorDiametroAnular;
         private System.Windows.Forms.NumericUpDown nudTrocadorDiametroInterno;
         private System.Windows.Forms.NumericUpDown nudFluidoInternoTempEnt;

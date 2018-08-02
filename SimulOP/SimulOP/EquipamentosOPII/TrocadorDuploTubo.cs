@@ -263,7 +263,7 @@ namespace SimulOP
         /// <returns>A área de troca do trocador.</returns>
         private double CalculaAreaDeTroca()
         {
-            double area = tubulacaoInterna.Diametro * Math.PI * this.comprimento; // TODO: [VERIFICAR UNIDADES!!]
+            double area = tubulacaoInterna.Diametro * Math.PI * this.comprimento;
 
             this.areaTroca = area;
 
@@ -283,7 +283,7 @@ namespace SimulOP
 
             // 1/ hT = Sum(1/h)
 
-            hTotal = 1 / ((1 / hAnular) + (1 / hInterno) + (1 / fatorIncrustacao)); // [VERIFICAR !!!]  
+            hTotal = 1 / ((1 / hAnular) + (1 / hInterno) + (1 / fatorIncrustacao)); // TODO: [VERIFICAR !!!]  
 
             this.coefTrocaTermGlobal = hTotal;
 
@@ -308,12 +308,12 @@ namespace SimulOP
 
             if (tubo.TipoTubo == TipoTubo.interno)
             {
-                h = 0.0023 * (materialBulck.CondutividadeTermica / tubo.Diametro) * Math.Pow(Re, 4 / 5) * Math.Pow(Pr, 0.4);
+                h = 0.0023 * (materialBulck.CondutividadeTermica / tubo.Diametro) * Math.Pow(Re, 4 / 5) * Math.Pow(Pr, 0.4); //
                 return h;
             }
             else
             {
-                h = 0.0023 * (materialBulck.CondutividadeTermica / tubo.Diametro) * Math.Pow(Re, 4 / 5) * Math.Pow(Pr, 0.3);
+                h = 0.0023 * (materialBulck.CondutividadeTermica / tubo.Diametro) * Math.Pow(Re, 4 / 5) * Math.Pow(Pr, 0.3); //
                 return h;
             }
         }
@@ -361,8 +361,8 @@ namespace SimulOP
         /// </summary>
         /// <param name="materialBulck">Material do fluido na temperatura Tbulck,  para cálculo estimado das propriedades.</param>
         /// <param name="fluidoTroca">Se o fluido é o quente ou o frio.</param>
-        /// <param name="vazao">A vazão do fluido.</param>
-        /// <param name="tempEntrada">A temperatura de entrada.</param>
+        /// <param name="vazao">A vazão do fluido [m^3/s].</param>
+        /// <param name="tempEntrada">A temperatura de entrada [K].</param>
         /// <returns></returns>
         private double TemperaturaSaida(IMaterialFluidoOPII materialBulck, FluidoTroca fluidoTroca, double vazao, double tempEntrada)
         {

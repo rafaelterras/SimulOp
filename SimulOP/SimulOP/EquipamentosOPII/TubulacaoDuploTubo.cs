@@ -39,7 +39,6 @@ namespace SimulOP
             this.tipoTubo = tipoTubo;
         }
         
-
         /// <summary>
         /// Número de Reynolds associado ao escoamento.
         /// </summary>
@@ -48,11 +47,11 @@ namespace SimulOP
         /// <param name="vazao"></param>
         /// <param name="diametro"></param>
         /// <returns>O número de Reynolds.</returns>
-        public override double CalcReynolds(double densidade, double viscosidade, double vazao, double diametro)
+        public double CalcReynolds(IMaterialFluidoOPII material , double vazao)
         {
             double re;
 
-            re = 4 * densidade * vazao / (Math.PI * diametro * viscosidade);
+            re = 4 * material.Densidade * vazao / (Math.PI * this.diametro * material.Viscosidade);
 
             return re;
         }
@@ -61,30 +60,40 @@ namespace SimulOP
         /// Cálculo do fator de atrito para um determinado fluido em uma vazão.
         /// </summary>
         /// <param name="material">Material do fluido que está escoando na tubulação.</param>
-        /// <param name="vazao">A vazão de fluido.</param>
+        /// <param name="vazao">A vazão de fluido [m^3/s].</param>
         /// <returns>O fator de atrito.</returns>
         public double CalculaFAtrito(IMaterialFluidoOPII material, double vazao)
         {
-            double f;
+            double Re = CalcReynolds(material, vazao);
+            double A1 = Math.Pow(7 / Re, 0.9);
+            double A2 = 0.27 * this.RugosidadeRelativa;
+            double A = Math.Pow(-2.475 * Math.Log(A1 + A2), 16);
+            double B = Math.Pow((37530 / Re), 16.0);
 
-            f = 0.0035 + 0.264 / Math.Pow(CalcReynolds(material.Densidade, material.Viscosidade, vazao, this.diametro), 0.42);
+            double fA1 = Math.Pow(8 / Re, 12);
+            double fA2 = 1 / Math.Pow(A + B, 3.0 / 2.0);
 
-            return f;
+            double fA = 2 * Math.Pow(fA1 + fA2, 1.0 / 12.0); // fator de fanning
+
+            this.fatorAtrito = fA;
+
+            return fA;
         }
 
         /// <summary>
         /// Cálculo do fator de atrito para um determinado fluido em uma vazão.
         /// </summary>
         /// <param name="material">Material do fluido que está escoando na tubulação.</param>
-        /// <param name="vazao">A vazão de fluido.</param>
+        /// <param name="vazao">A vazão de fluido [m^3/s].</param>
         /// <returns>A perda de carga.</returns>
         public double CalculaPerdaCarga(IMaterialFluidoOPII material, double vazao)
         {
-            double dp;
+            double fAtrito = CalculaFAtrito(material, vazao);
+            double vMedia = vazao / (Math.PI * Math.Pow(diametro / 2, 2));
 
-            dp = 2 * CalculaFAtrito(material, vazao) * Math.Pow(vazao, 2) * this.comprimento / this.diametro;
+            perdaCarga = 4 * fAtrito * material.Densidade * (this.comprimento / diametro) * Math.Pow(vMedia, 2); // em Pa.
 
-            return dp;
+            return perdaCarga;
         }           
     }
 }
