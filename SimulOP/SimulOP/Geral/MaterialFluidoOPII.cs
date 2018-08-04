@@ -85,10 +85,10 @@ namespace SimulOP
             double visc;
 
             // Densidade em cP, temperatura em K
-            visc = Math.Pow(10, this.CoefCorrelViscosidade[0] + this.coefCorrelViscosidade[1]/this.temperatura + 
-                this.coefCorrelViscosidade[2] * this.temperatura + this.coefCorrelViscosidade[3] * Math.Pow(this.temperatura, 2));
+            visc = Math.Pow(10, (this.CoefCorrelViscosidade[0] + this.coefCorrelViscosidade[1] / this.temperatura +
+                this.coefCorrelViscosidade[2] * this.temperatura + this.coefCorrelViscosidade[3] * Math.Pow(this.temperatura, 2)));
 
-            this.viscosidade = visc / 1000; // Densidade para Pa*s.
+            this.viscosidade = visc / 1000.0; // Densidade para Pa*s.
         }
 
         private void AtualizaCalorEspecifico()
@@ -115,7 +115,7 @@ namespace SimulOP
                         this.coefCorrelCondutividadeTermica[2] * Math.Pow(this.temperatura, 2);
                     break;
                 default:
-                    k = Math.Pow(10, this.coefCorrelCondutividadeTermica[0] + this.coefCorrelCondutividadeTermica[1] * Math.Pow(1 - this.temperatura/this.coefCorrelCondutividadeTermica[2], 2/7));
+                    k = Math.Pow(10, this.coefCorrelCondutividadeTermica[0] + this.coefCorrelCondutividadeTermica[1] * Math.Pow(1 - this.temperatura/this.coefCorrelCondutividadeTermica[2], 2.0/7.0));
                     break;
             }
             this.condutividadeTermica = k;

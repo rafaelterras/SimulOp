@@ -106,7 +106,7 @@
                 case "benzeno":
                     MM = 78.11;
                     coefCorrelDensidade = new double[4] { 0.3009, 0.2677, 562.16, 0.2818 };
-                    coefCorrelViscosidade = new double[4] { -7.4005, 1181.5, 0.014888, -0.000013713 };
+                    coefCorrelViscosidade = new double[4] { -7.4005, 1181.5, 0.014888, -1.3713e-5 };
                     coefCorrelCalorEspecifico = new double[4] { -31.662, 1.3043, -0.0036078, 0.0000038243 };
                     coefCorrelCondutividadeTermica = new double[3] { -1.6846, 1.052, 562.16 };
                     break;

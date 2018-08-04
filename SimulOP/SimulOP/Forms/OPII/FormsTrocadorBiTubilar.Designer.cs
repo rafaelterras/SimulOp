@@ -304,7 +304,7 @@
             this.cmbTrocadorMaterial.Name = "cmbTrocadorMaterial";
             this.cmbTrocadorMaterial.Size = new System.Drawing.Size(141, 19);
             this.cmbTrocadorMaterial.TabIndex = 3;
-            this.cmbTrocadorMaterial.Text = "Aço carbono";
+            this.cmbTrocadorMaterial.Text = "Cobre";
             this.cmbTrocadorMaterial.SelectedIndexChanged += new System.EventHandler(this.cmbTrocadorMaterial_SelectedIndexChanged_1);
             // 
             // label11
@@ -350,10 +350,10 @@
             this.nudFluidoInternoTempEnt.Size = new System.Drawing.Size(56, 18);
             this.nudFluidoInternoTempEnt.TabIndex = 13;
             this.nudFluidoInternoTempEnt.Value = new decimal(new int[] {
-            90,
+            266,
             0,
             0,
-            0});
+            65536});
             // 
             // label10
             // 
@@ -382,10 +382,10 @@
             this.nudFluidoInternoVazao.Size = new System.Drawing.Size(56, 18);
             this.nudFluidoInternoVazao.TabIndex = 14;
             this.nudFluidoInternoVazao.Value = new decimal(new int[] {
-            1,
+            51,
             0,
             0,
-            0});
+            65536});
             // 
             // label8
             // 
@@ -440,7 +440,7 @@
             this.cmbFluidoInterno.Name = "cmbFluidoInterno";
             this.cmbFluidoInterno.Size = new System.Drawing.Size(168, 19);
             this.cmbFluidoInterno.TabIndex = 10;
-            this.cmbFluidoInterno.Text = "Óleo (ºAPI)";
+            this.cmbFluidoInterno.Text = "Benzeno";
             this.cmbFluidoInterno.SelectedIndexChanged += new System.EventHandler(this.cmbFluidoInterno_SelectedIndexChanged);
             // 
             // gubFluidoAnular
@@ -477,10 +477,10 @@
             this.nudFluidoAnularVazao.Size = new System.Drawing.Size(56, 18);
             this.nudFluidoAnularVazao.TabIndex = 9;
             this.nudFluidoAnularVazao.Value = new decimal(new int[] {
-            3,
+            33,
             0,
             0,
-            0});
+            65536});
             // 
             // label6
             // 
@@ -541,10 +541,10 @@
             this.nudFluidoAnularTempEnt.Size = new System.Drawing.Size(56, 18);
             this.nudFluidoAnularTempEnt.TabIndex = 5;
             this.nudFluidoAnularTempEnt.Value = new decimal(new int[] {
-            20,
+            711,
             0,
             0,
-            0});
+            65536});
             // 
             // label3
             // 
@@ -567,7 +567,7 @@
             this.cmbFluidoAnular.Name = "cmbFluidoAnular";
             this.cmbFluidoAnular.Size = new System.Drawing.Size(168, 19);
             this.cmbFluidoAnular.TabIndex = 0;
-            this.cmbFluidoAnular.Text = "Água";
+            this.cmbFluidoAnular.Text = "Tolueno";
             this.cmbFluidoAnular.SelectedIndexChanged += new System.EventHandler(this.cmbFluidoAnular_SelectedIndexChanged);
             // 
             // tabPageVariaveis
@@ -753,12 +753,12 @@
             this.nudVarTrocadorDiamAnular.DecimalPlaces = 1;
             this.nudVarTrocadorDiamAnular.Location = new System.Drawing.Point(225, 109);
             this.nudVarTrocadorDiamAnular.Maximum = new decimal(new int[] {
-            20,
+            30,
             0,
             0,
             0});
             this.nudVarTrocadorDiamAnular.Minimum = new decimal(new int[] {
-            12,
+            5,
             0,
             0,
             0});
@@ -797,7 +797,7 @@
             this.nudVarTrocadorComprimento.DecimalPlaces = 1;
             this.nudVarTrocadorComprimento.Location = new System.Drawing.Point(225, 50);
             this.nudVarTrocadorComprimento.Maximum = new decimal(new int[] {
-            20,
+            40,
             0,
             0,
             0});
@@ -810,7 +810,7 @@
             this.nudVarTrocadorComprimento.Size = new System.Drawing.Size(70, 18);
             this.nudVarTrocadorComprimento.TabIndex = 10;
             this.nudVarTrocadorComprimento.Value = new decimal(new int[] {
-            1,
+            5,
             0,
             0,
             0});
@@ -985,12 +985,12 @@
             // 
             // chartTemperatura
             // 
-            chartArea1.AxisX.Interval = 2D;
+            chartArea1.AxisX.Interval = 4D;
             chartArea1.AxisX.MajorGrid.Enabled = false;
             chartArea1.AxisX.MajorGrid.Interval = 0.5D;
             chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
             chartArea1.AxisX.MajorTickMark.Interval = 0D;
-            chartArea1.AxisX.Maximum = 20D;
+            chartArea1.AxisX.Maximum = 40D;
             chartArea1.AxisX.Minimum = 1D;
             chartArea1.AxisX.Title = "Comprimento do trocador (???)";
             chartArea1.AxisX.TitleFont = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1031,10 +1031,10 @@
             // 
             // chartPerdaCarga
             // 
-            chartArea2.AxisX.Interval = 2D;
+            chartArea2.AxisX.Interval = 4D;
             chartArea2.AxisX.MajorGrid.Enabled = false;
             chartArea2.AxisX.MajorGrid.Interval = 0.1D;
-            chartArea2.AxisX.Maximum = 20D;
+            chartArea2.AxisX.Maximum = 40D;
             chartArea2.AxisX.Minimum = 1D;
             chartArea2.AxisX.MinorGrid.Interval = 0.5D;
             chartArea2.AxisX.MinorGrid.LineColor = System.Drawing.Color.LightGray;
@@ -1118,7 +1118,7 @@
             this.nudTrocadorComprimento.DecimalPlaces = 1;
             this.nudTrocadorComprimento.Location = new System.Drawing.Point(337, 249);
             this.nudTrocadorComprimento.Maximum = new decimal(new int[] {
-            20,
+            40,
             0,
             0,
             0});
@@ -1131,7 +1131,7 @@
             this.nudTrocadorComprimento.Size = new System.Drawing.Size(51, 18);
             this.nudTrocadorComprimento.TabIndex = 4;
             this.nudTrocadorComprimento.Value = new decimal(new int[] {
-            1,
+            36,
             0,
             0,
             0});
@@ -1147,7 +1147,7 @@
             0,
             0});
             this.nudTrocadorDiametroAnular.Minimum = new decimal(new int[] {
-            12,
+            5,
             0,
             0,
             0});
@@ -1155,7 +1155,7 @@
             this.nudTrocadorDiametroAnular.Size = new System.Drawing.Size(51, 18);
             this.nudTrocadorDiametroAnular.TabIndex = 3;
             this.nudTrocadorDiametroAnular.Value = new decimal(new int[] {
-            12,
+            5,
             0,
             0,
             0});

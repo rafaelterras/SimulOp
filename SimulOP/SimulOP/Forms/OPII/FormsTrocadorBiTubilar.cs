@@ -228,7 +228,7 @@ namespace SimulOP.Forms
 
             // Tubulação Anular
             double tubAnularDiam = Convert.ToDouble(nudTrocadorDiametroAnular.Value) * 1e-2; // Diametro em m
-            tubulacaoAnular = new TubulacaoDuploTubo(tubAnularDiam - tubInternaDiam, espessura, tubulacaoComprimento, materialTubulacao, EquipamentoOPII.TipoTubo.anular);
+            tubulacaoAnular = new TubulacaoDuploTubo(tubAnularDiam, espessura, tubulacaoComprimento, materialTubulacao, EquipamentoOPII.TipoTubo.anular, tubInternaDiam);
 
             // Não executa se a diferença de temperatura entre os fluido não for miníma.
             if (Math.Abs(fluidoAnularTemp - fluidoInternoTemp) < 2) return;
@@ -322,7 +322,7 @@ namespace SimulOP.Forms
             temperaturaAnularY.Clear();
 
             // TODO: [VERIFICAR] Função para atualizar plot da perda de carga.
-            (comprimentoX, perdaCargaInternoY, perdaCargaAnularY, temperaturaInternoY, temperaturaAnularY) = trocador.PlotResultados(1, 20, 40);
+            (comprimentoX, perdaCargaInternoY, perdaCargaAnularY, temperaturaInternoY, temperaturaAnularY) = trocador.PlotResultados(1, 40, 40);
 
             // Gráfico da perda de carga
             chartPerdaCarga.Series["fluidoInterno"].Points.DataBindXY(comprimentoX, perdaCargaInternoY);

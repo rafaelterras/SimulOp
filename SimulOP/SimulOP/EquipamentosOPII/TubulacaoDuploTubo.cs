@@ -9,6 +9,7 @@ namespace SimulOP
     {
         protected double especura;
         protected double diametroExterno;
+        private double diametroIn;
         protected EquipamentoOPII.TipoTubo tipoTubo;
         
         /// <summary>
@@ -23,20 +24,27 @@ namespace SimulOP
         /// Especura da parede [m].
         /// </summary>
         public double Especura { get => especura; set => especura = value; }
+        /// <summary>
+        /// Diametro da tubulacao interna [m], caso o tubo seja anular.
+        /// </summary>
+        public double DiametroIn { get => diametroIn; }
 
         /// <summary>
         /// Constructor da tubulação do trocador duplo tubo
         /// </summary>
         /// <param name="diametroExterno">Diametro equivalente da tubulação.</param>
+        /// <param name="especura"></param>
         /// <param name="comprimento">Comprimento do tubo.</param>
         /// <param name="material">Material do tubo.</param>
         /// <param name="tipoTubo">Tipo do tubo, se é anular ou interno.</param>
-        public TubulacaoDuploTubo(double diametroExterno, double especura, double comprimento, MaterialTubulacao material, EquipamentoOPII.TipoTubo tipoTubo) 
-            : base(diametroExterno - especura, comprimento, material, 0, "")
+        /// <param name="diametroIn"></param>
+        public TubulacaoDuploTubo(double diametroExterno, double especura, double comprimento, MaterialTubulacao material, EquipamentoOPII.TipoTubo tipoTubo, double diametroIn = 0) 
+            : base(diametroExterno - especura - diametroIn, comprimento, material, 0, "") // Passa o Diametro hidraulico para o diametro da tubulacao base.
         {
             this.especura = (especura >= 0) ? especura : throw new ArgumentException(nameof(especura));
             this.diametroExterno = (diametroExterno > 0) ? diametroExterno : throw new ArgumentException(nameof(diametroExterno));
             this.tipoTubo = tipoTubo;
+            this.diametroIn = diametroIn;
         }
         
         /// <summary>
@@ -51,7 +59,18 @@ namespace SimulOP
         {
             double re;
 
-            re = 4 * material.Densidade * vazao / (Math.PI * this.diametro * material.Viscosidade);
+            double A;
+
+            if (this.tipoTubo == EquipamentoOPII.TipoTubo.anular)
+            {
+                A = Math.PI * (Math.Pow(this.diametroExterno, 2.0) - Math.Pow(this.diametroIn, 2.0)) / 4.0;
+                re = (material.Densidade * vazao * this.diametro) / (A * material.Viscosidade);
+            }
+            else
+            {
+                A = Math.PI * Math.Pow(this.diametro, 2.0) / 4.0;
+                re = (material.Densidade * vazao * this.diametro) / (A * material.Viscosidade);
+            }
 
             return re;
         }

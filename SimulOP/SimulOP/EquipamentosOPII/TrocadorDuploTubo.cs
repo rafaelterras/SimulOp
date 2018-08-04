@@ -36,7 +36,7 @@ namespace SimulOP
         private double calorTransferido;
         private ConfgCorrentes configuracao;
 
-        private const double criterioConvergencia = 1e-4; // Critério de convergencia do trocador
+        private const double criterioConvergencia = 1e-1; // Critério de convergencia do trocador
 
         /// <summary>
         /// Tubulação representativa da parte anular do trocador.
@@ -194,13 +194,13 @@ namespace SimulOP
 
             if (anular == FluidoTroca.quente)
             {
-                tAnularSaiEstimado = fluidoInternoEnt.Temperatura * 1.1;
-                tInternoSaiEstimado = fluidoAnularEnt.Temperatura * 0.9;
+                tAnularSaiEstimado = 273.15 + (fluidoInternoEnt.Temperatura - 273.15) * 1.4;
+                tInternoSaiEstimado = 273.15 + (fluidoAnularEnt.Temperatura - 273.15) * 0.6;
             }
             else
             {
-                tAnularSaiEstimado = fluidoInternoEnt.Temperatura * 0.9;
-                tInternoSaiEstimado = fluidoAnularEnt.Temperatura * 1.1;
+                tAnularSaiEstimado = 273.15 + (fluidoInternoEnt.Temperatura - 273.15) * 0.6;
+                tInternoSaiEstimado = 273.15 + (fluidoAnularEnt.Temperatura - 273.15) * 1.4;
             }
 
             // 2.2 Estimativa do tBulck
@@ -232,11 +232,13 @@ namespace SimulOP
                 double tBulckAnularEstimado = (tAnularSaiEstimado + fluidoAnularEnt.Temperatura) / 2.0;
                 double tBulckInternoEstimado = (tInternoSaiEstimado + FluidoInternoEnt.Temperatura) / 2.0;
 
-                // Critério de convergencia (erro < 1e-4)
+                // Critério de convergencia (erro < 1e-2)
                 if (Math.Abs(tBulckAnularEstimado - tBulckAnular) < criterioConvergencia && Math.Abs(tBulckInternoEstimado - tBulckInterno) < criterioConvergencia)
                 {
                     convergencia = true;
                 }
+
+                Console.WriteLine($"TanularSai = {tAnularSaiEstimado}");
 
                 tBulckAnular = tBulckAnularEstimado;
                 tBulckInterno = tBulckInternoEstimado;
@@ -246,10 +248,14 @@ namespace SimulOP
 
                 count++;
 
-            } while (!convergencia || count > 100);
+            } while (!convergencia && count < 200);
 
-            if (count == 100) throw new Exception("Erro de convergência no trocador, não convergiu em 100 iterações");
-
+            if (count >= 200)
+            {
+                Console.WriteLine("Nao Convergiu!");
+                Console.ReadLine();
+                throw new Exception("Erro de convergência no trocador, não convergiu em 200 iterações");
+            }
             Console.WriteLine($"Número de iterações: {count}");
 
             // 3. Calculo da perda de carga
@@ -263,7 +269,7 @@ namespace SimulOP
         /// <returns>A área de troca do trocador.</returns>
         private double CalculaAreaDeTroca()
         {
-            double area = tubulacaoAnular.Diametro * Math.PI * this.comprimento;
+            double area = tubulacaoInterna.Diametro * Math.PI * this.comprimento;
 
             this.areaTroca = area;
 
@@ -279,20 +285,23 @@ namespace SimulOP
             double hAnular = CalculaCoefConvec(tubulacaoAnular, materialBulckAnular, vazaoAnular);
             double hInterno = CalculaCoefConvec(tubulacaoInterna, materialBulckInterno, vazaoInterna);
 
+            //Console.WriteLine($"hanular = {Math.Round(hAnular, 2)} ; hinterno = {Math.Round(hInterno, 2)}");
+
             double hTotal = 0;
 
             // 1/ A*hT = Sum(1/A*h)
 
-            hTotal = (hInterno * hAnular) / (hInterno + hAnular);
+            double invH = (1.0 / hInterno) + (1.0 / hAnular);
+            hTotal = 1.0 / invH;
 
             if (this.fatorIncrustacao != 0)
             {
-                hTotal = 1 / (1 / hTotal + this.fatorIncrustacao); // TODO: [VERIFICAR !!!]  
+                hTotal = 1.0 / (1.0 / hTotal + this.fatorIncrustacao); // TODO: [VERIFICAR !!!]  
             }
 
             this.coefTrocaTermGlobal = hTotal;
 
-            Console.WriteLine($"Coeficiente de troca : {hTotal}");
+            //Console.WriteLine($"Coeficiente de troca : {hTotal}");
 
             return hTotal;
         }
@@ -308,23 +317,59 @@ namespace SimulOP
         {
             double Re; // Número de Reynolds
             double Pr; // Número de Prandtl
+            double Nu; // Númeo de Nusselt
             double h; // Coeficiente de convecção
 
-            Re = tubo.CalcReynolds(materialBulck.Densidade, materialBulck.Viscosidade, vazao, tubo.Diametro);
+            Re = tubo.CalcReynolds(materialBulck, vazao);
             Pr = materialBulck.CalorEspecifico * materialBulck.Viscosidade / materialBulck.CondutividadeTermica;
 
-            if ((tubo.TipoTubo == TipoTubo.interno && interno == FluidoTroca.quente) || (tubo.TipoTubo == TipoTubo.anular && anular == FluidoTroca.quente))
+            //double diamEqv;
+
+            //// Diametro equivalente para o cálculo do h quando a tubulação é anular.
+            //if (tubo.TipoTubo == TipoTubo.anular)
+            //{
+            //    diamEqv = (Math.Pow(tubo.DiametroExterno, 2.0) - Math.Pow(tubo.DiametroIn, 2.0)) / tubo.DiametroIn;
+            //}
+            //else
+            //{
+            //    diamEqv = tubo.Diametro;
+            //}                       
+
+            // Correlação é um pouco diferente para o fluido frio e o qente
+            if (tubo.TipoTubo == TipoTubo.interno)
             {
-                h = 0.0023 * (materialBulck.CondutividadeTermica / tubo.Diametro) * Math.Pow(Re, 4.0 / 5.0) * Math.Pow(Pr, 0.4); // [h] = W/K
+                if (Re < 2300.0) // Regime laminar
+                {
+                    Nu = 1.86 * Math.Pow(Re * Pr * (tubo.Diametro / this.comprimento), 0.33);
+                }
+                else if (Re >= 2300.0 && Re < 1e4) // Regime intermediario
+                {
+                    Nu = 0.023 * Math.Pow(Re, 0.8) * Math.Pow(Pr, 0.4) * (1 - (6e5 / Math.Pow(Re, 1.8)));
+                }
+                else // Regime turbulendo 
+                {
+                    Nu = 0.023 * Math.Pow(Re, 0.8) * Math.Pow(Pr, 0.4);
+                }
             }
-            else
+            else // Tubo anular
             {
-                h = 0.0023 * (materialBulck.CondutividadeTermica / tubo.Diametro) * Math.Pow(Re, 4.0 / 5.0) * Math.Pow(Pr, 0.3); // [h] = W/K
+                if (Re < 2300.0) // Regime laminar
+                {
+                    Nu = 4.05 * Math.Pow(Re, 0.17) * Math.Pow(Pr, 0.33);
+                }
+                else if (Re >= 2300.0 && Re < 1e4) // Regime intermediario
+                {
+                    Nu = 1.86 * Math.Pow(Re * Pr * (tubo.Diametro / this.comprimento), 0.33) * (1 - (6e5 / Math.Pow(Re, 1.8)));
+                }
+                else // Regime turbulendo 
+                {
+                    Nu = 0.023 * Math.Pow(Re, 0.8) * Math.Pow(Pr, 0.4);
+                }
             }
 
-            if (tubo.TipoTubo == TipoTubo.interno) h = h * (tubulacaoInterna.Diametro / tubulacaoAnular.Diametro);
+            h = (Nu * materialBulck.CondutividadeTermica) / tubo.Diametro;
 
-            return h;
+           return h;
         }
 
         /// <summary>
@@ -363,7 +408,20 @@ namespace SimulOP
                 dT1 = fluidoInternoSai.Temperatura - fluidoAnularEnt.Temperatura;
             }
 
-            LMTD = (dT2 - dT1) / (Math.Log(dT2 / dT1));
+            //LMTD = (dT2 - dT1) / (Math.Log(dT2 / dT1));
+
+            if (true)
+            {
+                if (anular == FluidoTroca.quente)
+                {
+                    LMTD = ((fluidoAnularEnt.Temperatura + fluidoAnularSai.Temperatura) - (fluidoInternoEnt.Temperatura + fluidoInternoSai.Temperatura)) / 2;
+                }
+                else
+                {
+                    LMTD = ((fluidoInternoEnt.Temperatura + fluidoInternoSai.Temperatura) - (fluidoAnularEnt.Temperatura + fluidoAnularSai.Temperatura)) / 2;
+                }
+                Console.WriteLine($"LMTD aproximado! = {LMTD}");
+            }
 
             return LMTD;
         }
@@ -382,16 +440,16 @@ namespace SimulOP
 
             // Q = V * Cp * (Tent - Tsai)
 
-            if (fluidoTroca == FluidoTroca.quente) // Tsai = Tent - Q / (V*D * Cp)
+            if (fluidoTroca == FluidoTroca.quente) // Tsai = Tent - Q / (M * Cp)
             {
                 tSaida = tempEntrada - (this.calorTransferido / (vazao * materialBulck.Densidade * materialBulck.CalorEspecifico));
             }
-            else // Tsai = Tent + Q / (V * Cp)
+            else // Tsai = Tent + Q / (M * Cp)
             {
                 tSaida = tempEntrada + (this.calorTransferido / (vazao * materialBulck.Densidade * materialBulck.CalorEspecifico));
             }
 
-            return tSaida; // TODO: [VERIFICAR UNIDADES!!]
+            return tSaida;
         }
 
         /// <summary>
