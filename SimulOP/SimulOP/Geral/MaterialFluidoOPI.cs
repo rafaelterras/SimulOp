@@ -11,11 +11,11 @@
         /// <summary>
         /// Densidade do material [Kg/m^3].
         /// </summary>
-        public double Densidade { get => densidade; }
+        public virtual double Densidade { get => densidade; }
         /// <summary>
         /// Viscosidade do material [Pa*s].
         /// </summary>
-        public double Viscosidade { get => viscosidade; }
+        public virtual double Viscosidade { get => viscosidade; }
 
         /// <summary>
         /// Constructor do MaterialFluidoOPI

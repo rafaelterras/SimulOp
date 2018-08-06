@@ -30,11 +30,11 @@ namespace SimulOP.Forms
         string[] txbFigFluidoInternoTxt;
 
         // Inputs que podem ser variadas
-        private double nudVarFluidoInternoVazaoDbl;
         private double nudVarFluidoInternoTempDbl;
-        private double nudVarFluidoAnularVazaoDbl;
+        private double nudVarFluidoInternoTempSaiDbl;
         private double nudVarFluidoAnularTempDbl;
-        private double nudVarTrocadorComprimentoDbl;
+        private double nudVarFluidoAnularTempSaiDbl;
+        private double nudVarTrocadorVazaoQuenteDbl;
         private double nudVarTrocadorDiamAnularDbl;
         private double nudVarTrocadorDiamInternoDbl;
 
@@ -43,19 +43,19 @@ namespace SimulOP.Forms
         private string txbResultadoPerdaCargaAnularTxt;
         private string txbResultadosCoefTrocaTxt;
 
-        private string txbResultadoTempFluidoInternoSaiTxt;
-        private string txbResultadoTempFluidoAnularSaiTxt;
+        private string txbResultadoCompTrocadorTxt;
+        private string txbResultadoVazaoFrioTxt;
         private string txbResultadosCalorTrocadoTxt;
 
         // Listas para Plot
-        private List<double> comprimentoX = new List<double>();
+        private List<double> tempQuentSaiX = new List<double>();
         private List<double> perdaCargaInternoY = new List<double>();
         private List<double> perdaCargaAnularY = new List<double>();
-        private List<double> temperaturaInternoY = new List<double>();
-        private List<double> temperaturaAnularY = new List<double>();
+        private List<double> comprimentoY = new List<double>();
 
         // Forms de ajuda e auxiliares
         private Form formAberto;
+        private EquipamentoOPII.TipoTubo tuboQente;
         private bool atualizaParametros = false;
         private decimal nudFrioMax = 40;
         private decimal nudFrioMin = 10;
@@ -75,20 +75,19 @@ namespace SimulOP.Forms
         {
             if (ativar)
             {
-                nudTrocadorComprimento.ValueChanged += nudTrocadorComprimento_ValueChanged;
                 nudTrocadorDiametroAnular.ValueChanged += nudTrocadorDiametroAnular_ValueChanged;
                 nudTrocadorDiametroInterno.ValueChanged += nudTrocadorDiametroInterno_ValueChanged;
 
-                nudVarFluidoInternoVazao.ValueChanged += nudVarFluidoInternoVazao_ValueChanged;
-                trbVarFluidoInternoVazao.Scroll += trbVarFluidoInternoVazao_Scroll;
+                nudVarFluidoInternoTempSai.ValueChanged += nudVarFluidoInternoVazao_ValueChanged;
+                trbVarFluidoInternoTempSai.Scroll += trbVarFluidoInternoVazao_Scroll;
                 nudVarFluidoInternoTemp.ValueChanged += nudVarFluidoInternoTemp_ValueChanged;
                 trbVarFluidoInternoTemp.Scroll += trbVarFluidoInternoTemp_Scroll;
-                nudVarFluidoAnularVazao.ValueChanged += nudVarFluidoAnularVazao_ValueChanged;
-                trbVarFluidoAnularVazao.Scroll += trbVarFluidoAnularVazao_Scroll;
+                nudVarFluidoInternoTempSai.ValueChanged += nudVarFluidoInternoTempSai_ValueChanged;
+                trbVarFluidoInternoTempSai.Scroll += trbVarFluidoInternoTempSai_Scroll;
                 nudVarFluidoAnularTemp.ValueChanged += nudVarFluidoAnularTemp_ValueChanged;
                 trbVarFluidoAnularTemp.Scroll += trbVarFluidoAnularTemp_Scroll;
-                nudVarTrocadorComprimento.ValueChanged += nudVarTrocadorComprimento_ValueChanged;
-                trbVarTrocadorComprimento.Scroll += trbVarTrocadorComprimento_Scroll;
+                nudVarTrocadorVazaoQuente.ValueChanged += nudVarTrocadorVazaoQuente_ValueChanged;
+                trbVarTrocadorVazaoQuente.Scroll += trbVarTrocadorVazaoQuente_Scroll;
                 nudVarTrocadorDiamAnular.ValueChanged += nudVarTrocadorDiamAnular_ValueChanged;
                 trbVarTrocadorDiamAnular.Scroll += trbVarTrocadorDiamAnular_Scroll;
                 nudVarTrocadorDiamInterno.ValueChanged += nudVarTrocadorDiamExterno_ValueChanged;
@@ -96,20 +95,19 @@ namespace SimulOP.Forms
             }
             else
             {
-                nudTrocadorComprimento.ValueChanged -= nudTrocadorComprimento_ValueChanged;
                 nudTrocadorDiametroAnular.ValueChanged -= nudTrocadorDiametroAnular_ValueChanged;
                 nudTrocadorDiametroInterno.ValueChanged -= nudTrocadorDiametroInterno_ValueChanged;
 
-                nudVarFluidoInternoVazao.ValueChanged -= nudVarFluidoInternoVazao_ValueChanged;
-                trbVarFluidoInternoVazao.Scroll -= trbVarFluidoInternoVazao_Scroll;
+                nudVarFluidoInternoTempSai.ValueChanged -= nudVarFluidoInternoVazao_ValueChanged;
+                trbVarFluidoInternoTempSai.Scroll -= trbVarFluidoInternoVazao_Scroll;
                 nudVarFluidoInternoTemp.ValueChanged -= nudVarFluidoInternoTemp_ValueChanged;
                 trbVarFluidoInternoTemp.Scroll -= trbVarFluidoInternoTemp_Scroll;
-                nudVarFluidoAnularVazao.ValueChanged -= nudVarFluidoAnularVazao_ValueChanged;
-                trbVarFluidoAnularVazao.Scroll -= trbVarFluidoAnularVazao_Scroll;
+                nudVarFluidoInternoTempSai.ValueChanged -= nudVarFluidoInternoTempSai_ValueChanged;
+                trbVarFluidoInternoTempSai.Scroll -= trbVarFluidoInternoTempSai_Scroll;
                 nudVarFluidoAnularTemp.ValueChanged -= nudVarFluidoAnularTemp_ValueChanged;
                 trbVarFluidoAnularTemp.Scroll -= trbVarFluidoAnularTemp_Scroll;
-                nudVarTrocadorComprimento.ValueChanged -= nudVarTrocadorComprimento_ValueChanged;
-                trbVarTrocadorComprimento.Scroll -= trbVarTrocadorComprimento_Scroll;
+                nudVarTrocadorVazaoQuente.ValueChanged -= nudVarTrocadorVazaoQuente_ValueChanged;
+                trbVarTrocadorVazaoQuente.Scroll -= trbVarTrocadorVazaoQuente_Scroll;
                 nudVarTrocadorDiamAnular.ValueChanged -= nudVarTrocadorDiamAnular_ValueChanged;
                 trbVarTrocadorDiamAnular.Scroll -= trbVarTrocadorDiamAnular_Scroll;
                 nudVarTrocadorDiamInterno.ValueChanged -= nudVarTrocadorDiamExterno_ValueChanged;
@@ -132,51 +130,6 @@ namespace SimulOP.Forms
             txbFigFluidoAnular.Lines = txbFigFluidoAnularTxt;
             txbFigFluidoInterno.Lines = txbFigFluidoInternoTxt;
 
-            double tempTemp = nudVarFluidoInternoTempDbl;
-            int trbTempTemp = trbVarFluidoInternoTemp.Value;
-            double tmpVaz = nudVarFluidoInternoVazaoDbl;
-            int trbVazTemp = trbVarFluidoInternoVazao.Value;
-
-            EventosInputs(false);
-
-            nudVarFluidoInternoTemp.Minimum = 0;
-            nudVarFluidoInternoTemp.Maximum = 300;
-            nudVarFluidoAnularTemp.Minimum = 0;
-            nudVarFluidoAnularTemp.Maximum = 300;
-
-            nudVarFluidoInternoTemp.Value = Convert.ToDecimal(nudVarFluidoAnularTempDbl);  //  Temperatura fluido interno
-            trbVarFluidoInternoTemp.Value = trbVarFluidoAnularTemp.Value;
-
-            nudVarFluidoInternoVazao.Value = Convert.ToDecimal(nudVarFluidoAnularVazaoDbl); // Vazão fluido interno
-            trbVarFluidoInternoVazao.Value = trbVarFluidoAnularVazao.Value;
-
-            nudVarFluidoAnularTemp.Value = Convert.ToDecimal(tempTemp - 273.15);                     // Temperatura fluido anular
-            trbVarFluidoAnularTemp.Value = trbTempTemp;
-
-            nudVarFluidoAnularVazao.Value = Convert.ToDecimal(tmpVaz * 3600);                      // Vazão fluido anular
-            trbVarFluidoAnularVazao.Value = trbVazTemp;
-            
-            trocador.TrocaPosicaoFluidos();
-
-            if (trocador.Anular == EquipamentoOPII.FluidoTroca.quente)
-            {
-                nudVarFluidoAnularTemp.Minimum = nudQuenteMin;
-                nudVarFluidoAnularTemp.Maximum = nudQuenteMax;
-
-                nudVarFluidoInternoTemp.Minimum = nudFrioMin;
-                nudVarFluidoInternoTemp.Maximum = nudFrioMax;
-            }
-            else
-            {
-                nudVarFluidoAnularTemp.Minimum = nudFrioMin;
-                nudVarFluidoAnularTemp.Maximum = nudFrioMax;
-
-                nudVarFluidoInternoTemp.Minimum = nudQuenteMin;
-                nudVarFluidoInternoTemp.Maximum = nudQuenteMax;
-            }
-
-            EventosInputs(true);
-
             AtualizaForms();
         }
 
@@ -186,7 +139,7 @@ namespace SimulOP.Forms
             string fluidoAnularNome = cmbFluidoAnular.Text;
             double fluidoAnularAPI = Convert.ToDouble(nudFluidoAnularAPI.Value);
             double fluidoAnularTemp = Convert.ToDouble(nudFluidoAnularTempEnt.Value) + 273.15; // T em K
-            double fluidoAnularVazao = Convert.ToDouble(nudFluidoAnularVazao.Value) / 3600; // Q em M ^ 3 / s
+            double tempAnularSai = Convert.ToDouble(nudFluidoAnularTempSaida.Value) + 273.15; // T em L
 
             if (fluidoAnularNome == "Óleo (ºAPI)")
             {
@@ -203,7 +156,7 @@ namespace SimulOP.Forms
             string fluidoInternoNome = cmbFluidoInterno.Text;
             double fluidoInternoAPI = Convert.ToDouble(nudFluidoInternoAPI.Value);
             double fluidoInternoTemp = Convert.ToDouble(nudFluidoInternoTempEnt.Value) + 273.15; // T em K
-            double fluidoInternoVazao = Convert.ToDouble(nudFluidoInternoVazao.Value) / 3600; // Q em M^3/s
+            double tempInternoSai = Convert.ToDouble(nudFluidoInternoTempSaida.Value) + 273.15; // T em K
 
             if (fluidoInternoNome == "Óleo (ºAPI)")
             {
@@ -231,24 +184,40 @@ namespace SimulOP.Forms
             tubulacaoAnular = new TubulacaoDuploTubo(tubAnularDiam, espessura, tubulacaoComprimento, materialTubulacao, EquipamentoOPII.TipoTubo.anular, tubInternaDiam);
 
             // Não executa se a diferença de temperatura entre os fluido não for miníma.
-            if (Math.Abs(fluidoAnularTemp - fluidoInternoTemp) < 2) return;
+            if (Math.Abs(fluidoAnularTemp - fluidoInternoTemp) < 2)
+            {
+                Console.ReadLine();
+                return;
+            }
+
+            tuboQente = (fluidoAnularTemp > fluidoInternoTemp) ? EquipamentoOPII.TipoTubo.anular : EquipamentoOPII.TipoTubo.interno;
 
             // Trocador
+            double vazaoQente = Convert.ToDouble(nudVazaoQuente) / 3600.0; // Vazao em m^3/s
             double fatorIncrustacao = Convert.ToDouble(nudTrocadorFatorEncrustacao.Value);
-            trocador = new TrocadorDuploTubo(fluidoAnularEnt, fluidoAnularVazao, fluidoInternoEnt, fluidoInternoVazao,
-                tubulacaoAnular, tubulacaoInterna, tubulacaoComprimento, fatorIncrustacao);
+            trocador = new TrocadorDuploTubo(fluidoAnularEnt, tempAnularSai, fluidoInternoEnt, tempInternoSai, vazaoQente, tubulacaoAnular, tubulacaoInterna, fatorIncrustacao);
             
-            txbFigFluidoAnular.Lines = new string[] { "Fluido Anular: ", $"[{trocador.Anular}]", $"{trocador.FluidoAnularEnt.Material.Componente}",
-                $"T ent = {trocador.FluidoAnularEnt.Temperatura - 273.15} ºC", $"Vazão = {trocador.VazaoAnular * 3600} m^3/h" };
-            txbFigFluidoInterno.Lines = new string[] { "Fluido Interno: ", $"[{trocador.Interno}]", $"{trocador.FluidoInternoEnt.Material.Componente}",
-                $"T ent = {trocador.FluidoInternoEnt.Temperatura - 273.15} ºC", $"Vazão = {trocador.VazaoInterna * 3600} m^3/h" };
-
-            txbFigFluidoAnularTxt = txbFigFluidoAnular.Lines;
-            txbFigFluidoInternoTxt = txbFigFluidoInterno.Lines;
-
             trocador.CalculaTroca();
             fluidoAnularSai = trocador.FluidoAnularSai;
             fluidoInternoSai = trocador.FluidoInternoSai;
+
+            if (trocador.Anular == EquipamentoOPII.FluidoTroca.quente)
+            {
+                txbFigFluidoAnular.Lines = new string[] { "Fluido Anular: ", $"[{trocador.Anular}]", $"{trocador.FluidoAnularEnt.Material.Componente}",
+                    $"T ent = {trocador.FluidoAnularEnt.Temperatura - 273.15} ºC", $"Vazão = {trocador.VazaoQuente * 3600} m^3/h" };
+                txbFigFluidoInterno.Lines = new string[] { "Fluido Interno: ", $"[{trocador.Interno}]", $"{trocador.FluidoInternoEnt.Material.Componente}",
+                    $"T ent = {trocador.FluidoInternoEnt.Temperatura - 273.15} ºC", $"Vazão = {trocador.VazaoFrio * 3600} m^3/h" };
+            }
+            else
+            {
+                txbFigFluidoAnular.Lines = new string[] { "Fluido Anular: ", $"[{trocador.Anular}]", $"{trocador.FluidoAnularEnt.Material.Componente}",
+                $"T ent = {trocador.FluidoAnularEnt.Temperatura - 273.15} ºC", $"Vazão = {trocador.VazaoFrio * 3600} m^3/h" };
+                txbFigFluidoInterno.Lines = new string[] { "Fluido Interno: ", $"[{trocador.Interno}]", $"{trocador.FluidoInternoEnt.Material.Componente}",
+                $"T ent = {trocador.FluidoInternoEnt.Temperatura - 273.15} ºC", $"Vazão = {trocador.VazaoQuente * 3600} m^3/h" };
+            }
+            
+            txbFigFluidoAnularTxt = txbFigFluidoAnular.Lines;
+            txbFigFluidoInternoTxt = txbFigFluidoInterno.Lines;
                         
             txbFigFluidoAnular.Lines = new string[] { txbFigFluidoAnularTxt[0], txbFigFluidoAnularTxt[1], txbFigFluidoAnularTxt[2], txbFigFluidoAnularTxt[3], txbFigFluidoAnularTxt[4] };
             txbFigFluidoInterno.Lines = new string[] { txbFigFluidoInternoTxt[0], txbFigFluidoInternoTxt[1], txbFigFluidoInternoTxt[2], txbFigFluidoInternoTxt[3], txbFigFluidoInternoTxt[4] };
@@ -257,7 +226,7 @@ namespace SimulOP.Forms
             txbFigFluidoAnular.Visible = true;
             txbFigFluidoInterno.Visible = true;
             chartPerdaCarga.Visible = true;
-            chartTemperatura.Visible = true;
+            chartComprimento.Visible = true;
             gubResultados.Visible = true;
             gubVarFluidoInterno.Visible = true;
             gubVarFluidoAnular.Visible = true;
@@ -282,24 +251,17 @@ namespace SimulOP.Forms
             }
 
             // Coloca os valores nas variaveis dinamicas
-            nudVarFluidoInternoVazao.Value = Convert.ToDecimal(fluidoInternoVazao * 3600);
-            nudVarFluidoInternoVazaoDbl = fluidoInternoVazao * 3600;
             nudVarFluidoInternoTemp.Value = Convert.ToDecimal(fluidoInternoTemp - 273.15);
-            nudVarFluidoInternoTempDbl = fluidoInternoTemp - 273.15;
+            nudVarFluidoInternoTempSai.Value = Convert.ToDecimal(tempInternoSai - 273.15);
 
-            nudVarFluidoAnularVazao.Value = Convert.ToDecimal(fluidoAnularVazao * 3600);
-            nudVarFluidoAnularVazaoDbl = fluidoAnularVazao * 3600;
             nudVarFluidoAnularTemp.Value = Convert.ToDecimal(fluidoAnularTemp - 273.15);
-            nudVarFluidoAnularTempDbl = fluidoAnularTemp - 273.15;
+            nudVarFluidoAnularTempSai.Value = Convert.ToDecimal(tempAnularSai - 273.15);
 
-            nudVarTrocadorComprimento.Value = Convert.ToDecimal(tubulacaoComprimento);
-            nudVarTrocadorComprimentoDbl = tubulacaoComprimento;
+            nudVarTrocadorVazaoQuente.Value = Convert.ToDecimal(vazaoQente * 3600);
             nudTrocadorComprimento.Value = Convert.ToDecimal(tubulacaoComprimento);
             nudVarTrocadorDiamAnular.Value = Convert.ToDecimal(tubAnularDiam * 100);
-            nudVarTrocadorDiamAnularDbl = tubAnularDiam * 100;
             nudTrocadorDiametroAnular.Value = Convert.ToDecimal(tubAnularDiam * 100);
             nudVarTrocadorDiamInterno.Value = Convert.ToDecimal(tubInternaDiam * 100);
-            nudVarTrocadorDiamInternoDbl = tubInternaDiam * 100;
             nudTrocadorDiametroInterno.Value = Convert.ToDecimal(tubInternaDiam * 100);
 
             AtualizaForms();
@@ -310,33 +272,46 @@ namespace SimulOP.Forms
         private void AtualizaForms()
         {
             AtualizaPlots();
-            AtualizaResultados(nudVarTrocadorComprimentoDbl);
+            if (tuboQente == EquipamentoOPII.TipoTubo.anular)
+            {
+                AtualizaResultados(nudVarFluidoAnularTempSaiDbl);
+            }
+            else
+            {
+                AtualizaResultados(nudVarFluidoInternoTempSaiDbl);
+            }
         }
 
         private void AtualizaPlots()
         {
-            comprimentoX.Clear();
+            tempQuentSaiX.Clear();
             perdaCargaInternoY.Clear();
             perdaCargaAnularY.Clear();
-            temperaturaInternoY.Clear();
-            temperaturaAnularY.Clear();
+            comprimentoY.Clear();
 
             // TODO: [VERIFICAR] Função para atualizar plot da perda de carga.
-            (comprimentoX, perdaCargaInternoY, perdaCargaAnularY, temperaturaInternoY, temperaturaAnularY) = trocador.PlotResultados(1, 40, 40);
+            (tempQuentSaiX, perdaCargaInternoY, perdaCargaAnularY, comprimentoY) = trocador.PlotResultados(30, 80, 40);
 
             // Gráfico da perda de carga
-            chartPerdaCarga.Series["fluidoInterno"].Points.DataBindXY(comprimentoX, perdaCargaInternoY);
-            chartPerdaCarga.Series["fluidoAnular"].Points.DataBindXY(comprimentoX, perdaCargaAnularY);
+            chartPerdaCarga.Series["fluidoInterno"].Points.DataBindXY(tempQuentSaiX, perdaCargaInternoY);
+            chartPerdaCarga.Series["fluidoAnular"].Points.DataBindXY(tempQuentSaiX, perdaCargaAnularY);
 
             // Gráfico das temperaturas
-            chartTemperatura.Series["tempInterno"].Points.DataBindXY(comprimentoX, temperaturaInternoY);
-            chartTemperatura.Series["tempAnular"].Points.DataBindXY(comprimentoX, temperaturaAnularY);
+            chartComprimento.Series["comprimento"].Points.DataBindXY(tempQuentSaiX, comprimentoY);
         }
 
-        private void AtualizaResultados(double comprimento)
+        private void AtualizaResultados(double tempQuenteSai)
         {
             // Cálculo do trocador com o novo comprimento
-            trocador.Comprimento = comprimento;
+            if (tuboQente == EquipamentoOPII.TipoTubo.anular)
+            {
+                trocador.TempAnularSaida = tempQuenteSai;
+            }
+            else
+            {
+                trocador.TempInternoSaida = tempQuenteSai;
+            }
+
             trocador.CalculaTroca();
 
             // Display dos resultados
@@ -344,24 +319,23 @@ namespace SimulOP.Forms
             txbResultadoPerdaCargaAnularTxt = Math.Round(trocador.TubulacaoAnular.PerdaCarga * 1e-3, 2).ToString(); // P em KPa
             txbResultadosCoefTrocaTxt = Math.Round(trocador.CoefTrocaTermGlobal, 2).ToString();
 
-            txbResultadoTempFluidoInternoSaiTxt = Math.Round(trocador.FluidoInternoSai.Temperatura - 273.15, 2).ToString(); // T em C
-            txbResultadoTempFluidoAnularSaiTxt = Math.Round(trocador.FluidoAnularSai.Temperatura - 273.15, 2).ToString(); // T em C
-            txbResultadosCalorTrocadoTxt = Math.Round(trocador.CalorTransferido, 0).ToString();
+            txbResultadoCompTrocadorTxt = Math.Round(trocador.Comprimento, 2).ToString();
+            txbResultadoVazaoFrioTxt = Math.Round(trocador.VazaoFrio * 3600, 2).ToString();
+            txbResultadosCalorTrocadoTxt = Math.Round(trocador.CalorTransferido * 1000, 1).ToString();
 
             txbResultadoPerdaCargaInterna.Text = txbResultadoPerdaCargaInternaTxt;
             txbResultadoPerdaCargaAnular.Text = txbResultadoPerdaCargaAnularTxt;
             txbResultadosCoefTroca.Text = txbResultadosCoefTrocaTxt;
 
-            txbResultadoTempFluidoInternoSai.Text = txbResultadoTempFluidoInternoSaiTxt;
-            txbResultadoTempFluidoAnularSai.Text = txbResultadoTempFluidoAnularSaiTxt;
+            txbResultadoCompTrocador.Text = txbResultadoCompTrocadorTxt;
+            txbResultadoVazaoFrio.Text = txbResultadoVazaoFrioTxt;
             txbResultadosCalorTrocado.Text = txbResultadosCalorTrocadoTxt;
 
             // Atualização da linha do comprimento nos gráficos            
             double perdaCargaMax = Math.Max(trocador.TubulacaoAnular.PerdaCarga * 1e-3, trocador.TubulacaoInterna.PerdaCarga * 1e-3);
-            double temperaturaMax = Math.Max(trocador.FluidoAnularSai.Temperatura - 273.15, trocador.FluidoInternoSai.Temperatura - 273.15);
 
-            chartPerdaCarga.Series["linhaComprimento"].Points.DataBindXY(new double[] { comprimento, comprimento }, new double[] { 0, perdaCargaMax });
-            chartTemperatura.Series["linhaComprimento"].Points.DataBindXY(new double[] { comprimento, comprimento }, new double[] { 0, temperaturaMax });
+            chartPerdaCarga.Series["linhaTemp"].Points.DataBindXY(new double[] { tempQuenteSai, tempQuenteSai }, new double[] { 0, perdaCargaMax });
+            chartComprimento.Series["linhaTemp"].Points.DataBindXY(new double[] { tempQuenteSai, tempQuenteSai }, new double[] { 0, trocador.Comprimento });
         }
 
         #region Input Inicial
@@ -420,23 +394,24 @@ namespace SimulOP.Forms
                 / (Convert.ToDouble(nud.Maximum) - Convert.ToDouble(nud.Minimum)));
             trb.Value = trbInt;
 
-            //if (!atualizaParametros) // Retorna sem modificar se não for atualizar.
-            //{
-            //    EventosInputs(true);
-            //    return;
-            //}
-
             switch (nud.Name) 
             {
-                case "nudVarFluidoInternoVazao":
-                    nudVarFluidoInternoVazaoDbl = x / 3600; // Q em m^3/h
-                    txbFigFluidoInternoTxt[4] = $"Vazão = {Math.Round(x,1)} m^3/h";
-                    txbFigFluidoInterno.Lines = txbFigFluidoInternoTxt;
+                case "nudVarFluidoInternoTempSai":
+                    nudVarFluidoInternoTempSaiDbl = x + 273.15; // T em K.
 
                     if (!atualizaParametros) break;
 
-                    trocador.VazaoInterna = nudVarFluidoInternoVazaoDbl;    // Atualiza o trocador
-                    AtualizaForms();                                        // Atualiza o forms
+                    trocador.TempInternoSaida = nudVarFluidoInternoTempSaiDbl;    // Atualiza o trocador
+
+                    if (tuboQente == EquipamentoOPII.TipoTubo.interno)
+                    {
+                        AtualizaResultados(nudVarFluidoInternoTempSaiDbl);
+                    }
+                    else
+                    {
+                        AtualizaForms();                                        // Atualiza o forms
+                    }
+
                     break;
                 case "nudVarFluidoInternoTemp":
                     nudVarFluidoInternoTempDbl = x + 273.15; // T em K
@@ -448,15 +423,22 @@ namespace SimulOP.Forms
                     trocador.FluidoInternoEnt.Temperatura = nudVarFluidoInternoTempDbl; // Atualiza o trocador
                     AtualizaForms();                                                    // Atualiza o forms
                     break;
-                case "nudVarFluidoAnularVazao":
-                    nudVarFluidoAnularVazaoDbl = x / 3600; // Q em m^3/h
-                    txbFigFluidoAnularTxt[4] = $"Vazão = {Math.Round(x, 1)} m^3/h";
-                    txbFigFluidoAnular.Lines = txbFigFluidoAnularTxt;
+                case "nudVarFluidoAnularTempSai":
+                    nudVarFluidoAnularTempSaiDbl = x + 273.15; // T em K.
 
                     if (!atualizaParametros) break;
 
-                    trocador.VazaoAnular = nudVarFluidoAnularVazaoDbl;  // Atualiza o trocador
-                    AtualizaForms();                                    // Atualiza o forms
+                    trocador.TempAnularSaida = nudVarFluidoAnularTempSaiDbl;        // Atualiza o trocador
+
+                    if (tuboQente == EquipamentoOPII.TipoTubo.anular)
+                    {
+                        AtualizaResultados(nudVarFluidoAnularTempSaiDbl);
+                    }
+                    else
+                    {
+                        AtualizaForms();                                    // Atualiza o forms
+                    }
+
                     break;
                 case "nudVarFluidoAnularTemp":
                     nudVarFluidoAnularTempDbl = x + 273.15; // T em K
@@ -468,13 +450,25 @@ namespace SimulOP.Forms
                     trocador.FluidoAnularEnt.Temperatura = nudVarFluidoAnularTempDbl;   // Atualiza o trocador
                     AtualizaForms();                                                    // Atualiza o forms
                     break;
-                case "nudVarTrocadorComprimento":
-                    nudTrocadorComprimento.Value = Convert.ToDecimal(x);
-                    nudVarTrocadorComprimentoDbl = x;
+                case "nudVarTrocadorVazaoQuente":
+                    nudVarTrocadorVazaoQuenteDbl = x / 3600; // Q em m^3/s
 
+                    trocador.VazaoQuente = nudVarTrocadorVazaoQuenteDbl;
+
+                    if (tuboQente == EquipamentoOPII.TipoTubo.anular)
+                    {
+                        txbFigFluidoAnularTxt[4] = $"Vazão = {nudVarTrocadorVazaoQuenteDbl * 3600} m^3/h";
+                        txbFigFluidoAnular.Lines = txbFigFluidoAnularTxt;
+                    }
+                    else
+                    {
+                        txbFigFluidoInternoTxt[4] = $"Vazão = {nudVarTrocadorVazaoQuenteDbl * 3600} m^3/h";
+                        txbFigFluidoInterno.Lines = txbFigFluidoInternoTxt;
+                    }
+                    
                     if (!atualizaParametros) break;
 
-                    AtualizaResultados(nudVarTrocadorComprimentoDbl);   // Atualiza o gráfico e resultados
+                    AtualizaForms();    // Atualiza o forms
                     break;
                 case "nudVarTrocadorDiamAnular":
                     nudTrocadorDiametroAnular.Value = Convert.ToDecimal(x);
@@ -511,16 +505,16 @@ namespace SimulOP.Forms
         {
             switch (nud.Name)
             {
-                case "nudVarFluidoInternoVazao":
-                    return trbVarFluidoInternoVazao;
+                case "nudVarFluidoInternoTempSai":
+                    return trbVarFluidoInternoTempSai;
                 case "nudVarFluidoInternoTemp":
                     return trbVarFluidoInternoTemp;
-                case "nudVarFluidoAnularVazao":
-                    return trbVarFluidoAnularVazao;
                 case "nudVarFluidoAnularTemp":
                     return trbVarFluidoAnularTemp;
-                case "nudVarTrocadorComprimento":
-                    return trbVarTrocadorComprimento;
+                case "nudVarFluidoAnularTempSai":
+                    return trbVarFluidoAnularTempSai;
+                case "nudVarTrocadorVazaoQuente":
+                    return trbVarTrocadorVazaoQuente;
                 case "nudVarTrocadorDiamAnular":
                     return trbVarTrocadorDiamAnular;
                 case "nudVarTrocadorDiamInterno":
@@ -539,31 +533,59 @@ namespace SimulOP.Forms
         {
             switch (trb.Name)
             {
-                case "trbVarFluidoInternoVazao":
-                    return nudVarFluidoInternoVazao;
+                case "ntrbVarFluidoInternoTempSai":
+                    return nudVarFluidoInternoTempSai;
                 case "trbVarFluidoInternoTemp":
                     return nudVarFluidoInternoTemp;
-                case "trbVarFluidoAnularVazao":
-                    return nudVarFluidoAnularVazao;
+                case "trbVarFluidoAnularTempSai":
+                    return nudVarFluidoAnularTempSai;
                 case "trbVarFluidoAnularTemp":
                     return nudVarFluidoAnularTemp;
-                case "trbVarTrocadorComprimento":
-                    return nudVarTrocadorComprimento;
+                case "trbVarTrocadorVazaoQuente":
+                    return nudVarTrocadorVazaoQuente;
                 case "trbVarTrocadorDiamAnular":
                     return nudVarTrocadorDiamAnular;
                 case "trbVarTrocadorDiamInterno":
                     return nudVarTrocadorDiamInterno;
                 default:
-                    return null;
+                    throw new Exception($"{trb.Name} nao era esperado");
             }
         }
 
-        private void nudTrocadorComprimento_ValueChanged(object sender, EventArgs e)
+        private void nudVarFluidoAnularTempSai_ValueChanged(object sender, EventArgs e)
         {
-            if (atualizaParametros)
-            {
-                AtualizaParDin(nudVarTrocadorComprimento, trbVarTrocadorComprimento, Convert.ToDouble(nudTrocadorComprimento.Value));
-            }
+            NumericUpDown nud = (NumericUpDown)sender;
+            AtualizaParDin(nud, ParTrb(nud), Convert.ToDouble(nud.Value));
+        }
+
+        private void trbVarFluidoAnularTempSai_Scroll(object sender, EventArgs e)
+        {
+            TrackBar trb = (TrackBar)sender;
+            NumericUpDown nud = ParNud(trb);
+
+            double x = Convert.ToDouble(nud.Minimum) +
+                 (Convert.ToDouble(nud.Maximum) - Convert.ToDouble(nud.Minimum))
+                 * Convert.ToDouble(trb.Value) / Convert.ToDouble(trb.Maximum);
+
+            AtualizaParDin(nud, trb, x);
+        }
+
+        private void nudVarFluidoInternoTempSai_ValueChanged(object sender, EventArgs e)
+        {
+            NumericUpDown nud = (NumericUpDown)sender;
+            AtualizaParDin(nud, ParTrb(nud), Convert.ToDouble(nud.Value));
+        }
+
+        private void trbVarFluidoInternoTempSai_Scroll(object sender, EventArgs e)
+        {
+            TrackBar trb = (TrackBar)sender;
+            NumericUpDown nud = ParNud(trb);
+
+            double x = Convert.ToDouble(nud.Minimum) +
+                 (Convert.ToDouble(nud.Maximum) - Convert.ToDouble(nud.Minimum))
+                 * Convert.ToDouble(trb.Value) / Convert.ToDouble(trb.Maximum);
+
+            AtualizaParDin(nud, trb, x);
         }
 
         private void nudTrocadorDiametroAnular_ValueChanged(object sender, EventArgs e)
@@ -654,13 +676,13 @@ namespace SimulOP.Forms
             AtualizaParDin(nud, trb, x);
         }
 
-        private void nudVarTrocadorComprimento_ValueChanged(object sender, EventArgs e)
+        private void nudVarTrocadorVazaoQuente_ValueChanged(object sender, EventArgs e)
         {
             NumericUpDown nud = (NumericUpDown)sender;
             AtualizaParDin(nud, ParTrb(nud), Convert.ToDouble(nud.Value));
         }
 
-        private void trbVarTrocadorComprimento_Scroll(object sender, EventArgs e)
+        private void trbVarTrocadorVazaoQuente_Scroll(object sender, EventArgs e)
         {
             TrackBar trb = (TrackBar)sender;
             NumericUpDown nud = ParNud(trb);

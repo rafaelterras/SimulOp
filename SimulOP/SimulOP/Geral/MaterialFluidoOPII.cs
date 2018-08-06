@@ -50,8 +50,7 @@ namespace SimulOP
 
         public MaterialFluidoOPII(string componente, double mM, double temperatura, 
             double[] coefCorrelDensidade, double[] coefCorrelViscosidade, 
-            double[] coefCorrelCalorEspecifico, double[] coefCorrelCondutividadeTermica, 
-            double densidade = 1, double viscosidade = 1 ) : base(componente, densidade, viscosidade)
+            double[] coefCorrelCalorEspecifico, double[] coefCorrelCondutividadeTermica) : base(componente, 1, 1)
         {
             this.mM = mM;
             this.temperatura = temperatura;
@@ -59,6 +58,8 @@ namespace SimulOP
             this.coefCorrelViscosidade = coefCorrelViscosidade;
             this.coefCorrelCalorEspecifico = coefCorrelCalorEspecifico;
             this.coefCorrelCondutividadeTermica = coefCorrelCondutividadeTermica;
+
+            AtualizaPropriedades();
         }
 
         public void AtualizaPropriedades()
