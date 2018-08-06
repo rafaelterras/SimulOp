@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SimulOP
+﻿namespace SimulOP
 {
+    /// <summary>
+    /// Classe abstrata para representar reatores em batelada [Não implementedo].
+    /// </summary>
     class Batelada : Reatores
     {
     }

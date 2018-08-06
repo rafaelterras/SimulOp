@@ -37,6 +37,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormsColunaMcCabeThiele));
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.gubVariaveis = new System.Windows.Forms.GroupBox();
+            this.picAjudaCondEntrada = new System.Windows.Forms.PictureBox();
             this.nudRefluxoDin = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
             this.cmbCondicaoEntradaDin = new System.Windows.Forms.ComboBox();
@@ -69,6 +70,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.gubInputInicial = new System.Windows.Forms.GroupBox();
+            this.picAjudaFluido = new System.Windows.Forms.PictureBox();
             this.btnInputInicial = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbFluidoHK = new System.Windows.Forms.ComboBox();
@@ -77,10 +79,9 @@
             this.labMudanca = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.labResultados = new System.Windows.Forms.Label();
-            this.picAjudaFluido = new System.Windows.Forms.PictureBox();
-            this.picAjudaCondEntrada = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.gubVariaveis.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAjudaCondEntrada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRefluxoDin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCondicaoEntradaDin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbFracaoEntradaLKDin)).BeginInit();
@@ -98,9 +99,8 @@
             this.gubGrafico.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.gubInputInicial.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAjudaFluido)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picAjudaCondEntrada)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // chart
@@ -191,6 +191,18 @@
             this.gubVariaveis.TabIndex = 4;
             this.gubVariaveis.TabStop = false;
             this.gubVariaveis.Visible = false;
+            // 
+            // picAjudaCondEntrada
+            // 
+            this.picAjudaCondEntrada.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picAjudaCondEntrada.Image = global::SimulOP.Properties.Resources.info;
+            this.picAjudaCondEntrada.Location = new System.Drawing.Point(207, 95);
+            this.picAjudaCondEntrada.Name = "picAjudaCondEntrada";
+            this.picAjudaCondEntrada.Size = new System.Drawing.Size(18, 18);
+            this.picAjudaCondEntrada.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picAjudaCondEntrada.TabIndex = 27;
+            this.picAjudaCondEntrada.TabStop = false;
+            this.picAjudaCondEntrada.Click += new System.EventHandler(this.picAjudaCondEntrada_Click);
             // 
             // nudRefluxoDin
             // 
@@ -688,6 +700,18 @@
             this.gubInputInicial.TabStop = false;
             this.gubInputInicial.Text = "Fluidos";
             // 
+            // picAjudaFluido
+            // 
+            this.picAjudaFluido.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picAjudaFluido.Image = global::SimulOP.Properties.Resources.info;
+            this.picAjudaFluido.Location = new System.Drawing.Point(80, 20);
+            this.picAjudaFluido.Name = "picAjudaFluido";
+            this.picAjudaFluido.Size = new System.Drawing.Size(18, 18);
+            this.picAjudaFluido.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picAjudaFluido.TabIndex = 26;
+            this.picAjudaFluido.TabStop = false;
+            this.picAjudaFluido.Click += new System.EventHandler(this.picAjudaFluido_Click);
+            // 
             // btnInputInicial
             // 
             this.btnInputInicial.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -717,7 +741,8 @@
             this.cmbFluidoHK.Items.AddRange(new object[] {
             "Benzeno",
             "Tolueno",
-            "Naftaleno"});
+            "Hexano",
+            "p-Xileno"});
             this.cmbFluidoHK.Location = new System.Drawing.Point(119, 47);
             this.cmbFluidoHK.Name = "cmbFluidoHK";
             this.cmbFluidoHK.Size = new System.Drawing.Size(121, 19);
@@ -741,7 +766,8 @@
             this.cmbFluidoLK.Items.AddRange(new object[] {
             "Benzeno",
             "Tolueno",
-            "Naftaleno"});
+            "Hexano",
+            "p-Xileno"});
             this.cmbFluidoLK.Location = new System.Drawing.Point(119, 20);
             this.cmbFluidoLK.Name = "cmbFluidoLK";
             this.cmbFluidoLK.Size = new System.Drawing.Size(121, 19);
@@ -798,30 +824,6 @@
             this.labResultados.Text = "Resultados";
             this.labResultados.Visible = false;
             // 
-            // picAjudaFluido
-            // 
-            this.picAjudaFluido.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picAjudaFluido.Image = global::SimulOP.Properties.Resources.info;
-            this.picAjudaFluido.Location = new System.Drawing.Point(80, 20);
-            this.picAjudaFluido.Name = "picAjudaFluido";
-            this.picAjudaFluido.Size = new System.Drawing.Size(18, 18);
-            this.picAjudaFluido.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picAjudaFluido.TabIndex = 26;
-            this.picAjudaFluido.TabStop = false;
-            this.picAjudaFluido.Click += new System.EventHandler(this.picAjudaFluido_Click);
-            // 
-            // picAjudaCondEntrada
-            // 
-            this.picAjudaCondEntrada.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picAjudaCondEntrada.Image = global::SimulOP.Properties.Resources.info;
-            this.picAjudaCondEntrada.Location = new System.Drawing.Point(207, 95);
-            this.picAjudaCondEntrada.Name = "picAjudaCondEntrada";
-            this.picAjudaCondEntrada.Size = new System.Drawing.Size(18, 18);
-            this.picAjudaCondEntrada.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picAjudaCondEntrada.TabIndex = 27;
-            this.picAjudaCondEntrada.TabStop = false;
-            this.picAjudaCondEntrada.Click += new System.EventHandler(this.picAjudaCondEntrada_Click);
-            // 
             // FormsColunaMcCabeThiele
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -836,6 +838,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.gubVariaveis.ResumeLayout(false);
             this.gubVariaveis.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAjudaCondEntrada)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRefluxoDin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCondicaoEntradaDin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbFracaoEntradaLKDin)).EndInit();
@@ -856,10 +859,9 @@
             this.tableLayoutPanel1.PerformLayout();
             this.gubInputInicial.ResumeLayout(false);
             this.gubInputInicial.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAjudaFluido)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picAjudaFluido)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picAjudaCondEntrada)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

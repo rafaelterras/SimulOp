@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimulOP
 {
+    /// <summary>
+    /// Classe para representar o método gráfico de McCabe-Thiele para estimar uma coluna de absorção.
+    /// </summary>
     public class ColunaMcCabeThiele : EquipamentoOPIII
     {
         #region Inicialização das variaveis e dos constructors
-
         private MisturaBinaria misturaBinaria;
         private double targetXD;
         private double targetXB;
@@ -20,43 +19,43 @@ namespace SimulOP
         private double[] pontoP;
 
         /// <summary>
-        /// Mistura binária que será separada na coluna
+        /// Mistura binária que será separada na coluna.
         /// </summary>
         public MisturaBinaria MisturaBinaria { get => misturaBinaria; set => misturaBinaria = value; }
         /// <summary>
-        /// Fração molar desejada do LK no destilado
+        /// Fração molar desejada do LK no destilado.
         /// </summary>
         public double TargetXD { get => targetXD; set => targetXD = value; }
         /// <summary>
-        /// Fração molar desejada do LK no fundo
+        /// Fração molar desejada do LK no fundo.
         /// </summary>
         public double TargetXB { get => targetXB; set => targetXB = value; }
         /// <summary>
-        /// Fração molar do LK na estrada da coluna
+        /// Fração molar do LK na estrada da coluna.
         /// </summary>
         public double FeedZF { get => feedZF; set => feedZF = value; }
         /// <summary>
-        /// Condição q da entrada, representa o estado de saturação/superaquecimento/sub-resfriamento da mistura de entrada
+        /// Condição q da entrada, representa o estado de saturação/superaquecimento/sub-resfriamento da mistura de entrada.
         /// </summary>
         public double FeedConditionQ { get => feedConditionQ; set => feedConditionQ = value; }
         /// <summary>
-        /// Taxa de refluxo molar de operação da coluna
+        /// Taxa de refluxo molar de operação da coluna.
         /// </summary>
         public double RefluxRatio { get => refluxRatio; set => refluxRatio = value; }
         /// <summary>
-        /// Ponto de intersecção entre a reta q e as curvas de operações
+        /// Ponto de intersecção entre a reta q e as curvas de operações.
         /// </summary>
         public double[] PontoP { get => pontoP; }
 
         /// <summary>
-        /// Constructor para a coluna de destilação
+        /// Constructor para a coluna de destilação.
         /// </summary>
-        /// <param name="misturaBinaria">Mistura que será separada</param>
-        /// <param name="targetXD">Fração molar desejada do LK no destilado</param>
-        /// <param name="targetXB">Fração molar desejada do LK no fundo</param>
-        /// <param name="feedZF">Fração molar do LK na entrada da coluna</param>
-        /// <param name="refluxRatio">Taxa de refluxo molar de operação da coluna</param>
-        /// <param name="feedConditionQ">Condição q da entrada</param>
+        /// <param name="misturaBinaria">Mistura que será separada.</param>
+        /// <param name="targetXD">Fração molar desejada do LK no destilado.</param>
+        /// <param name="targetXB">Fração molar desejada do LK no fundo.</param>
+        /// <param name="feedZF">Fração molar do LK na entrada da coluna.</param>
+        /// <param name="refluxRatio">Taxa de refluxo molar de operação da coluna.</param>
+        /// <param name="feedConditionQ">Condição q da entrada.</param>
         public ColunaMcCabeThiele(MisturaBinaria misturaBinaria, double targetXD, double targetXB, double feedZF, double refluxRatio, double feedConditionQ)
         {
             this.misturaBinaria = misturaBinaria ?? throw new ArgumentNullException(nameof(misturaBinaria));
@@ -69,14 +68,14 @@ namespace SimulOP
         }
 
         /// <summary>
-        /// Constructor para a coluna de destilação
+        /// Constructor para a coluna de destilação.
         /// </summary>
-        /// <param name="misturaBinaria">Mistura que será separada</param>
-        /// <param name="targetXD">Fração molar desejada do LK no destilado</param>
-        /// <param name="targetXB">Fração molar desejada do LK no fundo</param>
-        /// <param name="feedZF">Fração molar do LK na entrada da coluna</param>
-        /// <param name="refluxRatio">Taxa de refluxo molar de operação da coluna</param>
-        /// <param name="condicaoEntrada">Condição do fluido de entrada (líquido/vapor saturado, líquido sub-resfriado, vapor super aquecido e parcialmente vaporizado)</param>
+        /// <param name="misturaBinaria">Mistura que será separada.</param>
+        /// <param name="targetXD">Fração molar desejada do LK no destilado.</param>
+        /// <param name="targetXB">Fração molar desejada do LK no fundo.</param>
+        /// <param name="feedZF">Fração molar do LK na entrada da coluna.</param>
+        /// <param name="refluxRatio">Taxa de refluxo molar de operação da coluna.</param>
+        /// <param name="condicaoEntrada">Condição do fluido de entrada (líquido/vapor saturado, líquido sub-resfriado, vapor super aquecido e parcialmente vaporizado).</param>
         public ColunaMcCabeThiele(MisturaBinaria misturaBinaria, double targetXD, double targetXB, double feedZF, double refluxRatio, CondicaoMistura condicaoEntrada)
         {
             this.misturaBinaria = misturaBinaria ?? throw new ArgumentNullException(nameof(misturaBinaria));
@@ -91,9 +90,9 @@ namespace SimulOP
         #endregion
 
         /// <summary>
-        /// Altera o valor q da entrada do fluido, representando o estado de aquecimento/resfriamento do líquido
+        /// Altera o valor q da entrada do fluido, representando o estado de aquecimento/resfriamento do líquido.
         /// </summary>
-        /// <param name="condicao">Condição do fluido de entrada (líquido/vapor saturado, líquido sub-resfriado, vapor super aquecido e parcialmente vaporizado)</param>
+        /// <param name="condicao">Condição do fluido de entrada (líquido/vapor saturado, líquido sub-resfriado, vapor super aquecido e parcialmente vaporizado).</param>
         public void CondicaoEntrada(CondicaoMistura condicao)
         {
             switch (condicao)
@@ -117,10 +116,10 @@ namespace SimulOP
         }
 
         /// <summary>
-        /// Representa a linha de operação da coluna, tanto para o esgotamento quanto para a retifiação
+        /// Representa a linha de operação da coluna, tanto para o esgotamento quanto para a retifiação.
         /// </summary>
-        /// <param name="xLK">Concentração do Light Key no líquido</param>
-        /// <returns>O valor da linha de operação</returns>
+        /// <param name="xLK">Concentração do Light Key no líquido.</param>
+        /// <returns>O valor da linha de operação.</returns>
         public double CurvaOP(double xLK)
         {
             double yCurvaOP;
@@ -138,40 +137,40 @@ namespace SimulOP
         }
 
         /// <summary>
-        /// 
+        /// Função auxiliar para calculo da intesecção das curvas de operações.
         /// </summary>
-        /// <param name="xLK"></param>
-        /// <returns></returns>
+        /// <param name="xLK">Concentração do LK no líquido.</param>
+        /// <returns>A diferença entre as curvas de operações.</returns>
         private double RaizP(double xLK)
         {
             return (xLK * (feedConditionQ / (feedConditionQ - 1))) - (feedZF / (feedConditionQ - 1)) - ((xLK * refluxRatio) / (refluxRatio + 1) + (targetXD / (refluxRatio + 1)));
         }
 
         /// <summary>
-        /// Linha q
+        /// Linha q.
         /// </summary>
-        /// <param name="xLK">Fração molar do LK na fase líquida</param>
-        /// <returns>O valor y da linha q</returns>
+        /// <param name="xLK">Fração molar do LK na fase líquida.</param>
+        /// <returns>O valor y da linha q.</returns>
         private double LinhaQ(double xLK)
         {
             return xLK * (feedConditionQ / (feedConditionQ - 1)) - feedZF / (feedConditionQ - 1);
         }
 
         /// <summary>
-        /// Linha de operação para a retificação
+        /// Linha de operação para a retificação.
         /// </summary>
-        /// <param name="xLK">Fração molar do LK na fase líquida</param>
-        /// <returns>O valor da linha de operação y(xLK)</returns>
+        /// <param name="xLK">Fração molar do LK na fase líquida.</param>
+        /// <returns>O valor da linha de operação y(xLK).</returns>
         private double LinhaRetificacao(double xLK)
         {
             return xLK * refluxRatio / (refluxRatio + 1) + targetXD / (refluxRatio + 1);
         }
 
         /// <summary>
-        /// Linha de operação para o esgotamento
+        /// Linha de operação para o esgotamento.
         /// </summary>
-        /// <param name="xLK">Fração molar do LK na fase líquida</param>
-        /// <returns>O valor da linha de operação y(xLK)</returns>
+        /// <param name="xLK">Fração molar do LK na fase líquida.</param>
+        /// <returns>O valor da linha de operação y(xLK).</returns>
         private double LinhaEsgotamento(double xLK)
         {
             if (this.pontoP == null)
@@ -183,7 +182,7 @@ namespace SimulOP
         }
 
         /// <summary>
-        /// Faz o cálculo do ponto de intesecção entre as linhas de retificação e esgotamento
+        /// Faz o cálculo do ponto de intesecção entre as linhas de retificação e esgotamento.
         /// </summary>
         public void CalculaPontoP()
         {
@@ -216,12 +215,11 @@ namespace SimulOP
         }
 
         #region Funções de Plots para os gráficos
-
         /// <summary>
-        /// Calcula os pontos para o plot da curva de equilibrio com base nos compostos da mistura binária
+        /// Calcula os pontos para o plot da curva de equilibrio com base nos compostos da mistura binária.
         /// </summary>
-        /// <param name="div">Número de divisões para o plot (precisão)</param>
-        /// <returns>Duas lista com os valores de X e Y, respectivamente, com os pontos para serem plotados</returns>
+        /// <param name="div">Número de divisões para o plot (precisão).</param>
+        /// <returns>Duas lista com os valores de X e Y, respectivamente, com os pontos para serem plotados.</returns>
         public (List<double> PlotX, List<double> PlotY) PlotEquilibrio(int div)
         {
             List<double> PlotX = new List<double>();
@@ -239,9 +237,9 @@ namespace SimulOP
         }
 
         /// <summary>
-        /// Calcula os pontos para o plot dos pratos, conforme a curva de operação e de equilibrio
+        /// Calcula os pontos para o plot dos pratos, conforme a curva de operação e de equilibrio.
         /// </summary>
-        /// <returns>Duas lista com os valores de X e Y, respectivamente, com os pontos para serem plotados</returns>
+        /// <returns>Duas lista com os valores de X e Y, respectivamente, com os pontos para serem plotados.</returns>
         public (List<double> PlotX, List<double> PlotY) PlotPratos()
         {
             List<double> PlotX = new List<double>();
@@ -273,7 +271,7 @@ namespace SimulOP
 
                 try
                 {
-                    eq = AchaRaizBrenet(LinhaOPEq, -1.0, 1.0);
+                    eq = AchaRaizBrenet(LinhaOPEq, 0, 1.0, 1E-4, 200);
                 }
                 catch (Exception)
                 {
@@ -294,10 +292,10 @@ namespace SimulOP
         }
 
         /// <summary>
-        /// Calcula os pontos para o plot da curva de operação
+        /// Calcula os pontos para o plot da curva de operação.
         /// </summary>
-        /// <param name="div">Número de divisões para o plot (precisão)</param>
-        /// <returns>Duas lista com os valores de X e Y, respectivamente, com os pontos para serem plotados</returns>
+        /// <param name="div">Número de divisões para o plot (precisão).</param>
+        /// <returns>Duas lista com os valores de X e Y, respectivamente, com os pontos para serem plotados.</returns>
         public (List<double> PlotX, List<double> PlotY) PlotCurvaOP(int div)
         {
             List<double> PlotX = new List<double>();
@@ -322,10 +320,10 @@ namespace SimulOP
         }
 
         /// <summary>
-        /// Calcula os pontos para o plot da curva q
+        /// Calcula os pontos para o plot da curva q.
         /// </summary>
-        /// <param name="div">Número de divisões para o plot (precisão)</param>
-        /// <returns>Duas lista com os valores de X e Y, respectivamente, com os pontos para serem plotados</returns>
+        /// <param name="div">Número de divisões para o plot (precisão).</param>
+        /// <returns>Duas lista com os valores de X e Y, respectivamente, com os pontos para serem plotados.</returns>
         public (List<double> PlotX, List<double> PlotY) PlotCurvaQ(int div)
         {
             throw new NotImplementedException();

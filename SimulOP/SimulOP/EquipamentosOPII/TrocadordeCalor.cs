@@ -1,24 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SimulOP
+﻿namespace SimulOP
 {
-    class TrocadordeCalor : EquipamentoOPII, ITrocadorDeCalor
+    /// <summary>
+    /// Classe abstrata para representar trocadores de calor [Não implementedo].
+    /// </summary>
+    abstract class TrocadordeCalor : EquipamentoOPII
     {
-        public FluidoOPI fluidoQuenteEntrada { get; set; }
-        public FluidoOPI fluidoFrioEntrada { get; set; }
-        public double coefGlobalTerm { get; set; }
-        public double area { get; set; }
-        public string tipoEscoamento { get; set; }
-        public FluidoOPI fluidoFrioSaida { get; set; }
-        public FluidoOPI fluidoQuenteSaida { get; set; }
-        public double calorTransferido { get; set; }
 
-        public void CalculaSaidas()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

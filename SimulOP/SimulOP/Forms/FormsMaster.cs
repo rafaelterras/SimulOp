@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SimulOP.Forms
 {
+    /// <summary>
+    /// Forms principal do programa.
+    /// </summary>
     public partial class FormsMaster : Form
     {
         public FormsMaster()
@@ -17,6 +13,7 @@ namespace SimulOP.Forms
             InitializeComponent();
         }
 
+        // Menus:
         private void FormsMaster_Load(object sender, EventArgs e)
         {
             Forms.FormsInício newMDIChild = new Forms.FormsInício();
@@ -79,7 +76,7 @@ namespace SimulOP.Forms
 
         private void duploTuboToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            Forms.FormsTrocadorOleoAPI newMDIChild = new Forms.FormsTrocadorOleoAPI();
+            Forms.FormsTrocadorBiTubilar newMDIChild = new Forms.FormsTrocadorBiTubilar();
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
             // Necessário para que o ícone apareça normalmente.

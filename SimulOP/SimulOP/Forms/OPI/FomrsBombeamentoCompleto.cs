@@ -6,6 +6,9 @@ using SimulOP.Properties;
 
 namespace SimulOP.Forms
 {
+    /// <summary>
+    /// Forms para o bombeamento completo.
+    /// </summary>
     public partial class FomrsBombeamentoCompleto : Form
     {
         // Objetos para cálculo da bomba
@@ -61,6 +64,10 @@ namespace SimulOP.Forms
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Inscreve ou desiscreve os eventos do forms.
+        /// </summary>
+        /// <param name="ativar">Se True ativa os eventos, se False desativa.</param>
         private void EventosInputs(bool ativar)
         {
             if (ativar)
@@ -119,6 +126,9 @@ namespace SimulOP.Forms
             }
         }
 
+        /// <summary>
+        /// Copia o input da tubulação de succção para a tubulação de descarga.
+        /// </summary>
         private void btnTubSucCopia_Click(object sender, EventArgs e)
         {
             EventosInputs(false);
@@ -140,6 +150,9 @@ namespace SimulOP.Forms
             EventosInputs(true);
         }
 
+        /// <summary>
+        /// Atualiza o gráfico e o valor do NPSH disponível.
+        /// </summary>
         private void AtualizaNPSHDisp()
         {
             NPSHX.Clear();
@@ -153,6 +166,9 @@ namespace SimulOP.Forms
             AtualizaVazaoDesejada(nudVazaoDesejadaDbl);
         }
 
+        /// <summary>
+        /// Atualiza o gráfico e o valor da altura da bomba.
+        /// </summary>
         private void AtualizaHBomba()
         {
             AlturaBombaX.Clear();
@@ -166,6 +182,10 @@ namespace SimulOP.Forms
             AtualizaVazaoDesejada(nudVazaoDesejadaDbl);
         }
 
+        /// <summary>
+        /// Atualiza nos gráficos e nos resultados a vazão desejada.
+        /// </summary>
+        /// <param name="x">Vazão desejada [m^3/s].</param>
         private void AtualizaVazaoDesejada(double x)
         {
             chartPerdaCarga.Series["LinhaVazao"].Points.Clear();
@@ -183,6 +203,9 @@ namespace SimulOP.Forms
             txbResultadoNPSHDisp.Text = $"{Math.Round(NPSHBomba, 2)}";
         }
 
+        /// <summary>
+        /// Botão para cálculo inicial do bombeamento
+        /// </summary>
         private void btnCalcular_Click(object sender, EventArgs e)
         {
             if (true)
@@ -557,6 +580,12 @@ namespace SimulOP.Forms
         #endregion
 
         #region Variaveis Dinamicas
+        /// <summary>
+        /// Atualiza o par de NumecricUpDown e TrackBar para o mesmo valor.
+        /// </summary>
+        /// <param name="nud">O NumericUpDown.</param>
+        /// <param name="trb">A TrackBar.</param>
+        /// <param name="x">O valor para ser atualizado.</param>
         private void AtualizaParDin(NumericUpDown nud, TrackBar trb, double x)
         {
             // Desincreve dos eventos para evitar chamar as funcoes mais de uma vez
@@ -729,7 +758,6 @@ namespace SimulOP.Forms
         #endregion
 
         #region Ajuda
-
         private void MostrarPopOut(string ajuda)
         {
             formAberto = Application.OpenForms["FormsPopOut"];

@@ -42,8 +42,8 @@
             this.trocadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.simplesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cascoETubosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.placasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.duploTuboToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.placasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.evaporadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.secadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.torresDeResfriamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -164,29 +164,29 @@
             // 
             this.simplesToolStripMenuItem1.Enabled = false;
             this.simplesToolStripMenuItem1.Name = "simplesToolStripMenuItem1";
-            this.simplesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.simplesToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
             this.simplesToolStripMenuItem1.Text = "Simples";
             // 
             // cascoETubosToolStripMenuItem
             // 
             this.cascoETubosToolStripMenuItem.Enabled = false;
             this.cascoETubosToolStripMenuItem.Name = "cascoETubosToolStripMenuItem";
-            this.cascoETubosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cascoETubosToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.cascoETubosToolStripMenuItem.Text = "Casco e tubos";
+            // 
+            // duploTuboToolStripMenuItem
+            // 
+            this.duploTuboToolStripMenuItem.Name = "duploTuboToolStripMenuItem";
+            this.duploTuboToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.duploTuboToolStripMenuItem.Text = "Duplo tubo";
+            this.duploTuboToolStripMenuItem.Click += new System.EventHandler(this.duploTuboToolStripMenuItem_Click_1);
             // 
             // placasToolStripMenuItem
             // 
             this.placasToolStripMenuItem.Enabled = false;
             this.placasToolStripMenuItem.Name = "placasToolStripMenuItem";
-            this.placasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.placasToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.placasToolStripMenuItem.Text = "Placas";
-            // 
-            // duploTuboToolStripMenuItem
-            // 
-            this.duploTuboToolStripMenuItem.Name = "duploTuboToolStripMenuItem";
-            this.duploTuboToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.duploTuboToolStripMenuItem.Text = "Duplo tubo";
-            this.duploTuboToolStripMenuItem.Click += new System.EventHandler(this.duploTuboToolStripMenuItem_Click_1);
             // 
             // evaporadoresToolStripMenuItem
             // 

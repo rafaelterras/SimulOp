@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SimulOP
+﻿namespace SimulOP
 {
+    /// <summary>
+    /// Classe para representar singularidades em tubulações.
+    /// </summary>
     class Singularidade : EquipamentoOPI, ISingularidade
     {
         protected double comprimentoEqv;
@@ -14,7 +12,6 @@ namespace SimulOP
         /// Comprimento equivalente da singulariedade [m]
         /// </summary>
         public double ComprimentoEqv { get => comprimentoEqv; }
-
         /// <summary>
         /// Tipo da singulariedade
         /// </summary>
@@ -30,6 +27,5 @@ namespace SimulOP
             this.comprimentoEqv = comprimentoEqv;
             this.tipo = tipo;
         }
-
     }
 }

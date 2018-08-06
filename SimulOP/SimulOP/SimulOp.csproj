@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1DD11FB9-4C1B-42A0-BB85-A500310F218F}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>SimulOP</RootNamespace>
     <AssemblyName>SimulOP</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
@@ -52,7 +52,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>SiOP3.ico</ApplicationIcon>
+    <ApplicationIcon>Icons\SiOP4.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -77,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EquipamentosOPIII\ColunaMcCabeThiele.cs" />
+    <Compile Include="EquipamentosOPII\TubulacaoDuploTubo.cs" />
     <Compile Include="EquipamentosOPI\BombaCompleta.cs" />
     <Compile Include="EquipamentosReatores\Batelada.cs" />
     <Compile Include="EquipamentosOPI\Bomba.cs" />
@@ -171,11 +172,9 @@
     <Compile Include="Geral\MisturaBinaria.cs" />
     <Compile Include="Interfaces\IBomba.cs" />
     <Compile Include="Interfaces\IDestilacao.cs" />
-    <Compile Include="Interfaces\IFluidoBomba.cs" />
     <Compile Include="Interfaces\IMaterialFluidoOPI.cs" />
     <Compile Include="Interfaces\IMaterialFluidoOPII.cs" />
     <Compile Include="Interfaces\ISingularidade.cs" />
-    <Compile Include="Interfaces\ITrocadorDeCalor.cs" />
     <Compile Include="Interfaces\ITubulacao.cs" />
     <Compile Include="EquipamentosOPIII\MembranaDeSeparacao.cs" />
     <Compile Include="EquipamentosOPI\EquipamentoOPI.cs" />
@@ -275,6 +274,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icons\SiOP3.ico" />
+    <Content Include="Icons\SiOP4.ico" />
     <None Include="Resources\figuraTrocadorBiTubular.png" />
     <None Include="Resources\baseline_compare_arrows_black_24dp.png" />
     <None Include="Resources\baseline_compare_arrows_black_24dp_small.png" />

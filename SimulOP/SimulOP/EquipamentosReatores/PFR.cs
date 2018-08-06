@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SimulOP
+﻿namespace SimulOP
 {
+    /// <summary>
+    /// Classe para representar reatores do tipo PFR [Não implementedo].
+    /// </summary>
     class PFR : Continuo
     {
     }

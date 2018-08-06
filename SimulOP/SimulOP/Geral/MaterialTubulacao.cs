@@ -11,7 +11,7 @@ namespace SimulOP
         private double rugosidade;
 
         public double Rugosidade { get => rugosidade; }
-        
+
         public MaterialTubulacao(double rugosidade, string componente = "NA") : base(componente)
         {
             this.rugosidade = rugosidade;

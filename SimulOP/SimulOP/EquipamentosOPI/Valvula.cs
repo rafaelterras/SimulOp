@@ -3,7 +3,7 @@
 namespace SimulOP
 {
     /// <summary>
-    /// 
+    /// Classe para representar valvular em tubulações.
     /// </summary>
     class Valvula : Singularidade
     {
@@ -12,7 +12,7 @@ namespace SimulOP
         private double fatorAbertura;
 
         /// <summary>
-        /// Abertura da valvula entre 0 (totalmente fechada) e  1 (totalmente aberta)
+        /// Abertura da valvula entre 0 (totalmente fechada) e  1 (totalmente aberta).
         /// </summary>
         public double Abertura
         {
@@ -31,17 +31,16 @@ namespace SimulOP
             }
 
         }
-
         /// <summary>
-        /// Representa um fator para multiplicar a abertura da valvúla
+        /// Representa um fator para multiplicar a abertura da valvúla.
         /// </summary>
         public double FatorAbertura { get => fatorAbertura; }
 
         /// <summary>
-        /// Constructor para o objeto Valvula
+        /// Constructor para o objeto Valvula.
         /// </summary>
-        /// <param name="comprimentoEqv">Comprimento equivalente da valvula totalmente aberta [m]</param>
-        /// <param name="abertura">Abertura da valvula (entre 0, totalmente fechada e 1, totalmente aberta)</param>
+        /// <param name="comprimentoEqv">Comprimento equivalente da valvula totalmente aberta [m].</param>
+        /// <param name="abertura">Abertura da valvula (entre 0, totalmente fechada e 1, totalmente aberta).</param>
         public Valvula(double comprimentoEqv, double fatorAbertura , double abertura = 1.0) : base(comprimentoEqv, "Valvula")
         {
             this.Abertura = abertura;
@@ -49,7 +48,7 @@ namespace SimulOP
         }
 
         /// <summary>
-        /// Atualiza o comprimento equivalenta com base em uma escala linear arbritária
+        /// Atualiza o comprimento equivalenta com base em uma escala linear arbritária.
         /// </summary>
         private void AtualizaComprimento()
         {

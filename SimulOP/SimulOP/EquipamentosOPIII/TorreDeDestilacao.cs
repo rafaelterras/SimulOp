@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SimulOP
-{
+﻿namespace SimulOP
+{    /// <summary>
+     /// Classe para representar torres de destilações [Não implementedo].
+     /// </summary>
     class TorreDeDestilacao : EquipamentoOPIII, IDestilacao
     {
 
