@@ -548,7 +548,7 @@ namespace SimulOP
             {
                 tSaida = tSaidaMin + i * (tSaidaMax - tSaidaMin) / div;
 
-                tSaida = tSaida - 273.15;
+                tSaida = tSaida + 273.15;
 
                 if (anular == FluidoTroca.quente)
                 {
@@ -565,7 +565,7 @@ namespace SimulOP
                 perdaCargaInterno = this.tubulacaoInterna.PerdaCarga;
                 comprimento = this.comprimento;
 
-                plotX.Add(tSaida);
+                plotX.Add(tSaida - 273.15); // T em K
                 plotPerdaCargaAnularY.Add(perdaCargaAnular * 1e-3); // P em KPa.
                 plotPerdaCargaInternoY.Add(perdaCargaInterno * 1e-3); // P em KPa.
                 poltComprimento.Add(comprimento); // L em m
