@@ -157,4 +157,10 @@ O prato de entrada ideal é o prato que a mistura deve entrar na coluna para que
 
 Integer tincidunt felis placerat convallis tempus. Duis eu faucibus enim, quis consequat augue. Etiam pellentesque maximus massa sed tempus. Etiam sed diam eget lorem fermentum consectetur ut facilisis nisl. Proin mollis nunc id est auctor, non molestie metus ullamcorper. Duis nec luctus turpis, in ullamcorper ipsum. Aenean sed nunc eu dui vulputate consequat et id diam. Nullam quam arcu, hendrerit vel ultrices elementum, lacinia vitae quam. Sed quis ornare lorem.</value>
   </data>
+  <data name="ajudaTrocadorDiametro" xml:space="preserve">
+    <value>As escolhas dos diâmetros são os parâmetros mais importante de um trocador duplo tubo, por um lado um diâmetro menor aumenta o Reynolds do escoamento melhorando o coeficiente de troca térmica, porém aumenta muito a perda de carga.</value>
+  </data>
+  <data name="ajudaTrocadorTubo" xml:space="preserve">
+    <value>Como as temperaturas de de entrada e saída dos fluidos foram definidas o parâmetro que será variado para alcançar a troca térmica será a vazão do fluido frio.</value>
+  </data>
 </root>

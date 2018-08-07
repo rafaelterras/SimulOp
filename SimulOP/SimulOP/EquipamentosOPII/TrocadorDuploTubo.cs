@@ -309,17 +309,13 @@ namespace SimulOP
             double hTotal = 0;
 
             // 1/ A*hT = Sum(1/A*h)
-            double invH = (1.0 / hInterno) + (1.0 / hAnular);
-            hTotal = 1.0 / invH;
+            double invH;
 
-            if (this.fatorIncrustacao != 0)
-            {
-                hTotal = 1.0 / ((1.0 / hTotal) + this.fatorIncrustacao);
-            }
+            invH = (1.0 / hInterno) + (1.0 / hAnular) + this.fatorIncrustacao;
+            hTotal = 1.0 / invH;
+            hTotal = 1.0 / (1.0 / hTotal);
 
             this.coefTrocaTermGlobal = hTotal;
-
-            //Console.WriteLine($"Coeficiente de troca : {hTotal}");
 
             return hTotal;
         }

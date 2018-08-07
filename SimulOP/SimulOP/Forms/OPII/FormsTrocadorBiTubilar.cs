@@ -140,8 +140,16 @@ namespace SimulOP.Forms
         }
 
         private void btnCalcular_Click(object sender, EventArgs e)
-        {   
+        {
+            txbErro.Text = "";
+
             // Fluido Anular
+            if (cmbFluidoAnular.Text == "" || cmbFluidoInterno.Text == "" || cmbTrocadorMaterial.Text == "")
+            {
+                txbErro.Text = "Inputs incorretos";
+                return;
+            }
+
             string fluidoAnularNome = cmbFluidoAnular.Text;
             double fluidoAnularAPI = Convert.ToDouble(nudFluidoAnularAPI.Value);
             double fluidoAnularTemp = Convert.ToDouble(nudFluidoAnularTempEnt.Value) + 273.15; // T em K
@@ -192,7 +200,7 @@ namespace SimulOP.Forms
             // Não executa se a diferença de temperatura entre os fluido não for miníma.
             if (Math.Abs(fluidoAnularTemp - fluidoInternoTemp) < 2)
             {
-                Console.ReadLine();
+                txbErro.Text = "Inputs incorretos";
                 return;
             }
 
@@ -270,6 +278,9 @@ namespace SimulOP.Forms
                 nudVarFluidoInternoTempSai.Maximum = nudQuenteSaiMax;
             }
 
+            chartPerdaCarga.ChartAreas[0].AxisX.Minimum = Convert.ToDouble(nudQuenteSaiMin);
+            chartComprimento.ChartAreas[0].AxisX.Minimum = Convert.ToDouble(nudQuenteSaiMin);
+
             // Coloca os valores nas variaveis dinamicas
             nudVarFluidoInternoTemp.Value = Convert.ToDecimal(fluidoInternoTemp - 273.15);
             nudVarFluidoInternoTempSai.Value = Convert.ToDecimal(tempInternoSai - 273.15);
@@ -309,15 +320,24 @@ namespace SimulOP.Forms
             perdaCargaAnularY.Clear();
             comprimentoY.Clear();
 
-            // TODO: [VERIFICAR] Função para atualizar plot da perda de carga.
             (tempQuentSaiX, perdaCargaInternoY, perdaCargaAnularY, comprimentoY) = trocador.PlotResultados(Convert.ToDouble(nudQuenteSaiMin), Convert.ToDouble(nudQuenteSaiMax), 20);
 
-            // Gráfico da perda de carga
-            chartPerdaCarga.Series["fluidoInterno"].Points.DataBindXY(tempQuentSaiX, perdaCargaInternoY);
-            chartPerdaCarga.Series["fluidoAnular"].Points.DataBindXY(tempQuentSaiX, perdaCargaAnularY);
+            try
+            {
+                // Gráfico da perda de carga
+                chartPerdaCarga.Series["fluidoInterno"].Points.DataBindXY(tempQuentSaiX, perdaCargaInternoY);
+                chartPerdaCarga.Series["fluidoAnular"].Points.DataBindXY(tempQuentSaiX, perdaCargaAnularY);
 
-            // Gráfico do comprimento
-            chartComprimento.Series["comprimento"].Points.DataBindXY(tempQuentSaiX, comprimentoY);
+                // Gráfico do comprimento
+                chartComprimento.Series["comprimento"].Points.DataBindXY(tempQuentSaiX, comprimentoY);
+            }
+            catch (Exception)
+            {
+                chartPerdaCarga.Series["fluidoInterno"].Points.Clear();
+                chartPerdaCarga.Series["fluidoAnular"].Points.Clear();
+
+                chartComprimento.Series["comprimento"].Points.Clear();
+            }
         }
 
         private void AtualizaResultados(double tempQuenteSai)
@@ -350,6 +370,8 @@ namespace SimulOP.Forms
             txbResultadoCompTrocador.Text = txbResultadoCompTrocadorTxt;
             txbResultadoVazaoFrio.Text = txbResultadoVazaoFrioTxt;
             txbResultadosCalorTrocado.Text = txbResultadosCalorTrocadoTxt;
+
+            nudTrocadorComprimento.Value = (trocador.Comprimento < 999.0 && trocador.Comprimento > 0) ? Convert.ToDecimal(trocador.Comprimento) : Convert.ToDecimal(999.0);
 
             // Atualização da linha do comprimento nos gráficos            
             double perdaCargaMax = Math.Max(trocador.TubulacaoAnular.PerdaCarga * 1e-3, trocador.TubulacaoInterna.PerdaCarga * 1e-3);
@@ -767,8 +789,15 @@ namespace SimulOP.Forms
             popOut.Show();
         }
 
-        // TODO: Implementar o sistema de ajuda.
+        private void PicAjudaVariavelDiametro_Click(object sender, EventArgs e)
+        {
+            MostrarPopOut("ajudaTrocadorDiametro");
+        }
 
+        private void PicAjudaTrocadorTubo_Click_1(object sender, EventArgs e)
+        {
+            MostrarPopOut("ajudaTrocadorTubo");
+        }
         #endregion
     }
 }

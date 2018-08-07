@@ -144,5 +144,23 @@ namespace SimulOP.Properties {
                 return ResourceManager.GetString("ajudaTeste", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to As escolhas dos diâmetros são os parâmetros mais importante de um trocador duplo tubo, por um lado um diâmetro menor aumenta o Reynolds do escoamento melhorando o coeficiente de troca térmica, porém aumenta muito a perda de carga..
+        /// </summary>
+        internal static string ajudaTrocadorDiametro {
+            get {
+                return ResourceManager.GetString("ajudaTrocadorDiametro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Como as temperaturas de de entrada e saída dos fluidos foram definidas o parâmetro que será variado para alcançar a troca térmica será a vazão do fluido frio..
+        /// </summary>
+        internal static string ajudaTrocadorTubo {
+            get {
+                return ResourceManager.GetString("ajudaTrocadorTubo", resourceCulture);
+            }
+        }
     }
 }
