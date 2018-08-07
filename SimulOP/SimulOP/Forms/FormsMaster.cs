@@ -34,26 +34,6 @@ namespace SimulOP.Forms
             ActivateMdiChild(newMDIChild);
         }
 
-        private void comSingularidadeEBombaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Forms.FormsAutoBomba newMDIChild = new Forms.FormsAutoBomba();
-            newMDIChild.MdiParent = this;
-            newMDIChild.Show();
-            // Necessário para que o ícone apareça normalmente.
-            ActivateMdiChild(null);
-            ActivateMdiChild(newMDIChild);
-        }
-
-        private void exercicioResolvidoOP1ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Forms.FormsExercicioOP1 newMDIChild = new Forms.FormsExercicioOP1();
-            newMDIChild.MdiParent = this;
-            newMDIChild.Show();
-            // Necessário para que o ícone apareça normalmente.
-            ActivateMdiChild(null);
-            ActivateMdiChild(newMDIChild);
-        }
-
         private void exercícioResolvidoV2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Forms.FomrsBombeamentoCompleto newMDIChild = new Forms.FomrsBombeamentoCompleto();

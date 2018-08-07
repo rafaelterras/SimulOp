@@ -33,9 +33,7 @@
             this.operaçõesUnitáriasIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tubulaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.simplesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comSingularidadeEBombaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exercícioResolvidoV2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exercícioResolvidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filtrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compressoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operaçõesUnitáriasIIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,9 +87,7 @@
             // 
             this.tubulaçõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.simplesToolStripMenuItem,
-            this.comSingularidadeEBombaToolStripMenuItem,
-            this.exercícioResolvidoV2ToolStripMenuItem,
-            this.exercícioResolvidoToolStripMenuItem});
+            this.exercícioResolvidoV2ToolStripMenuItem});
             this.tubulaçõesToolStripMenuItem.Name = "tubulaçõesToolStripMenuItem";
             this.tubulaçõesToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.tubulaçõesToolStripMenuItem.Text = "Tubulações e Bombas";
@@ -103,26 +99,12 @@
             this.simplesToolStripMenuItem.Text = "Perda de Carga na Tubulação";
             this.simplesToolStripMenuItem.Click += new System.EventHandler(this.simplesToolStripMenuItem_Click);
             // 
-            // comSingularidadeEBombaToolStripMenuItem
-            // 
-            this.comSingularidadeEBombaToolStripMenuItem.Name = "comSingularidadeEBombaToolStripMenuItem";
-            this.comSingularidadeEBombaToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-            this.comSingularidadeEBombaToolStripMenuItem.Text = "Bombeamento Simples";
-            this.comSingularidadeEBombaToolStripMenuItem.Click += new System.EventHandler(this.comSingularidadeEBombaToolStripMenuItem_Click);
-            // 
             // exercícioResolvidoV2ToolStripMenuItem
             // 
             this.exercícioResolvidoV2ToolStripMenuItem.Name = "exercícioResolvidoV2ToolStripMenuItem";
             this.exercícioResolvidoV2ToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.exercícioResolvidoV2ToolStripMenuItem.Text = "Bombeamento Completo";
             this.exercícioResolvidoV2ToolStripMenuItem.Click += new System.EventHandler(this.exercícioResolvidoV2ToolStripMenuItem_Click);
-            // 
-            // exercícioResolvidoToolStripMenuItem
-            // 
-            this.exercícioResolvidoToolStripMenuItem.Name = "exercícioResolvidoToolStripMenuItem";
-            this.exercícioResolvidoToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-            this.exercícioResolvidoToolStripMenuItem.Text = "Exercício resolvido";
-            this.exercícioResolvidoToolStripMenuItem.Click += new System.EventHandler(this.exercicioResolvidoOP1ToolStripMenuItem_Click);
             // 
             // filtrosToolStripMenuItem
             // 
@@ -312,7 +294,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormsMaster";
-            this.Text = "SimulOp v.0.25";
+            this.Text = "SimulOp v.1.0";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormsMaster_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -328,7 +310,6 @@
         private System.Windows.Forms.ToolStripMenuItem operaçõesUnitáriasIToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tubulaçõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem simplesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem comSingularidadeEBombaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem operaçõesUnitáriasIIToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem operaçõesUnitáriasIIIToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem filtrosToolStripMenuItem;
@@ -349,7 +330,6 @@
         private System.Windows.Forms.ToolStripMenuItem contínuaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reatoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bateladaToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem exercícioResolvidoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exercícioResolvidoV2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem métodoMcCabeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pFRToolStripMenuItem;
