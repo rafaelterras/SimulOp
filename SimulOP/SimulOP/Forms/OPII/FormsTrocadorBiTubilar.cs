@@ -361,7 +361,7 @@ namespace SimulOP.Forms
 
             txbResultadoCompTrocadorTxt = Math.Round(trocador.Comprimento, 2).ToString();
             txbResultadoVazaoFrioTxt = Math.Round(trocador.VazaoFrio * 3600, 2).ToString();
-            txbResultadosCalorTrocadoTxt = Math.Round(trocador.CalorTransferido * 1000, 1).ToString();
+            txbResultadosCalorTrocadoTxt = Math.Round(trocador.CalorTransferido / 1000, 1).ToString();
 
             txbResultadoPerdaCargaInterna.Text = txbResultadoPerdaCargaInternaTxt;
             txbResultadoPerdaCargaAnular.Text = txbResultadoPerdaCargaAnularTxt;

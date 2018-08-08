@@ -313,7 +313,7 @@
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(215, 11);
             this.label25.TabIndex = 14;
-            this.label25.Text = "Fator de encrustação (WK/m^2):";
+            this.label25.Text = "Fator de encrustação (m^2K/W):";
             // 
             // nudVazaoQuente
             // 

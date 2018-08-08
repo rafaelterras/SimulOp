@@ -3,7 +3,7 @@
     /// <summary>
     /// Classe abstrata para representar trocadores de calor [Não implementedo].
     /// </summary>
-    abstract class TrocadordeCalor : EquipamentoOPII
+    public abstract class TrocadordeCalor : EquipamentoOPII
     {
 
     }

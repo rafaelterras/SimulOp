@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SimulOP.ColunaMcCabeThiele">
+    <Position X="3.25" Y="0.75" Width="2" />
+    <Members>
+      <Property Name="FeedConditionQ" Hidden="true" />
+      <Property Name="FeedZF" Hidden="true" />
+      <Property Name="MisturaBinaria" Hidden="true" />
+      <Property Name="PontoP" Hidden="true" />
+      <Property Name="RefluxRatio" Hidden="true" />
+      <Property Name="TargetXB" Hidden="true" />
+      <Property Name="TargetXD" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="misturaBinaria" Type="SimulOP.MisturaBinaria" FixedToPoint="true">
+      <Path>
+        <Point X="5.25" Y="1.108" />
+        <Point X="6.5" Y="1.108" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>gEIAgGQIACDAADQAgIEEEAAAACAAAAAAAAAAAQACAKA=</HashCode>
+      <FileName>EquipamentosOPIII\ColunaMcCabeThiele.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="misturaBinaria" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SimulOP.MisturaBinaria">
+    <Position X="6.5" Y="0.75" Width="1.5" />
+    <Members>
+      <Property Name="Alpha" Hidden="true" />
+      <Property Name="Componentes" Hidden="true" />
+      <Property Name="ComposicaoLiq" Hidden="true" />
+      <Property Name="ComposicaoVap" Hidden="true" />
+      <Property Name="FluidoHK" Hidden="true" />
+      <Property Name="FluidoLK" Hidden="true" />
+      <Property Name="Pressao" Hidden="true" />
+      <Property Name="Temperatura" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="fluidoHK" Type="SimulOP.FluidoIdealOPIII" FixedToPoint="true">
+      <Path>
+        <Point X="8" Y="1.587" />
+        <Point X="9" Y="1.587" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="fluidoLK" Type="SimulOP.FluidoIdealOPIII" FixedToPoint="true">
+      <Path>
+        <Point X="8" Y="1.875" />
+        <Point X="9" Y="1.875" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>GQAAAAAAAAAAAgIAEQAIAAQACAAEABAAAEARAAhAAQA=</HashCode>
+      <FileName>Geral\MisturaBinaria.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="fluidoHK" />
+      <Field Name="fluidoLK" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SimulOP.FluidoIdealOPIII">
+    <Position X="9" Y="0.75" Width="1.5" />
+    <Members>
+      <Property Name="Material" Hidden="true" />
+      <Property Name="PresaoVapor" Hidden="true" />
+      <Property Name="Temperatura" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AEAAAEAAAAAAAQAAAAAAAAQAAgAEAAAAAAAAAABBAgA=</HashCode>
+      <FileName>Geral\FluidoIdealOPIII.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="material" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SimulOP.MaterialFluidoOPIII">
+    <Position X="8.75" Y="3.75" Width="1.75" />
+    <Members>
+      <Property Name="CoefAntoine" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Geral\MaterialFluidoOPIII.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimulOP.MaterialFluidoOPI">
+    <Position X="6.5" Y="4.25" Width="1.5" />
+    <Members>
+      <Property Name="Densidade" Hidden="true" />
+      <Property Name="Viscosidade" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAQAAI=</HashCode>
+      <FileName>Geral\MaterialFluidoOPI.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

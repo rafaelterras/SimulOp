@@ -6,7 +6,7 @@ namespace SimulOP
     /// <summary>
     /// Classe para representar trocadores de calor do tipo duplo tubo.
     /// </summary>
-    public class TrocadorDuploTubo : EquipamentoOPII
+    public class TrocadorDuploTubo : TrocadordeCalor
     {
         // Variavéis da parte Anular.
         private TubulacaoDuploTubo tubulacaoAnular;

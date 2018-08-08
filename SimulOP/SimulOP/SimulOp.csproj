@@ -209,6 +209,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="DiagramaClasses\ClassesAuxiliares.cd" />
+    <None Include="DiagramaClasses\DetalheOPI.cd" />
+    <None Include="DiagramaClasses\DetalheOPII.cd" />
+    <None Include="DiagramaClasses\DetalheOPIII.cd" />
+    <None Include="DiagramaClasses\DiagramaGeral.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

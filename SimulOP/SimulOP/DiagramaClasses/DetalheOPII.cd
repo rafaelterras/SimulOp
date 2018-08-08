@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SimulOP.TrocadorDuploTubo">
+    <Position X="3.25" Y="1" Width="2" />
+    <Members>
+      <Property Name="Anular" Hidden="true" />
+      <Property Name="AreaTroca" Hidden="true" />
+      <Property Name="CalorTransferido" Hidden="true" />
+      <Property Name="CoefTrocaTermGlobal" Hidden="true" />
+      <Property Name="Comprimento" Hidden="true" />
+      <Property Name="Configuracao" Hidden="true" />
+      <Property Name="FatorIncrustacao" Hidden="true" />
+      <Property Name="FluidoAnularEnt" Hidden="true" />
+      <Property Name="FluidoAnularSai" Hidden="true" />
+      <Property Name="FluidoInternoEnt" Hidden="true" />
+      <Property Name="FluidoInternoSai" Hidden="true" />
+      <Property Name="Interno" Hidden="true" />
+      <Property Name="TempAnularSaida" Hidden="true" />
+      <Property Name="TempInternoSaida" Hidden="true" />
+      <Property Name="TubulacaoAnular" Hidden="true" />
+      <Property Name="TubulacaoInterna" Hidden="true" />
+      <Property Name="VazaoFrio" Hidden="true" />
+      <Property Name="VazaoQuente" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="fluidoAnularEnt" Type="SimulOP.FluidoOPII" FixedToPoint="true">
+      <Path>
+        <Point X="5.25" Y="1.327" />
+        <Point X="7" Y="1.327" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.391" Y="0.07" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="fluidoAnularSai" Type="SimulOP.FluidoOPII">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.37" Y="0.091" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="materialBulckAnular" Type="SimulOP.IMaterialFluidoOPII" FixedToPoint="true">
+      <Path>
+        <Point X="5.25" Y="4.625" />
+        <Point X="7" Y="4.625" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="fluidoInternoEnt" Type="SimulOP.FluidoOPII">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.339" Y="0.06" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="fluidoInternoSai" Type="SimulOP.FluidoOPII" FixedToPoint="true">
+      <Path>
+        <Point X="5.25" Y="2.143" />
+        <Point X="7" Y="2.143" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.318" Y="0.091" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>BAICBBACICQchACkCGQIMADAAgBAhACGQAxoAAQCSME=</HashCode>
+      <FileName>EquipamentosOPII\TrocadorDuploTubo.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="fluidoAnularEnt" />
+      <Field Name="fluidoAnularSai" />
+      <Field Name="materialBulckAnular" />
+      <Field Name="materialBulckInterno" />
+      <Field Name="fluidoInternoEnt" />
+      <Field Name="fluidoInternoSai" />
+      <Field Name="tubulacaoAnular" />
+      <Field Name="tubulacaoInterna" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SimulOP.FluidoOPII">
+    <Position X="7" Y="1" Width="1.75" />
+    <Members>
+      <Property Name="Material" Hidden="true" />
+      <Property Name="Temperatura" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAABAABA=</HashCode>
+      <FileName>Geral\FluidoOPII.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="material" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SimulOP.TubulacaoDuploTubo">
+    <Position X="7" Y="6.25" Width="1.75" />
+    <Members>
+      <Property Name="DiametroExterno" Hidden="true" />
+      <Property Name="DiametroIn" Hidden="true" />
+      <Property Name="Especura" Hidden="true" />
+      <Property Name="TipoTubo" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAQQAAAAAAACAAAAAgBAEIAAQgCAAAAAAA=</HashCode>
+      <FileName>EquipamentosOPII\TubulacaoDuploTubo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimulOP.Tubulacao">
+    <Position X="9.25" Y="3.5" Width="2.25" />
+    <Members>
+      <Property Name="Comprimento" Hidden="true" />
+      <Property Name="ComprimentoEquivalente" Hidden="true" />
+      <Property Name="Diametro" Hidden="true" />
+      <Property Name="Elevacao" Hidden="true" />
+      <Property Name="FatorAtrito" Hidden="true" />
+      <Property Name="ListaSingularidades" Hidden="true" />
+      <Property Name="Material" Hidden="true" />
+      <Property Name="MetodoFatrito" Hidden="true" />
+      <Property Name="PerdaCarga" Hidden="true" />
+      <Property Name="RugosidadeRelativa" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EEoAIAADAMAEAAEAEAABABAAAABCAEEAQAklAABAACA=</HashCode>
+      <FileName>EquipamentosOPI\Tubulacao.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="SimulOP.IMaterialFluidoOPII">
+    <Position X="7" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAACAAAAQAAAAAACAAAAAAAAAQABI=</HashCode>
+      <FileName>Interfaces\IMaterialFluidoOPII.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
