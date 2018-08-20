@@ -206,6 +206,23 @@ namespace SimulOP.Forms
 
             tuboQente = (fluidoAnularTemp > fluidoInternoTemp) ? EquipamentoOPII.TipoTubo.anular : EquipamentoOPII.TipoTubo.interno;
 
+            if (tuboQente == EquipamentoOPII.TipoTubo.anular)
+            {
+                if (fluidoAnularEnt.Temperatura < 40 + 273.15 || fluidoInternoEnt.Temperatura > 40 + 273.15) // Fluido Quente pouco quente ou frio pouco frio
+                {
+                    txbErro.Text = "Verifique as temp";
+                    return;
+                }
+            }
+            else
+            {
+                if (fluidoAnularEnt.Temperatura > 40 + 273.15 || fluidoInternoEnt.Temperatura < 40 + 273.15) // Fluido Quente pouco quente ou frio pouco frio
+                {
+                    txbErro.Text = "Verifique as temp";
+                    return;
+                }
+            }
+
             // Trocador
             double vazaoQente = Convert.ToDouble(nudVazaoQuente.Value) / 3600.0; // Vazao em m^3/s
             double fatorIncrustacao = Convert.ToDouble(nudTrocadorFatorEncrustacao.Value);
@@ -322,22 +339,12 @@ namespace SimulOP.Forms
 
             (tempQuentSaiX, perdaCargaInternoY, perdaCargaAnularY, comprimentoY) = trocador.PlotResultados(Convert.ToDouble(nudQuenteSaiMin), Convert.ToDouble(nudQuenteSaiMax), 20);
 
-            try
-            {
-                // Gráfico da perda de carga
-                chartPerdaCarga.Series["fluidoInterno"].Points.DataBindXY(tempQuentSaiX, perdaCargaInternoY);
-                chartPerdaCarga.Series["fluidoAnular"].Points.DataBindXY(tempQuentSaiX, perdaCargaAnularY);
+            // Gráfico da perda de carga
+            chartPerdaCarga.Series["fluidoInterno"].Points.DataBindXY(tempQuentSaiX, perdaCargaInternoY);
+            chartPerdaCarga.Series["fluidoAnular"].Points.DataBindXY(tempQuentSaiX, perdaCargaAnularY);
 
-                // Gráfico do comprimento
-                chartComprimento.Series["comprimento"].Points.DataBindXY(tempQuentSaiX, comprimentoY);
-            }
-            catch (Exception)
-            {
-                chartPerdaCarga.Series["fluidoInterno"].Points.Clear();
-                chartPerdaCarga.Series["fluidoAnular"].Points.Clear();
-
-                chartComprimento.Series["comprimento"].Points.Clear();
-            }
+            // Gráfico do comprimento
+            chartComprimento.Series["comprimento"].Points.DataBindXY(tempQuentSaiX, comprimentoY);            
         }
 
         private void AtualizaResultados(double tempQuenteSai)
@@ -372,6 +379,17 @@ namespace SimulOP.Forms
             txbResultadosCalorTrocado.Text = txbResultadosCalorTrocadoTxt;
 
             nudTrocadorComprimento.Value = (trocador.Comprimento < 999.0 && trocador.Comprimento > 0) ? Convert.ToDecimal(trocador.Comprimento) : Convert.ToDecimal(999.0);
+
+            if (tuboQente == EquipamentoOPII.TipoTubo.interno)
+            {
+                txbFigFluidoAnularTxt[4] = $"Vazão = {txbResultadoVazaoFrioTxt} m^3/h";
+                txbFigFluidoAnular.Lines = txbFigFluidoAnularTxt;
+            }
+            else
+            {
+                txbFigFluidoInternoTxt[4] = $"Vazão = {txbResultadoVazaoFrioTxt} m^3/h";
+                txbFigFluidoInterno.Lines = txbFigFluidoInternoTxt;
+            }
 
             // Atualização da linha do comprimento nos gráficos            
             double perdaCargaMax = Math.Max(trocador.TubulacaoAnular.PerdaCarga * 1e-3, trocador.TubulacaoInterna.PerdaCarga * 1e-3);
@@ -519,6 +537,13 @@ namespace SimulOP.Forms
                     if (!atualizaParametros) break;
 
                     trocador.TubulacaoAnular.Diametro = nudVarTrocadorDiamAnularDbl;    // Atualiza o trocador
+
+                    if (nudVarTrocadorDiamAnularDbl - nudVarTrocadorDiamInternoDbl < 0.019)
+                    {
+                        AtualizaParDin(nudVarTrocadorDiamInterno, trbVarTrocadorDiamInterno, (nudVarTrocadorDiamAnularDbl - 0.02) * 1e2);
+                        break;
+                    }
+
                     AtualizaForms();                                                    // Atualiza o forms
                     break;
                 case "nudVarTrocadorDiamInterno":
@@ -528,6 +553,13 @@ namespace SimulOP.Forms
                     if (!atualizaParametros) break;
 
                     trocador.TubulacaoInterna.Diametro = nudVarTrocadorDiamInternoDbl;  // Atualiza o trocador
+
+                    if (nudVarTrocadorDiamAnularDbl - nudVarTrocadorDiamInternoDbl < 0.019)
+                    {
+                        AtualizaParDin(nudVarTrocadorDiamAnular, trbVarTrocadorDiamAnular, (nudVarTrocadorDiamInternoDbl + 0.02) * 1e2);
+                        break;
+                    }
+
                     AtualizaForms();                                                    // Atualiza o forms
                     break;
                 default:

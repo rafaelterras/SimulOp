@@ -436,7 +436,6 @@ namespace SimulOP
                 }
                 Console.WriteLine($"LMTD aproximado! = {LMTD}");
             }
-
             return LMTD;
         }
 
@@ -557,14 +556,17 @@ namespace SimulOP
 
                 CalculaTroca();
 
-                perdaCargaAnular = this.tubulacaoAnular.PerdaCarga;
-                perdaCargaInterno = this.tubulacaoInterna.PerdaCarga;
-                comprimento = this.comprimento;
+                if (LMTD() > 2) // Só adiciona se o LMTD for suficientemente grande, para evitar gráficos absurdos
+                {
+                    perdaCargaAnular = this.tubulacaoAnular.PerdaCarga;
+                    perdaCargaInterno = this.tubulacaoInterna.PerdaCarga;
+                    comprimento = this.comprimento;
 
-                plotX.Add(tSaida - 273.15); // T em K
-                plotPerdaCargaAnularY.Add(perdaCargaAnular * 1e-3); // P em KPa.
-                plotPerdaCargaInternoY.Add(perdaCargaInterno * 1e-3); // P em KPa.
-                poltComprimento.Add(comprimento); // L em m
+                    plotX.Add(tSaida - 273.15); // T em K
+                    plotPerdaCargaAnularY.Add(perdaCargaAnular * 1e-3); // P em KPa.
+                    plotPerdaCargaInternoY.Add(perdaCargaInterno * 1e-3); // P em KPa.
+                    poltComprimento.Add(comprimento); // L em m
+                }
             }
 
             return (plotX, plotPerdaCargaAnularY, plotPerdaCargaInternoY, poltComprimento);

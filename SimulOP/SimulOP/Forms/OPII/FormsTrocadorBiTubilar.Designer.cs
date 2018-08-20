@@ -296,6 +296,11 @@
             // nudTrocadorFatorEncrustacao
             // 
             this.nudTrocadorFatorEncrustacao.DecimalPlaces = 5;
+            this.nudTrocadorFatorEncrustacao.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
             this.nudTrocadorFatorEncrustacao.Location = new System.Drawing.Point(220, 93);
             this.nudTrocadorFatorEncrustacao.Maximum = new decimal(new int[] {
             1,
