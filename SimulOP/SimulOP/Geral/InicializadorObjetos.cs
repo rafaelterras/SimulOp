@@ -154,7 +154,7 @@
                     break;
             }
 
-            return new MaterialTubulacao(rugosidade * 100.0, material);
+            return new MaterialTubulacao(rugosidade / 100.0, material);
         }
         
         public static Tubulacao Tubulacao(string material, EquipamentoOPI.DiamPol diamPol, EquipamentoOPI.SchNum schNum, double comprimento, double elevacao, string metodoFAtrito = "fanning")
