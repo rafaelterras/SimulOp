@@ -578,9 +578,10 @@
             this.label17.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(3, 20);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(110, 11);
+            this.label17.Size = new System.Drawing.Size(152, 11);
             this.label17.TabIndex = 23;
-            this.label17.Text = "Valor do alpha:";
+            this.label17.Text = "Volatilidade relativa";
+            this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // txbPratoIdeal
             // 
