@@ -148,12 +148,10 @@ namespace SimulOP.Forms
             linhaOPX.Clear();
             linhaOPY.Clear();
             chart.Series["LinhaOP"].Points.Clear();
-            chart.Series["PontoQ"].Points.Clear();
 
             (linhaOPX, linhaOPY) = ColunaMcCabeThiele.PlotCurvaOP(100);
 
             chart.Series["LinhaOP"].Points.DataBindXY(linhaOPX, linhaOPY);
-            chart.Series["PontoQ"].Points.AddXY(ColunaMcCabeThiele.PontoP[0], ColunaMcCabeThiele.PontoP[1]);
         }
 
         /// <summary>
@@ -161,8 +159,13 @@ namespace SimulOP.Forms
         /// </summary>
         private void AtualizaLinhaQ()
         {
-            //linhaQX.Clear();
-            //linhaQY.Clear();
+            linhaQX.Clear();
+            linhaQY.Clear();
+            chart.Series["PontoQ"].Points.Clear();
+
+            (linhaQX, linhaQY) = ColunaMcCabeThiele.PlotCurvaQ();
+
+            chart.Series["PontoQ"].Points.DataBindXY(linhaQX, linhaQY);
         }
 
         /// <summary>
@@ -291,7 +294,8 @@ namespace SimulOP.Forms
 
                     chart.Series["Equilibrio"].LegendText = $"ELV {cmbFluidoLKTxt}, {cmbFluidoHKTxt}";
                     chart.Series["LinhaOP"].LegendText = "Linha de Operação";
-                    chart.Series["PontoQ"].LegendText = "PontoQ";
+                    chart.Series["PontoQ"].LegendText = "Linha Q";
+                    chart.Series["Linha45"].Points.DataBindXY(new double[] { 0, 1 }, new double[] { 0, 1 });
                     txbConvergencia.Text = "OK";
                     txbConvergencia.ForeColor = System.Drawing.Color.Green;
 
@@ -362,17 +366,17 @@ namespace SimulOP.Forms
                     nudFracaoEntradaLKDinDbl = x;
                     trbFracaoEntradaLKDinInt = trbInt;
                     ColunaMcCabeThiele.FeedZF = nudFracaoEntradaLKDinDbl;
-                    AtualizaLinhaQ();
                     AtualizaLinhasOP();
                     AtualizaPratos();
+                    AtualizaLinhaQ();
                     break;
                 case "nudRefluxoDin": // Mudança no refluxo
                     nudRefluxoDinDbl = x;
                     trbRefluxoDinInt = trbInt;
                     ColunaMcCabeThiele.RefluxRatio = nudRefluxoDinDbl;
-                    AtualizaLinhaQ();
                     AtualizaLinhasOP();
                     AtualizaPratos();
+                    AtualizaLinhaQ();
                     break;
                 case "nudXd": // Mudança no target Xd
                     nudXdDbl = x;

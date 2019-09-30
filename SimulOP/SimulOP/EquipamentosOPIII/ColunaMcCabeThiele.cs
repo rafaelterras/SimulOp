@@ -324,36 +324,28 @@ namespace SimulOP
         /// </summary>
         /// <param name="div">Número de divisões para o plot (precisão).</param>
         /// <returns>Duas lista com os valores de X e Y, respectivamente, com os pontos para serem plotados.</returns>
-        public (List<double> PlotX, List<double> PlotY) PlotCurvaQ(int div)
+        public (List<double> PlotX, List<double> PlotY) PlotCurvaQ()
         {
-            throw new NotImplementedException();
-            
-            //List<double> PlotX = new List<double>();
-            //List<double> PlotY = new List<double>();
+            List<double> PlotX = new List<double>();
+            List<double> PlotY = new List<double>();
 
-            //if (this.pontoP == null)
-            //{
-            //    CalculaPontoP();
-            //}
+            double delta = 0.4;
 
-            //double LinhaQEQ(double x) => LinhaQ(x) - misturaBinaria.CalculaVap(x);
-            //double cruzaQEQ = AchaRaizBrenet(LinhaQEQ, 0.0, 1.0);
+            PlotX.Add(feedZF);
+            PlotY.Add(feedZF);
 
-            //for (double xLK = 0; xLK <= 1.01; xLK = xLK + 1.0 / div)
-            //{
-            //    if (xLK < this.pontoP[0] && (xLK + 1.0 / div) > this.pontoP[0])
-            //    {
-            //        PlotX.Add(this.pontoP[0]);
-            //        PlotY.Add(this.pontoP[1]);
-            //    }
-            //    else
-            //    {
-            //        PlotX.Add(xLK);
-            //        PlotY.Add(CurvaOP(xLK));
-            //    }
-            //}
+            PlotX.Add(pontoP[0]);
+            PlotY.Add(pontoP[1]);
 
-            //return (PlotX, PlotY);
+            double d = Math.Sqrt(Math.Pow(feedZF - pontoP[0], 2.0) + Math.Pow(feedZF - pontoP[1], 2.0));
+
+            double dx = (delta - d) * (pontoP[0] - feedZF) / d;
+            double dy = (delta - d) * (pontoP[1] - feedZF) / d;
+
+            PlotX.Add(pontoP[0] + dx);
+            PlotY.Add(pontoP[1] + dy);
+
+            return (PlotX, PlotY);
         }
         #endregion
     }
