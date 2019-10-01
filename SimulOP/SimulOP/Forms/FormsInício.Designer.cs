@@ -46,10 +46,11 @@
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1354, 733);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -61,7 +62,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1348, 439);
+            this.label1.Size = new System.Drawing.Size(1348, 427);
             this.label1.TabIndex = 0;
             this.label1.Text = "SimulOp";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -73,9 +74,9 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Lucida Console", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(3, 439);
+            this.label2.Location = new System.Drawing.Point(3, 427);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1348, 146);
+            this.label2.Size = new System.Drawing.Size(1348, 142);
             this.label2.TabIndex = 1;
             this.label2.Text = "v.1.1";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -84,14 +85,17 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Lucida Console", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(3, 585);
+            this.label3.Location = new System.Drawing.Point(3, 569);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(1348, 148);
+            this.label3.Size = new System.Drawing.Size(1348, 142);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Desenvolvido por André Pinto Félix Antonio e Rafael Alves Terras";
+            this.label3.Text = "UNIVERSIDADE DE SÃO PAULO\r\nESCOLA POLITÉCNICA - DEPARTAMENTO DE ENGENHARIA QUÍMIC" +
+    "A\r\n\r\nAutores: \r\nAndré Pinto Félix Antonio\r\nRafael Alves Terras\r\nProf. Dr. Moisés" +
+    " Teles  \r\n";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // FormsInício
             // 

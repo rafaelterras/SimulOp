@@ -294,7 +294,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormsMaster";
-            this.Text = "SimulOp v.1.0";
+            this.Text = "SimulOp v.1.1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormsMaster_Load);
             this.menuStrip1.ResumeLayout(false);
